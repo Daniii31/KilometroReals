@@ -583,3 +583,12 @@ table.list.fit thead th{white-space:normal;line-height:1.25}@media (max-width:62
 @media (prefers-reduced-motion:reduce){.mc-bar i{animation:none}}
 .vschips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px}.vschips b{margin-right:4px;font-size:.95rem}
 .vsfind{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:end;margin:0 0 22px;max-width:560px}.vsfind .lbl{width:100%}.vsfind input{flex:1;min-width:0}.card[hidden]{display:none}
+.bmark{--bm:#2b2f36;display:inline-grid;place-items:center;flex:none;width:44px;height:44px;border-radius:12px;background:var(--bm);color:#fff;font-weight:800;font-size:1.02rem;letter-spacing:-.02em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),0 1px 2px rgba(0,0,0,.12);font-variant-numeric:tabular-nums}
+.bmark.lg{width:64px;height:64px;border-radius:16px;font-size:1.45rem}.bmark.sm{width:22px;height:22px;border-radius:6px;font-size:.66rem;margin-right:6px;vertical-align:-5px}
+.bhead{display:flex;gap:12px;align-items:center;margin-bottom:6px}.bhead h3{margin:0}.borig{font-size:.84rem}
+.bhero{display:flex;gap:16px;align-items:center}.bhero h1{margin:0}.bhero .muted{display:block;margin-top:4px}
+.blink{display:inline-flex;align-items:center}
+.bbanner{display:flex;gap:14px;align-items:center;padding:14px 16px;margin:0 0 14px;border:1.5px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .15s var(--ease-out),transform .14s var(--ease-out)}
+.bbanner>span:nth-child(2){display:grid;gap:2px;flex:1;min-width:0}.bbanner .bgo{font-weight:700;white-space:nowrap}
+.bbanner:hover{border-color:var(--ink2)}.bbanner:active{transform:scale(.99)}
+@media (max-width:560px){.bhero .bmark.lg{width:52px;height:52px;font-size:1.2rem}.bbanner .bgo{display:none}}

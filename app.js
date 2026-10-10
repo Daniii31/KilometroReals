@@ -78,8 +78,10 @@ function cost(c,S){
   return{dep,energy,ins,mnt,tax,total,resid,perKm:total/km,month:total/S.y/12};
 }
 const tag=c=>`<span class="tag ${c.lab}">${LAB[c.lab]}</span>`;
+const findBrand=v=>{if(!v)return null;const n=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLowerCase(),t=n(v);const c=CARS.find(c=>n(c.b)===t);return c?c.b:null};
+const brandSlug=b=>b.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const findCar=v=>{if(!v)return null;v=v.trim().toLowerCase();if(!v)return null;return BYNAME[v]||CARS.find(c=>c.n.toLowerCase().includes(v))||null};
-function datalist(){if($("#cars"))return;const dl=document.createElement("datalist");dl.id="cars";dl.innerHTML=CARS.map(c=>`<option value="${c.n}"></option>`).join("");document.body.appendChild(dl)}
+function datalist(){if($("#cars"))return;const dl=document.createElement("datalist");dl.id="cars";dl.innerHTML=[...new Set(CARS.map(c=>c.b))].map(b=>`<option value="${b}"></option>`).join("")+CARS.map(c=>`<option value="${c.n}"></option>`).join("");document.body.appendChild(dl)}
 function toast(msg){let t=$(".toast");if(!t){t=document.createElement("div");t.className="toast";t.setAttribute("role","status");document.body.appendChild(t)}t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2200)}
 function fieldErr(inp,msg){inp.classList.toggle("bad",!!msg);let e=inp.parentElement.querySelector(".err");if(msg){if(!e){e=document.createElement("p");e.className="err";inp.parentElement.appendChild(e)}e.textContent=msg;inp.setAttribute("aria-invalid","true")}else{if(e)e.remove();inp.removeAttribute("aria-invalid")}}
 function carInput(inp,cb){inp.addEventListener("change",()=>{const c=findCar(inp.value);if(c){fieldErr(inp,"");if(inp.value!==c.n)inp.value=c.n;cb(c)}else fieldErr(inp,L.notFound)})}
@@ -159,7 +161,9 @@ function initComparador(){
 function initCatalogo(){
   const t=$("#catalogo");if(!t)return;
   const rows=$$("#catalogo tbody tr"),q=$("#f-q"),ty=$("#f-t"),bo=$("#f-b"),pr=$("#f-p"),cnt=$("#f-count");
-  const apply=()=>{const s=q.value.trim().toLowerCase();let n=0;rows.forEach(r=>{const ok=(!s||r.dataset.n.includes(s))&&(!ty.value||r.dataset.t===ty.value)&&(!bo.value||r.dataset.body===bo.value)&&(!pr.value||+r.dataset.p<=+pr.value);r.classList.toggle("hide",!ok);if(ok)n++});cnt.textContent=n+" "+L.models};
+  const tpl=$("#kr-brands"),fb=$("#f-brand"),nrm=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  const brandBox=s=>{if(!tpl||!fb)return;fb.innerHTML="";const v=nrm(s);if(v.length<2)return;const m=[...tpl.content.querySelectorAll(".bbanner")].find(a=>nrm(a.dataset.b)===v||(v.length>=3&&nrm(a.dataset.b).startsWith(v)));if(m)fb.appendChild(m.cloneNode(true))};
+  const apply=()=>{const s=q.value.trim().toLowerCase();brandBox(s);let n=0;rows.forEach(r=>{const ok=(!s||r.dataset.n.includes(s))&&(!ty.value||r.dataset.t===ty.value)&&(!bo.value||r.dataset.body===bo.value)&&(!pr.value||+r.dataset.p<=+pr.value);r.classList.toggle("hide",!ok);if(ok)n++});cnt.textContent=n+" "+L.models};
   [q,ty,bo,pr].forEach(el=>el.addEventListener("input",apply));
   let dir={};
   $$("#catalogo th button").forEach(btn=>btn.addEventListener("click",()=>{const k=btn.dataset.k;dir[k]=!dir[k];const tb=$("#catalogo tbody");rows.sort((x,y)=>{const a=x.dataset[k],b=y.dataset[k];const v=isNaN(+a)?a.localeCompare(b,"es"):(+a)-(+b);return dir[k]?v:-v}).forEach(r=>tb.appendChild(r))}));
@@ -262,7 +266,7 @@ function initCalcs(){
 
 /* ---------- buscador de cabecera y 404 ---------- */
 function initSearch(){
-  $$(".carsearch").forEach(inp=>{datalist();const go=()=>{const c=findCar(inp.value);if(c)location.href=L.cars+c.id+"/";else if(inp.value.trim())location.href=L.cars+"?q="+encodeURIComponent(inp.value.trim())};
+  $$(".carsearch").forEach(inp=>{datalist();const go=()=>{const br=findBrand(inp.value);if(br&&!document.documentElement.lang.startsWith("en")){location.href="/marcas/"+brandSlug(br)+"/";return}const c=findCar(inp.value);if(c)location.href=L.cars+c.id+"/";else if(inp.value.trim())location.href=L.cars+"?q="+encodeURIComponent(inp.value.trim())};
     inp.addEventListener("change",go);inp.form&&inp.form.addEventListener("submit",e=>{e.preventDefault();go()})});
 }
 

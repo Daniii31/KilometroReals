@@ -8,6 +8,7 @@ from models import cars, cost, BODY, TYPE, FUEL, DEFAULTS
 from extras import analyses, car_analysis, car_faq
 from models import slugify
 from vs_pairs import VS_PAIRS as _VSP
+from brands_meta import ORIGIN, badge as bbadge
 ARTICLES = ARTICLES + analyses()
 
 # ===== CONFIGURACIÓN =====
@@ -233,7 +234,7 @@ def build_brands():
     rows = []
     for b in BRANDS_ALL:
         lst = by_pk([c for c in CARS if c["b"] == b]); cheapest = lst[0]
-        rows.append(f'<a class="card" href="/marcas/{slugify(b)}/"><h3>{esc(b)}</h3><p>{len(lst)} modelo{"s" if len(lst) > 1 else ""} · desde {eur(min(c["p"] for c in lst))}</p><div class="foot"><span class="muted" style="font-size:.85rem">Más barato de tener: {esc(cheapest["m"])}</span></div></a>')
+        rows.append(f'<a class="card bcard" href="/marcas/{slugify(b)}/"><div class="bhead">{bbadge(b)}<div><h3>{esc(b)}</h3><span class="muted borig">{ORIGIN.get(b, "")}</span></div></div><p>{len(lst)} modelo{"s" if len(lst) > 1 else ""} · desde {eur(min(c["p"] for c in lst))}</p><div class="foot"><span class="muted" style="font-size:.85rem">Más barato de tener: {esc(cheapest["m"])}</span></div></a>')
     page("/marcas/", "Todas las marcas de coches en España", f"Las {len(BRANDS_ALL)} marcas de coches del comparador: modelos, precios y coste real de cada una.",
          f'{crumbs((None, "Marcas"))}<section class="tight"><div class="wrap"><h1>Marcas</h1><p class="muted" style="margin:10px 0 24px;max-width:62ch">Elige una marca y verás todos sus modelos ordenados por lo que cuestan de verdad.</p><div class="cards">{"".join(rows)}</div></div></section>', "coches")
     for b in BRANDS_ALL:
@@ -244,7 +245,7 @@ def build_brands():
                  f'Su gama incluye versiones de tipo {", ".join(types)}. El que menos cuesta de tener es el <a href="{curl(lst[0])}">{esc(lst[0]["n"])}</a>, con {pk(K[lst[0]["id"]]["perKm"])} € por kilómetro.')
         body = f"""{crumbs(("/marcas/", "Marcas"), (None, b))}
 <section class="tight"><div class="wrap">
- <h1>Coches {esc(b)}: precios y coste real</h1>
+ <div class="bhero">{bbadge(b, "lg")}<div><h1>Coches {esc(b)}: precios y coste real</h1><span class="muted">Marca de {ORIGIN.get(b, "")} · {len(lst)} modelo{"s" if len(lst) > 1 else ""}</span></div></div>
  <p style="margin:12px 0 24px;max-width:70ch;color:var(--ink2);font-size:1.05rem">{intro}</p>
  <div class="cards">{"".join(car_card(c) for c in lst)}</div>
  {ad("marca")}
@@ -500,10 +501,12 @@ def build_catalog():
   <div><label class="lbl" for="f-b">Carrocería</label><select id="f-b"><option value="">Todas</option>{bopt}</select></div>
   <div><label class="lbl" for="f-p">Precio máximo</label><select id="f-p"><option value="">Sin límite</option><option value="20000">20.000 €</option><option value="25000">25.000 €</option><option value="30000">30.000 €</option><option value="40000">40.000 €</option><option value="50000">50.000 €</option></select></div>
  </div>
+ <div id="f-brand"></div>
  <p class="count" id="f-count">{len(CARS)} modelos</p>
  <div class="tablewrap" id="catalogo"><table class="list"><thead><tr>{th("name","Modelo")}<th>Etiqueta</th><th>Tecnología</th><th>Carrocería</th>{th("p","Precio","n")}{th("pk","€/km","n")}{th("mo","Al mes","n")}{th("rng","Autonomía","n")}{th("cv","CV","n")}{th("trunk","Maletero","n")}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>
  <p class="note" style="margin-top:10px">Coste con 15.000 km al año durante 5 años. Precios de tarifa orientativos sin descuentos.</p>
-</div></section>"""
+</div></section>
+<template id="kr-brands">{"".join(f'<a class="bbanner" data-b="{esc(b.lower())}" href="/marcas/{slugify(b)}/">{bbadge(b, "lg")}<span><b>{esc(b)}</b><span class="muted">Marca de {ORIGIN.get(b, "")} · {sum(1 for c in CARS if c["b"] == b)} modelos</span></span><span class="bgo">Ver la marca →</span></a>' for b in BRANDS_ALL)}</template>"""
     page("/coches/", "Todos los coches en venta y su coste real", f"Catálogo de {len(CARS)} coches nuevos en España con precio, coste por kilómetro, coste al mes, autonomía, potencia y maletero.", body, "coches")
 
 def build_car(c):
@@ -543,7 +546,7 @@ def build_car(c):
  <div>
   <span class="eyebrow">{BODY[c["body"]]} · {TYPE[c["t"]]}</span>
   <h1 style="margin-top:10px">{esc(c["n"])}</h1>
-  <div style="display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap">{tag(c)}<span class="muted">Etiqueta {({"cero": "CERO", "eco": "ECO", "c": "C"})[c["lab"]]}</span><span class="muted">·</span><a href="/marcas/{slugify(c["b"])}/">Todos los {esc(c["b"])}</a></div>
+  <div style="display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap">{tag(c)}<span class="muted">Etiqueta {({"cero": "CERO", "eco": "ECO", "c": "C"})[c["lab"]]}</span><span class="muted">·</span><a class="blink" href="/marcas/{slugify(c["b"])}/">{bbadge(c["b"], "sm")}Todos los {esc(c["b"])}</a></div>
   <p style="font-size:1.12rem;margin-top:14px;color:var(--ink2)">{lead}</p>
   <div class="bigfig">
    <div><b>{pk(k["perKm"])} €</b><span>por kilómetro</span></div>
