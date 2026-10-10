@@ -7,6 +7,7 @@ from content import KINDS, ARTICLES, GUIDES, BRANDS, TOP10
 from models import cars, cost, BODY, TYPE, FUEL, DEFAULTS
 from extras import analyses, car_analysis, car_faq
 from models import slugify
+from vs_pairs import VS_PAIRS as _VSP
 ARTICLES = ARTICLES + analyses()
 
 # ===== CONFIGURACIÓN =====
@@ -531,6 +532,9 @@ def build_car(c):
                 + ("Al fabricarse fuera de Europa, la ayuda puede ser menor. " if c["cn"] else "")
                 + '</p><p style="margin-top:8px"><a href="/ayudas/">Cómo funcionan las ayudas →</a></p></div>')
     best_rival = cheaper_rivals[0] if cheaper_rivals else None
+    _byid = {x["id"]: x for x in CARS}
+    _vs = [(a, b) for a, b in _VSP if c["id"] in (a, b) and a in _byid and b in _byid][:6]
+    vs_html = ('<div class="vschips"><b>Comparativas cara a cara:</b> ' + " ".join(f'<a class="chip" href="/comparar/{a}-vs-{b}/">{esc(_byid[b if a == c["id"] else a]["n"])}</a>' for a, b in _vs) + '</div>') if _vs else ""
     lead = f'Tenerlo 5 años y hacer 15.000 km al año te cuesta unos <strong>{eur(k["month"])} al mes</strong>, sumando todo.'
     calc_home = '<div><label class="lbl" for="cc-in-home">Carga en casa <span class="pval" id="cc-home"></span></label><input type="range" id="cc-in-home" min="0" max="100" step="5" value="80"></div>' if plugin else ""
     rv = "".join(car_card(x, f'<p>{"Te ahorra" if K[x["id"]]["total"] < k["total"] else "Cuesta"} {eur(abs(K[x["id"]]["total"]-k["total"]))} {"" if K[x["id"]]["total"] < k["total"] else "más "}en 5 años</p>') for x in cheaper_rivals)
@@ -582,7 +586,9 @@ def build_car(c):
 <section class="band tight"><div class="wrap">
  <div class="sec-head"><div><h2>Rivales del {esc(c["n"])}</h2><p>{BODY[c["body"]]} de precio parecido, ordenados por coste real.{(" El que menos cuesta: " + esc(best_rival["n"]) + ".") if best_rival else ""}</p></div><a href="/comparador/#{c["id"]}-vs-{(best_rival or c)["id"]}">Comparar →</a></div>
  <div class="cards">{rv}</div>
+ {vs_html}
 </div></section>
+<section class="tight"><div class="wrap"><div class="cta mc-cta"><div><h2>¿Ya tienes un {esc(c["n"])}?</h2><p>Pon tus kilómetros y te decimos cuánto te cuesta al mes de verdad y qué coches te saldrían más baratos.</p></div><a class="btn primary" href="/mi-coche/?coche={c["id"]}">Calcular mi coste</a></div></div></section>
 <section class="tight"><div class="wrap"><p class="note">Datos orientativos actualizados en {UPDATED}: precio de tarifa de acceso sin descuentos ni ayudas, consumo real estimado y depreciación media. Confirma la oferta en el concesionario.</p></div></section>"""
     schema = {"@context": "https://schema.org", "@type": "Car", "name": c["n"], "brand": {"@type": "Brand", "name": c["b"]}, "bodyType": BODY[c["body"]],
               "fuelType": FUEL[c["f"]], "vehicleEngine": {"@type": "EngineSpecification", "enginePower": {"@type": "QuantitativeValue", "value": c["cv"], "unitText": "CV"}}}

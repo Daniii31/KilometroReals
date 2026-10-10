@@ -581,3 +581,5 @@ table.list.fit thead th{white-space:normal;line-height:1.25}@media (max-width:62
 .good-t{color:var(--good)}
 .mc-best{margin-top:18px;font-weight:600;color:var(--good)}
 @media (prefers-reduced-motion:reduce){.mc-bar i{animation:none}}
+.vschips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:22px}.vschips b{margin-right:4px;font-size:.95rem}
+.vsfind{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:end;margin:0 0 22px;max-width:560px}.vsfind .lbl{width:100%}.vsfind input{flex:1;min-width:0}.card[hidden]{display:none}
