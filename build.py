@@ -130,7 +130,7 @@ def page(path, title, desc, body, active="", schema=None, noindex=False, full_ti
 <div class="legal">© 2026 {SITE}. Indicative list prices and consumption figures, updated in October 2026. Always check the current offer with the dealer.</div>"""
     else:
         foot = f"""<div><a class="logo" href="/">{LOGO_F}{SITE}</a><p class="muted" style="margin-top:10px;max-width:34ch">Lo que te cuesta de verdad cada coche, kilómetro a kilómetro. Sin letra pequeña.</p></div>
-<div><h4>Herramientas</h4><a href="/comparador/">Comparador</a><a href="/coches/">Todos los coches</a><a href="/marcas/">Marcas</a><a href="/mejores/">Rankings</a><a href="/cual-me-conviene/">¿Cuál me conviene?</a><a href="/calculadoras/">Calculadoras</a><a href="/comparar/">Comparativas</a><a href="/precio-gasolina-hoy/">Precio gasolina hoy</a></div>
+<div><h4>Herramientas</h4><a href="/comparador/">Comparador</a><a href="/coches/">Todos los coches</a><a href="/marcas/">Marcas</a><a href="/mejores/">Rankings</a><a href="/cual-me-conviene/">¿Cuál me conviene?</a><a href="/calculadoras/">Calculadoras</a><a href="/mi-coche/">¿Cuánto me cuesta mi coche?</a><a href="/comparar/">Comparativas</a><a href="/precio-gasolina-hoy/">Precio gasolina hoy</a></div>
 <div><h4>Actualidad</h4><a href="/noticias/">Noticias y análisis</a><a href="/electricos-chinos/">Eléctricos chinos</a><a href="/coches-chinos-comprar-sin-miedo/">¿Coche chino? Guía</a><a href="/ayudas/">Ayudas Plan Auto+</a><a href="/guias/">Guías</a>{('<h4 style="margin-top:14px">Síguenos</h4>' + social) if social else ''}</div>
 <div><h4>{SITE}</h4><a href="/quienes-somos/">Quiénes somos</a><a href="/metodologia/">Cómo calculamos</a><a href="/contacto/">Contacto</a><a href="/aviso-legal/">Aviso legal</a><a href="/condiciones-de-uso/">Condiciones de uso</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/cookies/#gestionar" class="cookie-prefs">Gestionar cookies</a></div>
 <div class="legal">© 2026 {SITE}. Precios de tarifa y consumos orientativos, actualizados en {UPDATED}. Confirma siempre la oferta vigente en el concesionario.</div>"""
@@ -349,6 +349,10 @@ RANKINGS = [
  ("etiqueta-cero-menos-30000", "Coches con etiqueta CERO por menos de 30.000 €", "Eléctricos e híbridos enchufables con precio de tarifa por debajo de 30.000 €, antes de ayudas.", lambda: by_pk([c for c in CARS if c["lab"] == "cero" and c["p"] <= 30000]), None),
  ("coches-chinos-mas-baratos", "Los coches chinos más baratos de tener", "MG, BYD, Omoda, Jaecoo, Leapmotor, Geely y el resto de marcas chinas, ordenadas por coste real por kilómetro.", lambda: by_pk([c for c in CARS if c["cn"]])[:25], None),
  ("familiares-y-7-plazas", "Familiares, monovolúmenes y SUV de 7 plazas", "Los coches con más espacio ordenados por coste real. Junto a cada uno, su maletero.", lambda: by_pk([c for c in CARS if c["body"] in ("familiar", "suv-g", "monovolumen") or c["trunk"] >= 580]), lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {tl(c)}</span>'),
+ ("coches-menos-de-15000-euros", "Los mejores coches por menos de 15.000 €", "Coches nuevos con precio de tarifa de hasta 15.000 €, ordenados por lo que cuestan de verdad cada kilómetro: compra, pérdida de valor, energía, seguro, taller e impuesto.", lambda n=15000: by_pk([c for c in CARS if c["p"] <= n])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
+ ("coches-menos-de-20000-euros", "Los mejores coches por menos de 20.000 €", "Coches nuevos con precio de tarifa de hasta 20.000 €, ordenados por lo que cuestan de verdad cada kilómetro: compra, pérdida de valor, energía, seguro, taller e impuesto.", lambda n=20000: by_pk([c for c in CARS if c["p"] <= n])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
+ ("coches-menos-de-25000-euros", "Los mejores coches por menos de 25.000 €", "Coches nuevos con precio de tarifa de hasta 25.000 €, ordenados por lo que cuestan de verdad cada kilómetro: compra, pérdida de valor, energía, seguro, taller e impuesto.", lambda n=25000: by_pk([c for c in CARS if c["p"] <= n])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
+ ("coches-menos-de-30000-euros", "Los mejores coches por menos de 30.000 €", "Coches nuevos con precio de tarifa de hasta 30.000 €, ordenados por lo que cuestan de verdad cada kilómetro: compra, pérdida de valor, energía, seguro, taller e impuesto.", lambda n=30000: by_pk([c for c in CARS if c["p"] <= n])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
  ("deportivos-mas-baratos", "Los deportivos más baratos de mantener", "GTI, RS, M, AMG y GR: los coches más prestacionales ordenados por lo que cuestan de verdad cada kilómetro, con su potencia.", lambda: by_pk([c for c in CARS if (c["cv"] >= 250 and c["t"] in ("ice", "mhev")) or c["body"] == "deportivo" or (c["cv"] >= 450 and not c["body"].startswith("suv"))])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {c["cv"]} CV</span>'),
 ]
 
@@ -395,6 +399,7 @@ def build_home():
  <div class="sec-head"><div><h2>Duelos que sorprenden</h2><p>Con 15.000 km al año durante 5 años. Pulsa cualquiera para cambiar los números a tu medida.</p></div><a href="/comparador/">Abrir comparador →</a></div>
  <div class="cards c3">{"".join(match_card(a, b) for a, b in POP_PAIRS[4:10])}</div>
 </div></section>
+<section class="tight"><div class="wrap"><div class="cta mc-cta"><div><h2>¿Cuánto te cuesta tu coche al mes?</h2><p>Elige el tuyo y te decimos lo que pagas de verdad, y con qué coche parecido ahorrarías.</p></div><a class="btn" href="/mi-coche/">Calcular el mío</a></div></div></section>
 <section class="tight"><div class="wrap">
  <div class="sec-head"><div><h2>Calculadoras</h2><p>Las cuentas que todo conductor se hace alguna vez, resueltas en segundos.</p></div><a href="/calculadoras/">Todas →</a></div>
  <div class="cards c5">{"".join(f'<a class="card calc-card" href="/calculadoras/{x[0]}/"><span class="badge">{x[2]}</span><h3>{x[1]}</h3></a>' for x in CALCS)}</div>
@@ -514,6 +519,11 @@ def build_car(c):
              ("Etiqueta DGT", {"cero": "CERO", "eco": "ECO", "c": "C"}[c["lab"]])]
     if c["t"] == "ev": specs[5:5] = [("Batería", f'{c["bat"]} kWh'), ("Autonomía WLTP", f'{c["rng"]} km')]
     if c["t"] == "phev": specs[5:5] = [("Batería", f'{c["bat"]} kWh'), ("Autonomía eléctrica WLTP", f'{c["rng"]} km')]
+    _pr = {"g": FUELP["g95"], "d": FUELP["die"], "glp": FUELP["glp"]}
+    if c["t"] == "ev": _c100 = c["c"] * DEFAULTS["ph"]
+    else: _c100 = c["c"] * _pr.get(c["f"], FUELP["g95"])
+    specs.append(("Energía cada 100 km", f'{_c100:.2f} €'.replace(".", ",") + (" (cargando en casa)" if c["t"] == "ev" else " (precio de hoy)")))
+    specs.append(("Seguro estimado al año", f'{eur(round(c["ins"]*1.55, -1))} a los 25 años · {eur(round(c["ins"], -1))} a los 35 · {eur(round(c["ins"]*0.88, -1))} a los 50'))
     plan = ""
     if c["lab"] == "cero":
         plan = (f'<div class="panel"><h3>Ayudas Plan Auto+</h3><p style="margin-top:6px">{"Con un precio por debajo de 45.000 € sin IVA, " if c["p"] <= 54450 else ""}'
@@ -701,6 +711,18 @@ OWNER = {"name": "Daniel Vorobkanych", "nif": "60388141P", "addr": "Carrer Riera
 def owner_addr():
     return OWNER["addr"] + (", " + OWNER["city"] if OWNER["city"] else ", " + F("[código postal y localidad]"))
 
+def method_example():
+    c = BY["toyota-corolla-hybrid"]; k = K[c["id"]]; S = DEFAULTS
+    resid = k["resid"]
+    rows = [("Precio de tarifa", eur(c["p"])), ("Valor estimado a los 5 años", eur(resid)), ("Pérdida de valor", eur(k["dep"])),
+            ("Energía: " + str(c["c"]).replace(".", ",") + " L/100 km × 75.000 km × " + pk(S["gas"]) + " €/L", eur(k["energy"])),
+            ("Seguro (5 años)", eur(k["ins"])), ("Mantenimiento (5 años)", eur(k["mnt"])), ("Impuesto de circulación (5 años)", eur(k["tax"])),
+            ("<b>Total en 5 años</b>", "<b>" + eur(k["total"]) + "</b>")]
+    tbl = "".join(f'<tr><th>{a}</th><td class="n">{b}</td></tr>' for a, b in rows)
+    return (f'<h2>Un ejemplo con números reales</h2><p>Así sale el coste del <a href="{curl(c)}">{c["n"]}</a> con los valores por defecto:</p>'
+            f'<div class="tablewrap"><table class="specs vs"><tbody>{tbl}</tbody></table></div>'
+            f'<p>Dividido entre 75.000 km da <b>{pk(k["perKm"])} € por kilómetro</b>, y entre 60 meses, <b>{eur(k["month"])} al mes</b>. Todas las fichas se calculan igual.</p>')
+
 def build_legal():
     legal_page("/quienes-somos/", "Quiénes somos", f"Qué es {SITE}, quién está detrás y cómo calculamos el coste real de cada coche de forma independiente y transparente.", f"""<p>{SITE} nace de una idea sencilla: el precio de un coche no es lo que pagas el día que lo compras, sino lo que te cuesta cada kilómetro durante los años que lo tienes.</p>
 <h2>Cómo trabajamos</h2><p>Cada noticia cita sus fuentes con enlace. Los datos del comparador son estimaciones con un método público, que explicamos en el propio comparador. Corregimos los errores en cuanto los detectamos.</p>
@@ -713,7 +735,7 @@ def build_legal():
 <li><strong>Mantenimiento:</strong> revisiones, neumáticos y desgaste típico de cada tecnología.</li>
 <li><strong>Impuesto de circulación:</strong> media municipal según la potencia, con la bonificación habitual a los eléctricos.</li></ul>
 <h2>Valores por defecto</h2><p>15.000 km al año durante 5 años, gasolina a {pk(FUELP["g95"])} €/L, diésel a {pk(FUELP["die"])} €/L, GLP a {pk(FUELP["glp"])} €/L (precios medios del {FUELP["dtxt"]}, con la rebaja fiscal vigente), luz en casa a 0,15 €/kWh y carga pública a 0,49 €/kWh, con un 80 % de carga en casa. Todo se puede cambiar en el <a href="/comparador/">comparador</a>.</p>
-<h2>Límites</h2><p>Los precios son de tarifa de acceso, sin descuentos ni ayudas, y se actualizaron en {UPDATED}. Son orientativos y sirven para comparar. Antes de comprar, confirma la oferta en el concesionario. Si ves un dato mal, <a href="/contacto/">avísanos</a> y lo corregimos.</p>""", noindex=False)
+{method_example()}<h2>Límites</h2><p>Los precios son de tarifa de acceso, sin descuentos ni ayudas, y se actualizaron en {UPDATED}. Son orientativos y sirven para comparar. Antes de comprar, confirma la oferta en el concesionario. Si ves un dato mal, <a href="/contacto/">avísanos</a> y lo corregimos.</p>""", noindex=False)
     build_contact()
     legal_page("/aviso-legal/", "Aviso legal", "Aviso legal del sitio web.", f"""<p>En cumplimiento de la Ley 34/2002 (LSSI-CE), estos son los datos del titular:</p>
 <ul><li>Titular: {OWNER["name"]}</li><li>NIF: {OWNER["nif"]}</li><li>Domicilio: {owner_addr()}</li><li>Correo: <a href="mailto:{OWNER["email"]}">{OWNER["email"]}</a></li></ul>
@@ -884,7 +906,7 @@ def build_static():
     shutil.copy(os.path.join(HERE, "brand", "logo.svg"), os.path.join(OUT, "assets", "img", "logo.svg"))
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /contacto.php\n\nSitemap: {DOMAIN}/sitemap.xml\nSitemap: {DOMAIN}/news-sitemap.xml\n")
     shutil.copy(os.path.join(HERE, "htaccess.txt"), os.path.join(OUT, ".htaccess"))
-    urls = ["/", "/comparador/", "/coches/", "/marcas/"] + [f"/marcas/{slugify(b)}/" for b in sorted({c["b"] for c in CARS})] + ["/mejores/", "/cual-me-conviene/", "/calculadoras/"] + [f"/calculadoras/{x[0]}/" for x in CALCS] + [ "/noticias/", "/electricos-chinos/", "/ayudas/", "/coches-chinos-comprar-sin-miedo/", "/guias/", "/quienes-somos/", "/metodologia/", "/contacto/", "/condiciones-de-uso/", "/precio-gasolina-hoy/", "/comparar/"]
+    urls = ["/", "/comparador/", "/coches/", "/marcas/"] + [f"/marcas/{slugify(b)}/" for b in sorted({c["b"] for c in CARS})] + ["/mejores/", "/cual-me-conviene/", "/calculadoras/"] + [f"/calculadoras/{x[0]}/" for x in CALCS] + [ "/noticias/", "/electricos-chinos/", "/ayudas/", "/coches-chinos-comprar-sin-miedo/", "/guias/", "/quienes-somos/", "/metodologia/", "/contacto/", "/condiciones-de-uso/", "/precio-gasolina-hoy/", "/comparar/", "/mi-coche/"]
     urls += [curl(c) for c in CARS] + [f"/comparar/{a}-vs-{b}/" for a, b in __import__("vs_pairs").VS_PAIRS] + [f"/mejores/{r[0]}/" for r in RANKINGS] + [aurl(a) for a in NEWS] + [gurl(g) for g in GUIDES]
     urls += sorted({v for v in ALT.values() if v.startswith("/en/") and v not in ("/en/privacy/", "/en/cookies/")})
     urls = list(dict.fromkeys(urls))
@@ -989,7 +1011,7 @@ if __name__ == "__main__":
     ensure_covers()
     build_static(); build_home(); build_comparador(); build_catalog()
     for c in CARS: build_car(c)
-    exec(open(os.path.join(HERE, "pages_extra.py"), encoding="utf-8").read(), globals()); build_fuel(); build_vs()
+    exec(open(os.path.join(HERE, "pages_extra.py"), encoding="utf-8").read(), globals()); build_fuel(); build_vs(); build_micoche()
     build_rankings(); build_finder(); build_calcs(); build_brands(); build_cn_guide(); build_news(); build_guides(); build_chinos(); build_ayudas(); build_legal()
     # redirección de la antigua sección
     page("/novedades-precios/", "Novedades y precios", "Precios de los coches en venta.", '<section><div class="wrap narrow"><h1>Novedades y precios</h1><p style="margin-top:12px">Esta sección ahora está en <a href="/coches/">Todos los coches</a>.</p></div></section>', "", noindex=True)

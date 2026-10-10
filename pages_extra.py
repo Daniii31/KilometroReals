@@ -114,3 +114,26 @@ def build_vs():
         cards.append(f'<a class="card" href="{vs_slug(a_id, b_id)}"><h3>{esc(A["n"])} <span class="muted">vs</span> {esc(B["n"])}</h3><p>{"Casi empate" if same else esc(W["n"]) + " ahorra " + eur(save) + " en 5 años"}</p></a>')
     page("/comparar/", "Comparativas de coches por coste real", "Los duelos más buscados de coches en España, comparados en euros por kilómetro: cuál sale más barato de tener y cuánto ahorras.",
          f'{crumbs((None, "Comparativas"))}<section class="tight"><div class="wrap"><h1>Comparativas</h1><p class="muted" style="margin:10px 0 24px;max-width:62ch">Los cruces que más se buscan, resueltos con el coste real: compra, pérdida de valor, energía, seguro, taller e impuesto.</p><div class="cards c3">{"".join(cards)}</div></div></section>', "coches")
+
+# ---------------- ¿CUÁNTO ME CUESTA MI COCHE? ----------------
+def build_micoche():
+    body = f"""{crumbs((None, "¿Cuánto me cuesta mi coche?"))}
+<section class="tight"><div class="wrap narrow">
+ <h1>¿Cuánto te cuesta tu coche de verdad?</h1>
+ <p class="lead" style="margin-top:12px">Elige tu coche y cuántos kilómetros haces. Te decimos lo que te cuesta al mes sumándolo todo, y cuánto ahorrarías con otro.</p>
+ <form class="tool micoche needs-js" id="micoche" autocomplete="off">
+  <div class="mc-grid">
+   <div class="mc-car"><label class="lbl" for="mc-car">Tu coche (o el que quieres)</label><input type="text" id="mc-car" list="cars" placeholder="Escribe la marca o el modelo, por ejemplo Seat Ibiza" required></div>
+   <div><label class="lbl" for="mc-km">Km al año</label><select id="mc-km"><option value="8000">8.000 km</option><option value="10000">10.000 km</option><option value="15000" selected>15.000 km</option><option value="20000">20.000 km</option><option value="30000">30.000 km</option></select></div>
+   <div><label class="lbl" for="mc-y">Años que lo tendrás</label><select id="mc-y"><option value="3">3 años</option><option value="5" selected>5 años</option><option value="8">8 años</option></select></div>
+  </div>
+  <div id="mc-res" aria-live="polite"><p class="muted mc-empty">Escribe tu coche para ver el resultado.</p></div>
+ </form>
+ <script>window.KR_VS={json.dumps([f"{a}-vs-{b}" for a, b in VS_PAIRS])};</script>
+ <p class="note" style="margin-top:12px">Estimación con precio de tarifa, consumo real medio, depreciación media, seguro a terceros ampliado (35 años), taller e impuesto. Carburantes a precio medio del {FUELP["dtxt"]}. <a href="/metodologia/">Cómo calculamos</a>.</p>
+</div></section>"""
+    faq = [("¿Cuánto cuesta mantener un coche al mes?", "Depende mucho del modelo: entre unos 250 € al mes los urbanos más baratos y más de 1.000 € los deportivos, sumando pérdida de valor, combustible, seguro, taller e impuesto."),
+           ("¿Qué gasto pesa más?", "Casi siempre la pérdida de valor: lo que el coche vale menos cada año. Después suele ir el combustible o la electricidad.")]
+    body += f'<section class="tight"><div class="wrap narrow"><h2 style="margin-bottom:12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}</div></section>'
+    page("/mi-coche/", "¿Cuánto me cuesta mi coche al mes? Calculadora", "Calcula lo que te cuesta tu coche al mes sumando pérdida de valor, gasolina o luz, seguro, taller e impuesto, y cuánto ahorrarías con otro.",
+         body, "calc", ldj({"@type": "WebApplication", "name": "¿Cuánto me cuesta mi coche?", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}, faq_ld(faq)))

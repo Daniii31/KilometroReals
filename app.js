@@ -84,6 +84,27 @@ function toast(msg){let t=$(".toast");if(!t){t=document.createElement("div");t.c
 function fieldErr(inp,msg){inp.classList.toggle("bad",!!msg);let e=inp.parentElement.querySelector(".err");if(msg){if(!e){e=document.createElement("p");e.className="err";inp.parentElement.appendChild(e)}e.textContent=msg;inp.setAttribute("aria-invalid","true")}else{if(e)e.remove();inp.removeAttribute("aria-invalid")}}
 function carInput(inp,cb){inp.addEventListener("change",()=>{const c=findCar(inp.value);if(c){fieldErr(inp,"");if(inp.value!==c.n)inp.value=c.n;cb(c)}else fieldErr(inp,L.notFound)})}
 
+
+/* ---------- ¿cuánto me cuesta mi coche? ---------- */
+const VSP=new Set(window.KR_VS||[]);
+function initMiCoche(){
+  const f=$("#micoche");if(!f)return;datalist();
+  const inp=$("#mc-car"),km=$("#mc-km"),yy=$("#mc-y"),out=$("#mc-res");let car=null;
+  const parts=[["dep","Pérdida de valor"],["energy","Energía"],["ins","Seguro"],["mnt","Mantenimiento"],["tax","Impuesto"]];
+  const render=()=>{if(!car)return;const S={...D,km:+km.value,y:+yy.value},k=cost(car,S);
+    const bar=parts.map(([p,n],i)=>`<i class="b${i}" style="width:${(k[p]/k.total*100).toFixed(1)}%" title="${n}"></i>`).join("");
+    const leg=parts.map(([p,n],i)=>`<li><span class="dot b${i}"></span>${n}<b>${eur(k[p]/S.y/12)}/mes</b></li>`).join("");
+    const alts=CARS.filter(c=>c.id!==car.id&&c.body===car.body).map(c=>({c,k:cost(c,S)})).filter(x=>x.k.total<k.total).sort((a,b)=>a.k.total-b.k.total);
+    const pick=[];const seen=new Set();for(const x of alts){if(seen.has(x.c.b))continue;seen.add(x.c.b);pick.push(x);if(pick.length===3)break}
+    const altH=pick.length?`<h3 class="mc-h">Con estos ${car.body.startsWith("suv")?"SUV":"coches"} parecidos ahorrarías</h3><div class="mc-alts">${pick.map(x=>{const save=(k.total-x.k.total)/S.y/12,slug=VSP.has(car.id+"-vs-"+x.c.id)?`/comparar/${car.id}-vs-${x.c.id}/`:VSP.has(x.c.id+"-vs-"+car.id)?`/comparar/${x.c.id}-vs-${car.id}/`:`/comparador/#${car.id}-vs-${x.c.id}`;return `<a class="mc-alt" href="${slug}"><span class="nm">${x.c.n}</span><span class="muted">${eur(x.c.p)} · ${eur(x.k.month)}/mes</span><b class="good-t">−${eur(save)} al mes</b></a>`}).join("")}</div>`:`<p class="mc-best">Es de los más baratos de tener en su categoría. Buena elección.</p>`;
+    out.innerHTML=`<div class="mc-top"><div><span class="muted">Tu ${car.n} te cuesta</span><b class="mc-big">${eur(k.month)}<small> al mes</small></b><span class="muted">${PK(k.perKm)} por km · ${eur(k.total)} en ${S.y} años</span></div><a class="btn ghost" href="${L.cars}${car.id}/">Ver ficha</a></div>
+      <div class="mc-bar" aria-hidden="true">${bar}</div><ul class="mc-leg">${leg}</ul>${altH}`;
+    try{history.replaceState(null,"","?coche="+car.id+"&km="+S.km+"&y="+S.y)}catch(e){}};
+  carInput(inp,c=>{car=c;render()});[km,yy].forEach(x=>x.addEventListener("change",render));
+  const p=new URLSearchParams(location.search);if(p.get("km"))km.value=p.get("km");if(p.get("y"))yy.value=p.get("y");
+  if(p.get("coche")&&BY[p.get("coche")]){car=BY[p.get("coche")];inp.value=car.n;render()}
+}
+
 /* ---------- duelo ---------- */
 function duelHTML(A,B,S){
   const ka=cost(A,S),kb=cost(B,S),wA=ka.total<=kb.total,d=Math.abs(ka.total-kb.total);
@@ -312,6 +333,6 @@ document.addEventListener("click",e=>{const b=e.target.closest(".cookie-prefs");
 fetch("/assets/data/coches.json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   CARS=d;BY=Object.fromEntries(d.map(c=>[c.id,c]));BYNAME=Object.fromEntries(d.map(c=>[c.n.toLowerCase(),c]));
   document.body.classList.add("loaded");
-  initHomeDuel();initComparador();initCatalogo();initFinder();initCarCalc();initCalcs();initSearch();
+  initHomeDuel();initMiCoche();initComparador();initCatalogo();initFinder();initCarCalc();initCalcs();initSearch();
 }).catch(()=>{document.body.classList.add("loaded");$$(".needs-js").forEach(e=>e.insertAdjacentHTML("beforeend",`<p class="notice bad">${L.dataErr}</p>`))});
 })();

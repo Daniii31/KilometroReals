@@ -21,6 +21,10 @@ RANK_EN = {"mas-baratos-por-km": ("cheapest-cars-to-own", "The cheapest cars to 
  "etiqueta-cero-menos-30000": ("zero-label-cars-under-30000", "ZERO-label cars under €30,000", "Electric and plug-in hybrid cars with a list price under €30,000, before incentives."),
  "coches-chinos-mas-baratos": ("cheapest-chinese-cars", "The cheapest Chinese cars to own", "MG, BYD, Omoda, Jaecoo, Leapmotor, Geely and other Chinese brands ranked by real cost per kilometre."),
  "familiares-y-7-plazas": ("family-and-7-seat-cars", "Estates, MPVs and 7-seat SUVs", "The roomiest cars ranked by real cost, with their boot size."),
+ "coches-menos-de-15000-euros": ("best-cars-under-15000-euros", "The best cars under €15,000", "New cars with a list price up to €15,000, ranked by what they really cost per kilometre."),
+ "coches-menos-de-20000-euros": ("best-cars-under-20000-euros", "The best cars under €20,000", "New cars with a list price up to €20,000, ranked by what they really cost per kilometre."),
+ "coches-menos-de-25000-euros": ("best-cars-under-25000-euros", "The best cars under €25,000", "New cars with a list price up to €25,000, ranked by what they really cost per kilometre."),
+ "coches-menos-de-30000-euros": ("best-cars-under-30000-euros", "The best cars under €30,000", "New cars with a list price up to €30,000, ranked by what they really cost per kilometre."),
  "deportivos-mas-baratos": ("cheapest-performance-cars", "The cheapest performance cars to run", "GTI, RS, M, AMG, GR and friends: the most performance-focused cars ranked by real cost per kilometre, with their power.")}
 CALC_EN = {"coste-viaje-gasolina": "trip-fuel-cost", "coste-carga-electrico": "ev-charging-cost", "cuota-financiacion-coche": "car-finance-calculator",
            "etiqueta-dgt": "dgt-environmental-label", "amortizacion-electrico": "is-an-electric-car-worth-it"}
@@ -233,6 +237,7 @@ def en_rankings():
         es_slug = s; en_slug, te, de = RANK_EN[s]; lst = fn()
         rgt = None
         if s == "electricos-mas-autonomia": rgt = lambda c: f'<span class="num">{c["rng"]} km</span>'
+        if s.startswith("coches-menos-de-"): rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {e_en(c["p"])}</span>'
         if s == "deportivos-mas-baratos": rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {c["cv"]} hp</span>'
         if s == "familiares-y-7-plazas": rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {tle(c)}</span>'
         items = "".join(rank_li_en(c, rgt(c) if rgt else None) for c in lst)

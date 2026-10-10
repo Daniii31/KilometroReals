@@ -146,6 +146,7 @@ def car_faq(c):
         qa.append((f'¿Qué autonomía tiene el {c["n"]}?', f'Homologa {c["rng"]} km en ciclo WLTP. En autopista y con frío, cuenta con bastante menos.'))
     else:
         qa.append((f'¿Cuánto gasta el {c["n"]}?', f'Estimamos un consumo real de {str(c["c"]).replace(".", ",")} litros cada 100 km' + (" en modo híbrido, y bastante menos si lo cargas a diario." if c["t"] == "phev" else ".")))
+    qa.append((f'¿Cuánto cuesta el seguro de un {c["n"]}?', f'Estimamos unos {eur(round(c["ins"], -1))} al año a terceros ampliado para un conductor de 35 años, unos {eur(round(c["ins"]*1.55, -1))} a los 25 y unos {eur(round(c["ins"]*0.88, -1))} a los 50. Es una referencia: compara presupuestos de varias aseguradoras.'))
     qa.append((f'¿Qué etiqueta DGT tiene el {c["n"]}?', f'Etiqueta {lab}.' + (" Puede circular por las zonas de bajas emisiones de la mayoría de ciudades." if lab in ("CERO", "ECO") else " Consulta la ordenanza de tu ciudad para las zonas de bajas emisiones.")))
     if c["lab"] == "cero":
         qa.append((f'¿Tiene ayudas el {c["n"]}?', ("Su precio está por debajo del límite del Plan Auto+, así que puede optar a la ayuda, que llega a 4.500 € más el descuento del concesionario." if c["p"] <= 54450 else "Su precio supera el límite de 45.000 € sin IVA del Plan Auto+.") + (" Al fabricarse fuera de Europa, la cuantía puede ser menor." if c["cn"] else "")))
