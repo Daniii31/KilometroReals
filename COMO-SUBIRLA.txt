@@ -1,0 +1,23 @@
+CÓMO SUBIR KILÓMETRO REAL A NAMECHEAP (hosting compartido con cPanel)
+=====================================================================
+
+1. Entra en Namecheap > Dashboard > junto a tu plan de hosting pulsa "Go to cPanel".
+2. Abre "File Manager" (Administrador de archivos) y entra en la carpeta public_html.
+3. Si dentro hay un index.html o una página de bienvenida de Namecheap, bórrala.
+4. Pulsa "Upload" y sube el archivo kilometro-real-web.zip.
+5. Vuelve a public_html, haz clic derecho sobre el zip y elige "Extract". Extrae en /public_html.
+6. Comprueba que index.html queda DIRECTAMENTE dentro de public_html (no dentro de otra carpeta).
+   Si ves una carpeta "dist", entra, selecciona todo y muévelo a public_html.
+7. En "Settings" (arriba a la derecha) activa "Show Hidden Files" para ver el archivo .htaccess. Debe estar en public_html.
+8. Borra el zip.
+9. En cPanel busca "SSL/TLS Status" o "Namecheap SSL" y asegúrate de que el certificado está activo para tu dominio.
+10. Abre tu dominio en el navegador. Ya está.
+
+SI TU PLAN ES EasyWP (WordPress gestionado) o un VPS: dímelo, los pasos son distintos.
+
+ANTES DE PEDIR ADSENSE
+- Dime tu dominio y lo pongo en la web (sitemap, enlaces canónicos y vista previa al compartir).
+- Rellena los datos marcados en amarillo en Quiénes somos, Contacto, Aviso legal y Privacidad (nombre, NIF, correo).
+- Da de alta la web en Google Search Console y envía el sitemap.
+- Cuando AdSense te apruebe, pásame tu código "ca-pub-..." y activo los anuncios y el archivo ads.txt.
+- En AdSense, activa el mensaje de consentimiento de Google (Privacidad y mensajes > RGPD). Es obligatorio en Europa.

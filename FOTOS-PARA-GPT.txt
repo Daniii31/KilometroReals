@@ -1,0 +1,61 @@
+FOTOS PARA KILÓMETRO REAL
+=========================
+
+CÓMO PEDIRLAS A CHATGPT
+Pega primero este estilo y después cada foto. Así todas parecen de la misma revista.
+
+ESTILO (pégalo al principio de cada petición):
+"Fotografía editorial realista para una revista de motor española. Formato horizontal 16:9. Luz natural, colores sobrios con algún toque amarillo. Sin texto, sin letras, sin logotipos, sin matrículas legibles. Los coches deben ser genéricos y no parecerse a ninguna marca ni modelo real."
+
+Descarga cada imagen y guárdala con el NOMBRE EXACTO que pongo (en minúsculas, terminado en .jpg).
+Cuando las tengas, mándamelas por este chat y yo las optimizo y las coloco.
+
+
+FOTOS PARA GPT (11)
+-------------------
+
+1. noticia-record-septiembre.jpg
+   Una fila de coches eléctricos modernos cargando en un aparcamiento público de una ciudad española al atardecer, cables conectados a postes de carga, cielo cálido.
+
+2. noticia-chinos-cuota.jpg
+   Vista aérea de una terminal portuaria con cientos de coches nuevos de varios colores alineados en filas perfectas, un gran barco portacoches al fondo.
+
+3. noticia-plan-auto.jpg
+   Interior de un concesionario moderno y luminoso. Primer plano de una mano entregando la llave de un coche sobre una mesa con unos papeles (sin texto legible). Fondo desenfocado con un coche nuevo.
+
+4. noticia-marcas-llegan.jpg
+   Un barco portacoches gigante entrando en un puerto mediterráneo al amanecer, grúas al fondo, mar tranquilo.
+
+5. guia-etiquetas.jpg
+   Primer plano del parabrisas de un coche con una pegatina redonda de colores azul y verde en la esquina, calle de una ciudad española desenfocada al fondo.
+
+6. guia-cargar-casa.jpg
+   Garaje de una vivienda por la noche, un cargador de pared blanco instalado en la pared y un coche eléctrico conectado, luz cálida.
+
+7. guia-autonomia.jpg
+   Un coche eléctrico compacto circulando por una autopista española con paisaje seco de colinas, al atardecer, sensación de viaje largo.
+
+8. guia-hibrido-electrico.jpg
+   Dos coches compactos aparcados uno al lado del otro en una calle tranquila: uno conectado a un poste de carga y el otro no.
+
+9. guia-segunda-mano.jpg
+   Taller mecánico limpio. Un coche eléctrico elevado en el puente y un mecánico revisando la parte de abajo con una tableta en la mano.
+
+10. guia-renting.jpg
+   Mesa de madera vista desde arriba con unas llaves de coche, una calculadora, un bolígrafo y un contrato (sin texto legible). Luz natural.
+
+11. og-portada.jpg   (esta en formato 1200 x 630)
+   Carretera nocturna vista desde el nivel del asfalto, con una línea discontinua amarilla que se pierde en el horizonte y las luces de un coche a lo lejos. Mucho espacio vacío arriba.
+
+
+FOTOS QUE NO DEBES PEDIR A GPT (3)
+----------------------------------
+Estas noticias hablan de coches reales. Una imagen inventada del coche sería engañosa para el lector y podría parecer el modelo equivocado.
+Usa las fotos oficiales de la sala de prensa de cada marca: son gratuitas para uso informativo.
+Búscalas en Google como "sala de prensa [marca] España" o "[marca] media center".
+
+12. prensa-geely-e2.jpg     Foto oficial del Geely E2
+13. prensa-byd.jpg          Foto oficial del BYD Atto 2 o del Dolphin Surf
+14. prensa-leapmotor.jpg    Foto oficial del Leapmotor B10
+
+Mientras no estén las fotos, la web muestra una ilustración de reserva, así que puedes subirla ya.

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /contacto.php
+
+Sitemap: https://kilometroreal.com/sitemap.xml
+Sitemap: https://kilometroreal.com/news-sitemap.xml

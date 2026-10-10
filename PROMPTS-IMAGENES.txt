@@ -1,0 +1,128 @@
+PROMPTS DE IMAGEN · KILÓMETRO REAL
+==================================
+
+CÓMO USARLOS
+1. Abre un chat nuevo en ChatGPT y pega primero el bloque ESTILO BASE (una sola vez).
+2. Después pega cada imagen, de una en una: "Imagen 1: ..." y así.
+3. Pide siempre formato horizontal 16:9 (1600 x 900 px o mayor).
+4. Descarga cada imagen y guárdala con el NOMBRE EXACTO indicado (minúsculas, .png o .jpg).
+5. Mándamelas aquí: yo las recorto, las comprimo y las coloco en la web.
+
+
+────────────────────────────────────────
+ESTILO BASE (pégalo primero)
+────────────────────────────────────────
+Vas a crear una serie de imágenes para Kilómetro Real, una revista digital española sobre el coste real de los coches. Todas deben parecer de la misma sesión de fotos profesional.
+
+Estilo: fotografía editorial realista de alta gama, como una revista de motor premium. Luz natural suave y limpia, cielo despejado o luz de mañana. Composición sencilla con mucho espacio libre y un solo protagonista claro. Paleta fría y luminosa: blancos, grises claros, azul profundo y, como mucho, un pequeño detalle amarillo. Profundidad de campo cuidada y nitidez perfecta. Ambiente de España (luz mediterránea, arquitectura y paisaje españoles).
+
+Reglas obligatorias en todas las imágenes:
+- Formato horizontal 16:9.
+- Sin texto, letras, números ni rótulos legibles.
+- Sin logotipos ni marcas, ni matrículas legibles.
+- Coches genéricos y modernos que no se parezcan a ningún modelo real.
+- Ruedas, reflejos y proporciones realistas. Nada deformado.
+- Sin personas mirando a cámara. Si aparece alguien, de espaldas, desenfocado o solo sus manos.
+- Nada de estética de anuncio barato, filtros exagerados ni colores saturados.
+
+
+────────────────────────────────────────
+ANÁLISIS (5)
+────────────────────────────────────────
+
+Imagen 1 · analisis-coste-real
+Vista cenital de una mesa blanca y limpia con unas llaves de coche modernas, una calculadora, un ticket de gasolinera doblado sin texto legible y una pequeña figura de coche azul. Luz natural lateral de ventana, sombras suaves. Mucho espacio libre alrededor.
+
+Imagen 2 · analisis-amortizacion
+Dos coches compactos modernos aparcados en paralelo en una calle tranquila de una ciudad española al amanecer: el de la izquierda conectado a un poste de carga, el de la derecha junto a un surtidor de gasolina al fondo desenfocado. Composición simétrica, sensación de comparación.
+
+Imagen 3 · analisis-20000
+Un coche urbano pequeño y moderno, color blanco, aparcado en una calle con fachadas de colores claros de un barrio mediterráneo. Luz de mañana, encuadre a tres cuartos delantero, mucho cielo.
+
+Imagen 4 · analisis-depreciacion
+Un coche moderno de color gris claro fotografiado de perfil en un estudio blanco infinito, con su reflejo suave en el suelo brillante. A su lado, una sombra larga y alargada que sugiere el paso del tiempo. Minimalista y elegante.
+
+Imagen 5 · analisis-carga
+Primer plano del conector de carga enchufado en el lateral de un coche eléctrico moderno de color azul profundo. Fondo desenfocado de un garaje limpio con luz cálida de atardecer. Detalle nítido del cable.
+
+
+────────────────────────────────────────
+NOTICIAS (4)
+────────────────────────────────────────
+
+Imagen 6 · noticia-record-septiembre
+Fila de coches eléctricos modernos de distintos colores cargando en un aparcamiento público de una ciudad española al atardecer. Postes de carga en primer plano, cielo cálido, perspectiva en diagonal que da sensación de cantidad.
+
+Imagen 7 · noticia-chinos-cuota
+Vista aérea desde dron de una terminal portuaria con cientos de coches nuevos alineados en filas perfectas, colores blancos, grises y azules. Un gran barco portacoches atracado a un lado. Mar azul intenso, mañana despejada.
+
+Imagen 8 · noticia-plan-auto
+Interior luminoso de un concesionario moderno con suelo pulido. Primer plano de una mano que entrega unas llaves de coche sobre una mesa blanca con unos papeles sin texto legible. Al fondo, desenfocado, un coche nuevo azul.
+
+Imagen 9 · noticia-marcas-llegan
+Un barco portacoches gigante entrando en un puerto mediterráneo al amanecer, con grúas al fondo y el mar en calma reflejando la luz dorada. Encuadre amplio y épico.
+
+
+────────────────────────────────────────
+GUÍAS (6)
+────────────────────────────────────────
+
+Imagen 10 · guia-etiquetas
+Primer plano de la esquina inferior del parabrisas de un coche moderno con una pegatina circular de colores azul y verde, sin letras. Al fondo, desenfocada, una avenida de una ciudad española con árboles. Luz de mañana.
+
+Imagen 11 · guia-cargar-casa
+Garaje de una vivienda unifamiliar, limpio y ordenado, de noche. Un cargador de pared blanco y minimalista con un pequeño piloto azul encendido, conectado a un coche eléctrico moderno. Luz cálida, ambiente tranquilo.
+
+Imagen 12 · guia-autonomia
+Un coche eléctrico compacto moderno circulando por una autopista vacía en un paisaje seco de colinas de Castilla al atardecer. Ligero desenfoque de movimiento en el asfalto, sensación de viaje largo.
+
+Imagen 13 · guia-hibrido-electrico
+Dos coches compactos modernos aparcados uno junto al otro frente a una fachada blanca: uno enchufado a un poste de carga y el otro no. Encuadre frontal y simétrico, luz suave.
+
+Imagen 14 · guia-segunda-mano
+Taller mecánico limpio y bien iluminado. Un coche eléctrico moderno elevado en el puente y, debajo, las manos de un mecánico sujetando una tableta con un gráfico sin texto legible. Tonos blancos y azules.
+
+Imagen 15 · guia-renting
+Vista cenital de una mesa de madera clara con unas llaves de coche, un bolígrafo y un contrato sin texto legible, junto a una taza de café. Luz natural de ventana, composición ordenada con espacio libre.
+
+
+────────────────────────────────────────
+ESTAS NO LAS PIDAS A GPT (3)
+────────────────────────────────────────
+Hablan de coches reales. Una imagen inventada mostraría un coche que no es, y eso engaña al lector.
+Descarga las fotos oficiales de la sala de prensa de cada marca (gratis para uso informativo).
+Búscalas en Google como "sala de prensa [marca] España" o "[marca] media center".
+
+prensa-geely-e2      Foto oficial del Geely E2
+prensa-byd           Foto oficial del BYD Atto 2 o del Dolphin Surf
+prensa-leapmotor     Foto oficial del Leapmotor B10
+
+
+────────────────────────────────────────
+SI UNA IMAGEN SALE MAL
+────────────────────────────────────────
+Pídele a ChatGPT que la repita con una de estas frases:
+- "Hazla más limpia y luminosa, con más espacio libre."
+- "Quita cualquier texto, logotipo o matrícula."
+- "El coche no debe parecerse a ningún modelo real."
+- "Que parezca una foto real, no una ilustración."
+
+
+────────────────────────────────────────
+NOTICIAS NUEVAS (9 oct) · 5 más
+────────────────────────────────────────
+
+Imagen 16 · noticia-diesel-hunde
+Un surtidor de gasóleo antiguo y algo desgastado en primer plano, desenfocado, y al fondo un aparcamiento luminoso con coches híbridos modernos genéricos. Luz de mañana, tonos fríos.
+
+Imagen 17 · noticia-carburantes
+Primer plano de la boquilla de un surtidor de gasolina en la mano de una persona (solo la mano), repostando un coche moderno genérico de color gris. Gasolinera limpia al atardecer, pantallas sin números legibles.
+
+Imagen 18 · noticia-dgt-octubre
+Paso de peatones en una avenida de una ciudad española, con un semáforo en ámbar y un coche moderno genérico detenido antes de la línea. Luz de mañana, calle limpia, sin personas reconocibles.
+
+Imagen 19 · noticia-plan-auto-empresas
+Una furgoneta eléctrica blanca y un coche eléctrico compacto azul, genéricos y sin rótulos, cargando en un aparcamiento de una nave industrial moderna. Cielo despejado, aspecto profesional.
+
+Imagen 20 · noticia-novedades-otono
+Interior de un concesionario moderno de techos altos con tres coches nuevos genéricos de distintos colores (blanco, azul y gris) bajo una luz cenital suave. Suelo pulido con reflejos, sensación de estreno.

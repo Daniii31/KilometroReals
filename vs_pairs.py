@@ -1,0 +1,20 @@
+# Comparativas "A vs B" con página propia (cruces muy buscados en España)
+VS_PAIRS = [
+ ("dacia-sandero-tce", "mg-3-hybrid"), ("seat-ibiza-1-0-tsi", "toyota-yaris-hybrid"), ("renault-clio-e-tech", "toyota-yaris-hybrid"),
+ ("peugeot-208-hybrid-110", "renault-clio-e-tech"), ("volkswagen-polo-1-0-tsi", "seat-ibiza-1-0-tsi"), ("opel-corsa-hybrid", "peugeot-208-hybrid-110"),
+ ("hyundai-i20", "kia-picanto"), ("hyundai-i10", "kia-picanto"), ("dacia-sandero-eco-g-glp", "dacia-sandero-tce"),
+ ("dacia-spring", "byd-dolphin-surf"), ("renault-5-e-tech", "peugeot-e-208"), ("citroen-e-c3", "dacia-spring"),
+ ("toyota-corolla-hybrid", "seat-leon-1-5-tsi"), ("volkswagen-golf-1-5-etsi", "seat-leon-1-5-tsi"), ("toyota-corolla-hybrid", "volkswagen-golf-1-5-etsi"),
+ ("skoda-octavia-1-5-tsi", "volkswagen-golf-1-5-etsi"), ("mg-4-electric", "volkswagen-golf-1-5-etsi"), ("tesla-model-3-rwd", "toyota-corolla-hybrid"),
+ ("seat-arona-1-0-tsi", "renault-captur-tce"), ("toyota-yaris-cross-hybrid", "seat-arona-1-0-tsi"), ("peugeot-2008-hybrid-145", "renault-captur-e-tech"),
+ ("hyundai-kona-hibrido", "toyota-c-hr-hybrid"), ("volkswagen-t-roc-1-5-tsi", "seat-ateca-1-5-tsi"), ("dacia-duster-hybrid", "mg-zs-hybrid"),
+ ("dacia-duster-eco-g-glp", "dacia-duster-hybrid"), ("mg-zs-hybrid", "toyota-yaris-cross-hybrid"), ("byd-atto-2", "mg-4-electric"),
+ ("kia-ev3", "hyundai-kona-electrico"), ("nissan-juke-hybrid", "renault-captur-e-tech"), ("ford-puma-ecoboost-hybrid", "seat-arona-1-0-tsi"),
+ ("nissan-qashqai-mild-hybrid", "kia-sportage-hev"), ("hyundai-tucson-hibrido", "kia-sportage-hev"), ("toyota-rav4-hybrid", "hyundai-tucson-hibrido"),
+ ("volkswagen-tiguan-1-5-etsi", "hyundai-tucson-hibrido"), ("peugeot-3008-hybrid-145", "nissan-qashqai-mild-hybrid"), ("seat-ateca-1-5-tsi", "nissan-qashqai-mild-hybrid"),
+ ("cupra-formentor-1-5-tsi", "seat-ateca-1-5-tsi"), ("tesla-model-y-rwd", "toyota-rav4-hybrid"), ("jaecoo-7-shs", "toyota-rav4-hybrid"),
+ ("omoda-5-1-6-tgdi", "nissan-qashqai-mild-hybrid"), ("byd-atto-3", "kia-ev3"), ("kia-niro-hev", "toyota-c-hr-hybrid"),
+ ("dacia-jogger-hybrid", "dacia-jogger-eco-g-glp"), ("skoda-karoq-1-5-tsi", "seat-ateca-1-5-tsi"), ("ford-kuga-hibrido", "toyota-rav4-hybrid"),
+ ("bmw-x1-sdrive18i", "audi-a3-sportback-30-tfsi"), ("tesla-model-3-rwd", "bmw-i4"), ("volkswagen-golf-gti", "cupra-leon-vz-2-0-tsi"),
+ ("toyota-c-hr-hybrid", "nissan-qashqai-e-power"), ("kia-sportage-phev", "hyundai-tucson-phev"),
+]
