@@ -8,7 +8,7 @@ Web estática de kilometroreal.com: el coste real de tener un coche en España (
 - `content.py`: noticias y guías antiguas. **Las noticias nuevas van en `noticias/AAAA-MM-DD-slug.json`** (formato en `noticias/LEEME.md`).
 - `pages_extra.py`: página de precio de la gasolina y comparativas A vs B (`vs_pairs.py`).
 - `covers.mjs`: genera la portada de diseño de las noticias sin foto (necesita Playwright; si no está, se omite).
-- `dist/`: la web generada. **El servidor publica `dist/` automáticamente** desde la rama `main` cada 30 minutos.
+- `dist/`: la web generada. **El servidor publica `dist/` automáticamente** desde la rama `main` cada 10 minutos (cron de cPanel).
 
 ## Rutina diaria de noticias
 1. Busca las noticias del motor en España del día, con fuentes fiables: matriculaciones (ANFAC), DGT, ayudas, precios, lanzamientos y marcas chinas.
