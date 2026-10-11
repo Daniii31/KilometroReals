@@ -969,6 +969,9 @@ def build_static():
     with open(os.path.join(HERE, "indexnow.php"), encoding="utf-8") as f: inphp = f.read().replace("__INDEXNOW_KEY__", INDEXNOW_KEY)
     with open(os.path.join(OUT, "indexnow.php"), "w", encoding="utf-8") as f: f.write(inphp)
     with open(os.path.join(OUT, INDEXNOW_KEY + ".txt"), "w", encoding="utf-8") as f: f.write(INDEXNOW_KEY)
+    if PHOTOS:
+        os.makedirs(os.path.join(OUT, "assets", "data"), exist_ok=True)
+        with open(os.path.join(OUT, "assets", "data", "car-photos.json"), "w", encoding="utf-8") as f: json.dump(PHOTOS, f, ensure_ascii=False, separators=(",", ":"))
     if os.path.isdir(IMG_DIR):
         for f in os.listdir(IMG_DIR): shutil.copy(os.path.join(IMG_DIR, f), os.path.join(OUT, "assets/img", f))
     keys = ["id", "b", "m", "n", "t", "f", "body", "p", "c", "bat", "rng", "cv", "trunk", "res", "ins", "mnt", "tax", "lab", "cn"]
