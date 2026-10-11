@@ -213,7 +213,7 @@ def en_car(c):
   <div style="margin-top:14px">{sharebuttons(curl_en(c), f"The {c['n']} really costs {e_en(k['month'])} a month:", True)}</div>
  </div>
  <div class="panel" id="carcalc" data-id="{c["id"]}">
-  {sil(c).replace('class="sil"', 'class="sil" style="height:90px;justify-content:center"')}
+  {photo_hero(c, True)}
   <h3 style="margin-top:10px">Work it out for your driving</h3>
   <div class="settings" style="margin-top:12px">
    <div><label class="lbl" for="cc-in-km">Km per year <span class="pval" id="cc-km">15,000</span></label><input type="range" id="cc-in-km" min="5000" max="40000" step="1000" value="15000"></div>

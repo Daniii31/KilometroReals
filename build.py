@@ -66,7 +66,20 @@ SIL = {
  "van": "M6 58c0-14 4-19 13-21l16-3c8-15 22-24 46-24h64c12 0 18 9 22 22l10 3c7 2 9 8 9 23z",
 }
 BODY_SIL = {"urbano": "hatch", "compacto": "hatch", "berlina": "sedan", "familiar": "sedan", "suv-p": "suv", "suv-m": "suv", "suv-g": "van", "monovolumen": "van", "deportivo": "coupe"}
+_PH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "car_photos.json")
+PHOTOS = json.load(open(_PH, encoding="utf-8")) if os.path.exists(_PH) else {}
+def photo_credit(ph, en=False):
+    lic = f'<a href="{esc(ph["lu"])}" target="_blank" rel="noopener license">{esc(ph["l"])}</a>' if ph.get("lu") else esc(ph["l"])
+    return f'{"Photo" if en else "Foto"}: <a href="{esc(ph["d"])}" target="_blank" rel="noopener">{esc(ph["a"] or "Wikimedia Commons")}</a> · {lic} · {"via" if en else "vía"} Wikimedia Commons'
+def photo_hero(c, en=False):
+    ph = PHOTOS.get(c["id"])
+    if not ph: return sil(c).replace('class="sil"', 'class="sil" style="height:90px;justify-content:center"')
+    return (f'<figure class="cphoto hero"><img src="{esc(ph["u"])}" width="{ph["w"]}" height="{ph["h"]}" alt="{esc(c["n"])}" decoding="async" fetchpriority="high">'
+            f'<figcaption>{photo_credit(ph, en)}</figcaption></figure>')
 def sil(c):
+    ph = PHOTOS.get(c["id"])
+    if ph:
+        return f'<div class="cphoto"><img src="{esc(ph["u"])}" width="{ph["w"]}" height="{ph["h"]}" alt="{esc(c["n"])}" loading="lazy" decoding="async"></div>'
     return (f'<div class="sil"><svg viewBox="0 0 220 72" aria-hidden="true"><path fill="currentColor" d="{SIL[BODY_SIL[c["body"]]]}"/>'
             '<circle cx="56" cy="58" r="13" style="fill:var(--surface)"/><circle cx="56" cy="58" r="9" fill="currentColor"/><circle cx="166" cy="58" r="13" style="fill:var(--surface)"/><circle cx="166" cy="58" r="9" fill="currentColor"/></svg></div>')
 
@@ -135,7 +148,7 @@ def page(path, title, desc, body, active="", schema=None, noindex=False, full_ti
         foot = f"""<div><a class="logo" href="/">{LOGO_F}{SITE}</a><p class="muted" style="margin-top:10px;max-width:34ch">Lo que te cuesta de verdad cada coche, kilómetro a kilómetro. Sin letra pequeña.</p></div>
 <div><h4>Herramientas</h4><a href="/comparador/">Comparador</a><a href="/coches/">Todos los coches</a><a href="/marcas/">Marcas</a><a href="/mejores/">Rankings</a><a href="/cual-me-conviene/">¿Cuál me conviene?</a><a href="/calculadoras/">Calculadoras</a><a href="/mi-coche/">¿Cuánto me cuesta mi coche?</a><a href="/comparar/">Comparativas</a><a href="/precio-gasolina-hoy/">Precio gasolina hoy</a></div>
 <div><h4>Actualidad</h4><a href="/noticias/">Noticias y análisis</a><a href="/electricos-chinos/">Eléctricos chinos</a><a href="/coches-chinos-comprar-sin-miedo/">¿Coche chino? Guía</a><a href="/ayudas/">Ayudas Plan Auto+</a><a href="/informes/">Informes mensuales</a><a href="/guias/">Guías</a>{('<h4 style="margin-top:14px">Síguenos</h4>' + social) if social else ''}</div>
-<div><h4>{SITE}</h4><a href="/quienes-somos/">Quiénes somos</a><a href="/metodologia/">Cómo calculamos</a><a href="/contacto/">Contacto</a><a href="/aviso-legal/">Aviso legal</a><a href="/condiciones-de-uso/">Condiciones de uso</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/cookies/#gestionar" class="cookie-prefs">Gestionar cookies</a></div>
+<div><h4>{SITE}</h4><a href="/quienes-somos/">Quiénes somos</a><a href="/metodologia/">Cómo calculamos</a><a href="/contacto/">Contacto</a><a href="/aviso-legal/">Aviso legal</a><a href="/condiciones-de-uso/">Condiciones de uso</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/cookies/#gestionar" class="cookie-prefs">Gestionar cookies</a>{('<a href="/creditos-fotos/">Créditos de las fotos</a>') if PHOTOS else ''}</div>
 <div class="legal">© 2026 {SITE}. Precios de tarifa y consumos orientativos, actualizados en {UPDATED}. Confirma siempre la oferta vigente en el concesionario.</div>"""
     end = ""
     if endcta:
@@ -587,7 +600,7 @@ def build_car(c):
   <div style="margin-top:14px">{sharebuttons(curl(c), f"El {c['n']} cuesta de verdad {eur(k['month'])} al mes. Míralo:")}</div>
  </div>
  <div class="panel" id="carcalc" data-id="{c["id"]}">
-  {sil(c).replace('class="sil"', 'class="sil" style="height:90px;justify-content:center"')}
+  {photo_hero(c)}
   <h3 style="margin-top:10px">Calcúlalo con tu uso</h3>
   <div class="settings" style="margin-top:12px">
    <div><label class="lbl" for="cc-in-km">Km al año <span class="pval" id="cc-km">15.000</span></label><input type="range" id="cc-in-km" min="5000" max="40000" step="1000" value="15000"></div>
@@ -767,7 +780,19 @@ def method_example():
             f'<div class="tablewrap"><table class="specs vs"><tbody>{tbl}</tbody></table></div>'
             f'<p>Dividido entre 75.000 km da <b>{pk(k["perKm"])} € por kilómetro</b>, y entre 60 meses, <b>{eur(k["month"])} al mes</b>. Todas las fichas se calculan igual.</p>')
 
+def build_photo_credits():
+    if not PHOTOS: return
+    seen = {}
+    for c in CARS:
+        ph = PHOTOS.get(c["id"])
+        if ph: seen.setdefault(ph["d"], (ph, []))[1].append(c)
+    rows = "".join(f'<li><b>{", ".join(esc(x["n"]) for x in cs[:3])}{" y otras versiones" if len(cs) > 3 else ""}</b><br><span class="muted">{photo_credit(ph)}</span></li>' for ph, cs in seen.values())
+    legal_page("/creditos-fotos/", "Créditos de las fotos", "Autores y licencias de las fotos de los coches que usamos en Kilómetro Real, todas de Wikimedia Commons con licencia libre.",
+               f"""<p>Las fotos de los coches proceden de <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> y tienen licencias libres (Creative Commons o dominio público). Son imágenes orientativas del modelo: la versión, el color o el año pueden no coincidir con la ficha. Gracias a sus autores.</p>
+<p>Si eres autor de alguna foto y quieres que cambiemos el crédito o la retiremos, escríbenos desde <a href="/contacto/">contacto</a>.</p><ul class="credits">{rows}</ul>""")
+
 def build_legal():
+    build_photo_credits()
     legal_page("/quienes-somos/", "Quiénes somos", f"Qué es {SITE}, quién está detrás y cómo calculamos el coste real de cada coche de forma independiente y transparente.", f"""<p>{SITE} nace de una idea sencilla: el precio de un coche no es lo que pagas el día que lo compras, sino lo que te cuesta cada kilómetro durante los años que lo tienes.</p>
 <h2>Cómo trabajamos</h2><p>Cada noticia cita sus fuentes con enlace. Los datos del comparador son estimaciones con un método público, que explicamos en el propio comparador. Corregimos los errores en cuanto los detectamos.</p>
 <h2>Quién está detrás</h2><p>Kilómetro Real es un proyecto independiente creado y mantenido por {OWNER["name"]}. No trabaja para ninguna marca, concesionario ni financiera.</p>
