@@ -109,7 +109,8 @@ def build_vs():
  <h2 style="margin:28px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
  {('<h2 style="margin:28px 0 12px;font-size:1.3rem">Otras comparativas</h2><div class="chips">' + rel_h + '</div>') if rel_h else ''}
 </div></section>"""
-        page(vs_slug(a_id, b_id), f'{A["n"]} vs {B["n"]}: cuál es más barato de tener', f'{A["n"]} o {B["n"]}: coste real por km, al mes y en 5 años, con pérdida de valor, consumo, seguro y mantenimiento. Te decimos cuál conviene.',
+        _vc = [f'{A["n"]} vs {B["n"]}: cuál es más barato de tener', f'{A["n"]} vs {B["n"]}: ¿cuál es más barato?', f'{A["n"]} vs {B["n"]}: ¿cuál conviene?', f'{A["n"]} vs {B["n"]}']
+        page(vs_slug(a_id, b_id), next((x for x in _vc if len(x) <= 60), _vc[-1]), f'{A["n"]} o {B["n"]}: coste real por km, al mes y en 5 años, con pérdida de valor, consumo, seguro y mantenimiento. Te decimos cuál conviene.',
              body, "coches", ldj(faq_ld(faq)))
         cards.append(f'<a class="card" href="{vs_slug(a_id, b_id)}"><h3>{esc(A["n"])} <span class="muted">vs</span> {esc(B["n"])}</h3><p>{"Casi empate" if same else esc(W["n"]) + " ahorra " + eur(save) + " en 5 años"}</p></a>')
     page("/comparar/", "Comparativas de coches por coste real", "Los duelos más buscados de coches en España, comparados en euros por kilómetro: cuál sale más barato de tener y cuánto ahorras.",

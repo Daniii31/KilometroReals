@@ -3,6 +3,7 @@ import re
 """Genera Kilómetro Real en ./dist  ·  python3 build.py"""
 import os, shutil, json, html
 from fuel import FUELP
+INDEXNOW_KEY = "3830dfbcd7d66567a083f718d95fed8c"  # clave pública de IndexNow (va en /<clave>.txt)
 from content import KINDS, ARTICLES, GUIDES, BRANDS, TOP10
 from models import cars, cost, BODY, TYPE, FUEL, DEFAULTS
 from extras import analyses, car_analysis, car_faq
@@ -148,7 +149,7 @@ def page(path, title, desc, body, active="", schema=None, noindex=False, full_ti
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{esc(ft)}</title>
 <meta name="description" content="{esc(desc)}">
-{'<meta name="robots" content="noindex">' if noindex else ''}
+{'<meta name="robots" content="noindex">' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">'}
 <meta name="theme-color" content="#ffffff">
 <script>document.documentElement.classList.add("js");try{{if(localStorage.getItem("kr_theme")==="dark")document.documentElement.dataset.theme="dark"}}catch(e){{}}</script>
 <meta property="og:site_name" content="{SITE}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:type" content="website">{canon}{hl}
@@ -550,8 +551,9 @@ def build_car(c):
                 + '</p><p style="margin-top:8px"><a href="/ayudas/">Cómo funcionan las ayudas →</a></p></div>')
     best_rival = cheaper_rivals[0] if cheaper_rivals else None
     _byid = {x["id"]: x for x in CARS}
-    _vs = [(a, b) for a, b in _VSP if c["id"] in (a, b) and a in _byid and b in _byid][:6]
-    vs_html = ('<div class="vschips"><b>Comparativas cara a cara:</b> ' + " ".join(f'<a class="chip" href="/comparar/{a}-vs-{b}/">{esc(_byid[b if a == c["id"] else a]["n"])}</a>' for a, b in _vs) + '</div>') if _vs else ""
+    _vs = [(a, b) for a, b in _VSP if c["id"] in (a, b) and a in _byid and b in _byid][:10]
+    _gd = (' <p class="note" style="margin-top:14px">Guías para eléctricos: <a href="/guias/cuanto-cuesta-cargar-coche-electrico-casa/">cuánto cuesta cargarlo en casa</a> · <a href="/guias/autonomia-real-coche-electrico-wltp/">autonomía real frente a la WLTP</a> · <a href="/guias/comprar-coche-electrico-segunda-mano/">comprarlo de segunda mano</a></p>') if c["t"] == "ev" else ""
+    vs_html = _gd + ('<div class="vschips"><b>Comparativas cara a cara:</b> ' + " ".join(f'<a class="chip" href="/comparar/{a}-vs-{b}/">{esc(_byid[b if a == c["id"] else a]["n"])}</a>' for a, b in _vs) + '</div>') if _vs else ""
     lead = f'Tenerlo 5 años y hacer 15.000 km al año te cuesta unos <strong>{eur(k["month"])} al mes</strong>, sumando todo.'
     calc_home = '<div><label class="lbl" for="cc-in-home">Carga en casa <span class="pval" id="cc-home"></span></label><input type="range" id="cc-in-home" min="0" max="100" step="5" value="80"></div>' if plugin else ""
     rv = "".join(car_card(x, f'<p>{"Te ahorra" if K[x["id"]]["total"] < k["total"] else "Cuesta"} {eur(abs(K[x["id"]]["total"]-k["total"]))} {"" if K[x["id"]]["total"] < k["total"] else "más "}en 5 años</p>') for x in cheaper_rivals)
@@ -612,7 +614,10 @@ def build_car(c):
     faqld = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
     crumbld = {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": DOMAIN + "/"}, {"@type": "ListItem", "position": 2, "name": "Coches", "item": DOMAIN + "/coches/"}, {"@type": "ListItem", "position": 3, "name": c["n"], "item": DOMAIN + curl(c)}]}
     schema.pop("@context"); schema = {"@context": "https://schema.org", "@graph": [schema, faqld, crumbld]}
-    page(curl(c), f'{c["n"]}: coste real al mes y por km', f'¿Cuánto cuesta tener un {c["n"]}? {eur(k["month"])} al mes y {pk(k["perKm"])} €/km sumando compra, energía, seguro, taller e impuestos. Ficha y rivales.', body, "coches", schema)
+    _en = "luz" if c["t"] == "ev" else ("GLP" if c["f"] == "glp" else "gasolina" if c["f"] == "g" else "gasóleo")
+    _cands = [f'{c["n"]}: precio, consumo real y coste al mes (2026)', f'{c["n"]}: precio, consumo real y coste al mes', f'{c["n"]}: precio y coste real al mes', f'{c["n"]}: precio y coste real']
+    _t = next((x for x in _cands if len(x) <= 60), _cands[-1])
+    page(curl(c), _t, f'{c["n"]} desde {eur(c["p"])}: te cuesta de verdad {eur(k["month"])} al mes ({pk(k["perKm"])} €/km) sumando compra, {_en}, seguro, taller e impuesto. {"Autonomía real" if c["t"] == "ev" else "Consumo real"} y rivales.', body, "coches", schema, full_title=_t if len(_t) > 48 else None)
 
 def build_rankings():
     cards = "".join(f'<a class="card" href="/mejores/{s}/"><span class="kicker">Ranking</span><h3>{t}</h3><p>{d}</p></a>' for s, t, d, _, _ in RANKINGS)
@@ -713,16 +718,18 @@ def build_chinos():
     page("/electricos-chinos/", "Coches chinos en España: marcas, modelos y coste real", "BYD, Leapmotor, Geely, MG, XPENG y las marcas chinas que llegan a España: modelos, cuota y cuánto cuestan de verdad.", body, "noticias")
 
 def build_ayudas():
-    a = next(x for x in ARTICLES if x["k"] == "ayuda")
+    a = next((x for x in ARTICLES if x.get("slug") == "plan-auto-plus-ayudas-coche-electrico-2026"), None) or next(x for x in ARTICLES if x["k"] == "ayuda")
     eligible = by_pk([c for c in CARS if c["lab"] == "cero" and c["p"] <= 54450])[:10]
     src = " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in a["src"])
+    _an = [x for x in NEWS if x is not a and (x["k"] == "ayuda" or "plan auto" in x["t"].lower())][:6]
     body = f"""{crumbs((None, "Ayudas"))}
 <section class="tight"><div class="wrap narrow article">
  <span class="kicker">Ayudas 2026</span><h1>Plan Auto+: las ayudas para comprar coche eléctrico</h1><p class="standfirst">Cuánto te dan, qué coches entran y cómo se cobra.</p>
  <div class="bigfig" style="margin-bottom:26px"><div><b>4.500 €</b><span>ayuda estatal máxima</span></div><div><b>+1.000 €</b><span>descuento mínimo del concesionario</span></div><div><b>45.000 €</b><span>precio máximo sin IVA</span></div></div>
  <div class="body">{a["body"]}</div>
  <div class="panel" style="margin-top:20px"><h3>Los 10 coches que pueden optar con menor coste real</h3><ol class="rank">{"".join(rank_li(c) for c in eligible)}</ol></div>
- {ad("ayudas")}<div class="sources">Fuentes: {src}</div>
+ {('<h2 style="margin:30px 0 12px;font-size:1.3rem">Últimas noticias sobre las ayudas</h2><div class="newslist">' + "".join(news_card(x) for x in _an) + '</div>') if _an else ''}
+ {ad("ayudas")}<div class="sources">Fuentes: {src} · <a href="{aurl(a)}">Noticia original del {a.get("dtxt", a["date"])}</a></div>
 </div></section>"""
     page("/ayudas/", "Ayudas Plan Auto+ 2026 para coche eléctrico", "Cuánto da el Plan Auto+, qué coches entran, el criterio europeo y qué cambia respecto al MOVES III.", body, "noticias")
 
@@ -920,6 +927,9 @@ def build_static():
                    "icons": [{"src": "/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "/icon-512.png", "sizes": "512x512", "type": "image/png"}]}, f)
     with open(os.path.join(HERE, "contacto.php"), encoding="utf-8") as f: php = f.read().replace("__CONTACT_EMAIL__", CONTACT_EMAIL)
     with open(os.path.join(OUT, "contacto.php"), "w", encoding="utf-8") as f: f.write(php)
+    with open(os.path.join(HERE, "indexnow.php"), encoding="utf-8") as f: inphp = f.read().replace("__INDEXNOW_KEY__", INDEXNOW_KEY)
+    with open(os.path.join(OUT, "indexnow.php"), "w", encoding="utf-8") as f: f.write(inphp)
+    with open(os.path.join(OUT, INDEXNOW_KEY + ".txt"), "w", encoding="utf-8") as f: f.write(INDEXNOW_KEY)
     if os.path.isdir(IMG_DIR):
         for f in os.listdir(IMG_DIR): shutil.copy(os.path.join(IMG_DIR, f), os.path.join(OUT, "assets/img", f))
     keys = ["id", "b", "m", "n", "t", "f", "body", "p", "c", "bat", "rng", "cv", "trunk", "res", "ins", "mnt", "tax", "lab", "cn"]
@@ -927,7 +937,7 @@ def build_static():
         json.dump([{k: c[k] for k in keys} for c in CARS], f, ensure_ascii=False, separators=(",", ":"))
     shutil.copy(os.path.join(HERE, "brand", "icon-app.svg"), os.path.join(OUT, "favicon.svg"))
     shutil.copy(os.path.join(HERE, "brand", "logo.svg"), os.path.join(OUT, "assets", "img", "logo.svg"))
-    open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /contacto.php\n\nSitemap: {DOMAIN}/sitemap.xml\nSitemap: {DOMAIN}/news-sitemap.xml\n")
+    open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /contacto.php\nDisallow: /indexnow.php\n\nSitemap: {DOMAIN}/sitemap.xml\nSitemap: {DOMAIN}/news-sitemap.xml\n")
     shutil.copy(os.path.join(HERE, "htaccess.txt"), os.path.join(OUT, ".htaccess"))
     urls = ["/", "/comparador/", "/coches/", "/marcas/"] + [f"/marcas/{slugify(b)}/" for b in sorted({c["b"] for c in CARS})] + ["/mejores/", "/cual-me-conviene/", "/calculadoras/"] + [f"/calculadoras/{x[0]}/" for x in CALCS] + [ "/noticias/", "/electricos-chinos/", "/ayudas/", "/coches-chinos-comprar-sin-miedo/", "/guias/", "/quienes-somos/", "/metodologia/", "/contacto/", "/condiciones-de-uso/", "/precio-gasolina-hoy/", "/comparar/", "/mi-coche/"]
     urls += [curl(c) for c in CARS] + [f"/comparar/{a}-vs-{b}/" for a, b in __import__("vs_pairs").VS_PAIRS] + [f"/mejores/{r[0]}/" for r in RANKINGS] + [aurl(a) for a in NEWS] + [gurl(g) for g in GUIDES]
