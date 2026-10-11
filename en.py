@@ -13,7 +13,17 @@ def e_en(v): return "€" + n_en(v)
 def pk_en(v): return f"€{v:.3f}"
 def curl_en(c): return f"/en/cars/{c['id']}/"
 def typ_en(c): return f'<span class="type t-{c["t"]}">{TYPE_EN[c["t"]]}</span>'
-RANK_EN = {"mas-baratos-por-km": ("cheapest-cars-to-own", "The cheapest cars to own", "Ranked by real cost per kilometre: depreciation, energy, insurance, servicing and tax."),
+RANK_EN = {"coches-etiqueta-eco-mas-baratos": ("cheapest-eco-label-cars", "The cheapest ECO label cars to own", "Hybrids, mild hybrids and LPG cars with the DGT ECO label, ranked by real cost per kilometre."),
+ "coches-que-menos-gastan": ("most-fuel-efficient-cars", "The most fuel-efficient petrol, diesel and hybrid cars", "Ranked by what you spend on fuel every 100 km, with real-world consumption and today's prices."),
+ "coches-con-mas-maletero": ("cars-with-biggest-boot", "Cars with the biggest boot", "Models with the most boot space according to the manufacturer, largest first."),
+ "coches-seguro-mas-barato": ("cheapest-cars-to-insure", "The cheapest cars to insure", "Ranked by our estimated comprehensive insurance with excess for a 35-year-old driver. Always get several quotes."),
+ "coches-glp-mas-baratos": ("cheapest-lpg-cars", "The cheapest LPG cars to own", "Petrol and LPG bi-fuel cars: ECO label and a fuel that costs about half as much as petrol."),
+ "coches-diesel-mas-baratos": ("cheapest-diesel-cars", "The cheapest diesel cars to own", "The new diesel cars still on sale, ranked by real cost per kilometre."),
+ "coches-gasolina-mas-baratos": ("cheapest-petrol-cars", "The cheapest petrol cars to own", "Non-electrified petrol cars ranked by what they really cost per kilometre."),
+ "urbanos-mas-baratos": ("cheapest-city-cars", "The cheapest city cars to own", "Small city cars, petrol, hybrid and electric, ranked by real cost per kilometre."),
+ "compactos-mas-baratos": ("cheapest-hatchbacks", "The cheapest hatchbacks to own", "Compact hatchbacks ranked by what they really cost per kilometre."),
+ "berlinas-mas-baratas": ("cheapest-saloons", "The cheapest saloons to own", "Saloons of every size ranked by real cost per kilometre."),
+ "mas-baratos-por-km": ("cheapest-cars-to-own", "The cheapest cars to own", "Ranked by real cost per kilometre: depreciation, energy, insurance, servicing and tax."),
  "electricos-mas-baratos": ("cheapest-electric-cars", "The cheapest electric cars to own", "Electric cars with the lowest real cost per kilometre, charging mostly at home."),
  "suv-mas-baratos": ("cheapest-suvs", "The cheapest SUVs to own", "Small, medium and large SUVs ranked by what they really cost per kilometre."),
  "hibridos-mas-economicos": ("cheapest-hybrids", "The most economical hybrids", "Hybrids and plug-in hybrids with the lowest real cost: for drivers who don't want to rely on a plug."),
@@ -238,6 +248,10 @@ def en_rankings():
         rgt = None
         if s == "electricos-mas-autonomia": rgt = lambda c: f'<span class="num">{c["rng"]} km</span>'
         if s.startswith("coches-menos-de-"): rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {e_en(c["p"])}</span>'
+        if s == "coches-que-menos-gastan": rgt = lambda c: f'<span class="num">€{e100(c):.2f}<small>/100 km</small></span>'
+        if s == "coches-con-mas-maletero": rgt = lambda c: f'<span class="num">{c["trunk"]} l</span>'
+        if s == "coches-seguro-mas-barato": rgt = lambda c: f'<span class="num">≈ {e_en(c["ins"])}/yr</span>'
+        if s in ("coches-etiqueta-eco-mas-baratos", "coches-glp-mas-baratos"): rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {e_en(c["p"])}</span>'
         if s == "deportivos-mas-baratos": rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {c["cv"]} hp</span>'
         if s == "familiares-y-7-plazas": rgt = lambda c: f'<span class="num">{pk_en(K[c["id"]]["perKm"])}/km · {tle(c)}</span>'
         items = "".join(rank_li_en(c, rgt(c) if rgt else None) for c in lst)

@@ -342,6 +342,10 @@ def rank_li(c, right=None, sub=None):
 
 def by_pk(lst): return sorted(lst, key=lambda c: K[c["id"]]["perKm"])
 
+_E100 = {"g": FUELP["g95"], "d": FUELP["die"], "glp": FUELP["glp"]}
+def e100(c):
+    return c["c"] * (DEFAULTS["ph"] if c["t"] == "ev" else _E100.get(c["f"], FUELP["g95"]))
+
 RANKINGS = [
  ("mas-baratos-por-km", "Los coches más baratos de tener", "Ordenados por coste real por kilómetro: compra, pérdida de valor, energía, seguro, taller e impuestos.", lambda: by_pk(CARS)[:25], None),
  ("electricos-mas-baratos", "Los eléctricos más baratos de tener", "Los coches eléctricos con menor coste real por kilómetro, cargando sobre todo en casa.", lambda: by_pk([c for c in CARS if c["t"] == "ev"])[:25], None),
@@ -356,6 +360,16 @@ RANKINGS = [
  ("coches-menos-de-25000-euros", "Los mejores coches por menos de 25.000 €", "Coches nuevos con precio de tarifa de hasta 25.000 €, ordenados por lo que cuestan de verdad cada kilómetro: compra, pérdida de valor, energía, seguro, taller e impuesto.", lambda n=25000: by_pk([c for c in CARS if c["p"] <= n])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
  ("coches-menos-de-30000-euros", "Los mejores coches por menos de 30.000 €", "Coches nuevos con precio de tarifa de hasta 30.000 €, ordenados por lo que cuestan de verdad cada kilómetro: compra, pérdida de valor, energía, seguro, taller e impuesto.", lambda n=30000: by_pk([c for c in CARS if c["p"] <= n])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
  ("deportivos-mas-baratos", "Los deportivos más baratos de mantener", "GTI, RS, M, AMG y GR: los coches más prestacionales ordenados por lo que cuestan de verdad cada kilómetro, con su potencia.", lambda: by_pk([c for c in CARS if (c["cv"] >= 250 and c["t"] in ("ice", "mhev")) or c["body"] == "deportivo" or (c["cv"] >= 450 and not c["body"].startswith("suv"))])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {c["cv"]} CV</span>'),
+    ("coches-etiqueta-eco-mas-baratos", "Los coches con etiqueta ECO más baratos de tener", "Híbridos, microhíbridos y coches de GLP con etiqueta ECO, ordenados por coste real por kilómetro. Entran en casi todas las zonas de bajas emisiones.", lambda: by_pk([c for c in CARS if c["lab"] == "eco"])[:30], lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
+    ("coches-que-menos-gastan", "Los coches de combustión e híbridos que menos gastan", "Gasolina, diésel, GLP e híbridos ordenados por lo que gastas en carburante cada 100 km, con consumo real estimado y precios de hoy. Los eléctricos tienen su propio ranking.", lambda: sorted([c for c in CARS if c["t"] != "ev"], key=e100)[:30], lambda c: f'<span class="num">{e100(c):.2f} €<small>/100 km</small></span>'.replace(".", ",")),
+    ("coches-con-mas-maletero", "Los coches con más maletero", "Los modelos con más litros de maletero según el fabricante, de mayor a menor. Junto a cada uno, lo que cuesta de verdad cada kilómetro.", lambda: sorted(CARS, key=lambda c: (-c["trunk"], K[c["id"]]["perKm"]))[:30], lambda c: f'<span class="num">{c["trunk"]:,} l</span>'.replace(",", ".")),
+    ("coches-seguro-mas-barato", "Los coches con el seguro más barato", "Ordenados por nuestro seguro estimado a todo riesgo con franquicia para un conductor de 35 años. Con 25 años, cuenta con pagar bastante más. Pide siempre varios presupuestos.", lambda: sorted(CARS, key=lambda c: (c["ins"], K[c["id"]]["perKm"]))[:30], lambda c: f'<span class="num">≈ {eur(c["ins"])}/año</span>'),
+    ("coches-glp-mas-baratos", "Los coches de GLP más baratos de tener", "Coches bifuel de gasolina y GLP: etiqueta ECO y un carburante que cuesta cerca de la mitad que la gasolina. Ordenados por coste real.", lambda: by_pk([c for c in CARS if c["f"] == "glp"]), lambda c: f'<span class="num">{pk(K[c["id"]]["perKm"])} €/km · {eur(c["p"])}</span>'),
+    ("coches-diesel-mas-baratos", "Los coches diésel más baratos de tener", "Los diésel nuevos que quedan a la venta, ordenados por coste real por kilómetro. Compensan sobre todo si haces muchos kilómetros por carretera.", lambda: by_pk([c for c in CARS if c["f"] == "d"])[:25], None),
+    ("coches-gasolina-mas-baratos", "Los coches de gasolina más baratos de tener", "Coches de gasolina sin electrificar, ordenados por lo que cuestan de verdad cada kilómetro. Suelen ser los más baratos de comprar, pero no siempre de tener.", lambda: by_pk([c for c in CARS if c["t"] == "ice" and c["f"] == "g"])[:25], None),
+    ("urbanos-mas-baratos", "Los coches urbanos más baratos de tener", "Coches pequeños para ciudad, de combustión, híbridos y eléctricos, ordenados por coste real por kilómetro.", lambda: by_pk([c for c in CARS if c["body"] == "urbano"])[:25], None),
+    ("compactos-mas-baratos", "Los compactos más baratos de tener", "Golf, León, Corolla, Mégane y compañía: los compactos ordenados por lo que cuestan de verdad cada kilómetro.", lambda: by_pk([c for c in CARS if c["body"] == "compacto"])[:25], None),
+    ("berlinas-mas-baratas", "Las berlinas más baratas de tener", "Berlinas de todos los tamaños ordenadas por coste real por kilómetro, desde las generalistas a las premium.", lambda: by_pk([c for c in CARS if c["body"] == "berlina"])[:25], None),
 ]
 
 POP_PAIRS = [("dacia-spring", "hyundai-i10"), ("tesla-model-3-rwd", "toyota-corolla-hybrid"), ("byd-dolphin-surf", "seat-ibiza-1-0-tsi"),
