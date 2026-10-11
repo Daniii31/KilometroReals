@@ -1,0 +1,23 @@
+{
+  "slug": "coste-real-coches-mas-vendidos-septiembre-2026",
+  "mes": "septiembre de 2026",
+  "mes_corto": "septiembre",
+  "fecha": "2026-10-11",
+  "total": 93858,
+  "fuentes": [
+    ["ANFAC / IDEAUTO, vía Motor.es", "https://www.motor.es/noticias/tesla-model-3-matriculaciones-2026-septiembre-dacia-sandero-pierde-liderato-2026116742.html"],
+    ["Carnovo: los coches más vendidos en septiembre de 2026", "https://carnovo.com/es/guias/?p=45770"]
+  ],
+  "top": [
+    {"m": "Tesla Model 3", "u": 2528, "ids": ["tesla-model-3-rwd", "tesla-model-3-gran-autonomia", "tesla-model-3-performance"]},
+    {"m": "Seat Ibiza", "u": 2183, "ids": ["seat-ibiza-1-0-tsi", "seat-ibiza-1-5-tsi-fr"]},
+    {"m": "Dacia Sandero", "u": 2157, "ids": ["dacia-sandero-tce", "dacia-sandero-eco-g-glp", "dacia-sandero-stepway-tce", "dacia-sandero-stepway-eco-g"]},
+    {"m": "Toyota Corolla", "u": 2138, "ids": ["toyota-corolla-hybrid", "toyota-corolla-touring-sports", "toyota-corolla-sedan-hybrid", "toyota-corolla-hybrid-200"]},
+    {"m": "Toyota C-HR", "u": 2121, "ids": ["toyota-c-hr-hybrid", "toyota-c-hr-hybrid-200", "toyota-c-hr-plug-in", "toyota-c-hr"]},
+    {"m": "Toyota Yaris Cross", "u": 1720, "ids": ["toyota-yaris-cross-hybrid"]},
+    {"m": "Renault Captur", "u": 1488, "ids": ["renault-captur-tce", "renault-captur-blue-dci-115", "renault-captur-e-tech"]},
+    {"m": "Opel Corsa", "u": 1414, "ids": ["opel-corsa-1-2", "opel-corsa-hybrid", "opel-corsa-electric"]},
+    {"m": "Seat Arona", "u": 1413, "ids": ["seat-arona-1-0-tsi-95", "seat-arona-1-0-tsi"]},
+    {"m": "MG ZS", "u": 1399, "ids": ["mg-zs-1-5", "mg-zs-hybrid"]}
+  ]
+}

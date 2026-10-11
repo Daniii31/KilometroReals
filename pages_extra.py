@@ -138,3 +138,93 @@ def build_micoche():
     body += f'<section class="tight"><div class="wrap narrow"><h2 style="margin-bottom:12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}</div></section>'
     page("/mi-coche/", "¿Cuánto me cuesta mi coche al mes? Calculadora", "Calcula lo que te cuesta tu coche al mes sumando pérdida de valor, gasolina o luz, seguro, taller e impuesto, y cuánto ahorrarías con otro.",
          body, "calc", ldj({"@type": "WebApplication", "name": "¿Cuánto me cuesta mi coche?", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}, faq_ld(faq)))
+
+# ---------------- INFORMES MENSUALES ----------------
+def build_informes():
+    import glob
+    reps = []
+    for f in sorted(glob.glob(os.path.join(HERE, "informes", "*.json")), reverse=True):
+        with open(f, encoding="utf-8") as fh: reps.append(json.load(fh))
+    for i, R in enumerate(reps): build_informe(R, reps[i + 1] if i + 1 < len(reps) else None)
+    cards = "".join(f'<a class="card" href="/informes/{R["slug"]}/"><span class="kicker">Informe · {R["mes"]}</span><h3>Lo que cuestan de verdad los 10 coches más vendidos de {R["mes"]}</h3><p>Ventas oficiales cruzadas con nuestro cálculo de coste real.</p></a>' for R in reps)
+    page("/informes/", "Informes: el coste real de los coches más vendidos", "Cada mes cruzamos las matriculaciones oficiales con nuestro cálculo de coste real: lo que de verdad cuestan los coches que más compran los españoles.",
+         f'{crumbs((None, "Informes"))}<section class="tight"><div class="wrap"><h1>Informes mensuales</h1><p class="muted" style="margin:10px 0 24px;max-width:64ch">Cada mes tomamos los 10 coches más vendidos en España y calculamos lo que cuestan de verdad. Puedes citar cualquier dato enlazando a la página del informe.</p><div class="cards">{cards}</div></div></section>', "noticias")
+    return reps
+
+def build_informe(R, prev):
+    S = DEFAULTS
+    rows = []
+    for pos, t in enumerate(R["top"], 1):
+        vs = [BY[x] for x in t["ids"] if x in BY]
+        acc = min(vs, key=lambda c: c["p"])
+        ka = K[acc["id"]]
+        mos = [K[c["id"]]["month"] for c in vs]
+        rows.append(dict(pos=pos, m=t["m"], u=t["u"], c=acc, k=ka, lo=min(mos), hi=max(mos), vs=vs))
+    by_cost = sorted(rows, key=lambda r: r["k"]["month"])
+    for i, r in enumerate(by_cost, 1): r["cpos"] = i
+    by_price = sorted(rows, key=lambda r: r["c"]["p"])
+    for i, r in enumerate(by_price, 1): r["ppos"] = i
+    cheap, dear = by_cost[0], by_cost[-1]
+    tot_u = sum(r["u"] for r in rows)
+    avg = sum(r["k"]["month"] * r["u"] for r in rows) / tot_u
+    jump = max(rows, key=lambda r: r["ppos"] - r["cpos"])
+    fall = max(rows, key=lambda r: r["cpos"] - r["ppos"])
+    share = tot_u / R["total"] * 100
+    n = lambda r: esc(r["m"])
+    # gráfico de barras (coste al mes, versión de acceso)
+    mx = max(r["k"]["month"] for r in rows) * 1.08
+    bars = "".join(f'<div class="ibar" tabindex="0" title="{esc(r["c"]["n"])}: {eur(r["k"]["month"])} al mes · {pk(r["k"]["perKm"])} €/km · {r["u"]:,} ventas".replace(",", ".")><span class="ibl"><b>{r["cpos"]}.</b> {n(r)}</span><span class="ibt"><i style="width:{r["k"]["month"]/mx*100:.1f}%"></i></span><span class="ibv">{eur(r["k"]["month"])}</span></div>' for r in by_cost)
+    tb = "".join(f'<tr><td class="n">{r["pos"]}</td><td><a href="{curl(r["c"])}">{n(r)}</a><span class="sub">{esc(r["c"]["n"])} · {TYPE[r["c"]["t"]]}</span></td><td class="n hm">{r["u"]:,}</td><td class="n">{eur(r["c"]["p"])}</td><td class="n"><b>{eur(r["k"]["month"])}</b></td><td class="n hm">{pk(r["k"]["perKm"])}</td><td class="n hm">{eur(r["lo"])} a {eur(r["hi"])}</td></tr>'.replace(f'{r["u"]:,}', f'{r["u"]:,}'.replace(",", ".")) for r in rows)
+    _dm = round(dear["k"]["month"]) - round(cheap["k"]["month"])
+    _cn = {"dep": "pierde menos valor", "energy": "gasta menos en " + "energía", "ins": "tiene un seguro más barato", "mnt": "cuesta menos de taller"}
+    _cp = {"dep": "pierde más valor", "energy": "gasta más en " + "energía", "ins": "tiene un seguro más caro", "mnt": "cuesta más de taller"}
+    _av = {x: sum(r["k"][x] for r in rows) / len(rows) for x in _cn}
+    def _why(r, better):
+        ks = sorted(_cn, key=lambda x: (r["k"][x] - _av[x]) * (1 if better else -1))
+        ks = [x for x in ks if (r["k"][x] < _av[x]) == better][:2]
+        w = [(_cn if better else _cp)[x] for x in ks]
+        return " y ".join(w) if w else ""
+    concl = [
+        f'<b>El más barato de tener es el {n(cheap)}</b>: {eur(cheap["k"]["month"])} al mes en su versión de acceso ({esc(cheap["c"]["n"])}), {pk(cheap["k"]["perKm"])} € por kilómetro.',
+        f'<b>El más caro es el {n(dear)}</b>: {eur(dear["k"]["month"])} al mes. Son {eur(_dm)} más cada mes que el {n(cheap)}, unos {eur(_dm * 12 * S["y"])} en {S["y"]} años.',
+        f'<b>Quien compró uno de estos 10 coches paga de media {eur(avg)} al mes</b> sumándolo todo, ponderando por las unidades vendidas de cada modelo.',
+    ]
+    if jump["ppos"] - jump["cpos"] >= 2:
+        concl.append(f'<b>La sorpresa es el {n(jump)}</b>: es el {jump["ppos"]}º más barato de comprar, pero el {jump["cpos"]}º más barato de tener. Frente a la media de los diez, {_why(jump, True)}.')
+    if fall["cpos"] - fall["ppos"] >= 2:
+        concl.append(f'<b>El caso contrario es el {n(fall)}</b>: el {fall["ppos"]}º más barato de comprar, pero baja al {fall["cpos"]}º puesto cuando lo sumas todo: frente a la media de los diez, {_why(fall, False)}.')
+    concl.append(f'Entre los 10 suman {num(tot_u)} matriculaciones, el {f"{share:.1f}".replace(".", ",")} % de los {num(R["total"])} turismos vendidos en {R["mes"]}.')
+    src = " · ".join(f'<a href="{u}" target="_blank" rel="noopener">{esc(t)}</a>' for t, u in R["fuentes"])
+    url = f"/informes/{R['slug']}/"
+    cite = f'Según el informe de Kilómetro Real ({DOMAIN}{url}), el {cheap["m"]} es el más barato de tener entre los 10 coches más vendidos de {R["mes"]}, con {eur(cheap["k"]["month"])} al mes.'
+    faq = [
+        (f"¿Cuál es el coche más vendido en España en {R['mes']}?", f"El {rows[0]['m']}, con {rows[0]['u']:,} matriculaciones según los datos de ANFAC.".replace(",", ".")),
+        (f"¿Cuál de los coches más vendidos es más barato de tener?", f"El {cheap['m']}: {eur(cheap['k']['month'])} al mes en su versión de acceso, sumando compra, pérdida de valor, energía, seguro, taller e impuesto."),
+        ("¿Cómo calculáis el coste real?", f"Con {num(S['km'])} km al año durante {S['y']} años: lo que pierde de valor el coche, el carburante o la electricidad a precio de hoy, un seguro estimado, el mantenimiento y el impuesto de circulación. Todo está explicado en la <a href=\"/metodologia/\">metodología</a>."),
+        ("¿Puedo usar estos datos?", "Sí. Puedes citar cualquier cifra de este informe siempre que enlaces a esta página como fuente."),
+    ]
+    body = f"""{crumbs(("/informes/", "Informes"), (None, R["mes"].capitalize()))}
+<section class="tight"><div class="wrap narrow article">
+ <span class="kicker">Informe mensual · {R["mes"]}</span>
+ <h1>Lo que cuestan de verdad los 10 coches más vendidos de {R["mes"]}</h1>
+ <p class="standfirst">Tomamos las matriculaciones oficiales del mes y calculamos lo que cuesta cada coche al mes cuando sumas todo: compra, pérdida de valor, {("carburante o luz")}, seguro, taller e impuesto.</p>
+ <div class="bigfig" style="margin:22px 0 8px"><div><b>{eur(cheap["k"]["month"])}</b><span>{n(cheap)}, el más barato de tener</span></div><div><b>{eur(dear["k"]["month"])}</b><span>{n(dear)}, el más caro</span></div><div><b>{eur(avg)}</b><span>media ponderada por ventas</span></div></div>
+ <h2 style="margin:30px 0 6px">Coste real al mes, de menos a más</h2>
+ <p class="note" style="margin-bottom:14px">Versión de acceso de cada modelo · {num(S["km"])} km al año durante {S["y"]} años · carburantes a precio del {FUELP["dtxt"]}.</p>
+ <div class="ichart" role="img" aria-label="Coste real al mes de los 10 coches más vendidos de {R["mes"]}, de menos a más. Los datos completos están en la tabla siguiente.">{bars}</div>
+ <h2 style="margin:34px 0 12px">Conclusiones</h2>
+ <ul class="iconcl">{"".join(f"<li>{x}</li>" for x in concl)}</ul>
+ {ad("informe")}
+ <h2 style="margin:34px 0 12px">Los datos completos</h2>
+ <div class="tablewrap"><table class="list fit itable"><thead><tr><th class="n">Ventas</th><th>Modelo</th><th class="n hm">Unidades</th><th class="n">Precio</th><th class="n">Al mes</th><th class="n hm">€/km</th><th class="n hm">Todas sus versiones</th></tr></thead><tbody>{tb}</tbody></table></div>
+ <p class="note" style="margin-top:10px">Puesto y unidades: matriculaciones de turismos en España en {R["mes"]}. Precio de tarifa de la versión de acceso, sin descuentos ni ayudas. "Todas sus versiones" es el rango de coste al mes del modelo en nuestro comparador.</p>
+ <div class="panel icite" style="margin-top:28px"><h3>¿Quieres citar este informe?</h3><p>Puedes usar cualquier dato, gráfico o conclusión enlazando a esta página. Por ejemplo:</p><blockquote id="citetxt">{esc(cite)}</blockquote><button type="button" class="btn" data-copy="#citetxt">Copiar texto</button></div>
+ <h2 style="margin:30px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
+ <div class="sources">Fuentes de las ventas: {src}. Coste real: cálculo propio de Kilómetro Real (<a href="/metodologia/">metodología</a>).</div>
+ <p style="margin-top:22px"><a class="btn primary" href="/mi-coche/">¿Y el tuyo? Calcúlalo</a></p>
+</div></section>"""
+    art = {"@type": "Article", "headline": f"Lo que cuestan de verdad los 10 coches más vendidos de {R['mes']}", "datePublished": R["fecha"], "dateModified": R["fecha"],
+           "author": {"@type": "Organization", "name": SITE, "url": DOMAIN + "/"}, "publisher": {"@type": "Organization", "name": SITE, "logo": {"@type": "ImageObject", "url": DOMAIN + "/icon-512.png"}},
+           "mainEntityOfPage": DOMAIN + url, "image": DOMAIN + "/assets/img/og.png?v=2"}
+    page(url, f"Coste real de los coches más vendidos de {R['mes_corto']} {R['fecha'][:4]}", f"Los 10 coches más vendidos de {R['mes']} y lo que cuestan de verdad al mes: el {cheap['m']} sale a {eur(cheap['k']['month'])} y el {dear['m']} a {eur(dear['k']['month'])}. Datos de ANFAC y cálculo propio.",
+         body, "noticias", ldj(art, faq_ld(faq)))

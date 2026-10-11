@@ -592,3 +592,19 @@ table.list.fit thead th{white-space:normal;line-height:1.25}@media (max-width:62
 .bbanner>span:nth-child(2){display:grid;gap:2px;flex:1;min-width:0}.bbanner .bgo{font-weight:700;white-space:nowrap}
 .bbanner:hover{border-color:var(--ink2)}.bbanner:active{transform:scale(.99)}
 @media (max-width:560px){.bhero .bmark.lg{width:52px;height:52px;font-size:1.2rem}.bbanner .bgo{display:none}}
+.ichart{display:grid;gap:2px;margin:6px 0 4px}
+.ibar{display:grid;grid-template-columns:minmax(0,11.5rem) minmax(0,1fr) 4.6rem;gap:12px;align-items:center;padding:6px 8px;border-radius:10px;outline:none}
+.ibar:hover,.ibar:focus-visible{background:var(--soft)}.ibar:focus-visible{box-shadow:0 0 0 2px var(--accent)}
+.ibl{font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ibl b{color:var(--muted);font-weight:700;margin-right:2px;font-variant-numeric:tabular-nums}
+.ibt{height:14px;display:block}.ibt i{display:block;height:100%;background:var(--accent);border-radius:0 4px 4px 0;transform-origin:left;animation:ibgrow .7s var(--ease-out) both}
+.ibar:first-child .ibt i{background:var(--good)}
+.ibv{font-family:var(--f-data);font-weight:600;text-align:right;font-variant-numeric:tabular-nums;font-size:.95rem}
+@keyframes ibgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.ibt i{animation:none}}
+@media (max-width:560px){.ibar{grid-template-columns:minmax(0,1fr) 4.2rem;gap:4px 10px;padding:6px 4px}.ibl{grid-column:1/-1}.ibt{grid-column:1;grid-row:2}.ibv{grid-row:2}}
+.iconcl{display:grid;gap:10px;padding-left:1.1em}.iconcl li{line-height:1.55}
+.icite blockquote{margin:12px 0 14px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--soft);border-radius:0 10px 10px 0;font-size:.95rem;color:var(--ink2)}
+.rteaser{display:grid;gap:6px;padding:22px 24px;border:1.5px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .15s var(--ease-out),transform .14s var(--ease-out)}
+.rteaser h2{font-size:clamp(1.25rem,2.6vw,1.6rem);text-wrap:balance}.rteaser p{color:var(--ink2)}.rteaser .bgo{font-weight:700;color:var(--accent)}
+.rteaser:hover{border-color:var(--ink2)}.rteaser:active{transform:scale(.995)}
+.itable td:nth-child(2){white-space:normal;min-width:9rem}.itable td:nth-child(2) a{font-weight:700}

@@ -340,3 +340,5 @@ fetch("/assets/data/coches.json").then(r=>{if(!r.ok)throw 0;return r.json()}).th
   initHomeDuel();initMiCoche();initComparador();initCatalogo();initFinder();initCarCalc();initCalcs();initSearch();
 }).catch(()=>{document.body.classList.add("loaded");$$(".needs-js").forEach(e=>e.insertAdjacentHTML("beforeend",`<p class="notice bad">${L.dataErr}</p>`))});
 })();
+/* ---------- copiar texto (informes) ---------- */
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const el=document.querySelector(b.dataset.copy);if(!el)return;const t=el.innerText.trim();const done=()=>{const o=b.textContent;b.textContent="Copiado";setTimeout(()=>b.textContent=o,1600)};if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,()=>{});else{const r=document.createRange();r.selectNodeContents(el);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);try{document.execCommand("copy");done()}catch(x){}}});

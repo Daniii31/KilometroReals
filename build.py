@@ -134,7 +134,7 @@ def page(path, title, desc, body, active="", schema=None, noindex=False, full_ti
     else:
         foot = f"""<div><a class="logo" href="/">{LOGO_F}{SITE}</a><p class="muted" style="margin-top:10px;max-width:34ch">Lo que te cuesta de verdad cada coche, kilómetro a kilómetro. Sin letra pequeña.</p></div>
 <div><h4>Herramientas</h4><a href="/comparador/">Comparador</a><a href="/coches/">Todos los coches</a><a href="/marcas/">Marcas</a><a href="/mejores/">Rankings</a><a href="/cual-me-conviene/">¿Cuál me conviene?</a><a href="/calculadoras/">Calculadoras</a><a href="/mi-coche/">¿Cuánto me cuesta mi coche?</a><a href="/comparar/">Comparativas</a><a href="/precio-gasolina-hoy/">Precio gasolina hoy</a></div>
-<div><h4>Actualidad</h4><a href="/noticias/">Noticias y análisis</a><a href="/electricos-chinos/">Eléctricos chinos</a><a href="/coches-chinos-comprar-sin-miedo/">¿Coche chino? Guía</a><a href="/ayudas/">Ayudas Plan Auto+</a><a href="/guias/">Guías</a>{('<h4 style="margin-top:14px">Síguenos</h4>' + social) if social else ''}</div>
+<div><h4>Actualidad</h4><a href="/noticias/">Noticias y análisis</a><a href="/electricos-chinos/">Eléctricos chinos</a><a href="/coches-chinos-comprar-sin-miedo/">¿Coche chino? Guía</a><a href="/ayudas/">Ayudas Plan Auto+</a><a href="/informes/">Informes mensuales</a><a href="/guias/">Guías</a>{('<h4 style="margin-top:14px">Síguenos</h4>' + social) if social else ''}</div>
 <div><h4>{SITE}</h4><a href="/quienes-somos/">Quiénes somos</a><a href="/metodologia/">Cómo calculamos</a><a href="/contacto/">Contacto</a><a href="/aviso-legal/">Aviso legal</a><a href="/condiciones-de-uso/">Condiciones de uso</a><a href="/privacidad/">Privacidad</a><a href="/cookies/">Cookies</a><a href="/cookies/#gestionar" class="cookie-prefs">Gestionar cookies</a></div>
 <div class="legal">© 2026 {SITE}. Precios de tarifa y consumos orientativos, actualizados en {UPDATED}. Confirma siempre la oferta vigente en el concesionario.</div>"""
     end = ""
@@ -389,6 +389,19 @@ def match_card(a, b):
             f'<span class="save">El {esc(w["n"])} ahorra {eur(d)} en 5 años</span></div></a>')
 
 # ===== páginas =====
+def _rep_teaser():
+    import glob
+    fs = sorted(glob.glob(os.path.join(HERE, "informes", "*.json")))
+    if not fs: return ""
+    R = json.load(open(fs[-1], encoding="utf-8"))
+    acc = [min((BY[x] for x in t["ids"] if x in BY), key=lambda c: c["p"]) for t in R["top"]]
+    first = R["top"][0]["m"]
+    is_cheapest = K[acc[0]["id"]]["month"] <= min(K[c["id"]]["month"] for c in acc)
+    head = f'El más vendido del mes, el {esc(first)}, {"es también" if is_cheapest else "no es"} el más barato de tener'
+
+    return (f'<section class="tight"><div class="wrap"><a class="rteaser" href="/informes/{R["slug"]}/"><span class="kicker">Informe de {R["mes"]}</span>'
+            f'<h2>{head}</h2><p>Los 10 coches que más se han matriculado, ordenados por lo que cuestan de verdad al mes.</p><span class="bgo">Ver el informe →</span></a></div></section>')
+
 def build_home():
     quick = "".join(f'<button type="button" class="chip" data-pair="{a}|{b}">{esc(BY[a]["n"])} vs {esc(BY[b]["n"])}</button>' for a, b in POP_PAIRS[:4])
     cheapest = by_pk(CARS)[:6]; evs = by_pk([c for c in CARS if c["t"] == "ev"])[:6]; suvs = by_pk([c for c in CARS if c["body"].startswith("suv")])[:6]
@@ -416,6 +429,7 @@ def build_home():
  <div class="sec-head"><div><h2>Duelos que sorprenden</h2><p>Con 15.000 km al año durante 5 años. Pulsa cualquiera para cambiar los números a tu medida.</p></div><a href="/comparador/">Abrir comparador →</a></div>
  <div class="cards c3">{"".join(match_card(a, b) for a, b in POP_PAIRS[4:10])}</div>
 </div></section>
+{_rep_teaser()}
 <section class="tight"><div class="wrap"><div class="cta mc-cta"><div><h2>¿Cuánto te cuesta tu coche al mes?</h2><p>Elige el tuyo y te decimos lo que pagas de verdad, y con qué coche parecido ahorrarías.</p></div><a class="btn" href="/mi-coche/">Calcular el mío</a></div></div></section>
 <section class="tight"><div class="wrap">
  <div class="sec-head"><div><h2>Calculadoras</h2><p>Las cuentas que todo conductor se hace alguna vez, resueltas en segundos.</p></div><a href="/calculadoras/">Todas →</a></div>
@@ -939,7 +953,7 @@ def build_static():
     shutil.copy(os.path.join(HERE, "brand", "logo.svg"), os.path.join(OUT, "assets", "img", "logo.svg"))
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /contacto.php\nDisallow: /indexnow.php\n\nSitemap: {DOMAIN}/sitemap.xml\nSitemap: {DOMAIN}/news-sitemap.xml\n")
     shutil.copy(os.path.join(HERE, "htaccess.txt"), os.path.join(OUT, ".htaccess"))
-    urls = ["/", "/comparador/", "/coches/", "/marcas/"] + [f"/marcas/{slugify(b)}/" for b in sorted({c["b"] for c in CARS})] + ["/mejores/", "/cual-me-conviene/", "/calculadoras/"] + [f"/calculadoras/{x[0]}/" for x in CALCS] + [ "/noticias/", "/electricos-chinos/", "/ayudas/", "/coches-chinos-comprar-sin-miedo/", "/guias/", "/quienes-somos/", "/metodologia/", "/contacto/", "/condiciones-de-uso/", "/precio-gasolina-hoy/", "/comparar/", "/mi-coche/"]
+    urls = ["/", "/comparador/", "/coches/", "/marcas/"] + [f"/marcas/{slugify(b)}/" for b in sorted({c["b"] for c in CARS})] + ["/mejores/", "/cual-me-conviene/", "/calculadoras/"] + [f"/calculadoras/{x[0]}/" for x in CALCS] + [ "/noticias/", "/electricos-chinos/", "/ayudas/", "/coches-chinos-comprar-sin-miedo/", "/guias/", "/quienes-somos/", "/metodologia/", "/contacto/", "/condiciones-de-uso/", "/precio-gasolina-hoy/", "/comparar/", "/mi-coche/", "/informes/"] + [f"/informes/{json.load(open(f, encoding='utf-8'))['slug']}/" for f in sorted(__import__("glob").glob(os.path.join(HERE, "informes", "*.json")))]
     urls += [curl(c) for c in CARS] + [f"/comparar/{a}-vs-{b}/" for a, b in __import__("vs_pairs").VS_PAIRS] + [f"/mejores/{r[0]}/" for r in RANKINGS] + [aurl(a) for a in NEWS] + [gurl(g) for g in GUIDES]
     urls += sorted({v for v in ALT.values() if v.startswith("/en/") and v not in ("/en/privacy/", "/en/cookies/")})
     urls = list(dict.fromkeys(urls))
@@ -1044,7 +1058,7 @@ if __name__ == "__main__":
     ensure_covers()
     build_static(); build_home(); build_comparador(); build_catalog()
     for c in CARS: build_car(c)
-    exec(open(os.path.join(HERE, "pages_extra.py"), encoding="utf-8").read(), globals()); build_fuel(); build_vs(); build_micoche()
+    exec(open(os.path.join(HERE, "pages_extra.py"), encoding="utf-8").read(), globals()); build_fuel(); build_vs(); build_micoche(); build_informes()
     build_rankings(); build_finder(); build_calcs(); build_brands(); build_cn_guide(); build_news(); build_guides(); build_chinos(); build_ayudas(); build_legal()
     # redirección de la antigua sección
     page("/novedades-precios/", "Novedades y precios", "Precios de los coches en venta.", '<section><div class="wrap narrow"><h1>Novedades y precios</h1><p style="margin-top:12px">Esta sección ahora está en <a href="/coches/">Todos los coches</a>.</p></div></section>', "", noindex=True)
