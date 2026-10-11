@@ -17,6 +17,12 @@ Web estática de kilometroreal.com: el coste real de tener un coche en España (
 4. Ejecuta `python3 build.py` y comprueba que termina con "OK N páginas".
 5. Haz commit de todo, incluido `dist/`, y push a `main`.
 
+## Informe mensual (los días 1 a 5 de cada mes)
+Cuando ANFAC publique las matriculaciones del mes anterior, crea `informes/AAAA-MM.json` copiando el formato de `informes/2026-09.json`:
+el top 10 de modelos con sus unidades exactas, el total de turismos del mes y al menos una fuente enlazada.
+En `ids` pon las versiones de cada modelo que existan en `models.py` (la más barata de comprar se usa como versión de acceso).
+Si ya existe el archivo de ese mes, no lo dupliques. El build genera la página en `/informes/<slug>/` y el aviso de la portada.
+
 ## Reglas
 - No cambiar las URLs existentes, el código de AdSense (`ca-pub-8706325038832951`) ni `ads.txt`.
 - No inventar cifras: cada número de una noticia sale de una fuente abierta y citada.
