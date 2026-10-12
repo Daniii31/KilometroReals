@@ -237,7 +237,10 @@ def en_car(c):
 <section class="tight"><div class="wrap"><p class="note">Indicative data updated in October 2026: entry list price without discounts or incentives, estimated real consumption and average depreciation. Check the offer with the dealer.</p></div></section>"""
     schema = {"@context": "https://schema.org", "@graph": [{"@type": "Car", "name": c["n"], "brand": {"@type": "Brand", "name": c["b"]}, "bodyType": BODY_EN[c["body"]], "fuelType": FUEL_EN[c["f"]]},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
-    page(curl_en(c), f'{c["n"]}: price and real cost of ownership', f'How much does a {c["n"]} really cost? {e_en(k["month"])} a month and {pk_en(k["perKm"])} per km including depreciation, energy, insurance, servicing and tax.', body, "coches", schema, lang="en")
+    _w = "real-world range" if c["t"] == "ev" else "real fuel economy"
+    _cands = [f'{c["n"]}: price, {_w} and monthly cost', f'{c["n"]}: price and real monthly cost', f'{c["n"]}: price and real cost']
+    _t = next((x for x in _cands if len(x) <= 60), _cands[-1])
+    page(curl_en(c), _t, f'{c["n"]} price from {e_en(c["p"])}: it really costs {e_en(k["month"])} a month ({pk_en(k["perKm"])} per km) with depreciation, {"electricity" if c["t"] == "ev" else "fuel"}, insurance, servicing and tax.', body, "coches", schema, lang="en", full_title=_t if len(_t) > 48 else None)
 
 def en_rankings():
     cards = "".join(f'<a class="card" href="/en/rankings/{v[0]}/"><span class="kicker">Ranking</span><h3>{v[1]}</h3><p>{v[2]}</p></a>' for v in RANK_EN.values())
