@@ -242,7 +242,11 @@ function initCalcs(){
   if(fn){const run=()=>{if(!guard(fn))return;const P=Math.max(0,val("f-p")-val("f-e")),n=+$("#f-m").value,i=val("f-tin")/100/12,com=P*val("f-com")/100;
       const q=i?P*i/(1-Math.pow(1+i,-n)):P/n;let r=i||.005;for(let k=0;k<60;k++){let f=-(P-com),d=0;for(let t=1;t<=n;t++){f+=q/Math.pow(1+r,t);d-=t*q/Math.pow(1+r,t+1)}r-=f/d}
       const tae=(Math.pow(1+r,12)-1)*100,total=q*n+com+val("f-e");
-      $("#f-res").innerHTML=out([[e2(q),L.monthly,1],[eur(total),L.totalPaid],[eur(q*n-P+com),L.interest],[dec(tae,2)+" %",L.apr]],L.finSay(eur(P),n,eur(val("f-p")),eur(total-val("f-p"))))};
+      const cs=$("#f-cur"),sym=cs?cs.value:"€",M=v=>EN?sym+num(v):num(v)+" "+sym,M2=v=>EN?sym+dec(v,2):dec(v,2)+" "+sym;
+      let bal=P,rows="",yi=0,yp=0;for(let t=1;t<=n;t++){const it=bal*i;bal=Math.max(0,bal-(q-it));yi+=it;yp+=q-it;if(t%12===0||t===n){rows+=`<tr><td>${Math.ceil(t/12)}</td><td class="n">${M(yp)}</td><td class="n">${M(yi)}</td><td class="n">${M(bal)}</td></tr>`;yi=0;yp=0}}
+      const th=EN?["Year","Principal paid","Interest paid","Balance left"]:["Año","Capital pagado","Intereses","Te queda por pagar"];
+      $("#f-res").innerHTML=out([[M2(q),L.monthly,1],[M(total),L.totalPaid],[M(q*n-P+com),L.interest],[dec(tae,2)+" %",L.apr]],L.finSay(M(P),n,M(val("f-p")),M(total-val("f-p"))))
+        +`<h3 class="amh">${EN?"Year-by-year breakdown":"Cómo se amortiza año a año"}</h3><div class="tablewrap"><table class="list fit amort"><thead><tr>${th.map((x,j)=>`<th${j?' class="n"':""}>${x}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`};
     fn.addEventListener("input",run);fn.addEventListener("change",run);run()}
   const et=$("#calc-eti");
   if(et){const run=()=>{if(!guard(et))return;const t=$("#e-t").value,y=val("e-y"),T=L.lab;let l,txt;

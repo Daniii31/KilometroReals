@@ -616,3 +616,4 @@ figure.cphoto.hero img{aspect-ratio:16/10;border-radius:14px;height:auto}
 figure.cphoto.hero figcaption{font-size:.72rem;color:var(--muted);margin-top:6px;line-height:1.35}
 figure.cphoto.hero figcaption a{color:inherit}
 ul.credits{display:grid;gap:12px;padding-left:1.1em;margin-top:16px}ul.credits .muted{font-size:.85rem}
+.amh{margin:22px 0 10px;font-size:1.05rem}.amort td:first-child{white-space:nowrap}

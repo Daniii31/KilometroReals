@@ -642,7 +642,8 @@ def build_car(c):
     crumbld = {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": DOMAIN + "/"}, {"@type": "ListItem", "position": 2, "name": "Coches", "item": DOMAIN + "/coches/"}, {"@type": "ListItem", "position": 3, "name": c["n"], "item": DOMAIN + curl(c)}]}
     schema.pop("@context"); schema = {"@context": "https://schema.org", "@graph": [schema, faqld, crumbld]}
     _en = "luz" if c["t"] == "ev" else ("GLP" if c["f"] == "glp" else "gasolina" if c["f"] == "g" else "gasóleo")
-    _cands = [f'{c["n"]}: precio, consumo real y coste al mes (2026)', f'{c["n"]}: precio, consumo real y coste al mes', f'{c["n"]}: precio y coste real al mes', f'{c["n"]}: precio y coste real']
+    _w = "autonomía real" if c["t"] == "ev" else "consumo real"
+    _cands = [f'{c["n"]}: precio, {_w} y coste al mes (2026)', f'{c["n"]}: precio, {_w} y coste al mes', f'{c["n"]}: precio y coste real al mes', f'{c["n"]}: precio y coste real']
     _t = next((x for x in _cands if len(x) <= 60), _cands[-1])
     page(curl(c), _t, f'{c["n"]} desde {eur(c["p"])}: te cuesta de verdad {eur(k["month"])} al mes ({pk(k["perKm"])} €/km) sumando compra, {_en}, seguro, taller e impuesto. {"Autonomía real" if c["t"] == "ev" else "Consumo real"} y rivales.', body, "coches", schema, full_title=_t if len(_t) > 48 else None)
 

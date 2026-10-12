@@ -287,9 +287,14 @@ CALCS_EN = {
  "coste-carga-electrico": ("Electric car charging cost calculator", "How much it costs to charge your electric car at home, on a night tariff or at a rapid charger.",
    [("c-car", "Your car (optional)"), ("c-bat", "Usable battery (kWh)"), ("c-from", "Charge from (%)"), ("c-to", "To (%)"), ("c-where", "Where you charge"), ("c-p", "Exact price (€/kWh)"), ("c-cons", "Consumption (kWh/100 km)")],
    "<h2>How it works</h2><p>We work out the energy going into the battery, add around 10% charging losses and multiply by the price per kWh. With your car's consumption we estimate the range you gain.</p>"),
- "cuota-financiacion-coche": ("Car finance calculator", "Your monthly payment, total interest and approximate APR for a car loan.",
-   [("f-p", "Car price (€)"), ("f-e", "Deposit (€)"), ("f-tin", "Interest rate (%)"), ("f-m", "Term"), ("f-com", "Arrangement fee (%)")],
-   "<h2>Look at the APR, not just the payment</h2><p>The APR includes interest and fees, so it's the figure to compare loans with. A low payment over many months can end up much more expensive overall.</p>"),
+ "cuota-financiacion-coche": ("Car loan calculator: monthly payment, interest and APR", "Free car finance calculator: work out your monthly payment, total interest, APR and a year-by-year breakdown in euros, pounds or dollars.",
+   [("f-p", "Car price"), ("f-e", "Deposit"), ("f-tin", "Interest rate (%)"), ("f-m", "Term"), ("f-com", "Arrangement fee (%)")],
+   """<h2>How to use this car loan calculator</h2><p>Enter the price of the car, the deposit you'll put down, the interest rate the lender offers, the length of the loan and any arrangement fee. You'll instantly see your monthly payment, the total you'll pay, how much of it is interest and the approximate APR, plus how the balance goes down each year.</p>
+<h2>A worked example</h2><p>Borrowing 20,000 at a 7.9% interest rate over 60 months gives a monthly payment of about 404.57. Over the five years you pay 24,274.28 in total, so the loan costs you 4,274.28 in interest. Stretch the same loan to 84 months and the payment drops, but the interest goes up a lot.</p>
+<h2>The formula</h2><p>The monthly payment of a standard (amortising) car loan is <strong>P × r ÷ (1 − (1 + r)<sup>−n</sup>)</strong>, where P is the amount borrowed, r is the monthly interest rate (the annual rate divided by 12) and n is the number of monthly payments. Early payments are mostly interest; later ones are mostly capital.</p>
+<h2>Look at the APR, not just the payment</h2><p>The APR includes interest and fees, so it's the figure to compare loans with. A low payment over many months can end up much more expensive overall. Dealer finance often looks cheap because of the advertised payment, so always compare the total amount payable.</p>
+<h2>How to pay less interest</h2><ul><li>Put down a bigger deposit.</li><li>Choose the shortest term you can comfortably afford.</li><li>Compare the APR from your bank with the dealer's offer.</li><li>Check whether there's a fee for paying the loan off early.</li></ul>
+<p>Want to know what the car itself will cost you, beyond the loan? See the <a href="/en/compare/">real cost comparison</a>.</p>"""),
  "etiqueta-dgt": ("Which DGT label does my car have?", "Find your car's environmental label from its fuel type and registration year.",
    [("e-t", "Type of car"), ("e-y", "Year of registration")],
    "<h2>How the label is decided</h2><p>The DGT assigns the label based on the car's emissions standard (Euro), which in practice depends on the fuel and the registration date. This is approximate: check your plate on the DGT website.</p>"),
@@ -297,16 +302,22 @@ CALCS_EN = {
    [("a-ev", "Electric car"), ("a-ice", "Compared with"), ("a-y", "Years you'll keep it"), ("a-h", "Share of home charging (%)")],
    "<h2>How it works</h2><p>We compare the total cost of both cars for each annual mileage and find the point where the electric one becomes cheaper. It doesn't include incentives such as Plan Auto+, which would bring that point forward.</p>"),
 }
+FAQ_EN_CALC = {"cuota-financiacion-coche": [
+  ("How is a car loan monthly payment calculated?", "With the standard amortisation formula: amount borrowed × monthly rate ÷ (1 − (1 + monthly rate) to the power of minus the number of payments). The calculator does it for you and adds any arrangement fee."),
+  ("What's the difference between the interest rate and the APR?", "The interest rate is the price of the money alone. The APR adds fees such as the arrangement fee and shows the real yearly cost of the loan, so it's the number to compare offers with."),
+  ("Is a longer car loan better?", "A longer term lowers the monthly payment but increases the total interest you pay. If you can afford it, a shorter term is almost always cheaper overall."),
+  ("Can I use it in pounds or dollars?", "Yes. Choose the currency at the top: the maths is the same for any currency.")]}
 OPT_EN = {"v-u": [("Litres", "Litros"), ("kWh", "kWh")], "e-t": [("Petrol", "Gasolina"), ("Diesel", "Diésel"), ("Non plug-in hybrid", "Híbrido no enchufable"), ("LPG or natural gas", "GLP o gas natural"),
           ("Plug-in hybrid under 40 km electric", "Híbrido enchufable de menos de 40 km eléctricos"), ("Plug-in hybrid 40 km electric or more", "Híbrido enchufable de 40 km eléctricos o más"), ("Electric", "Eléctrico")]}
 
 def en_calcs():
     import re as _re
-    cards = "".join(f'<a class="card calc-card" href="/en/calculators/{CALC_EN[s]}/"><span class="badge">{b}</span><h3>{CALCS_EN[s][0]}</h3><p>{CALCS_EN[s][1]}</p></a>' for s, t, b, d, *_ in CALCS)
+    cards = "".join(f'<a class="card calc-card" href="/en/calculators/{CALC_EN[s]}/"><span class="badge">{ {"TIN": "APR"}.get(b, b)}</span><h3>{CALCS_EN[s][0]}</h3><p>{CALCS_EN[s][1]}</p></a>' for s, t, b, d, *_ in CALCS)
     page("/en/calculators/", "Calculators for drivers", "Free calculators: trip fuel cost, EV charging cost, car finance, DGT label and whether an electric car is worth it.",
          f'{crumbs_en((None, "Calculators"))}<section class="tight"><div class="wrap"><h1>Calculators</h1><p class="muted" style="margin:10px 0 24px;max-width:62ch">Quick answers to the sums every driver does at some point.</p><div class="cards">{cards}</div></div></section>', "calc", lang="en")
     for s, t, b, d, form, text, faq in CALCS:
         te, de, labels, txt = CALCS_EN[s]
+        b = {"TIN": "APR"}.get(b, b)
         f = form
         for fid, lab in labels:
             f = _re.sub(rf'(<label class="lbl" for="{fid}">)[^<]*(</label>)', rf'\g<1>{lab}\g<2>', f)
@@ -315,6 +326,8 @@ def en_calcs():
         f = (f.replace("En casa, tarifa normal (0,15 €/kWh)", "Home, standard tariff (€0.15/kWh)").replace("En casa, tarifa nocturna (0,10 €/kWh)", "Home, night tariff (€0.10/kWh)")
               .replace("Cargador público lento (0,35 €/kWh)", "Public slow charger (€0.35/kWh)").replace("Cargador rápido (0,49 €/kWh)", "Rapid charger (€0.49/kWh)").replace("Ultrarrápido (0,59 €/kWh)", "Ultra-rapid (€0.59/kWh)"))
         f = _re.sub(r">(\d+) meses<", r">\1 months<", f)
+        if s == "cuota-financiacion-coche":
+            f = f.replace('<div class="cgrid">', '<div class="cgrid"><div><label class="lbl" for="f-cur">Currency</label><select id="f-cur"><option value="€">Euro (€)</option><option value="£">Pound (£)</option><option value="$">Dollar ($)</option></select></div>', 1)
         others = "".join(f'<a class="chip" href="/en/calculators/{CALC_EN[s2]}/">{CALCS_EN[s2][0]}</a>' for s2, *_ in CALCS if s2 != s)
         body = f"""{crumbs_en(("/en/calculators/", "Calculators"), (None, te))}
 <section class="tight"><div class="wrap narrow">
@@ -324,7 +337,12 @@ def en_calcs():
  <div style="margin-top:18px">{sharebuttons(f"/en/calculators/{CALC_EN[s]}/", te, True)}</div>
  <h2 style="margin:30px 0 12px;font-size:1.3rem">Other calculators</h2><div class="chips">{others}</div>
 </div></section>"""
-        page(f"/en/calculators/{CALC_EN[s]}/", te, de, body, "calc", {"@context": "https://schema.org", "@type": "WebApplication", "name": te, "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}, lang="en")
+        _app = {"@type": "WebApplication", "name": te, "applicationCategory": "FinanceApplication" if s == "cuota-financiacion-coche" else "UtilitiesApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}
+        _faq = FAQ_EN_CALC.get(s)
+        if _faq:
+            body = body.replace('<h2 style="margin:30px 0 12px;font-size:1.3rem">Other calculators</h2>', '<h2 style="margin:30px 0 12px;font-size:1.3rem">Frequently asked questions</h2>' + '<div class="faq">' + "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in _faq) + '</div><h2 style="margin:30px 0 12px;font-size:1.3rem">Other calculators</h2>', 1)
+        sch = {"@context": "https://schema.org", "@graph": [_app] + ([{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in _faq]}] if _faq else [])}
+        page(f"/en/calculators/{CALC_EN[s]}/", te, de, body, "calc", sch, lang="en")
 
 def en_static_pages():
     def simple(path, title, desc, inner, noindex=False, endcta=True):
