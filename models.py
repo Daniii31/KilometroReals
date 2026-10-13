@@ -112,6 +112,7 @@ M = [
 ("Dacia","Duster Hybrid","hev","g","suv-p",25900,5.3,0,0,140,430),
 ("Dacia","Jogger Hybrid","hev","g","monovolumen",25900,5.2,0,0,140,708),
 ("Dacia","Bigster Hybrid","hev","g","suv-m",30900,5.5,0,0,155,612),
+("Dacia","Striker Hybrid 155","hev","g","suv-m",26820,5.4,0,0,155,600),
 ("Kia","Niro HEV","hev","g","suv-p",31900,4.6,0,0,141,451),
 ("Kia","Sportage HEV","hev","g","suv-m",36900,6.0,0,0,239,591),
 ("Hyundai","Kona Híbrido","hev","g","suv-p",31900,4.9,0,0,141,466),

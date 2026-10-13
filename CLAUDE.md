@@ -6,16 +6,25 @@ Web estática de kilometroreal.com: el coste real de tener un coche en España (
 - `build.py`: generador. `python3 build.py` crea la web completa en `dist/`.
 - `models.py`: datos de los coches. `fuel.py`: precios medios de los carburantes de hoy.
 - `content.py`: noticias y guías antiguas. **Las noticias nuevas van en `noticias/AAAA-MM-DD-slug.json`** (formato en `noticias/LEEME.md`).
-- `pages_extra.py`: página de precio de la gasolina y comparativas A vs B (`vs_pairs.py`).
+- `guias/<slug>.json`: guías nuevas y duraderas (formato en `guias/LEEME.md`). Salen en `/guias/<slug>/` con FAQ y portada automática.
+- `pages_extra.py`: página de precio de la gasolina, histórico mensual y comparativas A vs B (`vs_pairs.py`).
+- `fuel_history.json`: un registro por día de los precios. **El build lo actualiza solo** con el día de `fuel.py`: no lo edites a mano. Genera el gráfico de `/precio-gasolina-hoy/` y una página por mes (`/precio-gasolina-hoy/octubre-2026/`).
 - `covers.mjs`: genera la portada de diseño de las noticias sin foto (necesita Playwright; si no está, se omite).
 - `dist/`: la web generada. **El servidor publica `dist/` automáticamente** desde la rama `main` cada 10 minutos (cron de cPanel).
 
 ## Rutina diaria de noticias
 1. Busca las noticias del motor en España del día, con fuentes fiables: matriculaciones (ANFAC), DGT, ayudas, precios, lanzamientos y marcas chinas.
-2. Escribe 2 o 3 noticias **propias**: redactadas desde cero, en español claro, con datos y fuente enlazada. Nada copiado. Cada noticia enlaza a fichas de `/coches/…`, rankings `/mejores/…` o calculadoras.
-3. Actualiza `fuel.py` con el precio medio de hoy (gasolina 95, 98, diésel, diésel premium y GLP). Fuente: dieselogasolina.com o el Geoportal del Ministerio. Mueve los valores anteriores a `prev`.
+2. Escribe **4 noticias propias**: redactadas desde cero, en español claro, con datos y fuente enlazada. Nada copiado. Cada noticia enlaza a fichas de `/coches/…`, rankings `/mejores/…` o calculadoras. Una de ellas es siempre la del precio de la gasolina de hoy (slug `precio-gasolina-hoy-D-mes-AAAA`). Si un día no hay 3 noticias más de las últimas 24 horas, completa con noticias de los últimos 3 días que aún no estén publicadas (comprueba `noticias/`), nunca con cifras inventadas.
+   Si una noticia presenta un coche nuevo con precio en España que no está en `models.py`, añádelo (precio de tarifa de la versión principal; consumo real estimado a partir de un modelo hermano con el mismo motor).
+3. Actualiza `fuel.py` con el precio medio de hoy (gasolina 95, 98, diésel, diésel premium y GLP). Fuentes por orden: dieselogasolina.com, repostaje.es/precios-miteco, gasolineras.facua.org, fuelobserver.es (todas con datos del Ministerio). Si una no abre, usa la siguiente y cámbiala en `src`. Mueve los valores anteriores a `prev`.
 4. Ejecuta `python3 build.py` y comprueba que termina con "OK N páginas".
 5. Haz commit de todo, incluido `dist/`, y push a `main`.
+
+## Rutina semanal de crecimiento (lunes)
+1. **6 comparativas nuevas** al final de `vs_pairs.py` (una línea `VS_PAIRS += [...]` con la fecha): cruces que la gente busca ("X o Y", rivales directos del mismo segmento y precio). Solo ids que existan en `models.py` y que no estén ya en la lista.
+2. **1 guía nueva** en `guias/`: una pregunta muy buscada sobre el coste de tener coche que aún no tengamos (mira `content.py` GUIDES y `guias/`). Las cifras salen del propio cálculo (`build.K`) o de fuentes citadas en `src`. Con 3 o 4 preguntas en `faq`.
+3. **Precios al día**: comprueba en fuentes abiertas el precio de 5 modelos muy vendidos de `models.py` y corrígelo si ha cambiado. Añade los lanzamientos de la semana con precio confirmado.
+4. Build, commit y push como en la rutina diaria.
 
 ## Informe mensual (los días 1 a 5 de cada mes)
 Cuando ANFAC publique las matriculaciones del mes anterior, crea `informes/AAAA-MM.json` copiando el formato de `informes/2026-09.json`:

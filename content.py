@@ -261,3 +261,14 @@ for _f in sorted(_glob.glob(_os.path.join(NOTICIAS_DIR, "*.json"))):
     _d.setdefault("min", max(2, round(len(_d["body"].split()) / 200)))
     _d["src"] = [tuple(x) for x in _d.get("src", [])]
     ARTICLES.append(_d)
+
+# ---------- guías nuevas: un archivo JSON por guía en /guias (la rutina semanal las añade) ----------
+GUIAS_DIR = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "guias")
+_new_g = []
+for _f in sorted(_glob.glob(_os.path.join(GUIAS_DIR, "*.json"))):
+    _d = _json.load(open(_f, encoding="utf-8"))
+    if any(g["slug"] == _d["slug"] for g in GUIDES): continue
+    _d.setdefault("img", "portada-g-" + _d["slug"][:58])
+    _d["src"] = [tuple(x) for x in _d.get("src", [])]
+    _new_g.append(_d)
+GUIDES[:0] = sorted(_new_g, key=lambda g: g.get("date", ""), reverse=True)

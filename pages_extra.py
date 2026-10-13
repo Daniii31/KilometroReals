@@ -6,9 +6,106 @@ def faq_ld(faq): return {"@type": "FAQPage", "mainEntity": [{"@type": "Question"
 def faq_box(faq): return '<div class="faq">' + "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in faq) + "</div>"
 def fprice(v): return f"{v:.3f}".replace(".", ",") + " €"
 
+# ---------------- HISTÓRICO DE CARBURANTES ----------------
+# fuel_history.json guarda un registro por día. El build añade (o corrige) solo el día de fuel.py,
+# así la serie crece cada mañana sin pasos extra.
+MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+FUEL_MONTH_URLS = []
+def load_fuel_hist():
+    fp = os.path.join(HERE, "fuel_history.json")
+    try: H = json.load(open(fp, encoding="utf-8"))
+    except Exception: H = []
+    d = {h["date"]: h for h in H}
+    d[FUELP["date"]] = {"date": FUELP["date"], **{k: FUELP[k] for k in ("g95", "g98", "die", "die_plus", "glp")}}
+    H = [d[k] for k in sorted(d)]
+    with open(fp, "w", encoding="utf-8") as f: json.dump(H, f, indent=1)
+    return H
+
+def mslug(ym): return f"{MESES[int(ym[5:7]) - 1]}-{ym[:4]}"
+def mname(ym): return f"{MESES[int(ym[5:7]) - 1]} de {ym[:4]}"
+def ddmm(d): return f"{int(d[8:10])}/{int(d[5:7])}"
+
+def fuel_chart(H, title):
+    """Gráfico SVG de gasolina 95 y diésel. Sin JS: tooltip nativo por punto y tabla aparte."""
+    H = [h for h in H if "g95" in h and "die" in h][-90:]
+    if len(H) < 2: return ""
+    W, Ht, L, R, T, B = 480, 230, 44, 104, 14, 30
+    vals = [h[k] for h in H for k in ("g95", "die")]
+    lo, hi = min(vals), max(vals)
+    pad = max(0.01, (hi - lo) * 0.15); lo -= pad; hi += pad
+    import datetime as _dt
+    _d = [_dt.date.fromisoformat(h["date"]) for h in H]; span = max(1, (_d[-1] - _d[0]).days)
+    x = lambda i: L + (W - L - R) * (_d[i] - _d[0]).days / span
+    y = lambda v: T + (Ht - T - B) * (hi - v) / (hi - lo)
+    grid = ""
+    for j in range(4):
+        v = lo + (hi - lo) * j / 3
+        vt = f"{v:.2f}".replace(".", ",")
+        grid += f'<line x1="{L}" x2="{W-R}" y1="{y(v):.1f}" y2="{y(v):.1f}" class="fc-grid"/><text x="{L-6}" y="{y(v)+4:.1f}" class="fc-ax" text-anchor="end">{vt}</text>'
+    step = max(1, -(-len(H) // 5))
+    ticks, lastx = [], -999
+    for i in list(range(0, len(H) - 1, step)) + [len(H) - 1]:
+        if x(i) - lastx >= 52 or i == len(H) - 1:
+            if ticks and x(i) - lastx < 52: ticks.pop()
+            ticks.append(i); lastx = x(i)
+    xt = "".join(f'<text x="{x(i):.1f}" y="{Ht-8}" class="fc-ax" text-anchor="middle">{ddmm(H[i]["date"])}</text>' for i in ticks)
+    series = ""
+    for k, cls, name, short in (("g95", "fc-a", "Gasolina 95", "G95"), ("die", "fc-b", "Diésel", "Diésel")):
+        pts = " ".join(f"{x(i):.1f},{y(h[k]):.1f}" for i, h in enumerate(H))
+        last = H[-1][k]
+        series += f'<polyline points="{pts}" class="fc-line {cls}"/>'
+        series += "".join(f'<g class="fc-pt"><circle cx="{x(i):.1f}" cy="{y(h[k]):.1f}" r="9" class="fc-hit"/><circle cx="{x(i):.1f}" cy="{y(h[k]):.1f}" r="4" class="fc-dot {cls}"/><title>{name}, {ddmm(h["date"])}: {fprice(h[k])}</title></g>' for i, h in enumerate(H))
+        series += f'<text x="{W-R+8}" y="{y(last)+4:.1f}" class="fc-lbl">{short} {fprice(last).replace(" €", "")}</text>'
+    legend = '<div class="fc-leg"><span><i class="fc-a"></i>Gasolina 95</span><span><i class="fc-b"></i>Diésel</span><span class="muted">€ por litro, media en España</span></div>'
+    return (f'<figure class="fchart">{legend}<svg viewBox="0 0 {W} {Ht}" role="img" aria-label="{esc(title)}">{grid}{xt}{series}</svg>'
+            f'<figcaption class="note">Pasa el dedo o el ratón por los puntos para ver el precio de cada día. Debajo tienes la tabla con todos los datos.</figcaption></figure>')
+
+def fuel_table(H):
+    rows = "".join(f'<tr><td>{ddmm(h["date"])}/{h["date"][:4]}</td>' + "".join(f'<td class="n">{fprice(h[k]) if k in h else "–"}</td>' for k in ("g95", "g98", "die", "die_plus", "glp")) + "</tr>" for h in reversed(H))
+    return f'<div class="tablewrap"><table class="list fit"><thead><tr><th>Día</th><th class="n">Gasolina 95</th><th class="n">Gasolina 98</th><th class="n">Diésel</th><th class="n">Diésel premium</th><th class="n">GLP</th></tr></thead><tbody>{rows}</tbody></table></div>'
+
+FCSS = ('<style>.fchart{margin:8px 0 0}.fchart svg{width:100%;max-width:560px;height:auto;display:block;overflow:visible}'
+        '.fc-grid{stroke:var(--line);stroke-width:1}.fc-ax{font:13px var(--f-data);fill:var(--muted)}.fc-lbl{font:600 14px var(--f-data);fill:var(--ink2)}'
+        '.fc-line{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.fc-a{stroke:#1846c7;background:#1846c7}.fc-b{stroke:#c2570c;background:#c2570c}'
+        '.fc-dot{fill:var(--surface);stroke-width:2}.fc-hit{fill:transparent}.fc-pt:hover .fc-dot{r:6}'
+        '.fc-leg{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem;margin-bottom:6px;color:var(--ink2)}.fc-leg i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}'
+        ':root[data-theme="dark"] .fc-a{stroke:#5f8cf5;background:#5f8cf5}:root[data-theme="dark"] .fc-b{stroke:#d26f22;background:#d26f22}'
+        '@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fc-a{stroke:#5f8cf5;background:#5f8cf5}:root:not([data-theme="light"]) .fc-b{stroke:#d26f22;background:#d26f22}}</style>')
+
+def build_fuel_months(H):
+    months = sorted({h["date"][:7] for h in H})
+    for ym in months:
+        M = [h for h in H if h["date"].startswith(ym)]
+        g = [h["g95"] for h in M]; d = [h["die"] for h in M if "die" in h]
+        avg = lambda xs: sum(xs) / len(xs)
+        lo_g = min(M, key=lambda h: h["g95"]); hi_g = max(M, key=lambda h: h["g95"])
+        path = f"/precio-gasolina-hoy/{mslug(ym)}/"
+        FUEL_MONTH_URLS.append(path)
+        i = months.index(ym)
+        nav = " · ".join(([f'<a href="/precio-gasolina-hoy/{mslug(months[i-1])}/">← {mname(months[i-1])}</a>'] if i else []) + ([f'<a href="/precio-gasolina-hoy/{mslug(months[i+1])}/">{mname(months[i+1])} →</a>'] if i + 1 < len(months) else []))
+        faq = [(f"¿Cuánto costó de media la gasolina en {mname(ym)}?", f"La gasolina 95 costó de media {fprice(avg(g))} el litro en los {len(M)} días con datos, y el diésel {fprice(avg(d))}."),
+               (f"¿Qué día fue más barata la gasolina en {mname(ym)}?", f'El {ddmm(lo_g["date"])}, con {fprice(lo_g["g95"])} el litro de gasolina 95. El día más caro fue el {ddmm(hi_g["date"])}, con {fprice(hi_g["g95"])}.')]
+        body = f"""{crumbs(("/precio-gasolina-hoy/", "Precio de la gasolina hoy"), (None, mname(ym).capitalize()))}{FCSS}
+<section class="tight"><div class="wrap narrow">
+ <h1>Precio de la gasolina en {mname(ym)}</h1>
+ <p class="lead" style="margin-top:12px">En {mname(ym)}, la gasolina 95 costó de media <b>{fprice(avg(g))}</b> el litro y el diésel <b>{fprice(avg(d))}</b>. El día más barato para la gasolina fue el {ddmm(lo_g["date"])} ({fprice(lo_g["g95"])}) y el más caro, el {ddmm(hi_g["date"])} ({fprice(hi_g["g95"])}).</p>
+ {fuel_chart(M, f"Precio de la gasolina 95 y el diésel en {mname(ym)}")}
+</div></section>
+<section class="tight"><div class="wrap narrow">
+ <div class="sec-head"><div><h2>Precio día a día</h2><p>Media de España en euros por litro. {len(M)} días con datos.</p></div><a href="/precio-gasolina-hoy/">Precio de hoy →</a></div>
+ {fuel_table(M)}
+ <p class="muted" style="margin-top:12px">{nav}</p>
+ <h2 style="margin:28px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
+ <p class="note" style="margin-top:16px">Datos del Ministerio para la Transición Ecológica, recogidos cada mañana por Kilómetro Real. Cuánto gasta tu coche con estos precios: <a href="/calculadoras/coste-viaje-gasolina/">calculadora de coste de un viaje</a> y <a href="/mejores/coches-que-menos-gastan/">coches que menos gastan</a>.</p>
+</div></section>"""
+        page(path, f"Precio de la gasolina en {mname(ym)}", f"Precio medio de la gasolina 95 ({fprice(avg(g))}) y el diésel ({fprice(avg(d))}) en {mname(ym)}, día a día, con el día más barato y el más caro.", body, "", ldj(faq_ld(faq)))
+    return months
+
 # ---------------- PRECIO DE LA GASOLINA HOY ----------------
 def build_fuel():
     F = FUELP
+    H = load_fuel_hist()
+    months = build_fuel_months(H)
     def delta(now, before):
         d = now - before
         if abs(d) < 0.0005: return '<span class="muted">igual que hace unos días</span>'
@@ -42,6 +139,11 @@ def build_fuel():
  <p class="lead" style="margin-top:12px">A {F["dtxt"]}, la gasolina 95 cuesta de media <b>{fprice(F["g95"])}</b> el litro y el diésel <b>{fprice(F["die"])}</b> en España.</p>
  <div class="fuelgrid">{tiles_h}</div>
  <p class="note" style="margin-top:10px">Precios medios de venta al público en la Península y Baleares. Fuente: {src}.</p>
+</div></section>
+<section class="tight"><div class="wrap narrow">{FCSS}
+ <div class="sec-head"><div><h2>Evolución del precio</h2><p>Gasolina 95 y diésel, día a día. Lo actualizamos cada mañana.</p></div></div>
+ {fuel_chart(H, "Evolución del precio de la gasolina 95 y el diésel")}
+ <p class="muted" style="margin-top:10px">Histórico por meses: {" · ".join(f'<a href="/precio-gasolina-hoy/{mslug(m)}/">{mname(m)}</a>' for m in reversed(months))}</p>
 </div></section>
 <section class="tight"><div class="wrap narrow">
  <div class="sec-head"><div><h2>Cuánto cuesta llenar el depósito</h2><p>Con los precios medios de hoy.</p></div></div>

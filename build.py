@@ -328,6 +328,9 @@ def ensure_covers():
         figl = a.get("figl") or FIGS.get(a["slug"], (None, None))[1]
         if a.get("fig") and not a.get("figl") and FIGS.get(a["slug"], (None,))[0] != a.get("fig"): figl = figl if a["slug"] in FIGS else ""
         todo.append({"name": name, "kicker": KINDS[kmain(a)], "kind": kmain(a), "title": a["t"], "fig": fig, "figl": figl})
+    for g in GUIDES:
+        if g.get("date") and not has_img(g["img"]):
+            todo.append({"name": g["img"], "kicker": "Guía", "kind": "guia", "title": g["t"], "fig": g.get("fig"), "figl": g.get("figl")})
     if not todo: return
     import subprocess, tempfile
     from PIL import Image
@@ -713,16 +716,21 @@ def build_guides():
          f'{crumbs((None, "Guías"))}<section class="tight"><div class="wrap"><h1>Guías</h1><p class="muted" style="margin:10px 0 24px">Respuestas claras antes de cambiar de coche.</p><div class="newslist">{"".join(guide_card(g) for g in GUIDES)}</div>{ad("guias")}</div></section>', "guias")
     for g in GUIDES:
         others = [x for x in GUIDES if x is not g][:3]
+        gfaq = g.get("faq") or []
+        gfaq_h = ('<h2 style="margin:32px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2><div class="faq">' + "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in gfaq) + "</div>") if gfaq else ""
+        gsrc = ('<p class="note" style="margin-top:16px">Fuentes: ' + " · ".join(f'<a href="{u}" rel="nofollow noopener" target="_blank">{esc(n)}</a>' for n, u in g["src"]) + "</p>") if g.get("src") else ""
+        gld = {"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": g["t"], "description": g["st"], "dateModified": g.get("date", "2026-10-09"), "inLanguage": "es-ES", "author": org(), "publisher": org()}]
+                + ([{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub("<[^>]+>", "", a)}} for q, a in gfaq]}] if gfaq else [])}
         body = f"""{crumbs(("/guias/", "Guías"), (None, g["t"]))}
 <section class="tight"><div class="wrap narrow article">
  <span class="kicker">Guía</span><h1>{g["t"]}</h1><p class="standfirst">{g["st"]}</p>
- <div class="byline"><strong>Redacción {SITE}</strong><span>Actualizada en {UPDATED}</span></div>
+ <div class="byline"><strong>Redacción {SITE}</strong><span>Actualizada en {(str(int(g["date"][8:10])) + " " + ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][int(g["date"][5:7])-1] + " " + g["date"][:4]) if g.get("date") else UPDATED}</span></div>
  {img_tag(g["img"], g["t"], True)}
- <div class="body" style="margin-top:20px">{autolink(g["body"])}</div>{ad("guia")}
+ <div class="body" style="margin-top:20px">{autolink(g["body"])}</div>{gfaq_h}{gsrc}{ad("guia")}
  <div style="margin-top:18px">{sharebuttons(gurl(g), g["t"])}</div>
  <h2 style="margin:36px 0 16px;font-size:1.3rem">Más guías</h2><div class="newslist">{"".join(guide_card(x) for x in others)}</div>
 </div></section>"""
-        page(gurl(g), g["t"], g["st"], body, "guias", {"@context": "https://schema.org", "@type": "Article", "headline": g["t"], "description": g["st"], "dateModified": "2026-10-09", "inLanguage": "es-ES", "author": org(), "publisher": org()}, reading=True)
+        page(gurl(g), g["t"], g["st"], body, "guias", gld, reading=True)
 
 def build_chinos():
     def brand(b):
@@ -1093,7 +1101,7 @@ if __name__ == "__main__":
     page("/novedades-precios/", "Novedades y precios", "Precios de los coches en venta.", '<section><div class="wrap narrow"><h1>Novedades y precios</h1><p style="margin-top:12px">Esta sección ahora está en <a href="/coches/">Todos los coches</a>.</p></div></section>', "", noindex=True)
     build_en_all(); build_feeds()
     with open(os.path.join(OUT, "sitemap.xml"), encoding="utf-8") as f: sm = f.read()
-    extra = "".join(f"<url><loc>{DOMAIN}{u}</loc><lastmod>{__import__("datetime").date.today().isoformat()}</lastmod></url>\n" for u in sorted(set(ALT.values())))
+    extra = "".join(f"<url><loc>{DOMAIN}{u}</loc><lastmod>{__import__("datetime").date.today().isoformat()}</lastmod></url>\n" for u in sorted(set(ALT.values()) | set(FUEL_MONTH_URLS)))
     with open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8") as f: f.write(sm.replace("</urlset>", extra + "</urlset>"))
     n = sum(len([f for f in fs if f.endswith(".html")]) for _, _, fs in os.walk(OUT))
     print("OK", n, "páginas")
