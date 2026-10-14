@@ -42,6 +42,7 @@ M = [
 ("Jeep","Avenger eléctrico","ev","e","suv-p",36900,15.5,54,400,156,380),
 ("Volkswagen","ID.3","ev","e","compacto",36900,15.5,59,426,204,385),
 ("Volkswagen","ID.4","ev","e","suv-m",44900,17.5,77,520,286,543),
+("Volkswagen","ID. Tiguan","ev","e","suv-m",43352,17.5,58,425,190,543),
 ("Volkswagen","ID.7","ev","e","berlina",54900,16.0,77,600,286,532),
 ("Cupra","Born","ev","e","compacto",38900,15.5,59,425,231,385),
 ("Cupra","Tavascan","ev","e","suv-m",49900,17.5,77,550,286,540),
