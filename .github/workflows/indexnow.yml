@@ -1,0 +1,22 @@
+# Avisa a Bing (IndexNow) de las páginas nuevas después de cada publicación.
+# El servidor publica dist/ desde main cada 10 minutos, así que esperamos 12 minutos
+# y luego llamamos a indexnow.php, que solo envía las URLs que aún no se han enviado.
+name: IndexNow
+on:
+  push:
+    branches: [main]
+    paths: ["dist/**"]
+  workflow_dispatch:
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Esperar a que el servidor publique
+        if: github.event_name == 'push'
+        run: sleep 720
+      - name: Llamar a indexnow.php
+        run: curl -fsS --retry 3 --retry-delay 30 https://kilometroreal.com/indexnow.php
