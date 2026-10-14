@@ -107,8 +107,10 @@ def add_reveal(body):
     for r in REVEAL: body = body.replace(r, r.replace('class="', 'class="reveal '))
     return body
 
-def page(path, title, desc, body, active="", schema=None, noindex=False, full_title=None, lang="es", endcta=True, reading=False, og=None):
+def page(path, title, desc, body, active="", schema=None, noindex=False, full_title=None, lang="es", endcta=True, reading=False, og=None, article=None):
     en = lang == "en"
+    ogtype = "article" if article else "website"
+    artmeta = "".join(f'<meta property="article:{k}" content="{esc(v)}">' for k, v in (article or {}).items())
     if len(desc) > 160: desc = desc[:157].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
     ft = full_title or (title if title == SITE or len(title) > 48 else f"{title} | {SITE}")
     alt_en = path if en else en_of(path)
@@ -165,8 +167,8 @@ def page(path, title, desc, body, active="", schema=None, noindex=False, full_ti
 {'<meta name="robots" content="noindex">' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">'}
 <meta name="theme-color" content="#ffffff">
 <script>document.documentElement.classList.add("js");try{{if(localStorage.getItem("kr_theme")==="dark")document.documentElement.dataset.theme="dark"}}catch(e){{}}</script>
-<meta property="og:site_name" content="{SITE}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:type" content="website">{canon}{hl}
-<meta property="og:image" content="{og or DOMAIN + "/assets/img/og.png?v=2"}">{"" if og else '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'}<meta property="og:locale" content="{"en_GB" if en else "es_ES"}">
+<meta property="og:site_name" content="{SITE}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:type" content="{ogtype}">{artmeta}{canon}{hl}
+<meta property="og:image" content="{og or DOMAIN + "/assets/img/og.png?v=2"}">{('<meta property="og:image:width" content="1600"><meta property="og:image:height" content="900">' if article else "") if og else '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'}<meta property="og:locale" content="{"en_GB" if en else "es_ES"}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico?v=2" sizes="any"><link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml"><link rel="icon" href="/favicon-32.png?v=2" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2"><link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/data/coches.json" as="fetch" crossorigin><link rel="alternate" type="application/rss+xml" title="{SITE}" href="/feed.xml">
@@ -275,10 +277,17 @@ def build_feeds():
     items = ""
     for a in NEWS[:30]:
         d = datetime.fromisoformat(a["date"]).replace(hour=8, tzinfo=timezone(timedelta(hours=2)))
-        items += (f"<item><title>{esc(a['t'])}</title><link>{DOMAIN}{aurl(a)}</link><guid>{DOMAIN}{aurl(a)}</guid>"
-                  f"<pubDate>{format_datetime(d)}</pubDate><description>{esc(a['st'])}</description></item>\n")
-    rss = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>{SITE}</title><link>{DOMAIN}/</link>'
-           f'<description>Noticias y análisis sobre el coste real de los coches en España</description><language>es-es</language>\n{items}</channel></rss>\n')
+        im = next((f"{DOMAIN}/assets/img/{a['img']}.{e}" for e in ("webp", "jpg") if a.get("img") and os.path.exists(os.path.join(IMG_DIR, f"{a['img']}.{e}"))), None)
+        mt = "image/webp" if im and im.endswith(".webp") else "image/jpeg"
+        media = (f'<enclosure url="{im}" type="{mt}" length="0"/><media:content url="{im}" medium="image" type="{mt}" width="1600" height="900"/>') if im else ""
+        items += (f"<item><title>{esc(a['t'])}</title><link>{DOMAIN}{aurl(a)}</link><guid isPermaLink=\"true\">{DOMAIN}{aurl(a)}</guid>"
+                  f"<pubDate>{format_datetime(d)}</pubDate><dc:creator>Redacción {SITE}</dc:creator><category>{esc(KINDS[kmain(a)])}</category>"
+                  f"<description>{esc(a['st'])}</description>{media}</item>\n")
+    last = format_datetime(datetime.fromisoformat(NEWS[0]["date"]).replace(hour=8, tzinfo=timezone(timedelta(hours=2)))) if NEWS else ""
+    rss = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">'
+           f'<channel><title>{SITE}</title><link>{DOMAIN}/</link><atom:link href="{DOMAIN}/feed.xml" rel="self" type="application/rss+xml"/>'
+           f'<description>Noticias y análisis sobre el coste real de los coches en España</description><language>es-es</language><lastBuildDate>{last}</lastBuildDate>'
+           f'<image><url>{DOMAIN}/assets/img/logo-horizontal.png</url><title>{SITE}</title><link>{DOMAIN}/</link></image>\n{items}</channel></rss>\n')
     open(os.path.join(OUT, "feed.xml"), "w", encoding="utf-8").write(rss)
     import datetime as _dt
     newest = max(_dt.date.fromisoformat(a["date"]) for a in NEWS)
@@ -708,8 +717,10 @@ def build_news():
 </div></section>"""
         imgu = next((f"{DOMAIN}/assets/img/{a['img']}.{e}" for e in ("webp", "jpg") if os.path.exists(os.path.join(IMG_DIR, f"{a['img']}.{e}"))), f"{DOMAIN}/assets/img/og.png")
         schema = {"@context": "https://schema.org", "@type": "NewsArticle", "headline": a["t"], "description": a["st"], "datePublished": a["date"] + "T08:00:00+02:00", "dateModified": a["date"] + "T08:00:00+02:00",
-                  "image": [imgu], "inLanguage": "es-ES", "author": org(), "publisher": {**org(), "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/img/logo-horizontal.png"}}, "mainEntityOfPage": DOMAIN + aurl(a)}
-        page(aurl(a), a["t"], a["st"], body, "noticias", schema, reading=True, og=imgu if not imgu.endswith("og.png") else None)
+                  "image": [{"@type": "ImageObject", "url": imgu, "width": 1600, "height": 900}] if "/portada-" in imgu or imgu.endswith(".webp") else [imgu], "inLanguage": "es-ES", "articleSection": KINDS[k], "isAccessibleForFree": True,
+                  "author": {"@type": "Organization", "name": f"Redacción {SITE}", "url": f"{DOMAIN}/quienes-somos/"}, "publisher": {**org(), "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/img/logo-horizontal.png"}}, "mainEntityOfPage": DOMAIN + aurl(a)}
+        page(aurl(a), a["t"], a["st"], body, "noticias", schema, reading=True, og=imgu if not imgu.endswith("og.png") else None,
+             article={"published_time": a["date"] + "T08:00:00+02:00", "modified_time": a["date"] + "T08:00:00+02:00", "section": KINDS[k], "author": f"Redacción {SITE}"})
 
 def build_guides():
     page("/guias/", "Guías para comprar coche", "Etiquetas DGT, cargar en casa, autonomía real, híbrido o eléctrico, segunda mano y renting.",
