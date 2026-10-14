@@ -655,9 +655,50 @@ def build_car(c):
     schema.pop("@context"); schema = {"@context": "https://schema.org", "@graph": [schema, faqld, crumbld]}
     _en = "luz" if c["t"] == "ev" else ("GLP" if c["f"] == "glp" else "gasolina" if c["f"] == "g" else "gasóleo")
     _w = "autonomía real" if c["t"] == "ev" else "consumo real"
-    _cands = [f'{c["n"]}: precio, {_w} y coste al mes (2026)', f'{c["n"]}: precio, {_w} y coste al mes', f'{c["n"]}: precio y coste real al mes', f'{c["n"]}: precio y coste real']
+    _cands = [f'{c["n"]}: precio desde {eur(c["p"])} y coste real al mes', f'{c["n"]}: desde {eur(c["p"])} y coste real al mes', f'{c["n"]}: precio, {_w} y coste al mes (2026)', f'{c["n"]}: precio, {_w} y coste al mes', f'{c["n"]}: precio y coste real al mes', f'{c["n"]}: precio y coste real']
     _t = next((x for x in _cands if len(x) <= 60), _cands[-1])
     page(curl(c), _t, f'{c["n"]} desde {eur(c["p"])}: te cuesta de verdad {eur(k["month"])} al mes ({pk(k["perKm"])} €/km) sumando compra, {_en}, seguro, taller e impuesto. {"Autonomía real" if c["t"] == "ev" else "Consumo real"} y rivales.', body, "coches", schema, full_title=_t if len(_t) > 48 else None)
+
+# ===== SEO de los rankings: título de búsqueda, resumen y preguntas frecuentes =====
+RANK_SEO = {
+ # slug: (título <title>, h1, sustantivo singular, sustantivo plural)
+ "mas-baratos-por-km": ("Coches más baratos de mantener en 2026: ranking por coste real", "Los coches más baratos de tener en 2026", "coche", "coches"),
+ "electricos-mas-baratos": ("Coches eléctricos más baratos 2026: precio y coste real", "Los coches eléctricos más baratos de 2026", "eléctrico", "eléctricos"),
+ "suv-mas-baratos": ("SUV más baratos 2026: precio y coste real en España", "Los SUV más baratos de 2026", "SUV", "SUV"),
+ "hibridos-mas-economicos": ("Híbridos más baratos 2026: precio y coste real en España", "Los híbridos más baratos de 2026", "híbrido", "híbridos"),
+ "electricos-mas-autonomia": ("Eléctricos con más autonomía 2026: km reales y precio", "Los eléctricos con más autonomía de 2026", "eléctrico", "eléctricos"),
+ "etiqueta-cero-menos-30000": ("Coches etiqueta CERO por menos de 30.000 € (2026)", "Coches con etiqueta CERO por menos de 30.000 €", "coche con etiqueta CERO", "coches con etiqueta CERO"),
+ "coches-chinos-mas-baratos": ("Coches chinos más baratos 2026: precios en España", "Los coches chinos más baratos de 2026", "coche chino", "coches chinos"),
+ "familiares-y-7-plazas": ("Coches de 7 plazas y familiares más baratos (2026)", "Familiares, monovolúmenes y SUV de 7 plazas más baratos", "familiar", "familiares"),
+ "coches-menos-de-15000-euros": ("Coches nuevos por menos de 15.000 € en 2026: los mejores", "Los mejores coches nuevos por menos de 15.000 €", "coche de menos de 15.000 €", "coches de menos de 15.000 €"),
+ "coches-menos-de-20000-euros": ("Coches nuevos por menos de 20.000 € en 2026: los mejores", "Los mejores coches nuevos por menos de 20.000 €", "coche de menos de 20.000 €", "coches de menos de 20.000 €"),
+ "coches-menos-de-25000-euros": ("Coches nuevos por menos de 25.000 € en 2026: los mejores", "Los mejores coches nuevos por menos de 25.000 €", "coche de menos de 25.000 €", "coches de menos de 25.000 €"),
+ "coches-menos-de-30000-euros": ("Coches nuevos por menos de 30.000 € en 2026: los mejores", "Los mejores coches nuevos por menos de 30.000 €", "coche de menos de 30.000 €", "coches de menos de 30.000 €"),
+ "coches-etiqueta-eco-mas-baratos": ("Coches con etiqueta ECO más baratos 2026: precio y coste", "Los coches con etiqueta ECO más baratos de 2026", "coche con etiqueta ECO", "coches con etiqueta ECO"),
+ "coches-glp-mas-baratos": ("Coches de GLP más baratos 2026: precio y coste real", "Los coches de GLP más baratos de 2026", "coche de GLP", "coches de GLP"),
+ "coches-diesel-mas-baratos": ("Coches diésel más baratos 2026: precio y coste real", "Los coches diésel más baratos de 2026", "diésel", "diésel"),
+ "coches-gasolina-mas-baratos": ("Coches de gasolina más baratos 2026: precio y coste real", "Los coches de gasolina más baratos de 2026", "coche de gasolina", "coches de gasolina"),
+}
+def rank_seo(slug, t, lst):
+    seo_t, h1, sg, pl = RANK_SEO.get(slug, (f"{t} (2026)", t, "coche", "coches"))
+    own = min(lst, key=lambda c: K[c["id"]]["perKm"]); buy = min(lst, key=lambda c: c["p"])
+    months = sorted(K[c["id"]]["month"] for c in lst); med = months[len(months) // 2]
+    faq = [(f"¿Cuál es el {sg} más barato de tener en 2026?",
+            f'Según nuestro cálculo, el <a href="{curl(own)}">{esc(own["n"])}</a>: {pk(K[own["id"]]["perKm"])} € por kilómetro, unos {eur(K[own["id"]]["month"])} al mes, sumando compra, pérdida de valor, energía, seguro, taller e impuesto.'),
+           (f"¿Cuál es el {sg} más barato de comprar?",
+            f'De los de esta lista, por precio de tarifa, el <a href="{curl(buy)}">{esc(buy["n"])}</a>, desde {eur(buy["p"])} sin descuentos ni ayudas. Comprar barato no siempre es lo más barato: mira también su coste por kilómetro, {pk(K[buy["id"]]["perKm"])} €.'),
+           (f"¿Cuánto cuesta al mes tener uno de estos {pl}?",
+            f"Entre {eur(months[0])} y {eur(months[-1])} al mes en esta lista. La mitad de ellos cuesta menos de {eur(med)} al mes, con 15.000 km al año durante 5 años."),
+           ("¿Cómo calculáis el coste real?",
+            'Sumamos lo que pierde de valor el coche en 5 años, la energía con los precios de hoy, un seguro a todo riesgo con franquicia, el mantenimiento y el impuesto de circulación, y lo dividimos entre los kilómetros. Lo explicamos en la <a href="/metodologia/">metodología</a>.')]
+    return seo_t, h1, sg, faq
+def rank_summary(noun, lst):
+    a = lst[0]; ka = K[a["id"]]
+    txt = f'El primero de la lista es el <a href="{curl(a)}">{esc(a["n"])}</a>: cuesta {eur(a["p"])} y, sumando todos los gastos, unos {eur(ka["month"])} al mes.'
+    if len(lst) > 2:
+        b, c2 = lst[1], lst[2]
+        txt += f' Le siguen el <a href="{curl(b)}">{esc(b["n"])}</a> y el <a href="{curl(c2)}">{esc(c2["n"])}</a>.'
+    return txt
 
 def build_rankings():
     cards = "".join(f'<a class="card" href="/mejores/{s}/"><span class="kicker">Ranking</span><h3>{t}</h3><p>{d}</p></a>' for s, t, d, _, _ in RANKINGS)
@@ -666,18 +707,25 @@ def build_rankings():
     for s, t, d, fn, right in RANKINGS:
         lst = fn()
         items = "".join(rank_li(c, right(c) if right else None) for c in lst)
+        seo_t, h1, noun, faq = rank_seo(s, t, lst)
+        faq_h = '<h2 style="margin:32px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2><div class="faq">' + "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in faq) + "</div>"
+        summ = rank_summary(noun, lst)
         others = "".join(f'<a class="chip" href="/mejores/{s2}/">{t2}</a>' for s2, t2, _, _, _ in RANKINGS if s2 != s)
         body = f"""{crumbs(("/mejores/", "Rankings"), (None, t))}
 <section class="tight"><div class="wrap narrow">
- <h1>{t}</h1><p class="muted" style="margin:10px 0 22px">{d} Calculado con 15.000 km al año durante 5 años.</p>
+ <h1>{h1}</h1><p class="muted" style="margin:10px 0 14px">{d} Calculado con 15.000 km al año durante 5 años.</p>
+ <p style="margin:0 0 22px">{summ}</p>
  <div class="panel"><ol class="rank">{items}</ol></div>
  {ad("ranking")}
+ {faq_h}
  <p style="margin-top:20px"><a class="btn" href="/comparador/#{lst[0]["id"]}-vs-{lst[1]["id"] if len(lst) > 1 else lst[0]["id"]}">Comparar el 1.º y el 2.º</a></p>
  <div style="margin-top:18px">{sharebuttons(f"/mejores/{s}/", t)}</div>
  <h2 style="margin:36px 0 14px;font-size:1.3rem">Otros rankings</h2><div class="chips">{others}</div>
 </div></section>"""
-        page(f"/mejores/{s}/", t, f"{d} Lista actualizada en {UPDATED}.", body, "mejores",
-             {"@context": "https://schema.org", "@type": "ItemList", "name": t, "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": DOMAIN + curl(c), "name": c["n"]} for i, c in enumerate(lst)]})
+        page(f"/mejores/{s}/", seo_t, f"{d} Lista actualizada en {UPDATED}.", body, "mejores",
+             {"@context": "https://schema.org", "@graph": [{"@type": "ItemList", "name": h1, "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": DOMAIN + curl(c), "name": c["n"]} for i, c in enumerate(lst)]},
+              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in faq]}]},
+             full_title=seo_t)
 
 def build_finder():
     def q(key, title, opts, default):
