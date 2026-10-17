@@ -31,7 +31,9 @@ def nice(s):
     s = re.sub(r"\s+", " ", (s or "").strip())
     words = s.lower().split(" ")
     out = [w if (i and w in SMALL) else (w[:1].upper() + w[1:]) for i, w in enumerate(words)]
-    return re.sub(r"\b(Km|Kms)\b", "km", " ".join(out)).replace("Nº", "nº")
+    s = re.sub(r"([/(\-])(\w)", lambda m: m.group(1) + m.group(2).upper(), " ".join(out))
+    s = re.sub(r"\b(E\.s\.|Ee\.ss\.)", lambda m: m.group(1).upper(), s)
+    return re.sub(r"\b(Km|Kms)\b", "km", s).replace("Nº", "nº")
 
 def muni(s):
     """'Palmas de Gran Canaria (Las)' -> 'Las Palmas de Gran Canaria'"""
