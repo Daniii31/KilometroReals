@@ -617,3 +617,12 @@ figure.cphoto.hero figcaption{font-size:.72rem;color:var(--muted);margin-top:6px
 figure.cphoto.hero figcaption a{color:inherit}
 ul.credits{display:grid;gap:12px;padding-left:1.1em;margin-top:16px}ul.credits .muted{font-size:.85rem}
 .amh{margin:22px 0 10px;font-size:1.05rem}.amort td:first-child{white-space:nowrap}
+
+/* buscador de coches propio (sustituye al datalist) */
+.acl{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:70;margin:0;padding:6px;list-style:none;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);max-height:min(320px,50vh);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.acl li{padding:11px 12px;border-radius:8px;cursor:pointer;font-size:1rem;line-height:1.3;color:var(--ink);display:flex;justify-content:space-between;gap:10px}
+.acl li small{color:var(--muted);font-size:.8rem}
+.acl li.on,.acl li:hover{background:var(--accent-soft)}
+.acl li.acn{color:var(--muted);cursor:default}
+.acl li.acn:hover{background:none}
+@media (max-width:900px){.hsearch input{font-size:16px}}

@@ -81,7 +81,31 @@ const tag=c=>`<span class="tag ${c.lab}">${LAB[c.lab]}</span>`;
 const findBrand=v=>{if(!v)return null;const n=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLowerCase(),t=n(v);const c=CARS.find(c=>n(c.b)===t);return c?c.b:null};
 const brandSlug=b=>b.normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const findCar=v=>{if(!v)return null;v=v.trim().toLowerCase();if(!v)return null;return BYNAME[v]||CARS.find(c=>c.n.toLowerCase().includes(v))||null};
-function datalist(){if($("#cars"))return;const dl=document.createElement("datalist");dl.id="cars";dl.innerHTML=[...new Set(CARS.map(c=>c.b))].map(b=>`<option value="${b}"></option>`).join("")+CARS.map(c=>`<option value="${c.n}"></option>`).join("");document.body.appendChild(dl)}
+/* buscador de coches propio: el <datalist> nativo va mal en el móvil (iOS solo enseña 3 sugerencias y "change" no salta hasta salir del campo) */
+const nrm=x=>String(x).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9#.+ ]/g," ").replace(/\s+/g," ").trim();
+function acMatches(q,brands){const t=nrm(q).split(" ").filter(Boolean);if(!t.length)return[];
+  const out=[];if(brands){const seen=new Set();for(const c of CARS){if(seen.has(c.b))continue;seen.add(c.b);const b=nrm(c.b);if(t.every(w=>b.includes(w)))out.push({v:c.b,s:EN?"Brand":"Marca"})}}
+  const hit=CARS.filter(c=>{const h=nrm(c.n);return t.every(w=>h.includes(w))}).sort((a,b)=>{const x=nrm(a.n).startsWith(t[0])?0:1,y=nrm(b.n).startsWith(t[0])?0:1;return x-y||a.n.length-b.n.length});
+  return out.slice(0,2).concat(hit.slice(0,8).map(c=>({v:c.n,s:""})))}
+function acAttach(inp){if(inp._ac)return;inp._ac=1;inp.removeAttribute("list");inp.setAttribute("autocomplete","off");inp.setAttribute("autocorrect","off");inp.setAttribute("autocapitalize","off");inp.setAttribute("spellcheck","false");
+  inp.setAttribute("role","combobox");inp.setAttribute("aria-autocomplete","list");inp.setAttribute("aria-expanded","false");
+  const wrap=inp.parentElement;if(getComputedStyle(wrap).position==="static")wrap.style.position="relative";
+  const ul=document.createElement("ul");ul.className="acl";ul.setAttribute("role","listbox");ul.hidden=true;inp.insertAdjacentElement("afterend",ul);
+  const brands=inp.classList.contains("carsearch");let items=[],act=-1;
+  const close=()=>{ul.hidden=true;act=-1;inp.setAttribute("aria-expanded","false")};
+  const pick=v=>{inp.value=v;close();inp.dispatchEvent(new Event("change",{bubbles:true}))};
+  const draw=()=>{items=acMatches(inp.value,brands);if(!items.length){ul.innerHTML=inp.value.trim()?`<li class="acn">${EN?"No matches":"Sin resultados"}</li>`:"";ul.hidden=!inp.value.trim();return}
+    ul.innerHTML=items.map((it,i)=>`<li role="option" data-i="${i}" class="${i===act?"on":""}">${it.v.replace(/</g,"&lt;")}${it.s?`<small>${it.s}</small>`:""}</li>`).join("");ul.hidden=false;inp.setAttribute("aria-expanded","true")};
+  inp.addEventListener("input",()=>{act=-1;draw()});
+  inp.addEventListener("focus",()=>{if(findCar(inp.value)&&BYNAME[inp.value.trim().toLowerCase()]){setTimeout(()=>{try{inp.select()}catch(e){}},0)}});
+  inp.addEventListener("keydown",e=>{if(ul.hidden&&e.key!=="Enter")return;
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();act=(act+(e.key==="ArrowDown"?1:-1)+items.length)%items.length;draw()}
+    else if(e.key==="Enter"){if(!ul.hidden&&items.length){e.preventDefault();pick(items[Math.max(act,0)].v)}}
+    else if(e.key==="Escape")close()});
+  ul.addEventListener("pointerdown",e=>e.preventDefault());ul.addEventListener("mousedown",e=>e.preventDefault());
+  ul.addEventListener("click",e=>{const li=e.target.closest("li[data-i]");if(li)pick(items[+li.dataset.i].v)});
+  inp.addEventListener("blur",()=>setTimeout(close,120))}
+function datalist(){$$('input[list="cars"]').forEach(acAttach)}
 function toast(msg){let t=$(".toast");if(!t){t=document.createElement("div");t.className="toast";t.setAttribute("role","status");document.body.appendChild(t)}t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),2200)}
 function fieldErr(inp,msg){inp.classList.toggle("bad",!!msg);let e=inp.parentElement.querySelector(".err");if(msg){if(!e){e=document.createElement("p");e.className="err";inp.parentElement.appendChild(e)}e.textContent=msg;inp.setAttribute("aria-invalid","true")}else{if(e)e.remove();inp.removeAttribute("aria-invalid")}}
 function carInput(inp,cb){inp.addEventListener("change",()=>{const c=findCar(inp.value);if(c){fieldErr(inp,"");if(inp.value!==c.n)inp.value=c.n;cb(c)}else fieldErr(inp,L.notFound)})}
