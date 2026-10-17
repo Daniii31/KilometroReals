@@ -9,6 +9,7 @@ Web estática de kilometroreal.com: el coste real de tener un coche en España (
 - `guias/<slug>.json`: guías nuevas y duraderas (formato en `guias/LEEME.md`). Salen en `/guias/<slug>/` con FAQ y portada automática.
 - `pages_extra.py`: página de precio de la gasolina, histórico mensual y comparativas A vs B (`vs_pairs.py`).
 - `fuel_history.json`: un registro por día de los precios. **El build lo actualiza solo** con el día de `fuel.py`: no lo edites a mano. Genera el gráfico de `/precio-gasolina-hoy/` y una página por mes (`/precio-gasolina-hoy/octubre-2026/`).
+- `provincias.json`: precios de todas las gasolineras resumidos por provincia. **Lo genera solo la GitHub Action `precios-provincias.yml`** (6:10 y 15:10, API del Ministerio, `tools/provincias.py`), que también reconstruye y publica: no lo edites a mano. Genera `/precio-gasolina-hoy/<provincia>/` (52 páginas con las 10 gasolineras más baratas) y la tabla por provincias.
 - `covers.mjs`: genera la portada de diseño de las noticias sin foto (necesita Playwright; si no está, se omite).
 - `dist/`: la web generada. **El servidor publica `dist/` automáticamente** desde la rama `main` cada 10 minutos (cron de cPanel).
 

@@ -101,11 +101,89 @@ def build_fuel_months(H):
         page(path, f"Precio de la gasolina en {mname(ym)}", f"Precio medio de la gasolina 95 ({fprice(avg(g))}) y el diésel ({fprice(avg(d))}) en {mname(ym)}, día a día, con el día más barato y el más caro.", body, "", ldj(faq_ld(faq)))
     return months
 
+
+# ---------------- PRECIO DE LA GASOLINA POR PROVINCIA ----------------
+# provincias.json lo genera cada mañana la GitHub Action precios-provincias.yml (tools/provincias.py) con la API del Ministerio.
+def load_prov():
+    f = os.path.join(HERE, "provincias.json")
+    if not os.path.exists(f): return None
+    try: return json.load(open(f, encoding="utf-8"))
+    except Exception: return None
+PROVD = load_prov()
+def pdate(d): return f"{int(d[8:10])} de {MESES[int(d[5:7]) - 1]} de {d[:4]}" if d else ""
+def pcts(a, b):
+    d = (a - b) * 100
+    if abs(d) < 0.05: return "igual que la media de España"
+    return f'{abs(d):.1f} céntimos {"más cara" if d > 0 else "más barata"} que la media de España'.replace(".", ",")
+
+def prov_section():
+    if not PROVD: return ""
+    rows = "".join(f'<tr><td><a href="/precio-gasolina-hoy/{P["slug"]}/">{P["name"]}</a></td><td class="n">{fprice(P["avg"]["g95"]) if P["avg"].get("g95") else "-"}</td><td class="n">{fprice(P["avg"]["die"]) if P["avg"].get("die") else "-"}</td><td class="n hm">{fprice(P["cheap"]["g95"][0]["g95"]) if P["cheap"].get("g95") else "-"}</td></tr>' for P in sorted(PROVD["prov"], key=lambda P: P["name"]))
+    return f"""<section class="tight"><div class="wrap narrow">
+ <div class="sec-head"><div><h2>Precio de la gasolina por provincia</h2><p>Media de {PROVD["n"]:,} gasolineras, {pdate(PROVD["date"])}. Toca tu provincia para ver las gasolineras más baratas.</p></div></div>
+ <div class="tablewrap"><table class="list fit"><thead><tr><th>Provincia</th><th class="n">Gasolina 95</th><th class="n">Diésel</th><th class="n hm">La más barata</th></tr></thead><tbody>{rows}</tbody></table></div>
+</div></section>""".replace(f'{PROVD["n"]:,}', f'{PROVD["n"]:,}'.replace(",", "."))
+
+def st_table(L, k):
+    def maps(s):
+        if s.get("lat") and s.get("lon"): return f'<a href="https://www.google.com/maps/search/?api=1&query={s["lat"]},{s["lon"]}" rel="nofollow noopener" target="_blank">Cómo llegar</a>'
+        return ""
+    rows = "".join(f'<tr><td class="n">{i}</td><td><b>{esc(s["r"])}</b><br><small class="muted">{esc(s["d"])}, {esc(s["l"])}</small></td><td class="n"><b>{fprice(s[k])}</b><br><small>{maps(s)}</small></td></tr>' for i, s in enumerate(L, 1))
+    return f'<div class="tablewrap"><table class="list fit"><thead><tr><th class="n">#</th><th>Gasolinera</th><th class="n">Litro</th></tr></thead><tbody>{rows}</tbody></table></div>'
+
+def build_fuel_prov():
+    if not PROVD: return
+    N = PROVD["nac"]; dt = pdate(PROVD["date"]); allp = sorted(PROVD["prov"], key=lambda P: P["name"])
+    rank = {P["slug"]: i for i, P in enumerate(sorted([P for P in PROVD["prov"] if P["avg"].get("g95")], key=lambda P: P["avg"]["g95"]), 1)}
+    nprov = len(rank)
+    picks = [BY[i] for i in ("seat-ibiza-1-0-tsi", "toyota-corolla-hybrid", "volkswagen-golf-2-0-tdi") if i in BY]
+    for P in PROVD["prov"]:
+        A = P["avg"]; name = P["name"]; path = f"/precio-gasolina-hoy/{P['slug']}/"
+        if not A.get("g95") or not P["cheap"].get("g95"): continue
+        FUEL_MONTH_URLS.append(path)
+        cg = P["cheap"]["g95"][0]; cd = P["cheap"].get("die", [None])[0]
+        save = (A["g95"] - cg["g95"]) * 50
+        tiles = "".join(f'<div><span>{n}</span><b>{fprice(A[k])}</b><small>media de {P["n"]} gasolineras</small></div>' for n, k in (("Gasolina 95", "g95"), ("Diésel", "die"), ("Gasolina 98", "g98"), ("GLP (autogás)", "glp")) if A.get(k))
+        def p100(c): return f'{c["c"] * (A["die"] if c["f"] == "d" else A["g95"]):.2f}'.replace(".", ",")
+        cars = "".join(f'<li><a href="{curl(c)}">{esc(c["n"])}</a>: {p100(c)} € cada 100 km</li>' for c in picks if c["t"] not in ("ev", "phev"))
+        muni = "".join(f'<tr><td>{esc(m["l"])}</td><td class="n">{fprice(m["g95"])}</td><td class="n">{fprice(m["die"])}</td><td class="n hm">{m["n"]}</td></tr>' for m in P["muni"][:8])
+        big = ", ".join(f'{esc(m["l"])} ({fprice(m["g95"])})' for m in P.get("big", [])[:4])
+        others = " · ".join(f'<a href="/precio-gasolina-hoy/{Q["slug"]}/">{Q["name"]}</a>' for Q in allp if Q["slug"] != P["slug"])
+        faq = [(f"¿Cuánto cuesta hoy la gasolina en {name}?", f"De media, {fprice(A['g95'])} el litro de gasolina 95 y {fprice(A['die']) if A.get('die') else '-'} el de diésel, según los precios de {P['n']} gasolineras publicados por el Ministerio el {dt}."),
+               (f"¿Cuál es la gasolinera más barata de {name} hoy?", f"Para gasolina 95, {cg['r']} en {cg['d']} ({cg['l']}), a {fprice(cg['g95'])} el litro." + (f" Para diésel, {cd['r']} en {cd['d']} ({cd['l']}), a {fprice(cd['die'])}." if cd else "")),
+               (f"¿Cuánto me ahorro repostando en la más barata?", f"Llenar 50 litros de gasolina 95 en la gasolinera más barata de {name} cuesta unos {eur(round(cg['g95'] * 50))}, unos {f'{save:.2f}'.replace('.', ',')} € menos que pagando el precio medio.")]
+        body = f"""{crumbs(("/precio-gasolina-hoy/", "Precio de la gasolina hoy"), (None, name))}{FCSS}
+<section class="tight"><div class="wrap narrow">
+ <h1>Precio de la gasolina hoy en {name}</h1>
+ <p class="lead" style="margin-top:12px">A {dt}, la gasolina 95 cuesta de media <b>{fprice(A["g95"])}</b> el litro en {name}{(f' y el diésel <b>{fprice(A["die"])}</b>') if A.get("die") else ""}. Es {pcts(A["g95"], N["g95"])}: {name} es la provincia número {rank[P["slug"]]} de {nprov} de la más barata a la más cara.</p>
+ <div class="fuelgrid">{tiles}</div>
+ <p class="note" style="margin-top:10px">Precios de {P["n"]} gasolineras de venta al público en {name}. Fuente: Ministerio para la Transición Ecológica (Geoportal de gasolineras). Actualizado cada mañana.</p>
+</div></section>
+<section class="tight"><div class="wrap narrow">
+ <div class="sec-head"><div><h2>Gasolineras más baratas de {name}: gasolina 95</h2><p>Las 10 más baratas hoy. Repostar en la primera te ahorra unos {f"{save:.2f}".replace(".", ",")} € por depósito de 50 litros frente a la media.</p></div></div>
+ {st_table(P["cheap"]["g95"], "g95")}
+</div></section>
+{('<section class="tight"><div class="wrap narrow"><div class="sec-head"><div><h2>Gasolineras más baratas de ' + name + ': diésel</h2><p>Las 10 más baratas hoy para gasóleo A.</p></div></div>' + st_table(P["cheap"]["die"], "die") + '</div></section>') if P["cheap"].get("die") else ""}
+{ad("prov")}
+<section class="tight"><div class="wrap narrow">
+ {('<div class="sec-head"><div><h2>Municipios con la gasolina más barata</h2><p>Media de los municipios de ' + name + ' con 3 o más gasolineras.' + (' En las localidades con más gasolineras: ' + big + '.' if big else '') + '</p></div></div><div class="tablewrap"><table class="list fit"><thead><tr><th>Municipio</th><th class="n">Gasolina 95</th><th class="n">Diésel</th><th class="n hm">Gasolineras</th></tr></thead><tbody>' + muni + '</tbody></table></div>') if muni else ""}
+ <h2 style="margin:28px 0 12px;font-size:1.3rem">Lo que cuestan 100 km en {name}</h2>
+ <ul>{cars}</ul>
+ <p class="muted">Calcula tu trayecto con la <a href="/calculadoras/coste-viaje-gasolina/">calculadora de coste de un viaje</a>, mira los <a href="/mejores/coches-que-menos-gastan/">coches que menos gastan</a> o la <a href="/precio-gasolina-hoy/">media de España hoy</a>.</p>
+ <h2 style="margin:28px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
+ <h2 style="margin:28px 0 12px;font-size:1.1rem">Precio de la gasolina en otras provincias</h2>
+ <p class="muted" style="line-height:1.9">{others}</p>
+</div></section>"""
+        page(path, f"Precio de la gasolina hoy en {name}: {fprice(A['g95'])} y las más baratas",
+             f"Gasolina 95 a {fprice(A['g95'])} y diésel a {fprice(A['die']) if A.get('die') else '-'} de media en {name} ({dt}). Las 10 gasolineras más baratas hoy, por municipio, con cómo llegar.",
+             body, "", ldj(faq_ld(faq)), full_title=f"Precio gasolina hoy en {name}: {fprice(A['g95'])} y gasolineras más baratas")
+
 # ---------------- PRECIO DE LA GASOLINA HOY ----------------
 def build_fuel():
     F = FUELP
     H = load_fuel_hist()
     months = build_fuel_months(H)
+    build_fuel_prov()
     def delta(now, before):
         d = now - before
         if abs(d) < 0.0005: return '<span class="muted">igual que hace unos días</span>'
@@ -145,6 +223,7 @@ def build_fuel():
  {fuel_chart(H, "Evolución del precio de la gasolina 95 y el diésel")}
  <p class="muted" style="margin-top:10px">Histórico por meses: {" · ".join(f'<a href="/precio-gasolina-hoy/{mslug(m)}/">{mname(m)}</a>' for m in reversed(months))}</p>
 </div></section>
+{prov_section()}
 <section class="tight"><div class="wrap narrow">
  <div class="sec-head"><div><h2>Cuánto cuesta llenar el depósito</h2><p>Con los precios medios de hoy.</p></div></div>
  <div class="tablewrap"><table class="list fit"><thead><tr><th>Combustible</th><th class="n">Depósito de 45 L</th><th class="n">Depósito de 60 L</th></tr></thead><tbody>{tank}</tbody></table></div>
