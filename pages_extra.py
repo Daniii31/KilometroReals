@@ -131,6 +131,72 @@ def st_table(L, k):
     rows = "".join(f'<tr><td class="n">{i}</td><td><b>{esc(s["r"])}</b><br><small class="muted">{esc(s["d"])}, {esc(s["l"])}</small></td><td class="n"><b>{fprice(s[k])}</b><br><small>{maps(s)}</small></td></tr>' for i, s in enumerate(L, 1))
     return f'<div class="tablewrap"><table class="list fit"><thead><tr><th class="n">#</th><th>Gasolinera</th><th class="n">Litro</th></tr></thead><tbody>{rows}</tbody></table></div>'
 
+def city_links(pslug, pname):
+    L = [C for C in (PROVD or {}).get("cities", []) if C["pslug"] == pslug]
+    if not L: return ""
+    chips = "".join(f'<a class="chip" href="/gasolineras-baratas/{C["slug"]}/">{esc(C["name"])} · {fprice(C["cheap"]["g95"][0]["g95"])}</a>' for C in L)
+    return f'<h2 style="margin:28px 0 12px;font-size:1.3rem">Gasolineras más baratas por ciudad en {pname}</h2><div class="chips">{chips}</div>'
+
+def build_fuel_cities():
+    """Una página por municipio con 12 o más gasolineras: /gasolineras-baratas/<municipio>/."""
+    CL = (PROVD or {}).get("cities") or []
+    if not CL: return
+    dt = pdate(PROVD["date"]); dd = dt.rsplit(" de ", 1)[0]; N = PROVD["nac"]
+    picks = [BY[i] for i in ("seat-ibiza-1-0-tsi", "toyota-corolla-hybrid", "volkswagen-golf-2-0-tdi") if i in BY]
+    for C in CL:
+        A = C["avg"]; name = C["name"]; path = f"/gasolineras-baratas/{C['slug']}/"
+        cg = C["cheap"]["g95"][0]; cd = (C["cheap"].get("die") or [None])[0]
+        save = (A["g95"] - cg["g95"]) * 50
+        spread = (C["dear"]["g95"] - cg["g95"]) * 50
+        FUEL_MONTH_URLS.append(path)
+        tiles = "".join(f'<div><span>{n}</span><b>{fprice(A[k])}</b><small>media de {C["n"]} gasolineras</small></div>' for n, k in (("Gasolina 95", "g95"), ("Diésel", "die"), ("Gasolina 98", "g98"), ("GLP (autogás)", "glp")) if A.get(k))
+        vs_nat = "más barata" if A["g95"] < N["g95"] else "más cara"
+        def tbl(L, k):
+            return st_table([dict(s, l=name) for s in L], k)
+        others = [x for x in CL if x["pslug"] == C["pslug"] and x is not C]
+        others_h = " · ".join(f'<a href="/gasolineras-baratas/{x["slug"]}/">{esc(x["name"])}</a>' for x in others[:20])
+        big = " · ".join(f'<a href="/gasolineras-baratas/{x["slug"]}/">{esc(x["name"])}</a>' for x in CL[:24] if x is not C and x not in others)
+        def p100(c): return f'{c["c"] * (A["die"] if c["f"] == "d" else A["g95"]):.2f}'.replace(".", ",")
+        cars = "".join(f'<li><a href="{curl(c)}">{esc(c["n"])}</a>: {p100(c)} € cada 100 km</li>' for c in picks if A.get("die"))
+        faq = [(f"¿Cuál es la gasolinera más barata de {name} hoy?", f"Para gasolina 95, {cg['r']} en {cg['d']}, a {fprice(cg['g95'])} el litro." + (f" Para diésel, {cd['r']} en {cd['d']}, a {fprice(cd['die'])}." if cd else "")),
+               (f"¿Cuánto cuesta la gasolina en {name}?", f"De media, {fprice(A['g95'])} el litro de gasolina 95" + (f" y {fprice(A['die'])} el de diésel" if A.get("die") else "") + f", según los precios de {C['n']} gasolineras publicados por el Ministerio el {dt}."),
+               (f"¿Cuánto ahorro repostando en la más barata de {name}?", f"Unos {f'{save:.2f}'.replace('.', ',')} € por depósito de 50 litros frente al precio medio, y hasta {f'{spread:.2f}'.replace('.', ',')} € frente a la más cara de la ciudad.")]
+        body = f"""{crumbs(("/precio-gasolina-hoy/", "Precio de la gasolina hoy"), (f"/precio-gasolina-hoy/{C['pslug']}/", C["prov"]), (None, name))}{FCSS}
+<section class="tight"><div class="wrap narrow">
+ <h1>Gasolineras más baratas en {esc(name)} hoy</h1>
+ <p class="lead" style="margin-top:12px">Hoy, {dd}, la gasolina 95 más barata de {esc(name)} está a <b>{fprice(cg["g95"])}</b> en {esc(cg["r"])} ({esc(cg["d"])}). La media de la ciudad es <b>{fprice(A["g95"])}</b>, {vs_nat} que la de España ({fprice(N["g95"])}). Entre la más barata y la más cara hay {f"{spread:.2f}".replace(".", ",")} € por depósito.</p>
+ <div class="fuelgrid">{tiles}</div>
+ <p class="note" style="margin-top:10px">Precios de {C["n"]} gasolineras de venta al público en {esc(name)} ({esc(C["prov"])}). Fuente: Ministerio para la Transición Ecológica. Se actualiza dos veces al día.</p>
+</div></section>
+<section class="tight"><div class="wrap narrow">
+ <div class="sec-head"><div><h2>Las 10 gasolineras más baratas de {esc(name)}: gasolina 95</h2><p>Repostar en la primera te ahorra unos {f"{save:.2f}".replace(".", ",")} € por depósito de 50 litros frente a la media.</p></div></div>
+ {tbl(C["cheap"]["g95"], "g95")}
+</div></section>
+{('<section class="tight"><div class="wrap narrow"><div class="sec-head"><div><h2>Las 10 gasolineras más baratas de ' + esc(name) + ': diésel</h2><p>Gasóleo A, ordenado de menor a mayor precio.</p></div></div>' + tbl(C["cheap"]["die"], "die") + '</div></section>') if C["cheap"].get("die") else ""}
+{ad("ciudad")}
+<section class="tight"><div class="wrap narrow">
+ {('<h2 style="margin:0 0 12px;font-size:1.3rem">Lo que cuestan 100 km en ' + esc(name) + '</h2><ul>' + cars + '</ul>') if cars else ""}
+ <p class="muted">Calcula tu trayecto con la <a href="/calculadoras/coste-viaje-gasolina/">calculadora de coste de un viaje</a>, mira la <a href="/precio-gasolina-hoy/{C["pslug"]}/">media de {esc(C["prov"])}</a> o la <a href="/precio-gasolina-hoy/">media de España hoy</a>.</p>
+ <h2 style="margin:28px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
+ {('<h2 style="margin:28px 0 12px;font-size:1.1rem">Otras ciudades de ' + esc(C["prov"]) + '</h2><p class="muted" style="line-height:1.9">' + others_h + '</p>') if others_h else ""}
+ <h2 style="margin:28px 0 12px;font-size:1.1rem">Gasolineras baratas en otras ciudades</h2><p class="muted" style="line-height:1.9">{big}</p>
+</div></section>"""
+        _tc = [f"Gasolineras más baratas en {name} hoy: desde {fprice(cg['g95'])}", f"Gasolineras baratas en {name}: desde {fprice(cg['g95'])}", f"Gasolineras baratas en {name}"]
+        _t = next((x for x in _tc if len(x) <= 62), _tc[-1])
+        page(path, f"Gasolineras más baratas en {name} hoy", f"Hoy, {dd}: la gasolina 95 más barata de {name} está a {fprice(cg['g95'])} en {cg['r']}. Media: {fprice(A['g95'])}. Las 10 más baratas de gasolina y diésel.",
+             body, "", ldj(faq_ld(faq)), full_title=_t)
+    # índice de ciudades
+    rows = "".join(f'<tr><td><a href="/gasolineras-baratas/{C["slug"]}/">{esc(C["name"])}</a><br><small class="muted">{esc(C["prov"])}</small></td><td class="n">{fprice(C["cheap"]["g95"][0]["g95"])}</td><td class="n">{fprice(C["avg"]["g95"])}</td><td class="n hm">{C["n"]}</td></tr>' for C in sorted(CL, key=lambda C: C["name"]))
+    body = f"""{crumbs(("/precio-gasolina-hoy/", "Precio de la gasolina hoy"), (None, "Gasolineras baratas por ciudad"))}
+<section class="tight"><div class="wrap narrow">
+ <h1>Gasolineras más baratas por ciudad</h1>
+ <p class="lead" style="margin-top:12px">Las {len(CL)} ciudades de España con más gasolineras, con la más barata de hoy ({dd}) y el precio medio. Toca tu ciudad para ver las 10 más baratas de gasolina y diésel.</p>
+ <div class="tablewrap"><table class="list fit"><thead><tr><th>Ciudad</th><th class="n">La más barata</th><th class="n">Media</th><th class="n hm">Gasolineras</th></tr></thead><tbody>{rows}</tbody></table></div>
+</div></section>"""
+    FUEL_MONTH_URLS.append("/gasolineras-baratas/")
+    page("/gasolineras-baratas/", "Gasolineras más baratas por ciudad hoy", f"Las gasolineras más baratas de hoy, {dd}, en {len(CL)} ciudades de España: Madrid, Barcelona, Valencia, Sevilla y más. Gasolina 95 y diésel.",
+         body, "", None, full_title=f"Gasolineras más baratas hoy en {len(CL)} ciudades de España")
+
 def build_fuel_prov():
     if not PROVD: return
     N = PROVD["nac"]; dt = pdate(PROVD["date"]); allp = sorted(PROVD["prov"], key=lambda P: P["name"])
@@ -167,6 +233,7 @@ def build_fuel_prov():
 {ad("prov")}
 <section class="tight"><div class="wrap narrow">
  {('<div class="sec-head"><div><h2>Municipios con la gasolina más barata</h2><p>Media de los municipios de ' + name + ' con 3 o más gasolineras.' + (' En las localidades con más gasolineras: ' + big + '.' if big else '') + '</p></div></div><div class="tablewrap"><table class="list fit"><thead><tr><th>Municipio</th><th class="n">Gasolina 95</th><th class="n">Diésel</th><th class="n hm">Gasolineras</th></tr></thead><tbody>' + muni + '</tbody></table></div>') if muni else ""}
+ {city_links(P["slug"], name)}
  <h2 style="margin:28px 0 12px;font-size:1.3rem">Lo que cuestan 100 km en {name}</h2>
  <ul>{cars}</ul>
  <p class="muted">Calcula tu trayecto con la <a href="/calculadoras/coste-viaje-gasolina/">calculadora de coste de un viaje</a>, mira los <a href="/mejores/coches-que-menos-gastan/">coches que menos gastan</a> o la <a href="/precio-gasolina-hoy/">media de España hoy</a>.</p>
@@ -187,6 +254,7 @@ def build_fuel():
     H = load_fuel_hist()
     months = build_fuel_months(H)
     build_fuel_prov()
+    build_fuel_cities()
     def delta(now, before):
         d = now - before
         if abs(d) < 0.0005: return '<span class="muted">igual que hace unos días</span>'

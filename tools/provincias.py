@@ -43,6 +43,33 @@ def muni(s):
 
 def avg(xs): return round(sum(xs) / len(xs), 3) if xs else None
 
+def slug(s):
+    import unicodedata
+    s = unicodedata.normalize("NFKD", s.lower()).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+def cities(by, min_n=12):
+    """Municipios con muchas gasolineras: media y las 10 más baratas de gasolina 95 y diésel.
+    Generan las páginas /gasolineras-baratas/<municipio>/."""
+    out, seen = [], {}
+    for pid, S in by.items():
+        towns = {}
+        for s in S: towns.setdefault(s["l"], []).append(s)
+        for t, v in towns.items():
+            if len(v) < min_n or not t: continue
+            C = {"name": t, "slug": slug(t), "prov": PROV[pid][0], "pslug": PROV[pid][1], "n": len(v),
+                 "avg": {k: avg([s[k] for s in v if k in s]) for k in FIELDS}, "cheap": {}, "dear": {}}
+            for k in ("g95", "die"):
+                have = sorted([s for s in v if k in s], key=lambda s: s[k])
+                if not have: continue
+                C["cheap"][k] = [{x: s[x] for x in ("r", "d", "cp", "lat", "lon", k)} for s in have[:10]]
+                C["dear"][k] = have[-1][k]
+            if C["cheap"].get("g95"): out.append(C)
+    for C in out: seen[C["slug"]] = seen.get(C["slug"], 0) + 1
+    for C in out:
+        if seen[C["slug"]] > 1: C["slug"] = f'{C["slug"]}-{C["pslug"]}'
+    return sorted(out, key=lambda C: -C["n"])
+
 def main(src, dst):
     D = json.load(open(src, encoding="utf-8-sig"))
     rows = D.get("ListaEESSPrecio") or []
@@ -79,6 +106,7 @@ def main(src, dst):
         P["muni"] = sorted(mu, key=lambda x: x["g95"])[:10]
         P["big"] = sorted(mu, key=lambda x: -x["n"])[:6]
         out["prov"].append(P)
+    out["cities"] = cities(by)
     json.dump(out, open(dst, "w", encoding="utf-8"), ensure_ascii=False, indent=0, separators=(",", ":"))
     print("OK", out["n"], "gasolineras,", len(out["prov"]), "provincias,", fecha)
 
