@@ -1,13 +1,13 @@
 {
-"fecha":"18/10/2026 10:47:27",
+"fecha":"18/10/2026 18:30:21",
 "date":"2026-10-18",
-"n":11427,
+"n":11422,
 "nac":{
 "g95":1.772,
 "g98":1.934,
 "die":1.889,
 "die_plus":1.981,
-"glp":1.098
+"glp":1.099
 },
 "prov":[
 {
@@ -16,7 +16,7 @@
 "slug":"alava",
 "n":69,
 "avg":{
-"g95":1.809,
+"g95":1.811,
 "g98":1.969,
 "die":1.928,
 "die_plus":1.997,
@@ -180,21 +180,21 @@
 "die":1.799
 },
 {
-"r":"Alibarra Low-Cost",
-"d":"Calle Alibarra, 34",
-"l":"Vitoria-Gasteiz",
-"cp":"01010",
-"lat":"42.864944",
-"lon":"-2.710500",
-"die":1.799
-},
-{
 "r":"Ona Lowcost",
 "d":"Avenida Avda. de los Huetos, 56",
 "l":"Vitoria-Gasteiz",
 "cp":"01010",
 "lat":"42.857194",
 "lon":"-2.716389",
+"die":1.799
+},
+{
+"r":"Alibarra Low-Cost",
+"d":"Calle Alibarra, 34",
+"l":"Vitoria-Gasteiz",
+"cp":"01010",
+"lat":"42.864944",
+"lon":"-2.710500",
 "die":1.799
 },
 {
@@ -306,7 +306,7 @@
 {
 "l":"Salvatierra/Agurain",
 "n":3,
-"g95":1.744,
+"g95":1.749,
 "die":1.901
 },
 {
@@ -318,40 +318,40 @@
 {
 "l":"Vitoria-Gasteiz",
 "n":34,
-"g95":1.8,
+"g95":1.802,
 "die":1.916
 },
 {
 "l":"Ribera Baja/Erribera Beitia",
 "n":5,
 "g95":1.812,
-"die":1.943
-},
-{
-"l":"Zuia",
-"n":3,
-"g95":1.87,
-"die":2.019
+"die":1.947
 },
 {
 "l":"San Millán/Donemiliaga",
 "n":4,
 "g95":1.872,
 "die":1.976
+},
+{
+"l":"Zuia",
+"n":3,
+"g95":1.873,
+"die":2.022
 }
 ],
 "big":[
 {
 "l":"Vitoria-Gasteiz",
 "n":34,
-"g95":1.8,
+"g95":1.802,
 "die":1.916
 },
 {
 "l":"Ribera Baja/Erribera Beitia",
 "n":5,
 "g95":1.812,
-"die":1.943
+"die":1.947
 },
 {
 "l":"San Millán/Donemiliaga",
@@ -374,7 +374,7 @@
 {
 "l":"Salvatierra/Agurain",
 "n":3,
-"g95":1.744,
+"g95":1.749,
 "die":1.901
 }
 ]
@@ -383,12 +383,12 @@
 "id":"02",
 "name":"Albacete",
 "slug":"albacete",
-"n":156,
+"n":155,
 "avg":{
 "g95":1.781,
-"g98":1.942,
-"die":1.893,
-"die_plus":2.007,
+"g98":1.941,
+"die":1.892,
+"die_plus":2.005,
 "glp":1.103
 },
 "cheap":{
@@ -663,8 +663,8 @@
 {
 "l":"La Roda",
 "n":10,
-"g95":1.743,
-"die":1.891
+"g95":1.744,
+"die":1.893
 },
 {
 "l":"Hellín",
@@ -676,18 +676,18 @@
 "l":"Villarrobledo",
 "n":16,
 "g95":1.764,
-"die":1.906
+"die":1.905
 },
 {
 "l":"Tobarra",
 "n":3,
-"g95":1.772,
+"g95":1.769,
 "die":1.879
 },
 {
 "l":"Albacete",
 "n":45,
-"g95":1.774,
+"g95":1.775,
 "die":1.876
 },
 {
@@ -707,14 +707,14 @@
 {
 "l":"Albacete",
 "n":45,
-"g95":1.774,
+"g95":1.775,
 "die":1.876
 },
 {
 "l":"Villarrobledo",
 "n":16,
 "g95":1.764,
-"die":1.906
+"die":1.905
 },
 {
 "l":"Hellín",
@@ -725,8 +725,8 @@
 {
 "l":"La Roda",
 "n":10,
-"g95":1.743,
-"die":1.891
+"g95":1.744,
+"die":1.893
 },
 {
 "l":"Almansa",
@@ -749,7 +749,7 @@
 "n":478,
 "avg":{
 "g95":1.8,
-"g98":1.982,
+"g98":1.983,
 "die":1.887,
 "die_plus":1.993,
 "glp":1.092
@@ -793,21 +793,21 @@
 "g95":1.619
 },
 {
-"r":"Plenergy",
-"d":"Avenida del Mediterráneo, S/N",
-"l":"Petrer",
-"cp":"03610",
-"lat":"38.456028",
-"lon":"-0.783361",
-"g95":1.619
-},
-{
 "r":"E.S. Petrer-Elda",
 "d":"Avenida del Mediterraneo, 129",
 "l":"Petrer",
 "cp":"03610",
 "lat":"38.462861",
 "lon":"-0.782611",
+"g95":1.619
+},
+{
+"r":"Plenergy",
+"d":"Avenida del Mediterráneo, S/N",
+"l":"Petrer",
+"cp":"03610",
+"lat":"38.456028",
+"lon":"-0.783361",
 "g95":1.619
 },
 {
@@ -1041,14 +1041,14 @@
 {
 "l":"Rojales",
 "n":7,
-"g95":1.719,
+"g95":1.72,
 "die":1.809
 },
 {
 "l":"L' Alfàs del Pi",
 "n":6,
-"g95":1.741,
-"die":1.816
+"g95":1.743,
+"die":1.818
 },
 {
 "l":"Pego",
@@ -1060,7 +1060,7 @@
 "l":"La Villajoyosa/Vila Joiosa",
 "n":10,
 "g95":1.746,
-"die":1.825
+"die":1.826
 },
 {
 "l":"Petrer",
@@ -1083,19 +1083,19 @@
 {
 "l":"Muro de Alcoy",
 "n":6,
-"g95":1.761,
+"g95":1.763,
 "die":1.874
 },
 {
 "l":"Alcoy/Alcoi",
 "n":10,
-"g95":1.764,
-"die":1.878
+"g95":1.765,
+"die":1.879
 },
 {
 "l":"Cocentaina",
 "n":9,
-"g95":1.765,
+"g95":1.766,
 "die":1.892
 }
 ],
@@ -1109,7 +1109,7 @@
 {
 "l":"Elche/Elx",
 "n":43,
-"g95":1.794,
+"g95":1.795,
 "die":1.891
 },
 {
@@ -1121,20 +1121,20 @@
 {
 "l":"Torrevieja",
 "n":26,
-"g95":1.782,
+"g95":1.781,
 "die":1.877
 },
 {
 "l":"San Vicente del Raspeig/Sant Vicent del Raspeig",
 "n":12,
-"g95":1.809,
-"die":1.875
+"g95":1.808,
+"die":1.876
 },
 {
 "l":"Alcoy/Alcoi",
 "n":10,
-"g95":1.764,
-"die":1.878
+"g95":1.765,
+"die":1.879
 }
 ]
 },
@@ -1144,8 +1144,8 @@
 "slug":"almeria",
 "n":226,
 "avg":{
-"g95":1.76,
-"g98":1.956,
+"g95":1.759,
+"g98":1.955,
 "die":1.879,
 "die_plus":1.98,
 "glp":1.104
@@ -1162,21 +1162,21 @@
 "g95":1.499
 },
 {
-"r":"Gasolinera el Ejido",
-"d":"Calle Avellano, 492",
-"l":"El Ejido",
-"cp":"04700",
-"lat":"36.774722",
-"lon":"-2.802306",
-"g95":1.619
-},
-{
 "r":"Plenergy",
 "d":"Calle Sierra de Atalaya, 2",
 "l":"El Ejido",
 "cp":"04700",
 "lat":"36.776889",
 "lon":"-2.794083",
+"g95":1.619
+},
+{
+"r":"Gasolinera el Ejido",
+"d":"Calle Avellano, 492",
+"l":"El Ejido",
+"cp":"04700",
+"lat":"36.774722",
+"lon":"-2.802306",
 "g95":1.619
 },
 {
@@ -1254,21 +1254,21 @@
 "die":1.699
 },
 {
-"r":"Gasolinera el Ejido",
-"d":"Calle Avellano, 492",
-"l":"El Ejido",
-"cp":"04700",
-"lat":"36.774722",
-"lon":"-2.802306",
-"die":1.709
-},
-{
 "r":"Plenergy",
 "d":"Calle Sierra de Atalaya, 2",
 "l":"El Ejido",
 "cp":"04700",
 "lat":"36.776889",
 "lon":"-2.794083",
+"die":1.709
+},
+{
+"r":"Gasolinera el Ejido",
+"d":"Calle Avellano, 492",
+"l":"El Ejido",
+"cp":"04700",
+"lat":"36.774722",
+"lon":"-2.802306",
 "die":1.709
 },
 {
@@ -1471,27 +1471,27 @@
 "die":1.887
 },
 {
+"l":"Níjar",
+"n":17,
+"g95":1.748,
+"die":1.916
+},
+{
 "l":"Viator",
 "n":6,
 "g95":1.748,
 "die":1.888
 },
 {
-"l":"Níjar",
-"n":17,
-"g95":1.749,
-"die":1.916
-},
-{
 "l":"Almería",
 "n":34,
 "g95":1.755,
-"die":1.895
+"die":1.894
 },
 {
 "l":"Vícar",
 "n":9,
-"g95":1.76,
+"g95":1.758,
 "die":1.865
 }
 ],
@@ -1506,12 +1506,12 @@
 "l":"Almería",
 "n":34,
 "g95":1.755,
-"die":1.895
+"die":1.894
 },
 {
 "l":"Níjar",
 "n":17,
-"g95":1.749,
+"g95":1.748,
 "die":1.916
 },
 {
@@ -1529,7 +1529,7 @@
 {
 "l":"Vícar",
 "n":9,
-"g95":1.76,
+"g95":1.758,
 "die":1.865
 }
 ]
@@ -1541,9 +1541,9 @@
 "n":71,
 "avg":{
 "g95":1.806,
-"g98":1.965,
+"g98":1.964,
 "die":1.934,
-"die_plus":2.036,
+"die_plus":2.035,
 "glp":1.146
 },
 "cheap":{
@@ -1576,21 +1576,21 @@
 "g95":1.685
 },
 {
-"r":"Petroprix",
-"d":"Avenida Juan Carlos I, 17",
-"l":"Ávila",
-"cp":"05004",
-"lat":"40.661806",
-"lon":"-4.674889",
-"g95":1.695
-},
-{
 "r":"Plenergy",
 "d":"Calle Jorge de Santayana, 2",
 "l":"Ávila",
 "cp":"05004",
 "lat":"40.661083",
 "lon":"-4.679194",
+"g95":1.695
+},
+{
+"r":"Petroprix",
+"d":"Avenida Juan Carlos I, 17",
+"l":"Ávila",
+"cp":"05004",
+"lat":"40.661806",
+"lon":"-4.674889",
 "g95":1.695
 },
 {
@@ -1677,15 +1677,6 @@
 "die":1.799
 },
 {
-"r":"Petroprix",
-"d":"Avenida Juan Carlos I, 17",
-"l":"Ávila",
-"cp":"05004",
-"lat":"40.661806",
-"lon":"-4.674889",
-"die":1.799
-},
-{
 "r":"Repostar",
 "d":"Calle Rio Duero, 11",
 "l":"Ávila",
@@ -1701,6 +1692,15 @@
 "cp":"05004",
 "lat":"40.661083",
 "lon":"-4.679194",
+"die":1.799
+},
+{
+"r":"Petroprix",
+"d":"Avenida Juan Carlos I, 17",
+"l":"Ávila",
+"cp":"05004",
+"lat":"40.661806",
+"lon":"-4.674889",
 "die":1.799
 },
 {
@@ -1825,7 +1825,7 @@
 "slug":"badajoz",
 "n":280,
 "avg":{
-"g95":1.784,
+"g95":1.783,
 "g98":1.968,
 "die":1.902,
 "die_plus":1.998,
@@ -1843,12 +1843,21 @@
 "g95":1.629
 },
 {
+"r":"Laencina Sodad Coop Limitada",
+"d":"Carretera Ex-104 Villanueva de la Serena-Andujar km. 19",
+"l":"Campanario",
+"cp":"06460",
+"lat":"38.871944",
+"lon":"-5.628472",
+"g95":1.64
+},
+{
 "r":"Ballenoil",
-"d":"Poligono Ind. el Prado, Parc Ser 1-A, S/N",
+"d":"Calle Rosalia Castro Esquina Rafael Alberti Merello (Parque Comercial la Heredad), 4",
 "l":"Mérida",
 "cp":"06800",
-"lat":"38.921972",
-"lon":"-6.375556",
+"lat":"38.905417",
+"lon":"-6.353472",
 "g95":1.649
 },
 {
@@ -1862,20 +1871,20 @@
 },
 {
 "r":"Ballenoil",
+"d":"Poligono Ind. el Prado, Parc Ser 1-A, S/N",
+"l":"Mérida",
+"cp":"06800",
+"lat":"38.921972",
+"lon":"-6.375556",
+"g95":1.649
+},
+{
+"r":"Ballenoil",
 "d":"Avda. Extremadura, 15",
 "l":"Mérida",
 "cp":"06800",
 "lat":"38.920472",
 "lon":"-6.340556",
-"g95":1.649
-},
-{
-"r":"Ballenoil",
-"d":"Calle Rosalia Castro Esquina Rafael Alberti Merello (Parque Comercial la Heredad), 4",
-"l":"Mérida",
-"cp":"06800",
-"lat":"38.905417",
-"lon":"-6.353472",
 "g95":1.649
 },
 {
@@ -1913,15 +1922,6 @@
 "lat":"38.941250",
 "lon":"-6.429833",
 "g95":1.66
-},
-{
-"r":"Sedimacar S.l.",
-"d":"Calle Huesca, Esquina Calle Valladolid, 1",
-"l":"Mérida",
-"cp":"06800",
-"lat":"38.927278",
-"lon":"-6.386667",
-"g95":1.66
 }
 ],
 "die":[
@@ -1933,6 +1933,15 @@
 "lat":"38.827083",
 "lon":"-6.213194",
 "die":1.694
+},
+{
+"r":"Laencina Sodad Coop Limitada",
+"d":"Carretera Ex-104 Villanueva de la Serena-Andujar km. 19",
+"l":"Campanario",
+"cp":"06460",
+"lat":"38.871944",
+"lon":"-5.628472",
+"die":1.72
 },
 {
 "r":"Sedimacar, S.l.",
@@ -1960,15 +1969,6 @@
 "lat":"38.867778",
 "lon":"-6.755889",
 "die":1.736
-},
-{
-"r":"Laencina Sodad Coop Limitada",
-"d":"Carretera Ex-104 Villanueva de la Serena-Andujar km. 19",
-"l":"Campanario",
-"cp":"06460",
-"lat":"38.871944",
-"lon":"-5.628472",
-"die":1.738
 },
 {
 "r":"Noroil",
@@ -2097,8 +2097,8 @@
 {
 "l":"Mérida",
 "n":24,
-"g95":1.742,
-"die":1.907
+"g95":1.74,
+"die":1.908
 },
 {
 "l":"Montijo",
@@ -2109,7 +2109,7 @@
 {
 "l":"Almendralejo",
 "n":14,
-"g95":1.748,
+"g95":1.746,
 "die":1.869
 },
 {
@@ -2159,8 +2159,8 @@
 {
 "l":"Mérida",
 "n":24,
-"g95":1.742,
-"die":1.907
+"g95":1.74,
+"die":1.908
 },
 {
 "l":"Don Benito",
@@ -2171,7 +2171,7 @@
 {
 "l":"Almendralejo",
 "n":14,
-"g95":1.748,
+"g95":1.746,
 "die":1.869
 },
 {
@@ -2295,15 +2295,6 @@
 ],
 "die":[
 {
-"r":"Plenergy",
-"d":"Calle del Gral. Luque, S/N",
-"l":"Inca",
-"cp":"07300",
-"lat":"39.710083",
-"lon":"2.901778",
-"die":1.715
-},
-{
 "r":"Eroski",
 "d":"Calle Joan Piza I Massanet, 5",
 "l":"Sa Pobla",
@@ -2311,6 +2302,15 @@
 "lat":"39.775028",
 "lon":"3.023944",
 "die":1.725
+},
+{
+"r":"Plenergy",
+"d":"Calle del Gral. Luque, S/N",
+"l":"Inca",
+"cp":"07300",
+"lat":"39.710083",
+"lon":"2.901778",
+"die":1.735
 },
 {
 "r":"Ballenoil",
@@ -2506,13 +2506,13 @@
 "l":"Inca",
 "n":8,
 "g95":1.82,
-"die":1.954
+"die":1.957
 },
 {
 "l":"Manacor",
 "n":11,
-"g95":1.838,
-"die":1.981
+"g95":1.839,
+"die":1.983
 },
 {
 "l":"Santa Margalida",
@@ -2550,25 +2550,25 @@
 "l":"Palma de Mallorca",
 "n":59,
 "g95":1.86,
-"die":1.989
+"die":1.988
 },
 {
 "l":"Calvià",
 "n":11,
 "g95":1.861,
-"die":2.011
+"die":2.009
 },
 {
 "l":"Manacor",
 "n":11,
-"g95":1.838,
-"die":1.981
+"g95":1.839,
+"die":1.983
 },
 {
 "l":"Mahón",
 "n":9,
 "g95":1.93,
-"die":2.055
+"die":2.053
 },
 {
 "l":"Eivissa",
@@ -2580,7 +2580,7 @@
 "l":"Inca",
 "n":8,
 "g95":1.82,
-"die":1.954
+"die":1.957
 }
 ]
 },
@@ -2588,12 +2588,12 @@
 "id":"08",
 "name":"Barcelona",
 "slug":"barcelona",
-"n":791,
+"n":789,
 "avg":{
-"g95":1.766,
+"g95":1.767,
 "g98":1.949,
 "die":1.864,
-"die_plus":1.946,
+"die_plus":1.947,
 "glp":1.087
 },
 "cheap":{
@@ -2654,20 +2654,20 @@
 },
 {
 "r":"Plenergy",
-"d":"Carrer Pau 2-Pous D'en Rossell, S/N",
-"l":"Vilafranca del Penedès",
-"cp":"08720",
-"lat":"41.350500",
-"lon":"1.687972",
-"g95":1.539
-},
-{
-"r":"Plenergy",
 "d":"Carrer Pla del Viver, 4",
 "l":"Vilafranca del Penedès",
 "cp":"08720",
 "lat":"41.335806",
 "lon":"1.683056",
+"g95":1.539
+},
+{
+"r":"Plenergy",
+"d":"Carrer Pau 2-Pous D'en Rossell, S/N",
+"l":"Vilafranca del Penedès",
+"cp":"08720",
+"lat":"41.350500",
+"lon":"1.687972",
 "g95":1.539
 },
 {
@@ -2728,20 +2728,20 @@
 },
 {
 "r":"Plenergy",
-"d":"Carrer Pau 2-Pous D'en Rossell, S/N",
-"l":"Vilafranca del Penedès",
-"cp":"08720",
-"lat":"41.350500",
-"lon":"1.687972",
-"die":1.679
-},
-{
-"r":"Plenergy",
 "d":"Carrer Pla del Viver, 4",
 "l":"Vilafranca del Penedès",
 "cp":"08720",
 "lat":"41.335806",
 "lon":"1.683056",
+"die":1.679
+},
+{
+"r":"Plenergy",
+"d":"Carrer Pau 2-Pous D'en Rossell, S/N",
+"l":"Vilafranca del Penedès",
+"cp":"08720",
+"lat":"41.350500",
+"lon":"1.687972",
 "die":1.679
 },
 {
@@ -2895,8 +2895,8 @@
 {
 "l":"Òdena",
 "n":3,
-"g95":1.637,
-"die":1.754
+"g95":1.634,
+"die":1.757
 },
 {
 "l":"Lliçà D'amunt",
@@ -2907,14 +2907,8 @@
 {
 "l":"Torelló",
 "n":3,
-"g95":1.662,
+"g95":1.664,
 "die":1.786
-},
-{
-"l":"Esplugues de Llobregat",
-"n":4,
-"g95":1.667,
-"die":1.804
 },
 {
 "l":"Vic",
@@ -2923,10 +2917,16 @@
 "die":1.764
 },
 {
+"l":"Esplugues de Llobregat",
+"n":4,
+"g95":1.669,
+"die":1.804
+},
+{
 "l":"Viladecavalls",
 "n":3,
 "g95":1.67,
-"die":1.792
+"die":1.789
 },
 {
 "l":"Sant Cugat Sesgarrigues",
@@ -2945,7 +2945,7 @@
 {
 "l":"Barcelona",
 "n":79,
-"g95":1.833,
+"g95":1.834,
 "die":1.925
 },
 {
@@ -2957,26 +2957,26 @@
 {
 "l":"L' Hospitalet de Llobregat",
 "n":30,
-"g95":1.738,
-"die":1.837
+"g95":1.739,
+"die":1.838
 },
 {
 "l":"Sabadell",
 "n":23,
-"g95":1.773,
-"die":1.854
+"g95":1.774,
+"die":1.853
 },
 {
 "l":"Badalona",
 "n":17,
 "g95":1.814,
-"die":1.899
+"die":1.897
 },
 {
 "l":"Mataró",
 "n":17,
 "g95":1.745,
-"die":1.847
+"die":1.846
 }
 ]
 },
@@ -2986,9 +2986,9 @@
 "slug":"burgos",
 "n":136,
 "avg":{
-"g95":1.804,
+"g95":1.805,
 "g98":1.972,
-"die":1.906,
+"die":1.907,
 "die_plus":1.979,
 "glp":1.147
 },
@@ -3002,15 +3002,6 @@
 "lat":"42.940389",
 "lon":"-3.570556",
 "g95":1.619
-},
-{
-"r":"Plenergy",
-"d":"Carretera Bilbao en Miranda de Ebro km. 40",
-"l":"Miranda de Ebro",
-"cp":"09200",
-"lat":"42.692972",
-"lon":"-2.950500",
-"g95":1.639
 },
 {
 "r":"E.S. las Brujas - Cernegula",
@@ -3083,6 +3074,15 @@
 "lat":"42.692556",
 "lon":"-2.949556",
 "g95":1.659
+},
+{
+"r":"Plenergy",
+"d":"Carretera Bilbao en Miranda de Ebro km. 40",
+"l":"Miranda de Ebro",
+"cp":"09200",
+"lat":"42.692972",
+"lon":"-2.950500",
+"g95":1.659
 }
 ],
 "die":[
@@ -3114,21 +3114,21 @@
 "die":1.733
 },
 {
-"r":"Plenergy",
-"d":"Carretera Bilbao en Miranda de Ebro km. 40",
-"l":"Miranda de Ebro",
-"cp":"09200",
-"lat":"42.692972",
-"lon":"-2.950500",
-"die":1.739
-},
-{
 "r":"Ballenoil",
 "d":"Carretera Bilbao en Miranda de Ebro km. 34",
 "l":"Miranda de Ebro",
 "cp":"09200",
 "lat":"42.692556",
 "lon":"-2.949556",
+"die":1.759
+},
+{
+"r":"Plenergy",
+"d":"Carretera Bilbao en Miranda de Ebro km. 40",
+"l":"Miranda de Ebro",
+"cp":"09200",
+"lat":"42.692972",
+"lon":"-2.950500",
 "die":1.759
 },
 {
@@ -3225,15 +3225,6 @@
 },
 {
 "r":"Moeve",
-"d":"Autopista Ap-1 (Mrg.izdo.) km. 63,5",
-"l":"Ameyugo",
-"cp":"09219",
-"lat":"42.651972",
-"lon":"-3.068028",
-"glp":1.164
-},
-{
-"r":"Moeve",
 "d":"Autopista Ap-1 (Mrg.dcho.) km. 63,5",
 "l":"Ameyugo",
 "cp":"09219",
@@ -3243,11 +3234,11 @@
 },
 {
 "r":"Moeve",
-"d":"Autopista Ap-1 (Mrg.dcho.) km. 35,5",
-"l":"Briviesca",
-"cp":"09240",
-"lat":"42.526028",
-"lon":"-3.334111",
+"d":"Autopista Ap-1 (Mrg.izdo.) km. 63,5",
+"l":"Ameyugo",
+"cp":"09219",
+"lat":"42.651972",
+"lon":"-3.068028",
 "glp":1.164
 },
 {
@@ -3257,6 +3248,15 @@
 "cp":"09240",
 "lat":"42.528861",
 "lon":"-3.332083",
+"glp":1.164
+},
+{
+"r":"Moeve",
+"d":"Autopista Ap-1 (Mrg.dcho.) km. 35,5",
+"l":"Briviesca",
+"cp":"09240",
+"lat":"42.526028",
+"lon":"-3.334111",
 "glp":1.164
 },
 {
@@ -3277,16 +3277,16 @@
 },
 "muni":[
 {
-"l":"Miranda de Ebro",
-"n":9,
-"g95":1.752,
-"die":1.866
-},
-{
 "l":"Aranda de Duero",
 "n":13,
 "g95":1.754,
-"die":1.831
+"die":1.832
+},
+{
+"l":"Miranda de Ebro",
+"n":9,
+"g95":1.754,
+"die":1.868
 },
 {
 "l":"Valle de Mena",
@@ -3303,8 +3303,8 @@
 {
 "l":"Briviesca",
 "n":7,
-"g95":1.805,
-"die":1.901
+"g95":1.808,
+"die":1.9
 },
 {
 "l":"Villagonzalo Pedernales",
@@ -3315,8 +3315,8 @@
 {
 "l":"Sarracín",
 "n":3,
-"g95":1.862,
-"die":1.961
+"g95":1.866,
+"die":1.964
 },
 {
 "l":"Villalmanzo",
@@ -3336,19 +3336,19 @@
 "l":"Aranda de Duero",
 "n":13,
 "g95":1.754,
-"die":1.831
+"die":1.832
 },
 {
 "l":"Miranda de Ebro",
 "n":9,
-"g95":1.752,
-"die":1.866
+"g95":1.754,
+"die":1.868
 },
 {
 "l":"Briviesca",
 "n":7,
-"g95":1.805,
-"die":1.901
+"g95":1.808,
+"die":1.9
 },
 {
 "l":"Villagonzalo Pedernales",
@@ -3359,8 +3359,8 @@
 {
 "l":"Sarracín",
 "n":3,
-"g95":1.862,
-"die":1.961
+"g95":1.866,
+"die":1.964
 }
 ]
 },
@@ -3368,12 +3368,12 @@
 "id":"10",
 "name":"Cáceres",
 "slug":"caceres",
-"n":157,
+"n":158,
 "avg":{
 "g95":1.792,
-"g98":1.966,
+"g98":1.963,
 "die":1.945,
-"die_plus":2.045,
+"die_plus":2.042,
 "glp":1.144
 },
 "cheap":{
@@ -3507,15 +3507,6 @@
 "die":1.779
 },
 {
-"r":"Carburantes Campo Arañuelo S.l.",
-"d":"Carretera Jarandilla km. 8200",
-"l":"Navalmoral de la Mata",
-"cp":"10300",
-"lat":"39.960722",
-"lon":"-5.591222",
-"die":1.779
-},
-{
 "r":"Ballenoil",
 "d":"Carretera Madrid-Lisboa km. 44",
 "l":"Navalmoral de la Mata",
@@ -3531,6 +3522,15 @@
 "cp":"10300",
 "lat":"39.899222",
 "lon":"-5.545250",
+"die":1.779
+},
+{
+"r":"Carburantes Campo Arañuelo S.l.",
+"d":"Carretera Jarandilla km. 8200",
+"l":"Navalmoral de la Mata",
+"cp":"10300",
+"lat":"39.960722",
+"lon":"-5.591222",
 "die":1.779
 },
 {
@@ -3642,7 +3642,7 @@
 {
 "l":"Navalmoral de la Mata",
 "n":8,
-"g95":1.732,
+"g95":1.729,
 "die":1.855
 },
 {
@@ -3655,13 +3655,13 @@
 "l":"Malpartida de Plasencia",
 "n":3,
 "g95":1.754,
-"die":1.962
+"die":1.966
 },
 {
 "l":"Cáceres",
-"n":17,
-"g95":1.77,
-"die":1.96
+"n":18,
+"g95":1.767,
+"die":1.952
 },
 {
 "l":"Casar de Cáceres",
@@ -3685,7 +3685,7 @@
 "l":"Plasencia",
 "n":8,
 "g95":1.805,
-"die":2.016
+"die":2.014
 },
 {
 "l":"Valencia de Alcántara",
@@ -3697,14 +3697,14 @@
 "big":[
 {
 "l":"Cáceres",
-"n":17,
-"g95":1.77,
-"die":1.96
+"n":18,
+"g95":1.767,
+"die":1.952
 },
 {
 "l":"Trujillo",
 "n":9,
-"g95":1.825,
+"g95":1.827,
 "die":1.994
 },
 {
@@ -3716,14 +3716,14 @@
 {
 "l":"Navalmoral de la Mata",
 "n":8,
-"g95":1.732,
+"g95":1.729,
 "die":1.855
 },
 {
 "l":"Plasencia",
 "n":8,
 "g95":1.805,
-"die":2.016
+"die":2.014
 },
 {
 "l":"Moraleja",
@@ -3741,7 +3741,7 @@
 "avg":{
 "g95":1.766,
 "g98":1.928,
-"die":1.898,
+"die":1.897,
 "die_plus":1.984,
 "glp":1.103
 },
@@ -3811,12 +3811,21 @@
 "g95":1.645
 },
 {
-"r":"Ballenoil",
-"d":"Calle Electricistas Los, 1",
+"r":"Plenergy",
+"d":"Avenida de los Descubrimientos, 35",
 "l":"Chiclana de la Frontera",
 "cp":"11130",
-"lat":"36.411028",
-"lon":"-6.139250",
+"lat":"36.428583",
+"lon":"-6.151306",
+"g95":1.649
+},
+{
+"r":"Plenergy",
+"d":"Avenida del Mueble, 8",
+"l":"Chiclana de la Frontera",
+"cp":"11130",
+"lat":"36.432167",
+"lon":"-6.143194",
 "g95":1.649
 },
 {
@@ -3826,15 +3835,6 @@
 "cp":"11130",
 "lat":"36.426639",
 "lon":"-6.144250",
-"g95":1.649
-},
-{
-"r":"Plenergy",
-"d":"Avenida de los Descubrimientos, 35",
-"l":"Chiclana de la Frontera",
-"cp":"11130",
-"lat":"36.428583",
-"lon":"-6.151306",
 "g95":1.649
 }
 ],
@@ -4032,38 +4032,38 @@
 {
 "l":"San Fernando",
 "n":11,
-"g95":1.722,
-"die":1.856
-},
-{
-"l":"Conil de la Frontera",
-"n":12,
-"g95":1.727,
-"die":1.886
-},
-{
-"l":"Puerto Real",
-"n":8,
-"g95":1.727,
-"die":1.872
+"g95":1.723,
+"die":1.854
 },
 {
 "l":"Villamartín",
 "n":5,
-"g95":1.728,
+"g95":1.724,
 "die":1.917
+},
+{
+"l":"Conil de la Frontera",
+"n":12,
+"g95":1.726,
+"die":1.885
+},
+{
+"l":"Puerto Real",
+"n":8,
+"g95":1.728,
+"die":1.872
 },
 {
 "l":"Chiclana de la Frontera",
 "n":27,
-"g95":1.73,
+"g95":1.731,
 "die":1.865
 },
 {
 "l":"El Puerto de Santa María",
 "n":24,
 "g95":1.736,
-"die":1.868
+"die":1.869
 },
 {
 "l":"La Línea de la Concepción",
@@ -4080,7 +4080,7 @@
 {
 "l":"Cádiz",
 "n":17,
-"g95":1.767,
+"g95":1.768,
 "die":1.897
 },
 {
@@ -4094,20 +4094,20 @@
 {
 "l":"Jerez de la Frontera",
 "n":50,
-"g95":1.774,
+"g95":1.775,
 "die":1.905
 },
 {
 "l":"Chiclana de la Frontera",
 "n":27,
-"g95":1.73,
+"g95":1.731,
 "die":1.865
 },
 {
 "l":"El Puerto de Santa María",
 "n":24,
 "g95":1.736,
-"die":1.868
+"die":1.869
 },
 {
 "l":"Algeciras",
@@ -4118,14 +4118,14 @@
 {
 "l":"Cádiz",
 "n":17,
-"g95":1.767,
+"g95":1.768,
 "die":1.897
 },
 {
 "l":"Conil de la Frontera",
 "n":12,
-"g95":1.727,
-"die":1.886
+"g95":1.726,
+"die":1.885
 }
 ]
 },
@@ -4136,8 +4136,8 @@
 "n":199,
 "avg":{
 "g95":1.791,
-"g98":1.975,
-"die":1.876,
+"g98":1.976,
+"die":1.877,
 "die_plus":1.996,
 "glp":1.169
 },
@@ -4225,12 +4225,12 @@
 "g95":1.579
 },
 {
-"r":"Petroprix",
-"d":"Avenida Italia, 58",
+"r":"Gasexpress",
+"d":"Avenida Castellón, 54",
 "l":"Villarreal/Vila-Real",
 "cp":"12540",
-"lat":"39.932306",
-"lon":"-0.109222",
+"lat":"39.946500",
+"lon":"-0.091861",
 "g95":1.579
 }
 ],
@@ -4459,30 +4459,30 @@
 "l":"Castellón de la Plana/Castelló de la Plana",
 "n":37,
 "g95":1.783,
-"die":1.873
+"die":1.874
 },
 {
 "l":"Almazora/Almassora",
 "n":7,
-"g95":1.789,
+"g95":1.79,
 "die":1.868
-},
-{
-"l":"Segorbe",
-"n":4,
-"g95":1.793,
-"die":1.891
 },
 {
 "l":"La Vall D'uixó",
 "n":9,
-"g95":1.794,
+"g95":1.791,
 "die":1.879
+},
+{
+"l":"Segorbe",
+"n":4,
+"g95":1.794,
+"die":1.891
 },
 {
 "l":"Borriol",
 "n":4,
-"g95":1.804,
+"g95":1.806,
 "die":1.875
 }
 ],
@@ -4491,7 +4491,7 @@
 "l":"Castellón de la Plana/Castelló de la Plana",
 "n":37,
 "g95":1.783,
-"die":1.873
+"die":1.874
 },
 {
 "l":"Onda",
@@ -4508,14 +4508,14 @@
 {
 "l":"Benicarló",
 "n":10,
-"g95":1.821,
-"die":1.905
+"g95":1.82,
+"die":1.904
 },
 {
 "l":"Burriana",
 "n":10,
-"g95":1.806,
-"die":1.91
+"g95":1.808,
+"die":1.911
 },
 {
 "l":"Vinaròs",
@@ -4532,7 +4532,7 @@
 "n":217,
 "avg":{
 "g95":1.765,
-"g98":1.935,
+"g98":1.936,
 "die":1.895,
 "die_plus":1.989,
 "glp":1.071
@@ -4540,21 +4540,21 @@
 "cheap":{
 "g95":[
 {
-"r":"Family Energy",
-"d":"Avenida Andalucia, S/N",
-"l":"Puertollano",
-"cp":"13500",
-"lat":"38.681083",
-"lon":"-4.083917",
-"g95":1.589
-},
-{
 "r":"Petroprix",
 "d":"Calle Cañada Real, S/N",
 "l":"Puertollano",
 "cp":"13500",
 "lat":"38.703722",
 "lon":"-4.099639",
+"g95":1.589
+},
+{
+"r":"Family Energy",
+"d":"Avenida Andalucia, S/N",
+"l":"Puertollano",
+"cp":"13500",
+"lat":"38.681083",
+"lon":"-4.083917",
 "g95":1.589
 },
 {
@@ -4594,24 +4594,6 @@
 "g95":1.599
 },
 {
-"r":"Ballenoil",
-"d":"Carretera Cm-400 km. 129",
-"l":"Tomelloso",
-"cp":"13700",
-"lat":"39.170056",
-"lon":"-3.014500",
-"g95":1.599
-},
-{
-"r":"Family Energy",
-"d":"Carretera N-310 km. 93",
-"l":"Tomelloso",
-"cp":"13700",
-"lat":"39.161167",
-"lon":"-2.993944",
-"g95":1.599
-},
-{
 "r":"Plenergy",
 "d":"Avenida Juan Carlos I, 12",
 "l":"Tomelloso",
@@ -4628,18 +4610,27 @@
 "lat":"39.165472",
 "lon":"-3.007417",
 "g95":1.599
+},
+{
+"r":"Ballenoil",
+"d":"Carretera Cm-400 km. 129",
+"l":"Tomelloso",
+"cp":"13700",
+"lat":"39.170056",
+"lon":"-3.014500",
+"g95":1.599
+},
+{
+"r":"Family Energy",
+"d":"Carretera N-310 km. 93",
+"l":"Tomelloso",
+"cp":"13700",
+"lat":"39.161167",
+"lon":"-2.993944",
+"g95":1.599
 }
 ],
 "die":[
-{
-"r":"Family Energy",
-"d":"Avenida Andalucia, S/N",
-"l":"Puertollano",
-"cp":"13500",
-"lat":"38.681083",
-"lon":"-4.083917",
-"die":1.639
-},
 {
 "r":"Petroprix",
 "d":"Calle Cañada Real, S/N",
@@ -4647,6 +4638,15 @@
 "cp":"13500",
 "lat":"38.703722",
 "lon":"-4.099639",
+"die":1.639
+},
+{
+"r":"Family Energy",
+"d":"Avenida Andalucia, S/N",
+"l":"Puertollano",
+"cp":"13500",
+"lat":"38.681083",
+"lon":"-4.083917",
 "die":1.639
 },
 {
@@ -4659,24 +4659,6 @@
 "die":1.639
 },
 {
-"r":"Ballenoil",
-"d":"Carretera Cm-400 km. 129",
-"l":"Tomelloso",
-"cp":"13700",
-"lat":"39.170056",
-"lon":"-3.014500",
-"die":1.689
-},
-{
-"r":"Family Energy",
-"d":"Carretera N-310 km. 93",
-"l":"Tomelloso",
-"cp":"13700",
-"lat":"39.161167",
-"lon":"-2.993944",
-"die":1.689
-},
-{
 "r":"Plenergy",
 "d":"Avenida Juan Carlos I, 12",
 "l":"Tomelloso",
@@ -4692,6 +4674,24 @@
 "cp":"13700",
 "lat":"39.165472",
 "lon":"-3.007417",
+"die":1.689
+},
+{
+"r":"Ballenoil",
+"d":"Carretera Cm-400 km. 129",
+"l":"Tomelloso",
+"cp":"13700",
+"lat":"39.170056",
+"lon":"-3.014500",
+"die":1.689
+},
+{
+"r":"Family Energy",
+"d":"Carretera N-310 km. 93",
+"l":"Tomelloso",
+"cp":"13700",
+"lat":"39.161167",
+"lon":"-2.993944",
 "die":1.689
 },
 {
@@ -4836,20 +4836,20 @@
 {
 "l":"Puertollano",
 "n":9,
-"g95":1.722,
-"die":1.86
+"g95":1.725,
+"die":1.862
+},
+{
+"l":"Ciudad Real",
+"n":22,
+"g95":1.734,
+"die":1.872
 },
 {
 "l":"Membrilla",
 "n":6,
 "g95":1.734,
 "die":1.862
-},
-{
-"l":"Ciudad Real",
-"n":22,
-"g95":1.735,
-"die":1.872
 },
 {
 "l":"La Solana",
@@ -4886,14 +4886,14 @@
 {
 "l":"Ciudad Real",
 "n":22,
-"g95":1.735,
+"g95":1.734,
 "die":1.872
 },
 {
 "l":"Valdepeñas",
 "n":21,
 "g95":1.787,
-"die":1.917
+"die":1.92
 },
 {
 "l":"Tomelloso",
@@ -4904,7 +4904,7 @@
 {
 "l":"Alcázar de San Juan",
 "n":11,
-"g95":1.765,
+"g95":1.764,
 "die":1.904
 },
 {
@@ -4916,8 +4916,8 @@
 {
 "l":"Manzanares",
 "n":10,
-"g95":1.785,
-"die":1.915
+"g95":1.786,
+"die":1.916
 }
 ]
 },
@@ -4982,20 +4982,20 @@
 },
 {
 "r":"Plenergy",
-"d":"Avenida Simón Carpintero, 8",
-"l":"Córdoba",
-"cp":"14014",
-"lat":"37.902722",
-"lon":"-4.724972",
-"g95":1.639
-},
-{
-"r":"Plenergy",
 "d":"Calle Lapislázuli, 10",
 "l":"Córdoba",
 "cp":"14014",
 "lat":"37.888250",
 "lon":"-4.749639",
+"g95":1.639
+},
+{
+"r":"Plenergy",
+"d":"Avenida Simón Carpintero, 8",
+"l":"Córdoba",
+"cp":"14014",
+"lat":"37.902722",
+"lon":"-4.724972",
 "g95":1.639
 },
 {
@@ -5213,7 +5213,7 @@
 },
 "dear":{
 "g95":1.929,
-"die":2.019,
+"die":2.025,
 "glp":1.185
 },
 "muni":[
@@ -5242,16 +5242,16 @@
 "die":1.892
 },
 {
-"l":"Lucena",
-"n":16,
-"g95":1.736,
-"die":1.856
-},
-{
 "l":"Palma del Río",
 "n":5,
 "g95":1.737,
 "die":1.934
+},
+{
+"l":"Lucena",
+"n":16,
+"g95":1.738,
+"die":1.857
 },
 {
 "l":"Castro del Río",
@@ -5262,8 +5262,8 @@
 {
 "l":"La Carlota",
 "n":11,
-"g95":1.747,
-"die":1.935
+"g95":1.745,
+"die":1.932
 },
 {
 "l":"La Rambla",
@@ -5274,28 +5274,28 @@
 {
 "l":"Córdoba",
 "n":59,
-"g95":1.757,
-"die":1.934
+"g95":1.758,
+"die":1.935
 }
 ],
 "big":[
 {
 "l":"Córdoba",
 "n":59,
-"g95":1.757,
-"die":1.934
+"g95":1.758,
+"die":1.935
 },
 {
 "l":"Lucena",
 "n":16,
-"g95":1.736,
-"die":1.856
+"g95":1.738,
+"die":1.857
 },
 {
 "l":"La Carlota",
 "n":11,
-"g95":1.747,
-"die":1.935
+"g95":1.745,
+"die":1.932
 },
 {
 "l":"Puente Genil",
@@ -5313,7 +5313,7 @@
 "l":"Priego de Córdoba",
 "n":6,
 "g95":1.771,
-"die":1.906
+"die":1.903
 }
 ]
 },
@@ -5414,12 +5414,12 @@
 },
 {
 "r":"Plenergy",
-"d":"Calle Severo Ochoa, 0",
-"l":"A Coruña",
-"cp":"15008",
-"lat":"43.351500",
-"lon":"-8.425083",
-"g95":1.659
+"d":"Avenida Ramiro Carregal Rey, S/N",
+"l":"Ribeira",
+"cp":"15960",
+"lat":"42.571583",
+"lon":"-8.997972",
+"g95":1.655
 }
 ],
 "die":[
@@ -5460,21 +5460,21 @@
 "die":1.679
 },
 {
-"r":"Plenergy",
-"d":"Rua Do Faro, 4",
-"l":"Oleiros",
-"cp":"15173",
-"lat":"43.323194",
-"lon":"-8.322611",
-"die":1.679
-},
-{
 "r":"Ballenoil",
 "d":"Carretera Coruña km. 52",
 "l":"Oleiros",
 "cp":"15173",
 "lat":"43.323667",
 "lon":"-8.338861",
+"die":1.679
+},
+{
+"r":"Plenergy",
+"d":"Rua Do Faro, 4",
+"l":"Oleiros",
+"cp":"15173",
+"lat":"43.323194",
+"lon":"-8.322611",
 "die":1.679
 },
 {
@@ -5608,8 +5608,8 @@
 ]
 },
 "dear":{
-"g95":1.998,
-"die":2.009,
+"g95":1.958,
+"die":2.019,
 "glp":1.199
 },
 "muni":[
@@ -5623,7 +5623,7 @@
 "l":"Arteixo",
 "n":12,
 "g95":1.713,
-"die":1.85
+"die":1.851
 },
 {
 "l":"Cambre",
@@ -5632,16 +5632,16 @@
 "die":1.782
 },
 {
+"l":"Betanzos",
+"n":7,
+"g95":1.743,
+"die":1.822
+},
+{
 "l":"A Coruña",
 "n":31,
 "g95":1.743,
 "die":1.882
-},
-{
-"l":"Betanzos",
-"n":7,
-"g95":1.745,
-"die":1.822
 },
 {
 "l":"Culleredo",
@@ -5656,16 +5656,16 @@
 "die":1.905
 },
 {
+"l":"Ribeira",
+"n":4,
+"g95":1.748,
+"die":1.942
+},
+{
 "l":"Sada",
 "n":5,
 "g95":1.749,
 "die":1.834
-},
-{
-"l":"Ribeira",
-"n":4,
-"g95":1.75,
-"die":1.942
 },
 {
 "l":"As Pontes de García Rodríguez",
@@ -5697,7 +5697,7 @@
 "l":"Arteixo",
 "n":12,
 "g95":1.713,
-"die":1.85
+"die":1.851
 },
 {
 "l":"Carballo",
@@ -5720,9 +5720,9 @@
 "n":119,
 "avg":{
 "g95":1.819,
-"g98":1.978,
+"g98":1.979,
 "die":1.906,
-"die_plus":2.037,
+"die_plus":2.038,
 "glp":1.168
 },
 "cheap":{
@@ -5995,7 +5995,7 @@
 "l":"Las Pedroñeras",
 "n":3,
 "g95":1.787,
-"die":1.873
+"die":1.87
 },
 {
 "l":"Quintanar del Rey",
@@ -6013,19 +6013,19 @@
 "l":"Motilla del Palancar",
 "n":4,
 "g95":1.833,
-"die":1.925
+"die":1.929
 },
 {
 "l":"San Clemente",
 "n":5,
-"g95":1.843,
+"g95":1.841,
 "die":1.944
 },
 {
 "l":"Castillo de Garcimuñoz",
 "n":3,
-"g95":1.851,
-"die":1.969
+"g95":1.852,
+"die":1.973
 },
 {
 "l":"El Provencio",
@@ -6050,20 +6050,20 @@
 {
 "l":"San Clemente",
 "n":5,
-"g95":1.843,
+"g95":1.841,
 "die":1.944
 },
 {
 "l":"Motilla del Palancar",
 "n":4,
 "g95":1.833,
-"die":1.925
+"die":1.929
 },
 {
 "l":"Belinchón",
 "n":3,
-"g95":1.889,
-"die":1.999
+"g95":1.892,
+"die":2.002
 },
 {
 "l":"Campos del Paraíso",
@@ -6080,7 +6080,7 @@
 "n":274,
 "avg":{
 "g95":1.773,
-"g98":1.942,
+"g98":1.943,
 "die":1.874,
 "die_plus":1.982,
 "glp":1.141
@@ -6336,20 +6336,20 @@
 },
 {
 "r":"Repsol",
-"d":"Autopista Ap-7 km. 7",
-"l":"La Jonquera",
-"cp":"17700",
-"lat":"42.405278",
-"lon":"2.872250",
-"glp":1.145
-},
-{
-"r":"Repsol",
 "d":"Carretera N-2 km. 772,5",
 "l":"La Jonquera",
 "cp":"17700",
 "lat":"42.398417",
 "lon":"2.882667",
+"glp":1.145
+},
+{
+"r":"Repsol",
+"d":"Autopista Ap-7 km. 7",
+"l":"La Jonquera",
+"cp":"17700",
+"lat":"42.405278",
+"lon":"2.872250",
 "glp":1.145
 },
 {
@@ -6390,7 +6390,7 @@
 {
 "l":"Girona",
 "n":19,
-"g95":1.702,
+"g95":1.703,
 "die":1.792
 },
 {
@@ -6420,13 +6420,13 @@
 {
 "l":"Banyoles",
 "n":6,
-"g95":1.732,
+"g95":1.734,
 "die":1.827
 },
 {
 "l":"La Bisbal D'empordà",
 "n":3,
-"g95":1.739,
+"g95":1.741,
 "die":1.852
 }
 ],
@@ -6434,13 +6434,13 @@
 {
 "l":"La Jonquera",
 "n":21,
-"g95":1.834,
+"g95":1.835,
 "die":1.95
 },
 {
 "l":"Girona",
 "n":19,
-"g95":1.702,
+"g95":1.703,
 "die":1.792
 },
 {
@@ -6453,19 +6453,19 @@
 "l":"Olot",
 "n":11,
 "g95":1.76,
-"die":1.857
+"die":1.858
 },
 {
 "l":"Blanes",
 "n":7,
-"g95":1.788,
+"g95":1.79,
 "die":1.898
 },
 {
 "l":"Palafrugell",
 "n":7,
 "g95":1.758,
-"die":1.838
+"die":1.84
 }
 ]
 },
@@ -6475,7 +6475,7 @@
 "slug":"granada",
 "n":282,
 "avg":{
-"g95":1.773,
+"g95":1.772,
 "g98":1.94,
 "die":1.883,
 "die_plus":1.983,
@@ -6484,21 +6484,21 @@
 "cheap":{
 "g95":[
 {
-"r":"Petroprix",
-"d":"Carretera Almeria-Motril km. 107",
-"l":"Motril",
-"cp":"18600",
-"lat":"36.731917",
-"lon":"-3.509000",
-"g95":1.585
-},
-{
 "r":"Plenergy",
 "d":"Carretera de la Celulosa (N-323a) km. 0",
 "l":"Motril",
 "cp":"18600",
 "lat":"36.728222",
 "lon":"-3.542278",
+"g95":1.585
+},
+{
+"r":"Petroprix",
+"d":"Carretera Almeria-Motril km. 107",
+"l":"Motril",
+"cp":"18600",
+"lat":"36.731917",
+"lon":"-3.509000",
 "g95":1.585
 },
 {
@@ -6630,6 +6630,24 @@
 "die":1.757
 },
 {
+"r":"Lubricantes Martin",
+"d":"Avenida Asegra, 28",
+"l":"Peligros",
+"cp":"18210",
+"lat":"37.223528",
+"lon":"-3.626222",
+"die":1.758
+},
+{
+"r":"Minioil",
+"d":"Carretera N-323 km. 122",
+"l":"Peligros",
+"cp":"18210",
+"lat":"37.219972",
+"lon":"-3.628000",
+"die":1.758
+},
+{
 "r":"Juncadiesel",
 "d":"Calle Baza, 328",
 "l":"Albolote",
@@ -6645,24 +6663,6 @@
 "cp":"18220",
 "lat":"37.230222",
 "lon":"-3.645778",
-"die":1.759
-},
-{
-"r":"Minioil Albolote",
-"d":"Calle Motril, Parcela, 243",
-"l":"Albolote",
-"cp":"18220",
-"lat":"37.226889",
-"lon":"-3.649667",
-"die":1.759
-},
-{
-"r":"Lerfu",
-"d":"Poligono Juncaril Calle Motril Parcela 238, 238",
-"l":"Albolote",
-"cp":"18220",
-"lat":"37.225306",
-"lon":"-3.647889",
 "die":1.759
 }
 ],
@@ -6778,6 +6778,12 @@
 "die":1.845
 },
 {
+"l":"Peligros",
+"n":5,
+"g95":1.721,
+"die":1.822
+},
+{
 "l":"Atarfe",
 "n":8,
 "g95":1.722,
@@ -6788,12 +6794,6 @@
 "n":4,
 "g95":1.729,
 "die":1.851
-},
-{
-"l":"Peligros",
-"n":5,
-"g95":1.731,
-"die":1.838
 },
 {
 "l":"Vegas del Genil",
@@ -6822,15 +6822,15 @@
 {
 "l":"Loja",
 "n":10,
-"g95":1.746,
-"die":1.864
+"g95":1.747,
+"die":1.865
 }
 ],
 "big":[
 {
 "l":"Granada",
 "n":28,
-"g95":1.76,
+"g95":1.761,
 "die":1.874
 },
 {
@@ -6854,8 +6854,8 @@
 {
 "l":"Loja",
 "n":10,
-"g95":1.746,
-"die":1.864
+"g95":1.747,
+"die":1.865
 },
 {
 "l":"Huétor Tájar",
@@ -6872,7 +6872,7 @@
 "n":94,
 "avg":{
 "g95":1.776,
-"g98":1.948,
+"g98":1.949,
 "die":1.919,
 "die_plus":1.99,
 "glp":1.057
@@ -6895,15 +6895,6 @@
 "cp":"19001",
 "lat":"40.626417",
 "lon":"-3.189639",
-"g95":1.569
-},
-{
-"r":"Petroprix",
-"d":"Calle Francisco Aritio, 97",
-"l":"Guadalajara",
-"cp":"19004",
-"lat":"40.638722",
-"lon":"-3.186306",
 "g95":1.569
 },
 {
@@ -6934,12 +6925,12 @@
 "g95":1.569
 },
 {
-"r":"Ballenoil",
-"d":"Calle Julian Besteiro, 23",
+"r":"Petroprix",
+"d":"Calle Francisco Aritio, 97",
 "l":"Guadalajara",
 "cp":"19004",
-"lat":"40.632861",
-"lon":"-3.182972",
+"lat":"40.638722",
+"lon":"-3.186306",
 "g95":1.569
 },
 {
@@ -6949,6 +6940,15 @@
 "cp":"19004",
 "lat":"40.637583",
 "lon":"-3.188139",
+"g95":1.569
+},
+{
+"r":"Ballenoil",
+"d":"Calle Julian Besteiro, 23",
+"l":"Guadalajara",
+"cp":"19004",
+"lat":"40.632861",
+"lon":"-3.182972",
 "g95":1.569
 },
 {
@@ -6990,15 +6990,6 @@
 "die":1.739
 },
 {
-"r":"Petroprix",
-"d":"Calle Francisco Aritio, 97",
-"l":"Guadalajara",
-"cp":"19004",
-"lat":"40.638722",
-"lon":"-3.186306",
-"die":1.739
-},
-{
 "r":"Ballenoil",
 "d":"Carretera Fontanar km. 1",
 "l":"Guadalajara",
@@ -7026,12 +7017,12 @@
 "die":1.739
 },
 {
-"r":"Ballenoil",
-"d":"Calle Julian Besteiro, 23",
+"r":"Petroprix",
+"d":"Calle Francisco Aritio, 97",
 "l":"Guadalajara",
 "cp":"19004",
-"lat":"40.632861",
-"lon":"-3.182972",
+"lat":"40.638722",
+"lon":"-3.186306",
 "die":1.739
 },
 {
@@ -7041,6 +7032,15 @@
 "cp":"19004",
 "lat":"40.637583",
 "lon":"-3.188139",
+"die":1.739
+},
+{
+"r":"Ballenoil",
+"d":"Calle Julian Besteiro, 23",
+"l":"Guadalajara",
+"cp":"19004",
+"lat":"40.632861",
+"lon":"-3.182972",
 "die":1.739
 },
 {
@@ -7137,8 +7137,8 @@
 {
 "l":"Guadalajara",
 "n":24,
-"g95":1.687,
-"die":1.852
+"g95":1.688,
+"die":1.853
 },
 {
 "l":"Cabanillas del Campo",
@@ -7155,8 +7155,8 @@
 {
 "l":"Azuqueca de Henares",
 "n":8,
-"g95":1.792,
-"die":1.925
+"g95":1.791,
+"die":1.927
 },
 {
 "l":"Molina de Aragón",
@@ -7168,21 +7168,21 @@
 "l":"El Casar",
 "n":3,
 "g95":1.832,
-"die":2.011
+"die":2.006
 }
 ],
 "big":[
 {
 "l":"Guadalajara",
 "n":24,
-"g95":1.687,
-"die":1.852
+"g95":1.688,
+"die":1.853
 },
 {
 "l":"Azuqueca de Henares",
 "n":8,
-"g95":1.792,
-"die":1.925
+"g95":1.791,
+"die":1.927
 },
 {
 "l":"Cabanillas del Campo",
@@ -7206,7 +7206,7 @@
 "l":"El Casar",
 "n":3,
 "g95":1.832,
-"die":2.011
+"die":2.006
 }
 ]
 },
@@ -7217,9 +7217,9 @@
 "n":146,
 "avg":{
 "g95":1.82,
-"g98":1.977,
+"g98":1.978,
 "die":1.936,
-"die_plus":2.023,
+"die_plus":2.024,
 "glp":1.093
 },
 "cheap":{
@@ -7509,13 +7509,13 @@
 {
 "l":"Bergara",
 "n":6,
-"g95":1.72,
-"die":1.832
+"g95":1.722,
+"die":1.83
 },
 {
 "l":"Lezo",
 "n":3,
-"g95":1.749,
+"g95":1.752,
 "die":1.922
 },
 {
@@ -7527,8 +7527,8 @@
 {
 "l":"Arrasate/Mondragón",
 "n":6,
-"g95":1.768,
-"die":1.88
+"g95":1.769,
+"die":1.878
 },
 {
 "l":"Elgoibar",
@@ -7552,51 +7552,51 @@
 "l":"Oiartzun",
 "n":9,
 "g95":1.809,
-"die":1.976
+"die":1.977
 },
 {
 "l":"Beasain",
 "n":4,
-"g95":1.819,
-"die":1.977
+"g95":1.821,
+"die":1.975
 },
 {
 "l":"Donostia-San Sebastián",
 "n":16,
-"g95":1.824,
-"die":1.933
+"g95":1.825,
+"die":1.935
 }
 ],
 "big":[
 {
 "l":"Irun",
 "n":22,
-"g95":1.85,
+"g95":1.849,
 "die":1.957
 },
 {
 "l":"Donostia-San Sebastián",
 "n":16,
-"g95":1.824,
-"die":1.933
+"g95":1.825,
+"die":1.935
 },
 {
 "l":"Oiartzun",
 "n":9,
 "g95":1.809,
-"die":1.976
+"die":1.977
 },
 {
 "l":"Arrasate/Mondragón",
 "n":6,
-"g95":1.768,
-"die":1.88
+"g95":1.769,
+"die":1.878
 },
 {
 "l":"Bergara",
 "n":6,
-"g95":1.72,
-"die":1.832
+"g95":1.722,
+"die":1.83
 },
 {
 "l":"Usurbil",
@@ -7613,7 +7613,7 @@
 "n":139,
 "avg":{
 "g95":1.819,
-"g98":1.979,
+"g98":1.98,
 "die":1.93,
 "die_plus":2.025,
 "glp":1.12
@@ -7621,20 +7621,20 @@
 "cheap":{
 "g95":[
 {
-"r":"Sat Condado",
-"d":"Carretera Almonte de km. 9",
-"l":"Rociana del Condado",
-"cp":"21720",
-"lat":"37.299722",
-"lon":"-6.593806",
-"g95":1.665
-},
-{
 "r":"Virsur",
 "d":"Poligono Huertas Nuevas Parcela 3, 3",
 "l":"Rociana del Condado",
 "cp":"21720",
 "lat":"37.298250",
+"lon":"-6.593806",
+"g95":1.665
+},
+{
+"r":"Sat Condado",
+"d":"Carretera Almonte de km. 9",
+"l":"Rociana del Condado",
+"cp":"21720",
+"lat":"37.299722",
 "lon":"-6.593806",
 "g95":1.665
 },
@@ -7713,20 +7713,20 @@
 ],
 "die":[
 {
-"r":"Sat Condado",
-"d":"Carretera Almonte de km. 9",
-"l":"Rociana del Condado",
-"cp":"21720",
-"lat":"37.299722",
-"lon":"-6.593806",
-"die":1.735
-},
-{
 "r":"Virsur",
 "d":"Poligono Huertas Nuevas Parcela 3, 3",
 "l":"Rociana del Condado",
 "cp":"21720",
 "lat":"37.298250",
+"lon":"-6.593806",
+"die":1.735
+},
+{
+"r":"Sat Condado",
+"d":"Carretera Almonte de km. 9",
+"l":"Rociana del Condado",
+"cp":"21720",
+"lat":"37.299722",
 "lon":"-6.593806",
 "die":1.735
 },
@@ -7885,7 +7885,7 @@
 "l":"Valverde del Camino",
 "n":3,
 "g95":1.752,
-"die":1.915
+"die":1.918
 },
 {
 "l":"Aracena",
@@ -7896,14 +7896,14 @@
 {
 "l":"Trigueros",
 "n":3,
-"g95":1.793,
-"die":1.928
+"g95":1.799,
+"die":1.935
 },
 {
 "l":"Palos de la Frontera",
 "n":6,
 "g95":1.803,
-"die":1.925
+"die":1.928
 },
 {
 "l":"Lepe",
@@ -7926,21 +7926,21 @@
 {
 "l":"Moguer",
 "n":4,
-"g95":1.817,
+"g95":1.819,
 "die":1.946
 },
 {
-"l":"Chucena",
-"n":4,
+"l":"Isla Cristina",
+"n":3,
 "g95":1.821,
-"die":1.907
+"die":1.962
 }
 ],
 "big":[
 {
 "l":"Huelva",
 "n":19,
-"g95":1.849,
+"g95":1.85,
 "die":1.973
 },
 {
@@ -7964,14 +7964,14 @@
 {
 "l":"Almonte",
 "n":6,
-"g95":1.831,
-"die":1.914
+"g95":1.827,
+"die":1.912
 },
 {
 "l":"Palos de la Frontera",
 "n":6,
 "g95":1.803,
-"die":1.925
+"die":1.928
 }
 ]
 },
@@ -7979,10 +7979,10 @@
 "id":"22",
 "name":"Huesca",
 "slug":"huesca",
-"n":122,
+"n":121,
 "avg":{
 "g95":1.772,
-"g98":1.937,
+"g98":1.938,
 "die":1.892,
 "die_plus":1.996,
 "glp":1.179
@@ -8223,14 +8223,14 @@
 {
 "l":"Huesca",
 "n":16,
-"g95":1.74,
-"die":1.881
+"g95":1.739,
+"die":1.88
 },
 {
 "l":"Barbastro",
 "n":7,
-"g95":1.765,
-"die":1.921
+"g95":1.766,
+"die":1.923
 },
 {
 "l":"Grañén",
@@ -8247,14 +8247,14 @@
 {
 "l":"Candasnos",
 "n":3,
-"g95":1.789,
+"g95":1.794,
 "die":1.949
 },
 {
 "l":"Sabiñánigo",
 "n":4,
-"g95":1.81,
-"die":1.958
+"g95":1.813,
+"die":1.961
 },
 {
 "l":"Fraga",
@@ -8267,8 +8267,8 @@
 {
 "l":"Huesca",
 "n":16,
-"g95":1.74,
-"die":1.881
+"g95":1.739,
+"die":1.88
 },
 {
 "l":"Fraga",
@@ -8279,8 +8279,8 @@
 {
 "l":"Barbastro",
 "n":7,
-"g95":1.765,
-"die":1.921
+"g95":1.766,
+"die":1.923
 },
 {
 "l":"Binéfar",
@@ -8297,8 +8297,8 @@
 {
 "l":"Sabiñánigo",
 "n":4,
-"g95":1.81,
-"die":1.958
+"g95":1.813,
+"die":1.961
 }
 ]
 },
@@ -8390,20 +8390,20 @@
 },
 {
 "r":"Petroprix",
-"d":"Calle Castellar, S/N",
-"l":"Jaén",
-"cp":"23009",
-"lat":"37.794667",
-"lon":"-3.785694",
-"g95":1.699
-},
-{
-"r":"Petroprix",
 "d":"Ronda de los Olivares, 107",
 "l":"Jaén",
 "cp":"23009",
 "lat":"37.793667",
 "lon":"-3.791917",
+"g95":1.699
+},
+{
+"r":"Plenergy",
+"d":"Camino las Lagunillas, 1",
+"l":"Jaén",
+"cp":"23009",
+"lat":"37.790056",
+"lon":"-3.771917",
 "g95":1.699
 }
 ],
@@ -8464,15 +8464,6 @@
 },
 {
 "r":"Petroprix",
-"d":"Calle Castellar, S/N",
-"l":"Jaén",
-"cp":"23009",
-"lat":"37.794667",
-"lon":"-3.785694",
-"die":1.787
-},
-{
-"r":"Petroprix",
 "d":"Ronda de los Olivares, 107",
 "l":"Jaén",
 "cp":"23009",
@@ -8496,6 +8487,15 @@
 "cp":"23009",
 "lat":"37.787667",
 "lon":"-3.783056",
+"die":1.787
+},
+{
+"r":"Petroprix",
+"d":"Calle Castellar, S/N",
+"l":"Jaén",
+"cp":"23009",
+"lat":"37.794667",
+"lon":"-3.785694",
 "die":1.787
 }
 ],
@@ -8607,14 +8607,14 @@
 {
 "l":"Villanueva del Arzobispo",
 "n":3,
-"g95":1.754,
-"die":1.911
+"g95":1.751,
+"die":1.914
 },
 {
 "l":"Martos",
 "n":5,
 "g95":1.757,
-"die":1.909
+"die":1.911
 },
 {
 "l":"Mancha Real",
@@ -8631,14 +8631,14 @@
 {
 "l":"Jaén",
 "n":22,
-"g95":1.763,
-"die":1.884
+"g95":1.764,
+"die":1.885
 },
 {
 "l":"Lopera",
 "n":4,
 "g95":1.767,
-"die":1.909
+"die":1.912
 },
 {
 "l":"Úbeda",
@@ -8650,7 +8650,7 @@
 "l":"Linares",
 "n":12,
 "g95":1.77,
-"die":1.889
+"die":1.89
 },
 {
 "l":"Villacarrillo",
@@ -8663,8 +8663,8 @@
 {
 "l":"Jaén",
 "n":22,
-"g95":1.763,
-"die":1.884
+"g95":1.764,
+"die":1.885
 },
 {
 "l":"Andújar",
@@ -8676,13 +8676,13 @@
 "l":"Linares",
 "n":12,
 "g95":1.77,
-"die":1.889
+"die":1.89
 },
 {
 "l":"Guarromán",
 "n":11,
 "g95":1.835,
-"die":1.966
+"die":1.967
 },
 {
 "l":"Úbeda",
@@ -8705,20 +8705,20 @@
 "n":169,
 "avg":{
 "g95":1.777,
-"g98":1.933,
-"die":1.928,
+"g98":1.934,
+"die":1.929,
 "die_plus":2.004,
 "glp":1.158
 },
 "cheap":{
 "g95":[
 {
-"r":"Petroprix",
-"d":"Avenida Alcalde Miguel Castaño, 119",
+"r":"Ballenoil",
+"d":"Avenida Alcalde Miguel Castaño, 125",
 "l":"León",
 "cp":"24005",
-"lat":"42.584417",
-"lon":"-5.557667",
+"lat":"42.583833",
+"lon":"-5.557083",
 "g95":1.569
 },
 {
@@ -8731,12 +8731,12 @@
 "g95":1.569
 },
 {
-"r":"Ballenoil",
-"d":"Avenida Alcalde Miguel Castaño, 125",
+"r":"Petroprix",
+"d":"Avenida Alcalde Miguel Castaño, 119",
 "l":"León",
 "cp":"24005",
-"lat":"42.583833",
-"lon":"-5.557083",
+"lat":"42.584417",
+"lon":"-5.557667",
 "g95":1.569
 },
 {
@@ -8791,7 +8791,7 @@
 "cp":"24003",
 "lat":"42.577972",
 "lon":"-5.583944",
-"g95":1.629
+"g95":1.634
 },
 {
 "r":"Beroil",
@@ -8805,12 +8805,12 @@
 ],
 "die":[
 {
-"r":"Petroprix",
-"d":"Avenida Alcalde Miguel Castaño, 119",
+"r":"Ballenoil",
+"d":"Avenida Alcalde Miguel Castaño, 125",
 "l":"León",
 "cp":"24005",
-"lat":"42.584417",
-"lon":"-5.557667",
+"lat":"42.583833",
+"lon":"-5.557083",
 "die":1.659
 },
 {
@@ -8823,12 +8823,12 @@
 "die":1.659
 },
 {
-"r":"Ballenoil",
-"d":"Avenida Alcalde Miguel Castaño, 125",
+"r":"Petroprix",
+"d":"Avenida Alcalde Miguel Castaño, 119",
 "l":"León",
 "cp":"24005",
-"lat":"42.583833",
-"lon":"-5.557083",
+"lat":"42.584417",
+"lon":"-5.557667",
 "die":1.659
 },
 {
@@ -8972,21 +8972,21 @@
 },
 "dear":{
 "g95":1.899,
-"die":2.049,
+"die":2.055,
 "glp":1.194
 },
 "muni":[
 {
 "l":"Villaquilambre",
 "n":9,
-"g95":1.719,
+"g95":1.72,
 "die":1.871
 },
 {
 "l":"León",
 "n":23,
-"g95":1.72,
-"die":1.86
+"g95":1.722,
+"die":1.861
 },
 {
 "l":"Onzonilla",
@@ -9013,47 +9013,47 @@
 "die":1.922
 },
 {
-"l":"Villanueva de las Manzanas",
-"n":3,
-"g95":1.779,
-"die":1.993
-},
-{
 "l":"Sahagún",
 "n":4,
 "g95":1.78,
-"die":1.943
+"die":1.941
 },
 {
-"l":"Astorga",
+"l":"Villanueva de las Manzanas",
 "n":3,
-"g95":1.784,
-"die":1.962
+"g95":1.783,
+"die":1.996
 },
 {
 "l":"Ponferrada",
 "n":18,
 "g95":1.784,
-"die":1.944
+"die":1.945
+},
+{
+"l":"Astorga",
+"n":3,
+"g95":1.787,
+"die":1.965
 }
 ],
 "big":[
 {
 "l":"León",
 "n":23,
-"g95":1.72,
-"die":1.86
+"g95":1.722,
+"die":1.861
 },
 {
 "l":"Ponferrada",
 "n":18,
 "g95":1.784,
-"die":1.944
+"die":1.945
 },
 {
 "l":"Villaquilambre",
 "n":9,
-"g95":1.719,
+"g95":1.72,
 "die":1.871
 },
 {
@@ -9397,7 +9397,7 @@
 "l":"Balaguer",
 "n":8,
 "g95":1.675,
-"die":1.821
+"die":1.822
 },
 {
 "l":"Mollerussa",
@@ -9417,7 +9417,7 @@
 "l":"Balaguer",
 "n":8,
 "g95":1.675,
-"die":1.821
+"die":1.822
 },
 {
 "l":"Les Borges Blanques",
@@ -9453,7 +9453,7 @@
 "avg":{
 "g95":1.776,
 "g98":1.939,
-"die":1.897,
+"die":1.898,
 "die_plus":1.992,
 "glp":1.165
 },
@@ -9505,21 +9505,21 @@
 "g95":1.688
 },
 {
-"r":"Petroprix",
-"d":"Calle Circunde, 13",
-"l":"Logroño",
-"cp":"26006",
-"lat":"42.456528",
-"lon":"-2.403111",
-"g95":1.689
-},
-{
 "r":"Plenergy",
 "d":"Poligono Industrial Cantabria, 1",
 "l":"Logroño",
 "cp":"26006",
 "lat":"42.472583",
 "lon":"-2.416944",
+"g95":1.689
+},
+{
+"r":"Petroprix",
+"d":"Calle Circunde, 13",
+"l":"Logroño",
+"cp":"26006",
+"lat":"42.456528",
+"lon":"-2.403111",
 "g95":1.689
 },
 {
@@ -9588,21 +9588,21 @@
 "die":1.768
 },
 {
-"r":"Petroprix",
-"d":"Calle Circunde, 13",
-"l":"Logroño",
-"cp":"26006",
-"lat":"42.456528",
-"lon":"-2.403111",
-"die":1.769
-},
-{
 "r":"Plenergy",
 "d":"Poligono Industrial Cantabria, 1",
 "l":"Logroño",
 "cp":"26006",
 "lat":"42.472583",
 "lon":"-2.416944",
+"die":1.769
+},
+{
+"r":"Petroprix",
+"d":"Calle Circunde, 13",
+"l":"Logroño",
+"cp":"26006",
+"lat":"42.456528",
+"lon":"-2.403111",
 "die":1.769
 },
 {
@@ -9692,7 +9692,7 @@
 },
 "dear":{
 "g95":1.898,
-"die":2.008,
+"die":1.999,
 "glp":1.199
 },
 "muni":[
@@ -9700,18 +9700,18 @@
 "l":"Alfaro",
 "n":4,
 "g95":1.702,
-"die":1.875
+"die":1.874
 },
 {
 "l":"Logroño",
 "n":22,
-"g95":1.752,
+"g95":1.753,
 "die":1.879
 },
 {
 "l":"San Asensio",
 "n":3,
-"g95":1.766,
+"g95":1.769,
 "die":1.892
 },
 {
@@ -9723,7 +9723,7 @@
 {
 "l":"Calahorra",
 "n":10,
-"g95":1.796,
+"g95":1.798,
 "die":1.92
 },
 {
@@ -9743,13 +9743,13 @@
 {
 "l":"Logroño",
 "n":22,
-"g95":1.752,
+"g95":1.753,
 "die":1.879
 },
 {
 "l":"Calahorra",
 "n":10,
-"g95":1.796,
+"g95":1.798,
 "die":1.92
 },
 {
@@ -9762,7 +9762,7 @@
 "l":"Alfaro",
 "n":4,
 "g95":1.702,
-"die":1.875
+"die":1.874
 },
 {
 "l":"Haro",
@@ -9784,9 +9784,9 @@
 "slug":"lugo",
 "n":126,
 "avg":{
-"g95":1.793,
+"g95":1.794,
 "g98":1.939,
-"die":1.943,
+"die":1.944,
 "die_plus":2.034,
 "glp":1.131
 },
@@ -9799,7 +9799,7 @@
 "cp":"27800",
 "lat":"43.300806",
 "lon":"-7.675306",
-"g95":1.665
+"g95":1.655
 },
 {
 "r":"Petrocash Fontefria",
@@ -9874,13 +9874,13 @@
 "g95":1.679
 },
 {
-"r":"Shell",
-"d":"Avenida Benigno Rivera, S/N",
-"l":"Lugo",
-"cp":"27002",
-"lat":"43.043889",
-"lon":"-7.569361",
-"g95":1.689
+"r":"Tex",
+"d":"Calle Ciudad de Vivero, 73",
+"l":"Vilalba",
+"cp":"27800",
+"lat":"43.305556",
+"lon":"-7.676806",
+"g95":1.679
 }
 ],
 "die":[
@@ -10041,8 +10041,8 @@
 {
 "l":"Vilalba",
 "n":6,
-"g95":1.736,
-"die":1.947
+"g95":1.733,
+"die":1.949
 },
 {
 "l":"Castro de Rei",
@@ -10057,27 +10057,27 @@
 "die":1.918
 },
 {
-"l":"Monforte de Lemos",
-"n":7,
-"g95":1.773,
-"die":1.905
-},
-{
-"l":"Lugo",
-"n":27,
-"g95":1.774,
-"die":1.939
-},
-{
 "l":"Burela",
 "n":3,
 "g95":1.775,
 "die":1.916
 },
 {
+"l":"Lugo",
+"n":27,
+"g95":1.775,
+"die":1.94
+},
+{
+"l":"Monforte de Lemos",
+"n":7,
+"g95":1.775,
+"die":1.905
+},
+{
 "l":"Guitiriz",
 "n":4,
-"g95":1.778,
+"g95":1.78,
 "die":1.925
 },
 {
@@ -10096,27 +10096,27 @@
 "l":"Sarria",
 "n":7,
 "g95":1.794,
-"die":1.916
+"die":1.917
 }
 ],
 "big":[
 {
 "l":"Lugo",
 "n":27,
-"g95":1.774,
-"die":1.939
+"g95":1.775,
+"die":1.94
 },
 {
 "l":"Monforte de Lemos",
 "n":7,
-"g95":1.773,
+"g95":1.775,
 "die":1.905
 },
 {
 "l":"Sarria",
 "n":7,
 "g95":1.794,
-"die":1.916
+"die":1.917
 },
 {
 "l":"Ribadeo",
@@ -10127,8 +10127,8 @@
 {
 "l":"Vilalba",
 "n":6,
-"g95":1.736,
-"die":1.947
+"g95":1.733,
+"die":1.949
 },
 {
 "l":"O Corgo",
@@ -10142,12 +10142,12 @@
 "id":"28",
 "name":"Madrid",
 "slug":"madrid",
-"n":896,
+"n":895,
 "avg":{
-"g95":1.779,
+"g95":1.78,
 "g98":1.964,
 "die":1.907,
-"die_plus":1.983,
+"die_plus":1.984,
 "glp":1.084
 },
 "cheap":{
@@ -10245,15 +10245,6 @@
 ],
 "die":[
 {
-"r":"Ballenoil",
-"d":"Calle Puerto Cotos, 25",
-"l":"Móstoles",
-"cp":"28935",
-"lat":"40.351694",
-"lon":"-3.876639",
-"die":1.689
-},
-{
 "r":"Petroprix",
 "d":"Calle Plasencia, 29",
 "l":"Móstoles",
@@ -10264,20 +10255,11 @@
 },
 {
 "r":"Ballenoil",
-"d":"Avenida Andalucia, 7",
-"l":"Valdemoro",
-"cp":"28340",
-"lat":"40.189500",
-"lon":"-3.673500",
-"die":1.689
-},
-{
-"r":"Ballenoil",
-"d":"Avenida Avenida de las Morcilleras, 1",
-"l":"Valdemoro",
-"cp":"28340",
-"lat":"40.195444",
-"lon":"-3.674250",
+"d":"Calle Puerto Cotos, 25",
+"l":"Móstoles",
+"cp":"28935",
+"lat":"40.351694",
+"lon":"-3.876639",
 "die":1.689
 },
 {
@@ -10296,6 +10278,24 @@
 "cp":"28340",
 "lat":"40.198944",
 "lon":"-3.676694",
+"die":1.689
+},
+{
+"r":"Ballenoil",
+"d":"Avenida Andalucia, 7",
+"l":"Valdemoro",
+"cp":"28340",
+"lat":"40.189500",
+"lon":"-3.673500",
+"die":1.689
+},
+{
+"r":"Ballenoil",
+"d":"Avenida Avenida de las Morcilleras, 1",
+"l":"Valdemoro",
+"cp":"28340",
+"lat":"40.195444",
+"lon":"-3.674250",
 "die":1.689
 },
 {
@@ -10449,7 +10449,7 @@
 {
 "l":"Fuenlabrada",
 "n":26,
-"g95":1.686,
+"g95":1.688,
 "die":1.847
 },
 {
@@ -10467,13 +10467,13 @@
 {
 "l":"Móstoles",
 "n":25,
-"g95":1.71,
-"die":1.833
+"g95":1.711,
+"die":1.835
 },
 {
 "l":"Torrejón de Ardoz",
 "n":29,
-"g95":1.717,
+"g95":1.718,
 "die":1.829
 },
 {
@@ -10499,8 +10499,8 @@
 {
 "l":"Madrid",
 "n":246,
-"g95":1.806,
-"die":1.925
+"g95":1.807,
+"die":1.926
 },
 {
 "l":"Alcorcón",
@@ -10511,25 +10511,25 @@
 {
 "l":"Alcalá de Henares",
 "n":32,
-"g95":1.737,
-"die":1.861
+"g95":1.738,
+"die":1.862
 },
 {
 "l":"Leganés",
 "n":32,
-"g95":1.747,
+"g95":1.748,
 "die":1.884
 },
 {
 "l":"Torrejón de Ardoz",
 "n":29,
-"g95":1.717,
+"g95":1.718,
 "die":1.829
 },
 {
 "l":"Getafe",
 "n":28,
-"g95":1.762,
+"g95":1.761,
 "die":1.909
 }
 ]
@@ -10540,8 +10540,8 @@
 "slug":"malaga",
 "n":310,
 "avg":{
-"g95":1.808,
-"g98":1.973,
+"g95":1.809,
+"g98":1.974,
 "die":1.936,
 "die_plus":2.03,
 "glp":1.098
@@ -10630,12 +10630,12 @@
 "g95":1.667
 },
 {
-"r":"Petroprix",
-"d":"Urbanización la Leala, 22",
+"r":"Ballenoil",
+"d":"Calle Pacharan, 25",
 "l":"Benalmádena",
 "cp":"29631",
-"lat":"36.606639",
-"lon":"-4.529333",
+"lat":"36.604500",
+"lon":"-4.530389",
 "g95":1.667
 }
 ],
@@ -10668,21 +10668,21 @@
 "die":1.737
 },
 {
-"r":"Petroprix",
-"d":"Urbanización la Leala, 22",
-"l":"Benalmádena",
-"cp":"29631",
-"lat":"36.606639",
-"lon":"-4.529333",
-"die":1.737
-},
-{
 "r":"Ballenoil",
 "d":"Calle Pacharan, 25",
 "l":"Benalmádena",
 "cp":"29631",
 "lat":"36.604500",
 "lon":"-4.530389",
+"die":1.737
+},
+{
+"r":"Petroprix",
+"d":"Urbanización la Leala, 22",
+"l":"Benalmádena",
+"cp":"29631",
+"lat":"36.606639",
+"lon":"-4.529333",
 "die":1.737
 },
 {
@@ -10840,7 +10840,7 @@
 "l":"Vélez-Málaga",
 "n":17,
 "g95":1.745,
-"die":1.867
+"die":1.868
 },
 {
 "l":"Benalmádena",
@@ -10857,32 +10857,32 @@
 {
 "l":"Ronda",
 "n":12,
-"g95":1.781,
-"die":1.888
+"g95":1.779,
+"die":1.884
 },
 {
 "l":"Alhaurín de la Torre",
 "n":7,
 "g95":1.785,
-"die":1.932
+"die":1.931
 },
 {
 "l":"Antequera",
 "n":22,
-"g95":1.8,
+"g95":1.801,
 "die":1.938
-},
-{
-"l":"Algarrobo",
-"n":4,
-"g95":1.807,
-"die":1.954
 },
 {
 "l":"Mijas",
 "n":14,
-"g95":1.809,
+"g95":1.805,
 "die":1.943
+},
+{
+"l":"Algarrobo",
+"n":4,
+"g95":1.809,
+"die":1.959
 },
 {
 "l":"Coín",
@@ -10895,32 +10895,32 @@
 {
 "l":"Málaga",
 "n":58,
-"g95":1.827,
+"g95":1.828,
 "die":1.972
 },
 {
 "l":"Marbella",
 "n":29,
-"g95":1.827,
+"g95":1.828,
 "die":1.956
 },
 {
 "l":"Antequera",
 "n":22,
-"g95":1.8,
+"g95":1.801,
 "die":1.938
 },
 {
 "l":"Estepona",
 "n":19,
-"g95":1.824,
-"die":1.96
+"g95":1.825,
+"die":1.962
 },
 {
 "l":"Vélez-Málaga",
 "n":17,
 "g95":1.745,
-"die":1.867
+"die":1.868
 },
 {
 "l":"Benalmádena",
@@ -10937,7 +10937,7 @@
 "n":464,
 "avg":{
 "g95":1.763,
-"g98":1.915,
+"g98":1.916,
 "die":1.873,
 "die_plus":1.945,
 "glp":1.078
@@ -10990,6 +10990,15 @@
 "g95":1.599
 },
 {
+"r":"Gasexpress",
+"d":"Avenida Victor Garrigos en Churra, 29",
+"l":"Murcia",
+"cp":"30110",
+"lat":"38.030389",
+"lon":"-1.145500",
+"g95":1.599
+},
+{
 "r":"Thader I",
 "d":"Parque Empresarial Thader, 18",
 "l":"Murcia",
@@ -11024,15 +11033,6 @@
 "lat":"38.008417",
 "lon":"-1.104917",
 "g95":1.6
-},
-{
-"r":"E.S. Papa Ali",
-"d":"P.i. Lorquí, C/B-4",
-"l":"Lorquí",
-"cp":"30564",
-"lat":"38.100296",
-"lon":"-1.235303",
-"g95":1.609
 }
 ],
 "die":[
@@ -11052,6 +11052,15 @@
 "cp":"30007",
 "lat":"37.998361",
 "lon":"-1.115083",
+"die":1.699
+},
+{
+"r":"Gasexpress",
+"d":"Avenida Victor Garrigos en Churra, 29",
+"l":"Murcia",
+"cp":"30110",
+"lat":"38.030389",
+"lon":"-1.145500",
 "die":1.699
 },
 {
@@ -11116,15 +11125,6 @@
 "lat":"38.094750",
 "lon":"-1.178972",
 "die":1.738
-},
-{
-"r":"Secotrans",
-"d":"Calle Colombia -Pg.ind en Alcantarilla, 1706",
-"l":"Alcantarilla",
-"cp":"30820",
-"lat":"37.952167",
-"lon":"-1.196139",
-"die":1.739
 }
 ],
 "glp":[
@@ -11201,21 +11201,21 @@
 "glp":0.997
 },
 {
-"r":"El Remolino",
-"d":"Autovia Lorca -Aguilas km. 0,800",
-"l":"Lorca",
-"cp":"30800",
-"lat":"37.647306",
-"lon":"-1.701500",
-"glp":0.997
-},
-{
 "r":"Sutullena-Cepsa",
 "d":"Camino Camino Hondo Ronda Sur, 1",
 "l":"Lorca",
 "cp":"30800",
 "lat":"37.658722",
 "lon":"-1.698778",
+"glp":0.997
+},
+{
+"r":"El Remolino",
+"d":"Autovia Lorca -Aguilas km. 0,800",
+"l":"Lorca",
+"cp":"30800",
+"lat":"37.647306",
+"lon":"-1.701500",
 "glp":0.997
 }
 ]
@@ -11229,13 +11229,13 @@
 {
 "l":"Puerto Lumbreras",
 "n":8,
-"g95":1.718,
-"die":1.859
+"g95":1.717,
+"die":1.856
 },
 {
 "l":"San Javier",
 "n":14,
-"g95":1.718,
+"g95":1.717,
 "die":1.836
 },
 {
@@ -11247,8 +11247,8 @@
 {
 "l":"Yecla",
 "n":9,
-"g95":1.728,
-"die":1.871
+"g95":1.729,
+"die":1.873
 },
 {
 "l":"Alcantarilla",
@@ -11259,13 +11259,13 @@
 {
 "l":"San Pedro del Pinatar",
 "n":8,
-"g95":1.745,
+"g95":1.744,
 "die":1.845
 },
 {
 "l":"Lorca",
 "n":36,
-"g95":1.746,
+"g95":1.745,
 "die":1.875
 },
 {
@@ -11275,35 +11275,35 @@
 "die":1.856
 },
 {
+"l":"Murcia",
+"n":110,
+"g95":1.747,
+"die":1.862
+},
+{
 "l":"Molina de Segura",
 "n":25,
 "g95":1.748,
 "die":1.846
-},
-{
-"l":"Murcia",
-"n":110,
-"g95":1.748,
-"die":1.862
 }
 ],
 "big":[
 {
 "l":"Murcia",
 "n":110,
-"g95":1.748,
+"g95":1.747,
 "die":1.862
 },
 {
 "l":"Cartagena",
 "n":60,
 "g95":1.771,
-"die":1.878
+"die":1.879
 },
 {
 "l":"Lorca",
 "n":36,
-"g95":1.746,
+"g95":1.745,
 "die":1.875
 },
 {
@@ -11322,7 +11322,7 @@
 "l":"Mazarrón",
 "n":14,
 "g95":1.774,
-"die":1.902
+"die":1.901
 }
 ]
 },
@@ -11404,22 +11404,13 @@
 "g95":1.629
 },
 {
-"r":"E.S. Bardenas",
-"d":"Poligono la Serna - Calle B - A68(N232) Salida 91, S/N",
-"l":"Tudela",
-"cp":"31500",
-"lat":"42.076222",
-"lon":"-1.642889",
-"g95":1.635
-},
-{
 "r":"Plenergy",
 "d":"Autovia A-68 km. 99",
 "l":"Fontellas",
 "cp":"31512",
 "lat":"42.023583",
 "lon":"-1.580222",
-"g95":1.637
+"g95":1.635
 },
 {
 "r":"Plenergy",
@@ -11428,7 +11419,16 @@
 "cp":"31512",
 "lat":"42.024778",
 "lon":"-1.580333",
-"g95":1.637
+"g95":1.635
+},
+{
+"r":"E.S. Bardenas",
+"d":"Poligono la Serna - Calle B - A68(N232) Salida 91, S/N",
+"l":"Tudela",
+"cp":"31500",
+"lat":"42.076222",
+"lon":"-1.642889",
+"g95":1.635
 }
 ],
 "die":[
@@ -11571,20 +11571,20 @@
 },
 {
 "r":"Moeve",
-"d":"Au A-15, 78",
-"l":"Elortzibar Noáin (Valle de Elorz)/Noain",
-"cp":"31119",
-"lat":"42.731944",
-"lon":"-1.618028",
-"glp":1.124
-},
-{
-"r":"Moeve",
 "d":"Autopista Ap-15 km. 78",
 "l":"Elortzibar Noáin (Valle de Elorz)/Noain",
 "cp":"31119",
 "lat":"42.731944",
 "lon":"-1.616889",
+"glp":1.124
+},
+{
+"r":"Moeve",
+"d":"Au A-15, 78",
+"l":"Elortzibar Noáin (Valle de Elorz)/Noain",
+"cp":"31119",
+"lat":"42.731944",
+"lon":"-1.618028",
 "glp":1.124
 },
 {
@@ -11637,8 +11637,8 @@
 {
 "l":"Fontellas",
 "n":3,
-"g95":1.694,
-"die":1.822
+"g95":1.696,
+"die":1.816
 },
 {
 "l":"Castejón",
@@ -11673,8 +11673,8 @@
 {
 "l":"Pamplona/Iruña",
 "n":12,
-"g95":1.76,
-"die":1.873
+"g95":1.761,
+"die":1.872
 },
 {
 "l":"Berrioplano",
@@ -11693,13 +11693,13 @@
 {
 "l":"Pamplona/Iruña",
 "n":12,
-"g95":1.76,
-"die":1.873
+"g95":1.761,
+"die":1.872
 },
 {
 "l":"Elortzibar Noáin (Valle de Elorz)/Noain",
 "n":9,
-"g95":1.805,
+"g95":1.804,
 "die":1.92
 },
 {
@@ -11728,23 +11728,14 @@
 "slug":"ourense",
 "n":86,
 "avg":{
-"g95":1.791,
+"g95":1.792,
 "g98":1.949,
-"die":1.925,
+"die":1.926,
 "die_plus":1.998,
 "glp":1.172
 },
 "cheap":{
 "g95":[
-{
-"r":"Galp",
-"d":"N-540 P.k. 0,700",
-"l":"Barbadás",
-"cp":"32890",
-"lat":"42.318052",
-"lon":"-7.877994",
-"g95":1.629
-},
 {
 "r":"Plenergy",
 "d":"Rua Marcelo Macias, 142",
@@ -11782,6 +11773,15 @@
 "g95":1.629
 },
 {
+"r":"Galp",
+"d":"N-540 P.k. 0,700",
+"l":"Barbadás",
+"cp":"32890",
+"lat":"42.318052",
+"lon":"-7.877994",
+"g95":1.634
+},
+{
 "r":"Superfuel",
 "d":"Calle Ricardo Martin Esperanza, 1",
 "l":"San Cibrao Das Viñas",
@@ -11809,21 +11809,21 @@
 "g95":1.689
 },
 {
-"r":"E.S. O Viso",
-"d":"Carretera N-525 km. 242,400",
-"l":"Ourense",
-"cp":"32001",
-"lat":"42.369833",
-"lon":"-7.853778",
-"g95":1.689
-},
-{
 "r":"E. S. O Pino",
 "d":"Carretera N-120 km. 571",
 "l":"Ourense",
 "cp":"32001",
 "lat":"42.353194",
 "lon":"-7.878278",
+"g95":1.689
+},
+{
+"r":"E.S. O Viso",
+"d":"Carretera N-525 km. 242,400",
+"l":"Ourense",
+"cp":"32001",
+"lat":"42.369833",
+"lon":"-7.853778",
 "g95":1.689
 }
 ],
@@ -11874,21 +11874,21 @@
 "die":1.699
 },
 {
-"r":"E.S. O Viso",
-"d":"Carretera N-525 km. 242,400",
-"l":"Ourense",
-"cp":"32001",
-"lat":"42.369833",
-"lon":"-7.853778",
-"die":1.769
-},
-{
 "r":"E. S. O Pino",
 "d":"Carretera N-120 km. 571",
 "l":"Ourense",
 "cp":"32001",
 "lat":"42.353194",
 "lon":"-7.878278",
+"die":1.769
+},
+{
+"r":"E.S. O Viso",
+"d":"Carretera N-525 km. 242,400",
+"l":"Ourense",
+"cp":"32001",
+"lat":"42.369833",
+"lon":"-7.853778",
 "die":1.769
 },
 {
@@ -11989,13 +11989,13 @@
 "l":"Xinzo de Limia",
 "n":5,
 "g95":1.757,
-"die":1.95
+"die":1.954
 },
 {
 "l":"San Cibrao Das Viñas",
 "n":7,
-"g95":1.758,
-"die":1.879
+"g95":1.76,
+"die":1.881
 },
 {
 "l":"Verín",
@@ -12006,8 +12006,8 @@
 {
 "l":"A Gudiña",
 "n":3,
-"g95":1.801,
-"die":1.946
+"g95":1.804,
+"die":1.949
 },
 {
 "l":"Coles",
@@ -12032,8 +12032,8 @@
 {
 "l":"San Cibrao Das Viñas",
 "n":7,
-"g95":1.758,
-"die":1.879
+"g95":1.76,
+"die":1.881
 },
 {
 "l":"Verín",
@@ -12045,7 +12045,7 @@
 "l":"Xinzo de Limia",
 "n":5,
 "g95":1.757,
-"die":1.95
+"die":1.954
 },
 {
 "l":"O Carballiño",
@@ -12065,12 +12065,12 @@
 "id":"33",
 "name":"Asturias",
 "slug":"asturias",
-"n":242,
+"n":241,
 "avg":{
 "g95":1.827,
 "g98":1.972,
-"die":1.95,
-"die_plus":2.025,
+"die":1.949,
+"die_plus":2.024,
 "glp":1.165
 },
 "cheap":{
@@ -12103,6 +12103,15 @@
 "g95":1.707
 },
 {
+"r":"Petroprix",
+"d":"Avenida de los Campones, 2",
+"l":"Gijón",
+"cp":"33211",
+"lat":"43.535667",
+"lon":"-5.689361",
+"g95":1.707
+},
+{
 "r":"Ballenoil",
 "d":"Avenida Roces, N",
 "l":"Gijón",
@@ -12121,15 +12130,6 @@
 "g95":1.707
 },
 {
-"r":"Petroprix",
-"d":"Avenida de los Campones, 2",
-"l":"Gijón",
-"cp":"33211",
-"lat":"43.535667",
-"lon":"-5.689361",
-"g95":1.707
-},
-{
 "r":"Easygas",
 "d":"Calle Nicolas Copernico, 311",
 "l":"Gijón",
@@ -12139,21 +12139,21 @@
 "g95":1.709
 },
 {
-"r":"Plenergy",
-"d":"Avenida de Lugo, 50",
-"l":"Avilés",
-"cp":"33401",
-"lat":"43.569111",
-"lon":"-5.927778",
-"g95":1.717
-},
-{
 "r":"Ballenoil",
 "d":"Avenida Conde Guadalhorce, 69",
 "l":"Avilés",
 "cp":"33401",
 "lat":"43.567861",
 "lon":"-5.922806",
+"g95":1.717
+},
+{
+"r":"Plenergy",
+"d":"Avenida de Lugo, 50",
+"l":"Avilés",
+"cp":"33401",
+"lat":"43.569111",
+"lon":"-5.927778",
 "g95":1.717
 },
 {
@@ -12231,6 +12231,15 @@
 "die":1.819
 },
 {
+"r":"Petroprix",
+"d":"Avenida de los Campones, 2",
+"l":"Gijón",
+"cp":"33211",
+"lat":"43.535667",
+"lon":"-5.689361",
+"die":1.819
+},
+{
 "r":"Ballenoil",
 "d":"Avenida Roces, N",
 "l":"Gijón",
@@ -12246,15 +12255,6 @@
 "cp":"33211",
 "lat":"43.534972",
 "lon":"-5.690167",
-"die":1.819
-},
-{
-"r":"Petroprix",
-"d":"Avenida de los Campones, 2",
-"l":"Gijón",
-"cp":"33211",
-"lat":"43.535667",
-"lon":"-5.689361",
 "die":1.819
 }
 ],
@@ -12367,7 +12367,7 @@
 "l":"Avilés",
 "n":15,
 "g95":1.77,
-"die":1.907
+"die":1.904
 },
 {
 "l":"Castrillón",
@@ -12385,25 +12385,25 @@
 "l":"Siero",
 "n":22,
 "g95":1.807,
-"die":1.945
+"die":1.944
+},
+{
+"l":"Navia",
+"n":4,
+"g95":1.809,
+"die":1.935
 },
 {
 "l":"Corvera de Asturias",
 "n":5,
-"g95":1.808,
-"die":1.939
+"g95":1.811,
+"die":1.937
 },
 {
 "l":"Coaña",
 "n":3,
 "g95":1.812,
-"die":1.971
-},
-{
-"l":"Navia",
-"n":4,
-"g95":1.812,
-"die":1.938
+"die":1.976
 },
 {
 "l":"Piloña",
@@ -12414,8 +12414,8 @@
 {
 "l":"Langreo",
 "n":8,
-"g95":1.817,
-"die":1.963
+"g95":1.819,
+"die":1.962
 }
 ],
 "big":[
@@ -12423,37 +12423,37 @@
 "l":"Gijón",
 "n":38,
 "g95":1.82,
-"die":1.933
+"die":1.932
 },
 {
 "l":"Siero",
 "n":22,
 "g95":1.807,
-"die":1.945
+"die":1.944
 },
 {
 "l":"Oviedo",
 "n":20,
 "g95":1.845,
-"die":1.974
+"die":1.975
 },
 {
 "l":"Avilés",
 "n":15,
 "g95":1.77,
-"die":1.907
+"die":1.904
 },
 {
 "l":"Llanera",
 "n":9,
-"g95":1.875,
-"die":2.017
+"g95":1.876,
+"die":2.018
 },
 {
 "l":"Valdés",
 "n":9,
-"g95":1.827,
-"die":1.91
+"g95":1.831,
+"die":1.911
 }
 ]
 },
@@ -12463,9 +12463,9 @@
 "slug":"palencia",
 "n":74,
 "avg":{
-"g95":1.791,
+"g95":1.792,
 "g98":1.948,
-"die":1.939,
+"die":1.94,
 "die_plus":2.026,
 "glp":1.161
 },
@@ -12499,21 +12499,21 @@
 "g95":1.699
 },
 {
-"r":"Ballenoil",
-"d":"Carretera N-611 km. 10,9",
-"l":"Palencia",
-"cp":"34003",
-"lat":"42.020778",
-"lon":"-4.528389",
-"g95":1.699
-},
-{
 "r":"Beroil",
 "d":"Carretera Carretera de Santander km. 12,3",
 "l":"Palencia",
 "cp":"34003",
 "lat":"42.031500",
 "lon":"-4.524167",
+"g95":1.699
+},
+{
+"r":"Ballenoil",
+"d":"Carretera N-611 km. 10,9",
+"l":"Palencia",
+"cp":"34003",
+"lat":"42.020778",
+"lon":"-4.528389",
 "g95":1.699
 },
 {
@@ -12714,8 +12714,8 @@
 {
 "l":"Aguilar de Campoo",
 "n":5,
-"g95":1.801,
-"die":1.977
+"g95":1.805,
+"die":1.981
 },
 {
 "l":"Osorno la Mayor",
@@ -12732,8 +12732,8 @@
 {
 "l":"Dueñas",
 "n":4,
-"g95":1.815,
-"die":2.02
+"g95":1.822,
+"die":2.026
 }
 ],
 "big":[
@@ -12746,8 +12746,8 @@
 {
 "l":"Aguilar de Campoo",
 "n":5,
-"g95":1.801,
-"die":1.977
+"g95":1.805,
+"die":1.981
 },
 {
 "l":"Torquemada",
@@ -12758,8 +12758,8 @@
 {
 "l":"Dueñas",
 "n":4,
-"g95":1.815,
-"die":2.02
+"g95":1.822,
+"die":2.026
 },
 {
 "l":"Osorno la Mayor",
@@ -12817,30 +12817,12 @@
 "g95":1.385
 },
 {
-"r":"Plenergy",
-"d":"Calle Canal Izquierda Con Algarrobo, S/N",
-"l":"Agüimes",
-"cp":"35118",
-"lat":"27.861583",
-"lon":"-15.414556",
-"g95":1.385
-},
-{
 "r":"Petroprix",
-"d":"Calle los Algarrobos, 17",
+"d":"Calle Adelfas, 187",
 "l":"Agüimes",
 "cp":"35118",
-"lat":"27.858417",
-"lon":"-15.417639",
-"g95":1.385
-},
-{
-"r":"Petroprix",
-"d":"Avenida del Sureste, 1",
-"l":"Agüimes",
-"cp":"35118",
-"lat":"27.869750",
-"lon":"-15.430111",
+"lat":"27.867194",
+"lon":"-15.420139",
 "g95":1.385
 },
 {
@@ -12854,11 +12836,29 @@
 },
 {
 "r":"Petroprix",
-"d":"Calle Adelfas, 187",
+"d":"Calle los Algarrobos, 17",
 "l":"Agüimes",
 "cp":"35118",
-"lat":"27.867194",
-"lon":"-15.420139",
+"lat":"27.858417",
+"lon":"-15.417639",
+"g95":1.385
+},
+{
+"r":"Plenergy",
+"d":"Calle Canal Izquierda Con Algarrobo, S/N",
+"l":"Agüimes",
+"cp":"35118",
+"lat":"27.861583",
+"lon":"-15.414556",
+"g95":1.385
+},
+{
+"r":"Petroprix",
+"d":"Avenida del Sureste, 1",
+"l":"Agüimes",
+"cp":"35118",
+"lat":"27.869750",
+"lon":"-15.430111",
 "g95":1.385
 },
 {
@@ -12891,21 +12891,21 @@
 "die":1.527
 },
 {
-"r":"Petroprix",
-"d":"Calle Leon y Castillo, 170",
-"l":"Arrecife",
-"cp":"35500",
-"lat":"28.970194",
-"lon":"-13.546472",
-"die":1.527
-},
-{
 "r":"Plenergy",
 "d":"Calle León y Castillo, S/N",
 "l":"Arrecife",
 "cp":"35500",
 "lat":"28.976944",
 "lon":"-13.545083",
+"die":1.527
+},
+{
+"r":"Petroprix",
+"d":"Calle Leon y Castillo, 170",
+"l":"Arrecife",
+"cp":"35500",
+"lat":"28.970194",
+"lon":"-13.546472",
 "die":1.527
 },
 {
@@ -12936,12 +12936,21 @@
 "die":1.555
 },
 {
-"r":"Plenergy",
-"d":"Calle Canal Izquierda Con Algarrobo, S/N",
+"r":"Petroprix",
+"d":"Calle Adelfas, 187",
 "l":"Agüimes",
 "cp":"35118",
-"lat":"27.861583",
-"lon":"-15.414556",
+"lat":"27.867194",
+"lon":"-15.420139",
+"die":1.555
+},
+{
+"r":"Petroprix",
+"d":"Calle Hiedra, 11",
+"l":"Agüimes",
+"cp":"35118",
+"lat":"27.862861",
+"lon":"-15.434361",
 "die":1.555
 },
 {
@@ -12954,21 +12963,12 @@
 "die":1.555
 },
 {
-"r":"Petroprix",
-"d":"Avenida del Sureste, 1",
+"r":"Plenergy",
+"d":"Calle Canal Izquierda Con Algarrobo, S/N",
 "l":"Agüimes",
 "cp":"35118",
-"lat":"27.869750",
-"lon":"-15.430111",
-"die":1.555
-},
-{
-"r":"Petroprix",
-"d":"Calle Hiedra, 11",
-"l":"Agüimes",
-"cp":"35118",
-"lat":"27.862861",
-"lon":"-15.434361",
+"lat":"27.861583",
+"lon":"-15.414556",
 "die":1.555
 }
 ],
@@ -13108,16 +13108,16 @@
 "die":1.675
 },
 {
-"l":"Puerto del Rosario",
-"n":12,
-"g95":1.52,
-"die":1.639
-},
-{
 "l":"Las Palmas de Gran Canaria",
 "n":57,
 "g95":1.521,
 "die":1.678
+},
+{
+"l":"Puerto del Rosario",
+"n":12,
+"g95":1.521,
+"die":1.638
 },
 {
 "l":"Tuineje",
@@ -13128,8 +13128,8 @@
 {
 "l":"Santa Lucía de Tirajana",
 "n":10,
-"g95":1.538,
-"die":1.694
+"g95":1.539,
+"die":1.695
 }
 ],
 "big":[
@@ -13160,8 +13160,8 @@
 {
 "l":"Puerto del Rosario",
 "n":12,
-"g95":1.52,
-"die":1.639
+"g95":1.521,
+"die":1.638
 },
 {
 "l":"Ingenio",
@@ -13175,12 +13175,12 @@
 "id":"36",
 "name":"Pontevedra",
 "slug":"pontevedra",
-"n":226,
+"n":227,
 "avg":{
 "g95":1.79,
 "g98":1.958,
 "die":1.909,
-"die_plus":2.007,
+"die_plus":2.008,
 "glp":1.152
 },
 "cheap":{
@@ -13483,7 +13483,7 @@
 "l":"Vilagarcía de Arousa",
 "n":9,
 "g95":1.74,
-"die":1.861
+"die":1.86
 },
 {
 "l":"Barro",
@@ -13506,13 +13506,13 @@
 {
 "l":"Pontevedra",
 "n":14,
-"g95":1.756,
+"g95":1.758,
 "die":1.882
 },
 {
 "l":"Silleda",
 "n":5,
-"g95":1.772,
+"g95":1.773,
 "die":1.909
 },
 {
@@ -13524,27 +13524,27 @@
 {
 "l":"Nigrán",
 "n":5,
-"g95":1.778,
-"die":1.89
+"g95":1.78,
+"die":1.898
 }
 ],
 "big":[
 {
 "l":"Vigo",
 "n":38,
-"g95":1.806,
+"g95":1.807,
 "die":1.917
 },
 {
 "l":"Pontevedra",
 "n":14,
-"g95":1.756,
+"g95":1.758,
 "die":1.882
 },
 {
 "l":"Mos",
 "n":10,
-"g95":1.828,
+"g95":1.827,
 "die":1.937
 },
 {
@@ -13574,8 +13574,8 @@
 "n":110,
 "avg":{
 "g95":1.777,
-"g98":1.942,
-"die":1.934,
+"g98":1.943,
+"die":1.935,
 "die_plus":2.026,
 "glp":1.166
 },
@@ -13860,26 +13860,26 @@
 {
 "l":"Villares de la Reina",
 "n":7,
-"g95":1.735,
-"die":1.878
+"g95":1.742,
+"die":1.883
 },
 {
 "l":"Santa Marta de Tormes",
 "n":7,
-"g95":1.752,
+"g95":1.751,
 "die":1.893
 },
 {
 "l":"Sancti-Spíritus",
 "n":4,
-"g95":1.769,
-"die":1.976
+"g95":1.772,
+"die":1.978
 },
 {
 "l":"Salamanca",
 "n":18,
-"g95":1.777,
-"die":1.942
+"g95":1.779,
+"die":1.943
 },
 {
 "l":"Arapiles",
@@ -13891,13 +13891,13 @@
 "l":"Béjar",
 "n":3,
 "g95":1.79,
-"die":1.983
+"die":1.99
 },
 {
 "l":"Ciudad Rodrigo",
 "n":6,
 "g95":1.797,
-"die":1.979
+"die":1.977
 },
 {
 "l":"Martín de Yeltes",
@@ -13910,8 +13910,8 @@
 {
 "l":"Salamanca",
 "n":18,
-"g95":1.777,
-"die":1.942
+"g95":1.779,
+"die":1.943
 },
 {
 "l":"Carbajosa de la Sagrada",
@@ -13922,25 +13922,25 @@
 {
 "l":"Santa Marta de Tormes",
 "n":7,
-"g95":1.752,
+"g95":1.751,
 "die":1.893
 },
 {
 "l":"Villares de la Reina",
 "n":7,
-"g95":1.735,
-"die":1.878
+"g95":1.742,
+"die":1.883
 },
 {
 "l":"Ciudad Rodrigo",
 "n":6,
 "g95":1.797,
-"die":1.979
+"die":1.977
 },
 {
 "l":"Fuentes de Oñoro",
 "n":4,
-"g95":1.811,
+"g95":1.813,
 "die":1.949
 }
 ]
@@ -13952,7 +13952,7 @@
 "n":239,
 "avg":{
 "g95":1.587,
-"g98":1.717,
+"g98":1.718,
 "die":1.738,
 "die_plus":1.844,
 "glp":0.909
@@ -14041,25 +14041,16 @@
 "g95":1.419
 },
 {
-"r":"Plenergy",
-"d":"Calle Mencey Adjona, S/N",
+"r":"Pcan",
+"d":"Avenida Modesto Hernandez Gonzalez, 7",
 "l":"San Miguel de Abona",
 "cp":"38639",
-"lat":"28.054361",
-"lon":"-16.612417",
+"lat":"28.049472",
+"lon":"-16.611694",
 "g95":1.419
 }
 ],
 "die":[
-{
-"r":"Plenergy",
-"d":"Calle Mencey Adjona, S/N",
-"l":"San Miguel de Abona",
-"cp":"38639",
-"lat":"28.054361",
-"lon":"-16.612417",
-"die":1.569
-},
 {
 "r":"Pcan",
 "d":"Avenida Modesto Hernandez Gonzalez, 7",
@@ -14067,6 +14058,15 @@
 "cp":"38639",
 "lat":"28.049472",
 "lon":"-16.611694",
+"die":1.569
+},
+{
+"r":"Plenergy",
+"d":"Calle Mencey Adjona, S/N",
+"l":"San Miguel de Abona",
+"cp":"38639",
+"lat":"28.054361",
+"lon":"-16.612417",
 "die":1.569
 },
 {
@@ -14245,7 +14245,7 @@
 "l":"Arafo",
 "n":7,
 "g95":1.496,
-"die":1.692
+"die":1.693
 },
 {
 "l":"San Miguel de Abona",
@@ -14286,7 +14286,7 @@
 {
 "l":"San Cristóbal de la Laguna",
 "n":28,
-"g95":1.555,
+"g95":1.556,
 "die":1.722
 },
 {
@@ -14306,20 +14306,20 @@
 {
 "l":"Santa Cruz de Tenerife",
 "n":33,
-"g95":1.584,
+"g95":1.585,
 "die":1.736
 },
 {
 "l":"San Cristóbal de la Laguna",
 "n":28,
-"g95":1.555,
+"g95":1.556,
 "die":1.722
 },
 {
 "l":"Arona",
 "n":15,
-"g95":1.58,
-"die":1.722
+"g95":1.579,
+"die":1.723
 },
 {
 "l":"Adeje",
@@ -14350,7 +14350,7 @@
 "g95":1.81,
 "g98":1.977,
 "die":1.921,
-"die_plus":1.975,
+"die_plus":1.973,
 "glp":1.168
 },
 "cheap":{
@@ -14438,11 +14438,11 @@
 },
 {
 "r":"Petroprix",
-"d":"Avenida Candina, 15",
+"d":"Calle Faustino Cavadas, 32",
 "l":"Santander",
 "cp":"39011",
-"lat":"43.452194",
-"lon":"-3.830833",
+"lat":"43.440417",
+"lon":"-3.858750",
 "g95":1.659
 }
 ],
@@ -14530,11 +14530,11 @@
 },
 {
 "r":"Petroprix",
-"d":"Avenida Candina, 15",
+"d":"Calle Faustino Cavadas, 32",
 "l":"Santander",
 "cp":"39011",
-"lat":"43.452194",
-"lon":"-3.830833",
+"lat":"43.440417",
+"lon":"-3.858750",
 "die":1.739
 }
 ],
@@ -14589,8 +14589,8 @@
 "d":"Au A-8 ,p.k. 256",
 "l":"Valdáliga",
 "cp":"39593",
-"lat":"43.333972",
-"lon":"-4.329278",
+"lat":"43.334083",
+"lon":"-4.330611",
 "glp":1.149
 },
 {
@@ -14598,8 +14598,8 @@
 "d":"Au A-8 ,p.k. 256",
 "l":"Valdáliga",
 "cp":"39593",
-"lat":"43.334083",
-"lon":"-4.330611",
+"lat":"43.333972",
+"lon":"-4.329278",
 "glp":1.149
 },
 {
@@ -14633,7 +14633,7 @@
 },
 "dear":{
 "g95":2.029,
-"die":2.035,
+"die":2.045,
 "glp":1.259
 },
 "muni":[
@@ -14646,7 +14646,7 @@
 {
 "l":"Medio Cudeyo",
 "n":3,
-"g95":1.752,
+"g95":1.749,
 "die":1.862
 },
 {
@@ -14659,7 +14659,7 @@
 "l":"Santander",
 "n":30,
 "g95":1.771,
-"die":1.87
+"die":1.869
 },
 {
 "l":"Santoña",
@@ -14671,7 +14671,7 @@
 "l":"Torrelavega",
 "n":12,
 "g95":1.786,
-"die":1.882
+"die":1.883
 },
 {
 "l":"Los Corrales de Buelna",
@@ -14703,13 +14703,13 @@
 "l":"Santander",
 "n":30,
 "g95":1.771,
-"die":1.87
+"die":1.869
 },
 {
 "l":"Torrelavega",
 "n":12,
 "g95":1.786,
-"die":1.882
+"die":1.883
 },
 {
 "l":"Camargo",
@@ -14743,10 +14743,10 @@
 "slug":"segovia",
 "n":77,
 "avg":{
-"g95":1.777,
-"g98":1.959,
+"g95":1.778,
+"g98":1.961,
 "die":1.891,
-"die_plus":1.969,
+"die_plus":1.97,
 "glp":1.115
 },
 "cheap":{
@@ -15004,21 +15004,21 @@
 "die":1.859
 },
 {
-"l":"Cuéllar",
-"n":4,
-"g95":1.748,
-"die":1.885
-},
-{
 "l":"Segovia",
 "n":13,
 "g95":1.748,
 "die":1.868
 },
 {
+"l":"Cuéllar",
+"n":4,
+"g95":1.75,
+"die":1.888
+},
+{
 "l":"Villacastín",
 "n":5,
-"g95":1.792,
+"g95":1.794,
 "die":1.946
 }
 ],
@@ -15032,14 +15032,14 @@
 {
 "l":"Villacastín",
 "n":5,
-"g95":1.792,
+"g95":1.794,
 "die":1.946
 },
 {
 "l":"Cuéllar",
 "n":4,
-"g95":1.748,
-"die":1.885
+"g95":1.75,
+"die":1.888
 },
 {
 "l":"El Espinar",
@@ -15121,15 +15121,6 @@
 "g95":1.599
 },
 {
-"r":"Family Energy",
-"d":"Avenida de la Asuncion (C.c. Eroski), S/N",
-"l":"Morón de la Frontera",
-"cp":"41530",
-"lat":"37.130722",
-"lon":"-5.452889",
-"g95":1.599
-},
-{
 "r":"Ballenoil",
 "d":"Calle del Yeso, S/N",
 "l":"Morón de la Frontera",
@@ -15139,30 +15130,39 @@
 "g95":1.599
 },
 {
+"r":"Family Energy",
+"d":"Avenida de la Asuncion (C.c. Eroski), S/N",
+"l":"Morón de la Frontera",
+"cp":"41530",
+"lat":"37.130722",
+"lon":"-5.452889",
+"g95":1.599
+},
+{
+"r":"Volaroil",
+"d":"Calle Sor Angela de la Cruz, 85",
+"l":"Osuna",
+"cp":"41640",
+"lat":"37.237944",
+"lon":"-5.113694",
+"g95":1.599
+},
+{
+"r":"Plenergy",
+"d":"Calle Sor Angela de la Cruz, 91",
+"l":"Osuna",
+"cp":"41640",
+"lat":"37.237556",
+"lon":"-5.114944",
+"g95":1.599
+},
+{
 "r":"Masfuel",
 "d":"Carretera A-8002 km. 7,6",
 "l":"La Rinconada",
 "cp":"41309",
 "lat":"37.501056",
 "lon":"-5.978306",
-"g95":1.599
-},
-{
-"r":"Emc Red Power 24",
-"d":"Carretera Ctra. Se-111 , A-8005 , 14 km. 10,8",
-"l":"La Rinconada",
-"cp":"41300",
-"lat":"37.475667",
-"lon":"-5.925028",
-"g95":1.599
-},
-{
-"r":"Petroprix",
-"d":"Camino de la Fabrica de Tabaco, 1",
-"l":"La Rinconada",
-"cp":"41300",
-"lat":"37.480389",
-"lon":"-5.937639",
 "g95":1.599
 }
 ],
@@ -15177,21 +15177,21 @@
 "die":1.699
 },
 {
-"r":"Family Energy",
-"d":"Avenida de la Asuncion (C.c. Eroski), S/N",
-"l":"Morón de la Frontera",
-"cp":"41530",
-"lat":"37.130722",
-"lon":"-5.452889",
-"die":1.699
-},
-{
 "r":"Ballenoil",
 "d":"Calle del Yeso, S/N",
 "l":"Morón de la Frontera",
 "cp":"41530",
 "lat":"37.130194",
 "lon":"-5.453222",
+"die":1.699
+},
+{
+"r":"Family Energy",
+"d":"Avenida de la Asuncion (C.c. Eroski), S/N",
+"l":"Morón de la Frontera",
+"cp":"41530",
+"lat":"37.130722",
+"lon":"-5.452889",
 "die":1.699
 },
 {
@@ -15202,6 +15202,15 @@
 "lat":"37.176333",
 "lon":"-5.774083",
 "die":1.725
+},
+{
+"r":"Ballenoil",
+"d":"Plaza de la Trianilla, S/N",
+"l":"Utrera",
+"cp":"41710",
+"lat":"37.187056",
+"lon":"-5.787306",
+"die":1.729
 },
 {
 "r":"Plenergy",
@@ -15222,12 +15231,12 @@
 "die":1.729
 },
 {
-"r":"Ballenoil",
-"d":"Plaza de la Trianilla, S/N",
+"r":"Gasolinera Utrera",
+"d":"Avenida San Juan Bosco, 108",
 "l":"Utrera",
 "cp":"41710",
-"lat":"37.187056",
-"lon":"-5.787306",
+"lat":"37.175583",
+"lon":"-5.777778",
 "die":1.729
 },
 {
@@ -15237,15 +15246,6 @@
 "cp":"41710",
 "lat":"37.184111",
 "lon":"-5.770389",
-"die":1.729
-},
-{
-"r":"Gasolinera Utrera",
-"d":"Avenida San Juan Bosco, 108",
-"l":"Utrera",
-"cp":"41710",
-"lat":"37.175583",
-"lon":"-5.777778",
 "die":1.729
 },
 {
@@ -15385,7 +15385,7 @@
 "l":"Mairena del Alcor",
 "n":8,
 "g95":1.711,
-"die":1.86
+"die":1.861
 },
 {
 "l":"Morón de la Frontera",
@@ -15423,7 +15423,7 @@
 "l":"Sevilla",
 "n":74,
 "g95":1.783,
-"die":1.913
+"die":1.914
 },
 {
 "l":"Alcalá de Guadaíra",
@@ -15452,8 +15452,8 @@
 {
 "l":"Carmona",
 "n":14,
-"g95":1.801,
-"die":1.923
+"g95":1.8,
+"die":1.922
 }
 ]
 },
@@ -15463,10 +15463,10 @@
 "slug":"soria",
 "n":43,
 "avg":{
-"g95":1.757,
-"g98":1.933,
-"die":1.879,
-"die_plus":1.957,
+"g95":1.758,
+"g98":1.934,
+"die":1.878,
+"die_plus":1.958,
 "glp":1.074
 },
 "cheap":{
@@ -15517,21 +15517,21 @@
 "g95":1.649
 },
 {
-"r":"Eureka",
-"d":"Poligono las Casas Calle G Parcela 7, 7",
-"l":"Soria",
-"cp":"42005",
-"lat":"41.776139",
-"lon":"-2.488556",
-"g95":1.649
-},
-{
 "r":"Petroprix",
 "d":"Avenida Valladolid en Soria, 62",
 "l":"Soria",
 "cp":"42005",
 "lat":"41.768778",
 "lon":"-2.485861",
+"g95":1.649
+},
+{
+"r":"Eureka",
+"d":"Poligono las Casas Calle G Parcela 7, 7",
+"l":"Soria",
+"cp":"42005",
+"lat":"41.776139",
+"lon":"-2.488556",
 "g95":1.649
 },
 {
@@ -15627,6 +15627,15 @@
 "die":1.789
 },
 {
+"r":"Petroprix",
+"d":"Avenida Valladolid en Soria, 62",
+"l":"Soria",
+"cp":"42005",
+"lat":"41.768778",
+"lon":"-2.485861",
+"die":1.789
+},
+{
 "r":"E. Leclerc",
 "d":"Calle J, 290",
 "l":"Soria",
@@ -15642,15 +15651,6 @@
 "cp":"42005",
 "lat":"41.776139",
 "lon":"-2.488556",
-"die":1.789
-},
-{
-"r":"Petroprix",
-"d":"Avenida Valladolid en Soria, 62",
-"l":"Soria",
-"cp":"42005",
-"lat":"41.768778",
-"lon":"-2.485861",
 "die":1.789
 }
 ],
@@ -15711,14 +15711,14 @@
 {
 "l":"Soria",
 "n":12,
-"g95":1.705,
-"die":1.836
+"g95":1.706,
+"die":1.837
 },
 {
 "l":"Almazán",
 "n":4,
-"g95":1.744,
-"die":1.877
+"g95":1.747,
+"die":1.879
 },
 {
 "l":"Burgo de Osma-Ciudad de Osma",
@@ -15729,28 +15729,28 @@
 {
 "l":"Arcos de Jalón",
 "n":4,
-"g95":1.846,
-"die":1.924
+"g95":1.847,
+"die":1.914
 }
 ],
 "big":[
 {
 "l":"Soria",
 "n":12,
-"g95":1.705,
-"die":1.836
+"g95":1.706,
+"die":1.837
 },
 {
 "l":"Almazán",
 "n":4,
-"g95":1.744,
-"die":1.877
+"g95":1.747,
+"die":1.879
 },
 {
 "l":"Arcos de Jalón",
 "n":4,
-"g95":1.846,
-"die":1.924
+"g95":1.847,
+"die":1.914
 },
 {
 "l":"Burgo de Osma-Ciudad de Osma",
@@ -15767,9 +15767,9 @@
 "n":234,
 "avg":{
 "g95":1.746,
-"g98":1.911,
+"g98":1.912,
 "die":1.865,
-"die_plus":1.972,
+"die_plus":1.973,
 "glp":1.097
 },
 "cheap":{
@@ -16059,7 +16059,7 @@
 {
 "l":"L' Ampolla",
 "n":4,
-"g95":1.657,
+"g95":1.659,
 "die":1.782
 },
 {
@@ -16072,7 +16072,7 @@
 "l":"Amposta",
 "n":10,
 "g95":1.687,
-"die":1.765
+"die":1.764
 },
 {
 "l":"Vandellòs I L'hospitalet de L'infant",
@@ -16113,8 +16113,8 @@
 {
 "l":"Vila-Seca",
 "n":6,
-"g95":1.713,
-"die":1.826
+"g95":1.715,
+"die":1.827
 }
 ],
 "big":[
@@ -16127,26 +16127,26 @@
 {
 "l":"Reus",
 "n":21,
-"g95":1.75,
-"die":1.858
+"g95":1.752,
+"die":1.859
 },
 {
 "l":"Amposta",
 "n":10,
 "g95":1.687,
-"die":1.765
+"die":1.764
 },
 {
 "l":"Valls",
 "n":10,
 "g95":1.72,
-"die":1.856
+"die":1.857
 },
 {
 "l":"Tortosa",
 "n":9,
 "g95":1.736,
-"die":1.868
+"die":1.869
 },
 {
 "l":"Vandellòs I L'hospitalet de L'infant",
@@ -16164,7 +16164,7 @@
 "avg":{
 "g95":1.763,
 "g98":1.938,
-"die":1.886,
+"die":1.887,
 "die_plus":2.011,
 "glp":1.121
 },
@@ -16394,7 +16394,7 @@
 },
 "dear":{
 "g95":1.959,
-"die":1.995,
+"die":2.005,
 "glp":1.135
 },
 "muni":[
@@ -16407,7 +16407,7 @@
 {
 "l":"Teruel",
 "n":11,
-"g95":1.727,
+"g95":1.728,
 "die":1.891
 },
 {
@@ -16427,7 +16427,7 @@
 {
 "l":"Teruel",
 "n":11,
-"g95":1.727,
+"g95":1.728,
 "die":1.891
 },
 {
@@ -16454,13 +16454,13 @@
 "id":"45",
 "name":"Toledo",
 "slug":"toledo",
-"n":240,
+"n":239,
 "avg":{
 "g95":1.783,
-"g98":1.959,
+"g98":1.96,
 "die":1.921,
-"die_plus":1.996,
-"glp":1.075
+"die_plus":1.997,
+"glp":1.081
 },
 "cheap":{
 "g95":[
@@ -16510,21 +16510,21 @@
 "g95":1.649
 },
 {
-"r":"San Roque ( Low Cost )",
-"d":"Carretera To-9311-V km. 1",
-"l":"El Casar de Escalona",
-"cp":"45542",
-"lat":"40.036083",
-"lon":"-4.522417",
-"g95":1.659
-},
-{
 "r":"Plenergy",
 "d":"Avenida Iv Centenario, 58",
 "l":"Quintanar de la Orden",
 "cp":"45800",
 "lat":"39.586278",
 "lon":"-3.039583",
+"g95":1.655
+},
+{
+"r":"San Roque ( Low Cost )",
+"d":"Carretera To-9311-V km. 1",
+"l":"El Casar de Escalona",
+"cp":"45542",
+"lat":"40.036083",
+"lon":"-4.522417",
 "g95":1.659
 },
 {
@@ -16546,12 +16546,12 @@
 "g95":1.665
 },
 {
-"r":"Petroprix.com",
-"d":"Calle Antigua Carretera N-Iv km 119, Sn",
+"r":"Plenergy",
+"d":"Autovia A-4 km. 113",
 "l":"Madridejos",
 "cp":"45710",
-"lat":"39.465944",
-"lon":"-3.523417",
+"lat":"39.516889",
+"lon":"-3.523750",
 "g95":1.665
 }
 ],
@@ -16611,21 +16611,21 @@
 "die":1.769
 },
 {
-"r":"Petroprix.com",
-"d":"Calle Antigua Carretera N-Iv km 119, Sn",
-"l":"Madridejos",
-"cp":"45710",
-"lat":"39.465944",
-"lon":"-3.523417",
-"die":1.769
-},
-{
 "r":"Plenergy",
 "d":"Autovia A-4 km. 113",
 "l":"Madridejos",
 "cp":"45710",
 "lat":"39.516889",
 "lon":"-3.523750",
+"die":1.769
+},
+{
+"r":"Petroprix.com",
+"d":"Calle Antigua Carretera N-Iv km 119, Sn",
+"l":"Madridejos",
+"cp":"45710",
+"lat":"39.465944",
+"lon":"-3.523417",
 "die":1.769
 },
 {
@@ -16648,15 +16648,6 @@
 }
 ],
 "glp":[
-{
-"r":"Bp",
-"d":"Autovia Autovia A4 km. 132",
-"l":"Camuñas",
-"cp":"45720",
-"lat":"39.354306",
-"lon":"-3.487250",
-"glp":0.91
-},
 {
 "r":"E.S. el Desvio",
 "d":"Carretera Toledo-Alcazar km. 0,5",
@@ -16737,6 +16728,15 @@
 "lat":"39.999722",
 "lon":"-4.277806",
 "glp":1.039
+},
+{
+"r":"Avia",
+"d":"Calle Tejar, 69",
+"l":"Torrijos",
+"cp":"45500",
+"lat":"39.989778",
+"lon":"-4.280167",
+"glp":1.039
 }
 ]
 },
@@ -16749,14 +16749,14 @@
 {
 "l":"Quintanar de la Orden",
 "n":4,
-"g95":1.714,
+"g95":1.713,
 "die":1.916
 },
 {
 "l":"Illescas",
 "n":9,
-"g95":1.74,
-"die":1.916
+"g95":1.741,
+"die":1.918
 },
 {
 "l":"Madridejos",
@@ -16779,14 +16779,8 @@
 {
 "l":"Toledo",
 "n":16,
-"g95":1.758,
+"g95":1.757,
 "die":1.895
-},
-{
-"l":"Numancia de la Sagra",
-"n":5,
-"g95":1.759,
-"die":1.933
 },
 {
 "l":"Consuegra",
@@ -16795,16 +16789,22 @@
 "die":1.861
 },
 {
-"l":"Cazalegas",
-"n":4,
-"g95":1.766,
-"die":1.953
+"l":"Numancia de la Sagra",
+"n":5,
+"g95":1.761,
+"die":1.933
 },
 {
 "l":"Bargas",
 "n":3,
 "g95":1.772,
 "die":1.879
+},
+{
+"l":"Cazalegas",
+"n":4,
+"g95":1.772,
+"die":1.956
 }
 ],
 "big":[
@@ -16817,20 +16817,20 @@
 {
 "l":"Toledo",
 "n":16,
-"g95":1.758,
+"g95":1.757,
 "die":1.895
 },
 {
 "l":"Seseña",
 "n":11,
-"g95":1.784,
-"die":1.961
+"g95":1.787,
+"die":1.962
 },
 {
 "l":"Illescas",
 "n":9,
-"g95":1.74,
-"die":1.916
+"g95":1.741,
+"die":1.918
 },
 {
 "l":"Madridejos",
@@ -16841,8 +16841,8 @@
 {
 "l":"Olías del Rey",
 "n":6,
-"g95":1.797,
-"die":1.938
+"g95":1.799,
+"die":1.939
 }
 ]
 },
@@ -16852,8 +16852,8 @@
 "slug":"valencia",
 "n":633,
 "avg":{
-"g95":1.768,
-"g98":1.97,
+"g95":1.769,
+"g98":1.971,
 "die":1.847,
 "die_plus":1.958,
 "glp":1.053
@@ -16971,21 +16971,21 @@
 "die":1.669
 },
 {
-"r":"Ballenoil",
-"d":"Calle Ue3-Sector2.a3, 1",
-"l":"Albal",
-"cp":"46470",
-"lat":"39.389000",
-"lon":"-0.409583",
-"die":1.669
-},
-{
 "r":"Plenergy",
 "d":"Calle Ocho, 7",
 "l":"Albal",
 "cp":"46470",
 "lat":"39.390417",
 "lon":"-0.406389",
+"die":1.669
+},
+{
+"r":"Ballenoil",
+"d":"Calle Ue3-Sector2.a3, 1",
+"l":"Albal",
+"cp":"46470",
+"lat":"39.389000",
+"lon":"-0.409583",
 "die":1.669
 },
 {
@@ -17034,12 +17034,12 @@
 "die":1.669
 },
 {
-"r":"Ballenoil",
-"d":"Calle Poliesportiu, 5",
+"r":"E.S. Massanassa",
+"d":"Avenida Generalitat Valenciana, 14",
 "l":"Massanassa",
 "cp":"46470",
-"lat":"39.410306",
-"lon":"-0.390722",
+"lat":"39.412861",
+"lon":"-0.387111",
 "die":1.669
 }
 ],
@@ -17145,13 +17145,13 @@
 {
 "l":"Xirivella",
 "n":4,
-"g95":1.664,
+"g95":1.659,
 "die":1.749
 },
 {
 "l":"San Antonio de Benagéber",
 "n":4,
-"g95":1.669,
+"g95":1.671,
 "die":1.781
 },
 {
@@ -17207,13 +17207,13 @@
 {
 "l":"Valencia",
 "n":64,
-"g95":1.811,
+"g95":1.81,
 "die":1.888
 },
 {
 "l":"Sagunto/Sagunt",
 "n":26,
-"g95":1.754,
+"g95":1.753,
 "die":1.839
 },
 {
@@ -17231,13 +17231,13 @@
 {
 "l":"Gandia",
 "n":17,
-"g95":1.784,
+"g95":1.785,
 "die":1.878
 },
 {
 "l":"Torrent",
 "n":16,
-"g95":1.773,
+"g95":1.775,
 "die":1.859
 }
 ]
@@ -17251,7 +17251,7 @@
 "g95":1.793,
 "g98":1.999,
 "die":1.912,
-"die_plus":2.002,
+"die_plus":2.001,
 "glp":1.149
 },
 "cheap":{
@@ -17263,7 +17263,7 @@
 "cp":"47008",
 "lat":"41.618556",
 "lon":"-4.720778",
-"g95":1.649
+"g95":1.654
 },
 {
 "r":"Beroil Villanubla",
@@ -17302,12 +17302,12 @@
 "g95":1.669
 },
 {
-"r":"Petroprix",
-"d":"Avenida de la Constitucion, 82",
+"r":"Ballenoil",
+"d":"Avenida Constitución, 71",
 "l":"Medina del Campo",
 "cp":"47400",
-"lat":"41.322111",
-"lon":"-4.920861",
+"lat":"41.319000",
+"lon":"-4.918306",
 "g95":1.669
 },
 {
@@ -17320,12 +17320,12 @@
 "g95":1.669
 },
 {
-"r":"Ballenoil",
-"d":"Avenida Constitución, 71",
+"r":"Petroprix",
+"d":"Avenida de la Constitucion, 82",
 "l":"Medina del Campo",
 "cp":"47400",
-"lat":"41.319000",
-"lon":"-4.918306",
+"lat":"41.322111",
+"lon":"-4.920861",
 "g95":1.669
 },
 {
@@ -17349,12 +17349,12 @@
 ],
 "die":[
 {
-"r":"Petroprix",
-"d":"Avenida de la Constitucion, 82",
+"r":"Ballenoil",
+"d":"Avenida Constitución, 71",
 "l":"Medina del Campo",
 "cp":"47400",
-"lat":"41.322111",
-"lon":"-4.920861",
+"lat":"41.319000",
+"lon":"-4.918306",
 "die":1.739
 },
 {
@@ -17367,12 +17367,12 @@
 "die":1.739
 },
 {
-"r":"Ballenoil",
-"d":"Avenida Constitución, 71",
+"r":"Petroprix",
+"d":"Avenida de la Constitucion, 82",
 "l":"Medina del Campo",
 "cp":"47400",
-"lat":"41.319000",
-"lon":"-4.918306",
+"lat":"41.322111",
+"lon":"-4.920861",
 "die":1.739
 },
 {
@@ -17553,8 +17553,8 @@
 {
 "l":"Íscar",
 "n":3,
-"g95":1.739,
-"die":1.861
+"g95":1.742,
+"die":1.864
 },
 {
 "l":"Mojados",
@@ -17565,14 +17565,14 @@
 {
 "l":"Medina del Campo",
 "n":8,
-"g95":1.77,
+"g95":1.772,
 "die":1.913
 },
 {
 "l":"Valladolid",
 "n":54,
-"g95":1.774,
-"die":1.897
+"g95":1.775,
+"die":1.898
 },
 {
 "l":"Medina de Rioseco",
@@ -17583,19 +17583,19 @@
 {
 "l":"Arroyo de la Encomienda",
 "n":4,
-"g95":1.78,
-"die":1.906
+"g95":1.782,
+"die":1.909
 },
 {
 "l":"Olmedo",
 "n":3,
-"g95":1.814,
+"g95":1.817,
 "die":1.952
 },
 {
 "l":"Tordesillas",
 "n":6,
-"g95":1.869,
+"g95":1.867,
 "die":1.96
 }
 ],
@@ -17603,26 +17603,26 @@
 {
 "l":"Valladolid",
 "n":54,
-"g95":1.774,
-"die":1.897
+"g95":1.775,
+"die":1.898
 },
 {
 "l":"Medina del Campo",
 "n":8,
-"g95":1.77,
+"g95":1.772,
 "die":1.913
 },
 {
 "l":"Tordesillas",
 "n":6,
-"g95":1.869,
+"g95":1.867,
 "die":1.96
 },
 {
 "l":"Arroyo de la Encomienda",
 "n":4,
-"g95":1.78,
-"die":1.906
+"g95":1.782,
+"die":1.909
 },
 {
 "l":"Peñafiel",
@@ -17633,8 +17633,8 @@
 {
 "l":"Íscar",
 "n":3,
-"g95":1.739,
-"die":1.861
+"g95":1.742,
+"die":1.864
 }
 ]
 },
@@ -17646,8 +17646,8 @@
 "avg":{
 "g95":1.803,
 "g98":1.958,
-"die":1.918,
-"die_plus":1.943,
+"die":1.919,
+"die_plus":1.944,
 "glp":1.174
 },
 "cheap":{
@@ -17847,20 +17847,20 @@
 },
 {
 "r":"Petronor",
-"d":"Cr A-8 Bilbao Behobia P.k. 99,7",
-"l":"Amorebieta-Etxano",
-"cp":"48340",
-"lat":"43.231556",
-"lon":"-2.756306",
-"glp":1.159
-},
-{
-"r":"Petronor",
 "d":"Cr A-8 Bilbao-Behobia ,p.k. 100",
 "l":"Amorebieta-Etxano",
 "cp":"48340",
 "lat":"43.230083",
 "lon":"-2.754028",
+"glp":1.159
+},
+{
+"r":"Petronor",
+"d":"Cr A-8 Bilbao Behobia P.k. 99,7",
+"l":"Amorebieta-Etxano",
+"cp":"48340",
+"lat":"43.231556",
+"lon":"-2.756306",
 "glp":1.159
 },
 {
@@ -17941,22 +17941,22 @@
 "die":1.773
 },
 {
-"l":"Iurreta",
-"n":4,
-"g95":1.759,
-"die":1.881
-},
-{
 "l":"Basauri",
 "n":5,
 "g95":1.761,
 "die":1.86
 },
 {
+"l":"Iurreta",
+"n":4,
+"g95":1.762,
+"die":1.883
+},
+{
 "l":"Galdakao",
 "n":6,
-"g95":1.775,
-"die":1.908
+"g95":1.777,
+"die":1.909
 },
 {
 "l":"Mungia",
@@ -17967,8 +17967,8 @@
 {
 "l":"Barakaldo",
 "n":5,
-"g95":1.799,
-"die":1.901
+"g95":1.801,
+"die":1.899
 },
 {
 "l":"Leioa",
@@ -17985,8 +17985,8 @@
 {
 "l":"Amorebieta-Etxano",
 "n":5,
-"g95":1.845,
-"die":2.002
+"g95":1.847,
+"die":2.004
 },
 {
 "l":"Erandio",
@@ -17999,14 +17999,14 @@
 {
 "l":"Bilbao",
 "n":10,
-"g95":1.86,
-"die":1.988
+"g95":1.864,
+"die":1.993
 },
 {
 "l":"Galdakao",
 "n":6,
-"g95":1.775,
-"die":1.908
+"g95":1.777,
+"die":1.909
 },
 {
 "l":"Mungia",
@@ -18017,14 +18017,14 @@
 {
 "l":"Amorebieta-Etxano",
 "n":5,
-"g95":1.845,
-"die":2.002
+"g95":1.847,
+"die":2.004
 },
 {
 "l":"Barakaldo",
 "n":5,
-"g95":1.799,
-"die":1.901
+"g95":1.801,
+"die":1.899
 },
 {
 "l":"Basauri",
@@ -18041,7 +18041,7 @@
 "n":89,
 "avg":{
 "g95":1.781,
-"g98":1.948,
+"g98":1.947,
 "die":1.91,
 "die_plus":2.019,
 "glp":1.11
@@ -18103,6 +18103,15 @@
 "g95":1.67
 },
 {
+"r":"Losada - Montamarta",
+"d":"Carretera Nacional 630 km. 261,200",
+"l":"Montamarta",
+"cp":"49149",
+"lat":"41.636417",
+"lon":"-5.798417",
+"g95":1.679
+},
+{
 "r":"Moraoil",
 "d":"Carretera Cl-605 km. 169,87",
 "l":"Zamora",
@@ -18110,15 +18119,6 @@
 "lat":"41.487972",
 "lon":"-5.723972",
 "g95":1.682
-},
-{
-"r":"Beroil",
-"d":"Cañada Real Berciana, 9",
-"l":"Benavente",
-"cp":"49600",
-"lat":"41.998500",
-"lon":"-5.656472",
-"g95":1.689
 },
 {
 "r":"Petroprix",
@@ -18130,13 +18130,13 @@
 "g95":1.689
 },
 {
-"r":"Losada - Montamarta",
-"d":"Carretera Nacional 630 km. 261,200",
-"l":"Montamarta",
-"cp":"49149",
-"lat":"41.636417",
-"lon":"-5.798417",
-"g95":1.694
+"r":"Beroil",
+"d":"Cañada Real Berciana, 9",
+"l":"Benavente",
+"cp":"49600",
+"lat":"41.998500",
+"lon":"-5.656472",
+"g95":1.689
 }
 ],
 "die":[
@@ -18186,21 +18186,21 @@
 "die":1.749
 },
 {
-"r":"Beroil",
-"d":"Cañada Real Berciana, 9",
-"l":"Benavente",
-"cp":"49600",
-"lat":"41.998500",
-"lon":"-5.656472",
-"die":1.749
-},
-{
 "r":"Petroprix",
 "d":"Avenida Federico Silva Muñoz, 146",
 "l":"Benavente",
 "cp":"49600",
 "lat":"41.996944",
 "lon":"-5.658778",
+"die":1.749
+},
+{
+"r":"Beroil",
+"d":"Cañada Real Berciana, 9",
+"l":"Benavente",
+"cp":"49600",
+"lat":"41.998500",
+"lon":"-5.656472",
 "die":1.749
 },
 {
@@ -18281,21 +18281,21 @@
 },
 "dear":{
 "g95":1.929,
-"die":2.019,
+"die":2.029,
 "glp":1.189
 },
 "muni":[
 {
 "l":"Zamora",
 "n":14,
-"g95":1.758,
+"g95":1.757,
 "die":1.867
 },
 {
 "l":"Benavente",
 "n":14,
-"g95":1.767,
-"die":1.898
+"g95":1.769,
+"die":1.899
 },
 {
 "l":"Villalpando",
@@ -18306,28 +18306,28 @@
 {
 "l":"Toro",
 "n":6,
-"g95":1.78,
-"die":1.882
+"g95":1.778,
+"die":1.884
 }
 ],
 "big":[
 {
 "l":"Benavente",
 "n":14,
-"g95":1.767,
-"die":1.898
+"g95":1.769,
+"die":1.899
 },
 {
 "l":"Zamora",
 "n":14,
-"g95":1.758,
+"g95":1.757,
 "die":1.867
 },
 {
 "l":"Toro",
 "n":6,
-"g95":1.78,
-"die":1.882
+"g95":1.778,
+"die":1.884
 },
 {
 "l":"Villalpando",
@@ -18346,7 +18346,7 @@
 "g95":1.77,
 "g98":1.942,
 "die":1.879,
-"die_plus":1.957,
+"die_plus":1.958,
 "glp":1.128
 },
 "cheap":{
@@ -18648,8 +18648,8 @@
 {
 "l":"Épila",
 "n":5,
-"g95":1.699,
-"die":1.812
+"g95":1.695,
+"die":1.81
 },
 {
 "l":"Caspe",
@@ -18661,7 +18661,7 @@
 "l":"Utebo",
 "n":6,
 "g95":1.715,
-"die":1.869
+"die":1.871
 },
 {
 "l":"Alagón",
@@ -18699,7 +18699,7 @@
 "l":"Zaragoza",
 "n":75,
 "g95":1.79,
-"die":1.902
+"die":1.903
 },
 {
 "l":"Calatayud",
@@ -18729,7 +18729,7 @@
 "l":"Utebo",
 "n":6,
 "g95":1.715,
-"die":1.869
+"die":1.871
 }
 ]
 },
@@ -18967,6 +18967,15 @@
 "cheap":{
 "g95":[
 {
+"r":"Shell",
+"d":"Alferez Provisionales S/N",
+"l":"Melilla",
+"cp":"52001",
+"lat":"35.290472",
+"lon":"-2.946306",
+"g95":1.604
+},
+{
 "r":"Shell Alfonso Xiii",
 "d":"Calle Alfonso Xiii, 84",
 "l":"Melilla",
@@ -18991,15 +19000,6 @@
 "cp":"52001",
 "lat":"35.281083",
 "lon":"-2.938972",
-"g95":1.604
-},
-{
-"r":"Shell",
-"d":"Alferez Provisionales S/N",
-"l":"Melilla",
-"cp":"52001",
-"lat":"35.290472",
-"lon":"-2.946306",
 "g95":1.604
 },
 {
@@ -19095,6 +19095,15 @@
 "die":1.615
 },
 {
+"r":"Shell",
+"d":"Alferez Provisionales S/N",
+"l":"Melilla",
+"cp":"52001",
+"lat":"35.290472",
+"lon":"-2.946306",
+"die":1.617
+},
+{
 "r":"Shell Alfonso Xiii",
 "d":"Calle Alfonso Xiii, 84",
 "l":"Melilla",
@@ -19119,15 +19128,6 @@
 "cp":"52001",
 "lat":"35.281083",
 "lon":"-2.938972",
-"die":1.617
-},
-{
-"r":"Shell",
-"d":"Alferez Provisionales S/N",
-"l":"Melilla",
-"cp":"52001",
-"lat":"35.290472",
-"lon":"-2.946306",
 "die":1.617
 },
 {
