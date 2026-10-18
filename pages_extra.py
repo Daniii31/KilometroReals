@@ -174,9 +174,12 @@ def build_fuel_prov():
  <h2 style="margin:28px 0 12px;font-size:1.1rem">Precio de la gasolina en otras provincias</h2>
  <p class="muted" style="line-height:1.9">{others}</p>
 </div></section>"""
+        _pc = [f"Precio gasolina hoy en {name}: desde {fprice(cg['g95'])} en la más barata", f"Precio gasolina hoy en {name}: desde {fprice(cg['g95'])}", f"Gasolina hoy en {name}: desde {fprice(cg['g95'])}"]
+        _pt = next((x for x in _pc if len(x) <= 62), _pc[-1])
+        _dd = dt.rsplit(" de ", 1)[0]
         page(path, f"Precio de la gasolina hoy en {name}: {fprice(A['g95'])} y las más baratas",
-             f"Gasolina 95 a {fprice(A['g95'])} y diésel a {fprice(A['die']) if A.get('die') else '-'} de media en {name} ({dt}). Las 10 gasolineras más baratas hoy, por municipio, con cómo llegar.",
-             body, "", ldj(faq_ld(faq)), full_title=f"Precio gasolina hoy en {name}: {fprice(A['g95'])} y gasolineras más baratas")
+             f"Hoy, {_dd}: gasolina 95 a {fprice(A['g95'])} de media en {name}. La más barata, {cg['r']} en {cg['l']}, a {fprice(cg['g95'])}. Ranking de las 10 más baratas.",
+             body, "", ldj(faq_ld(faq)), full_title=_pt)
 
 # ---------------- PRECIO DE LA GASOLINA HOY ----------------
 def build_fuel():
@@ -238,8 +241,14 @@ def build_fuel():
  <h2 style="margin:28px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
  <p class="note" style="margin-top:16px">Actualizado el {F["dtxt"]}. Los precios cambian cada día y en cada gasolinera; compara antes de repostar.</p>
 </div></section>"""
-    page("/precio-gasolina-hoy/", f"Precio de la gasolina hoy: {fprice(F['g95'])} el litro", f'Precio medio de la gasolina 95 ({fprice(F["g95"])}), diésel ({fprice(F["die"])}) y GLP hoy en España, cuánto cuesta llenar el depósito y cada 100 km.',
-         body, "", ldj(faq_ld(faq)))
+    _dd = pdate(F["date"]).rsplit(" de ", 1)[0]
+    _chg = F["g95"] - F["prev"]["g95"]
+    _chg_t = "igual que ayer" if abs(_chg) < 0.0005 else (f'{"sube" if _chg > 0 else "baja"} {abs(_chg)*100:.1f} cts'.replace(".", ","))
+    _cheap = min((P for P in (PROVD or {}).get("prov", []) if P["avg"].get("g95")), key=lambda P: P["avg"]["g95"], default=None)
+    _ft = f"Precio gasolina hoy {_dd}: {fprice(F['g95'])} y diésel {fprice(F['die'])}"
+    page("/precio-gasolina-hoy/", f"Precio de la gasolina hoy: {fprice(F['g95'])} el litro",
+         f'Hoy, {_dd}: gasolina 95 a {fprice(F["g95"])} ({_chg_t}) y diésel a {fprice(F["die"])} de media.' + (f' La provincia más barata, {_cheap["name"]} ({fprice(_cheap["avg"]["g95"])}).' if _cheap else ""),
+         body, "", ldj(faq_ld(faq)), full_title=_ft if len(_ft) <= 64 else None)
 
 # ---------------- COMPARATIVAS A vs B ----------------
 def vs_slug(a, b): return f"/comparar/{a}-vs-{b}/"
@@ -291,7 +300,7 @@ def build_vs():
  {('<h2 style="margin:28px 0 12px;font-size:1.3rem">Otras comparativas</h2><div class="chips">' + rel_h + '</div>') if rel_h else ''}
 </div></section>"""
         _vc = [f'{A["n"]} vs {B["n"]}: cuál es más barato de tener', f'{A["n"]} vs {B["n"]}: ¿cuál es más barato?', f'{A["n"]} vs {B["n"]}: ¿cuál conviene?', f'{A["n"]} vs {B["n"]}']
-        page(vs_slug(a_id, b_id), next((x for x in _vc if len(x) <= 60), _vc[-1]), f'{A["n"]} o {B["n"]}: coste real por km, al mes y en 5 años, con pérdida de valor, consumo, seguro y mantenimiento. Te decimos cuál conviene.',
+        page(vs_slug(a_id, b_id), next((x for x in _vc if len(x) <= 60), _vc[-1]), (f'{A["n"]} o {B["n"]}: salen casi igual, apenas {eur(abs(save))} de diferencia en 5 años. Precio, consumo real, seguro, taller y pérdida de valor, cara a cara.' if same else f'El {W["n"]} te ahorra {eur(save)} en 5 años frente al {L["n"]}, unos {eur(save/60)} al mes. Precio, consumo, seguro, taller y pérdida de valor, cara a cara.'),
              body, "coches", ldj(faq_ld(faq)))
         cards.append(f'<a class="card" href="{vs_slug(a_id, b_id)}"><h3>{esc(A["n"])} <span class="muted">vs</span> {esc(B["n"])}</h3><p>{"Casi empate" if same else esc(W["n"]) + " ahorra " + eur(save) + " en 5 años"}</p></a>')
     page("/comparar/", "Comparativas de coches por coste real", "Los duelos más buscados de coches en España, comparados en euros por kilómetro: cuál sale más barato de tener y cuánto ahorras.",

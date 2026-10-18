@@ -22,7 +22,10 @@ OG_DIM = '<meta property="og:image:width" content="1200"><meta property="og:imag
 SITE = "Kilómetro Real"
 ADSENSE_CLIENT = "ca-pub-8706325038832951"    # "ca-pub-..." cuando Google apruebe
 GA_ID = ""
-UPDATED = "octubre de 2026"
+_MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+UPDATED = f'{_MESES[int(FUELP["date"][5:7]) - 1]} de {FUELP["date"][:4]}'   # mes de la última actualización
+MES_ACT = UPDATED.replace(" de ", " ")                                      # "octubre 2026", para títulos
+DIA_ACT = f'{int(FUELP["date"][8:10])} de {_MESES[int(FUELP["date"][5:7]) - 1]}'  # "18 de octubre"
 import hashlib as _h
 VERSION = _h.md5((open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.css"), "rb").read() + open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "app.js"), "rb").read() + open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fuel.py"), "rb").read())).hexdigest()[:8]
 
@@ -478,9 +481,9 @@ def build_home():
  <div class="sec-head"><div><h2>Guías para decidir</h2></div><a href="/guias/">Todas →</a></div>
  <div class="newslist">{"".join(guide_card(g) for g in GUIDES[:3])}</div>
 </div></section>"""
-    page("/", SITE, f"Compara el coste real de {len(CARS)} coches en venta en España: eléctricos, híbridos y gasolina. Euros por kilómetro, al mes y en 5 años.", body, "",
+    page("/", SITE, f"¿Cuánto te cuesta de verdad un coche? Compara {len(CARS)} modelos en euros al mes y por km: compra, gasolina o luz, seguro y taller. Y la gasolina de hoy.", body, "",
          {"@context": "https://schema.org", "@type": "WebSite", "name": SITE, "url": DOMAIN, "inLanguage": "es-ES"},
-         full_title=f"{SITE}: lo que te cuesta de verdad cada coche", endcta=False)
+         full_title=f"{SITE}: cuánto cuesta de verdad cada coche al mes", endcta=False)
 
 def build_comparador():
     pop = "".join(f'<li><span><a href="#{a}-vs-{b}">{esc(BY[a]["n"])} vs {esc(BY[b]["n"])}</a></span></li>' for a, b in POP_PAIRS)
@@ -655,9 +658,12 @@ def build_car(c):
     schema.pop("@context"); schema = {"@context": "https://schema.org", "@graph": [schema, faqld, crumbld]}
     _en = "luz" if c["t"] == "ev" else ("GLP" if c["f"] == "glp" else "gasolina" if c["f"] == "g" else "gasóleo")
     _w = "autonomía real" if c["t"] == "ev" else "consumo real"
-    _cands = [f'{c["n"]}: precio desde {eur(c["p"])} y coste real al mes', f'{c["n"]}: desde {eur(c["p"])} y coste real al mes', f'{c["n"]}: precio, {_w} y coste al mes (2026)', f'{c["n"]}: precio, {_w} y coste al mes', f'{c["n"]}: precio y coste real al mes', f'{c["n"]}: precio y coste real']
-    _t = next((x for x in _cands if len(x) <= 60), _cands[-1])
-    page(curl(c), _t, f'{c["n"]} desde {eur(c["p"])}: te cuesta de verdad {eur(k["month"])} al mes ({pk(k["perKm"])} €/km) sumando compra, {_en}, seguro, taller e impuesto. {"Autonomía real" if c["t"] == "ev" else "Consumo real"} y rivales.', body, "coches", schema, full_title=_t if len(_t) > 48 else None)
+    _w = "autonomía" if c["t"] == "ev" else "consumo real"
+    _cands = [f'{c["n"]} 2026: precio desde {eur(c["p"])} y {_w}', f'{c["n"]}: precio desde {eur(c["p"])} y {_w}', f'{c["n"]}: desde {eur(c["p"])} y {_w}', f'{c["n"]}: precio y {_w}', f'{c["n"]}: precio y coste real']
+    _t = next((x for x in _cands if len(x) <= 62), _cands[-1])
+    _spec = (f'Autonomía: {c["rng"]} km WLTP' if c["t"] == "ev" else f'Consumo real: {dec(c["c"])} l/100 km')
+    _d = f'Precio desde {eur(c["p"])}. {_spec}. Con compra, {_en}, seguro y taller te cuesta {eur(k["month"])} al mes ({pk(k["perKm"])} €/km). Mira qué rival sale más barato.'
+    page(curl(c), _t, _d, body, "coches", schema, full_title=_t if len(_t) > 48 else None)
 
 # ===== SEO de los rankings: título de búsqueda, resumen y preguntas frecuentes =====
 RANK_SEO = {
@@ -666,7 +672,7 @@ RANK_SEO = {
  "electricos-mas-baratos": ("Coches eléctricos más baratos 2026: precio y coste real", "Los coches eléctricos más baratos de 2026", "eléctrico", "eléctricos"),
  "suv-mas-baratos": ("SUV más baratos 2026: precio y coste real en España", "Los SUV más baratos de 2026", "SUV", "SUV"),
  "hibridos-mas-economicos": ("Híbridos más baratos 2026: precio y coste real en España", "Los híbridos más baratos de 2026", "híbrido", "híbridos"),
- "electricos-mas-autonomia": ("Eléctricos con más autonomía 2026: km reales y precio", "Los eléctricos con más autonomía de 2026", "eléctrico", "eléctricos"),
+ "electricos-mas-autonomia": ("Eléctricos con más autonomía 2026: km WLTP y precio", "Los eléctricos con más autonomía de 2026", "eléctrico", "eléctricos"),
  "etiqueta-cero-menos-30000": ("Coches etiqueta CERO por menos de 30.000 € (2026)", "Coches con etiqueta CERO por menos de 30.000 €", "coche con etiqueta CERO", "coches con etiqueta CERO"),
  "coches-chinos-mas-baratos": ("Coches chinos más baratos 2026: precios en España", "Los coches chinos más baratos de 2026", "coche chino", "coches chinos"),
  "familiares-y-7-plazas": ("Coches de 7 plazas y familiares más baratos (2026)", "Familiares, monovolúmenes y SUV de 7 plazas más baratos", "familiar", "familiares"),
@@ -722,7 +728,15 @@ def build_rankings():
  <div style="margin-top:18px">{sharebuttons(f"/mejores/{s}/", t)}</div>
  <h2 style="margin:36px 0 14px;font-size:1.3rem">Otros rankings</h2><div class="chips">{others}</div>
 </div></section>"""
-        page(f"/mejores/{s}/", seo_t, f"{d} Lista actualizada en {UPDATED}.", body, "mejores",
+        _st = seo_t.replace("2026", MES_ACT, 1)
+        if len(_st) <= 64: seo_t = _st
+        _w0 = lst[0]
+        if s == "electricos-mas-autonomia":
+            _rd = f'Los {len(lst)} eléctricos que más lejos llegan. El primero, el {_w0["n"]}: {_w0["rng"]} km WLTP desde {eur(_w0["p"])}. Con su coste real al mes. Actualizado el {DIA_ACT}.'
+        else:
+            _pl = RANK_SEO.get(s, ("", "", "", "modelos"))[3]
+            _rd = f'{len(lst)} {_pl}, del más barato al más caro de tener. Gana el {_w0["n"]}: {eur(K[_w0["id"]]["month"])} al mes con compra, energía, seguro y taller, desde {eur(_w0["p"])}. Actualizado el {DIA_ACT}.'
+        page(f"/mejores/{s}/", seo_t, _rd, body, "mejores",
              {"@context": "https://schema.org", "@graph": [{"@type": "ItemList", "name": h1, "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": DOMAIN + curl(c), "name": c["n"]} for i, c in enumerate(lst)]},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in faq]}]},
              full_title=seo_t)
@@ -1061,6 +1075,20 @@ def build_static():
 # ===== calculadoras =====
 def fld(id_, label, inp): return f'<div><label class="lbl" for="{id_}">{label}</label>{inp}</div>'
 def ninput(id_, v, step="any", extra=""): return f'<input type="number" id="{id_}" value="{v}" step="{step}" inputmode="decimal" {extra}>'
+def _fp(v): return f"{v:.3f}".replace(".", ",") + " €"
+# Título y descripción para Google de cada calculadora (el h1 sigue siendo el de CALCS)
+CALC_SEO = {
+ "coste-viaje-gasolina": (f"Calculadora de gasolina de un viaje (litro hoy: {_fp(FUELP['g95'])})",
+     f"Pon los km y el consumo: te decimos cuánto cuesta el viaje en gasolina, diésel o eléctrico con el precio de hoy ({_fp(FUELP['g95'])} el litro) y cuánto paga cada uno."),
+ "coste-carga-electrico": ("Calculadora de carga de coche eléctrico: cuánto cuesta en casa",
+     "Cuánto cuesta cargar tu eléctrico en casa, con tarifa nocturna o en un cargador rápido. Pon tu coche y tu precio del kWh y lo ves al momento. Gratis."),
+ "cuota-financiacion-coche": ("Calculadora de cuota de coche: cuánto pagas al mes y la TAE",
+     "Calcula la cuota mensual del préstamo de tu coche, los intereses que pagas en total y la TAE aproximada. Compara 48, 60 u 84 meses antes de firmar."),
+ "etiqueta-dgt": ("¿Qué etiqueta DGT tiene mi coche? Compruébalo por año y motor",
+     "Averigua al momento si tu coche lleva etiqueta CERO, ECO, C, B o ninguna según el combustible y el año de matriculación, y qué te permite en las zonas de bajas emisiones."),
+ "amortizacion-electrico": ("¿Me compensa un coche eléctrico? Calculadora por km al año",
+     "A partir de cuántos km al año un eléctrico te sale más barato que un gasolina o un híbrido, con el precio de la luz y de la gasolina de hoy."),
+}
 CALCS = [
  ("coste-viaje-gasolina", "Calculadora de gasolina para un viaje", "€/viaje", "Cuánto cuesta un viaje en coche en gasolina, diésel o electricidad, y cuánto toca pagar a cada uno.",
   f"""<div class="calc" id="calc-viaje"><div class="cgrid">
@@ -1144,7 +1172,8 @@ def build_calcs():
 </div></section>"""
         ld = {"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": t, "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
-        page(f"/calculadoras/{s}/", t, d, body, "calc", ld)
+        _ct, _cd = CALC_SEO.get(s, (t, d))
+        page(f"/calculadoras/{s}/", t, _cd, body, "calc", ld, full_title=_ct)
 
 if __name__ == "__main__":
     exec(open(os.path.join(HERE, "en.py"), encoding="utf-8").read())
