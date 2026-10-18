@@ -238,9 +238,10 @@ def en_car(c):
     schema = {"@context": "https://schema.org", "@graph": [{"@type": "Car", "name": c["n"], "brand": {"@type": "Brand", "name": c["b"]}, "bodyType": BODY_EN[c["body"]], "fuelType": FUEL_EN[c["f"]]},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}]}
     _w = "real-world range" if c["t"] == "ev" else "real fuel economy"
-    _cands = [f'{c["n"]}: price, {_w} and monthly cost', f'{c["n"]}: price and real monthly cost', f'{c["n"]}: price and real cost']
-    _t = next((x for x in _cands if len(x) <= 60), _cands[-1])
-    page(curl_en(c), _t, f'{c["n"]} price from {e_en(c["p"])}: it really costs {e_en(k["month"])} a month ({pk_en(k["perKm"])} per km) with depreciation, {"electricity" if c["t"] == "ev" else "fuel"}, insurance, servicing and tax.', body, "coches", schema, lang="en", full_title=_t if len(_t) > 48 else None)
+    _cands = [f'{c["n"]} price in Spain 2026: from {e_en(c["p"])} and running costs', f'{c["n"]} price in Spain: from {e_en(c["p"])} and running costs', f'{c["n"]} price in Spain 2026: from {e_en(c["p"])}', f'{c["n"]} price in Spain: from {e_en(c["p"])}', f'{c["n"]}: price and real cost']
+    _t = next((x for x in _cands if len(x) <= 62), _cands[-1])
+    _spec = f'{c["rng"]} km WLTP range' if c["t"] == "ev" else f'real-world {str(c["c"])} l/100 km'
+    page(curl_en(c), _t, f'{c["n"]} from {e_en(c["p"])} in Spain, {_spec}. All in, it costs {e_en(k["month"])} a month ({pk_en(k["perKm"])} per km): depreciation, {"electricity" if c["t"] == "ev" else "fuel"}, insurance, servicing and tax.', body, "coches", schema, lang="en", full_title=_t if len(_t) > 48 else None)
 
 def en_rankings():
     cards = "".join(f'<a class="card" href="/en/rankings/{v[0]}/"><span class="kicker">Ranking</span><h3>{v[1]}</h3><p>{v[2]}</p></a>' for v in RANK_EN.values())
@@ -264,8 +265,13 @@ def en_rankings():
  <div class="panel"><ol class="rank">{items}</ol></div>{ad("ranking")}
  <div style="margin-top:18px">{sharebuttons(f"/en/rankings/{en_slug}/", te, True)}</div>
  <h2 style="margin:36px 0 14px;font-size:1.3rem">Other rankings</h2><div class="chips">{others}</div></div></section>"""
-        page(f"/en/rankings/{en_slug}/", te, f"{de} Updated October 2026.", body, "mejores",
-             {"@context": "https://schema.org", "@type": "ItemList", "name": te, "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": DOMAIN + curl_en(c), "name": c["n"]} for i, c in enumerate(lst)]}, lang="en")
+        _mon = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][int(FUELP["date"][5:7]) - 1]
+        _te = te.removeprefix("The "); _ts = f'{_te[:1].upper() + _te[1:]} in Spain ({_mon} {FUELP["date"][:4]})'
+        _w0 = lst[0]
+        _de = (f'The {len(lst)} electric cars that go furthest. No. 1: {_w0["n"]}, {_w0["rng"]} km WLTP from {e_en(_w0["p"])}. Updated {int(FUELP["date"][8:10])} {_mon}.' if s == "electricos-mas-autonomia" else
+               f'{len(lst)} cars ranked by real cost of ownership in Spain. No. 1: {_w0["n"]}, {e_en(K[_w0["id"]]["month"])} a month all in, from {e_en(_w0["p"])}. Updated {int(FUELP["date"][8:10])} {_mon}.')
+        page(f"/en/rankings/{en_slug}/", te, _de, body, "mejores",
+             {"@context": "https://schema.org", "@type": "ItemList", "name": te, "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": DOMAIN + curl_en(c), "name": c["n"]} for i, c in enumerate(lst)]}, lang="en", full_title=_ts if len(_ts) <= 66 else None)
 
 def en_finder():
     def q(key, title, opts, default):

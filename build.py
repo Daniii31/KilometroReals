@@ -661,7 +661,7 @@ def build_car(c):
     _w = "autonomía" if c["t"] == "ev" else "consumo real"
     _cands = [f'{c["n"]} 2026: precio desde {eur(c["p"])} y {_w}', f'{c["n"]}: precio desde {eur(c["p"])} y {_w}', f'{c["n"]}: desde {eur(c["p"])} y {_w}', f'{c["n"]}: precio y {_w}', f'{c["n"]}: precio y coste real']
     _t = next((x for x in _cands if len(x) <= 62), _cands[-1])
-    _spec = (f'Autonomía: {c["rng"]} km WLTP' if c["t"] == "ev" else f'Consumo real: {dec(c["c"])} l/100 km')
+    _spec = (f'Autonomía: {c["rng"]} km WLTP' if c["t"] == "ev" else f'Consumo real: {dec(c["c"])} l/100 km' + (f' de GLP, a {dec(FUELP["glp"])} €/L hoy' if c["f"] == "glp" else ""))
     _d = f'Precio desde {eur(c["p"])}. {_spec}. Con compra, {_en}, seguro y taller te cuesta {eur(k["month"])} al mes ({pk(k["perKm"])} €/km). Mira qué rival sale más barato.'
     page(curl(c), _t, _d, body, "coches", schema, full_title=_t if len(_t) > 48 else None)
 
@@ -840,7 +840,7 @@ def build_ayudas():
  {('<h2 style="margin:30px 0 12px;font-size:1.3rem">Últimas noticias sobre las ayudas</h2><div class="newslist">' + "".join(news_card(x) for x in _an) + '</div>') if _an else ''}
  {ad("ayudas")}<div class="sources">Fuentes: {src} · <a href="{aurl(a)}">Noticia original del {a.get("dtxt", a["date"])}</a></div>
 </div></section>"""
-    page("/ayudas/", "Ayudas Plan Auto+ 2026 para coche eléctrico", "Cuánto da el Plan Auto+, qué coches entran, el criterio europeo y qué cambia respecto al MOVES III.", body, "noticias")
+    page("/ayudas/", "Ayudas Plan Auto+ 2026 para coche eléctrico", "Plan Auto+: hasta 4.500 € por un eléctrico si eres particular. Qué coches entran, cómo se pide, si queda dinero y qué cambia respecto al MOVES III.", body, "noticias", full_title="Ayudas Plan Auto+ 2026: hasta 4.500 € para tu coche eléctrico")
 
 F = lambda s: f'<span class="fill">{s}</span>'
 def legal_page(path, title, desc, inner, noindex=True):

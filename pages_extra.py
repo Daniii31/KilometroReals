@@ -251,6 +251,12 @@ def build_fuel():
          body, "", ldj(faq_ld(faq)), full_title=_ft if len(_ft) <= 64 else None)
 
 # ---------------- COMPARATIVAS A vs B ----------------
+def short_name(c):
+    """'Dacia Striker Hybrid 155' -> 'Dacia Striker' (para títulos cortos de comparativas)."""
+    drop = re.compile(r"^(hybrid\+?|h[ií]brido|hev|phev|mhev|mild|e-tech|tsi|etsi|tfsi|tdi|tce|dci|blue|bluehdi|dm-i|em-i|shs|crdi|t-?gdi|ecoboost|puretech|[\d.,]+v?|\d+cv|\d+)$", re.I)
+    ws = c["m"].split()
+    while len(ws) > 1 and drop.match(ws[-1]): ws.pop()
+    return f'{c["b"]} {" ".join(ws)}'
 def vs_slug(a, b): return f"/comparar/{a}-vs-{b}/"
 
 def build_vs():
@@ -299,7 +305,8 @@ def build_vs():
  <h2 style="margin:28px 0 12px;font-size:1.3rem">Preguntas frecuentes</h2>{faq_box(faq)}
  {('<h2 style="margin:28px 0 12px;font-size:1.3rem">Otras comparativas</h2><div class="chips">' + rel_h + '</div>') if rel_h else ''}
 </div></section>"""
-        _vc = [f'{A["n"]} vs {B["n"]}: cuál es más barato de tener', f'{A["n"]} vs {B["n"]}: ¿cuál es más barato?', f'{A["n"]} vs {B["n"]}: ¿cuál conviene?', f'{A["n"]} vs {B["n"]}']
+        _sa, _sb = short_name(A), short_name(B)
+        _vc = ([f'{_sa} vs {_sb}: ¿cuál es más barato?'] if _sa != _sb else []) + [f'{A["n"]} vs {B["n"]}: cuál es más barato de tener', f'{A["n"]} vs {B["n"]}: ¿cuál es más barato?', f'{A["n"]} vs {B["n"]}: ¿cuál conviene?', f'{A["n"]} vs {B["n"]}']
         page(vs_slug(a_id, b_id), next((x for x in _vc if len(x) <= 60), _vc[-1]), (f'{A["n"]} o {B["n"]}: salen casi igual, apenas {eur(abs(save))} de diferencia en 5 años. Precio, consumo real, seguro, taller y pérdida de valor, cara a cara.' if same else f'El {W["n"]} te ahorra {eur(save)} en 5 años frente al {L["n"]}, unos {eur(save/60)} al mes. Precio, consumo, seguro, taller y pérdida de valor, cara a cara.'),
              body, "coches", ldj(faq_ld(faq)))
         cards.append(f'<a class="card" href="{vs_slug(a_id, b_id)}"><h3>{esc(A["n"])} <span class="muted">vs</span> {esc(B["n"])}</h3><p>{"Casi empate" if same else esc(W["n"]) + " ahorra " + eur(save) + " en 5 años"}</p></a>')
