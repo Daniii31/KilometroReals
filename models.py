@@ -50,6 +50,7 @@ M = [
 ("Cupra","Born","ev","e","compacto",38900,15.5,59,425,231,385),
 ("Cupra","Tavascan","ev","e","suv-m",49900,17.5,77,550,286,540),
 ("Skoda","Epiq","ev","e","suv-p",29130,15.5,37,310,116,475),
+("Skoda","Epiq Sportline 211 CV","ev","e","suv-p",40650,15.5,55,427,211,475),
 ("Skoda","Elroq","ev","e","suv-p",33900,16.0,59,400,204,470),
 ("Skoda","Enyaq","ev","e","suv-m",44900,17.0,77,560,286,585),
 ("Audi","Q4 e-tron","ev","e","suv-m",51900,17.5,77,530,286,520),
@@ -131,6 +132,7 @@ M = [
 ("MG","ZS Hybrid+","hev","g","suv-p",23990,5.0,0,0,197,443),
 ("Nissan","Qashqai e-Power","hev","g","suv-m",36900,5.5,0,0,190,455),
 ("Ford","Kuga Híbrido","hev","g","suv-m",37900,5.8,0,0,183,412),
+("Haval","H7 1.5 HEV","hev","g","suv-m",35000,6.5,0,0,247,483),
 ("Lexus","UX 300h","hev","g","suv-p",39900,5.0,0,0,199,433),
 # ---------- MICROHÍBRIDOS (etiqueta ECO) ----------
 ("Volkswagen","Golf 1.5 eTSI","mhev","g","compacto",32900,5.8,0,0,150,381),
@@ -472,7 +474,7 @@ FUEL = {"e":"Electricidad","g":"Gasolina","d":"Diésel","glp":"GLP"}
 RES_BRAND = {"Toyota":.56,"Lexus":.56,"Dacia":.50,"Tesla":.52,"Volkswagen":.48,"Seat":.46,"Cupra":.46,"Skoda":.48,"Audi":.50,"BMW":.50,
  "Mercedes":.50,"Mini":.50,"Kia":.47,"Hyundai":.46,"Honda":.50,"Mazda":.48,"Suzuki":.48,"Renault":.42,"Peugeot":.42,"Citroën":.40,
  "Opel":.40,"Fiat":.40,"Jeep":.40,"Ford":.42,"Nissan":.42,"Volvo":.48,"Polestar":.42,"Mitsubishi":.42,"Porsche":.55,"Lancia":.40,"DS":.38,"Alfa Romeo":.40,"Subaru":.48,"KGM":.38,"Land Rover":.46,"Alpine":.45,"Abarth":.40}
-CHINESE = {"BYD","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr"}
+CHINESE = {"BYD","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval"}
 
 import re, unicodedata
 def slugify(s):
