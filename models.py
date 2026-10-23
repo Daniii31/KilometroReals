@@ -321,6 +321,7 @@ M = [
 ("Mazda","3 e-Skyactiv","mhev","g","compacto",30900,6.2,0,0,140,358),
 ("Mazda","CX-60 PHEV","phev","g","suv-g",54900,6.8,18,63,327,570),
 ("Mazda","6e","ev","e","berlina",44900,16.5,69,479,258,466),
+("Mazda","CX-6e","ev","e","suv-m",46200,19.0,78,484,258,468),
 ("Honda","Civic e:HEV","hev","g","compacto",36900,5.0,0,0,184,410),
 ("Honda","CR-V e:HEV","hev","g","suv-m",47900,6.4,0,0,184,587),
 ("Suzuki","e Vitara","ev","e","suv-p",33990,16.0,49,344,144,306),
