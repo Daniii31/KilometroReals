@@ -225,7 +225,7 @@ M = [
 ("Renault","Clio TCe GLP","ice","glp","urbano",20400,7.2,0,0,100,391),
 # ---------- MÁS CHINOS (añadidos oct 2026) ----------
 ("Dongfeng","Vigo","ev","e","suv-p",29900,16.5,57,400,204,450),
-("Dongfeng","Mage","phev","g","suv-m",31990,6.0,18,100,218,480),
+("Dongfeng","Mage","phev","g","suv-m",28530,6.0,17,89,299,525),
 ("Omoda","5 SHS-H","hev","g","suv-p",29990,5.4,0,0,224,370),
 ("Omoda","9 SHS","phev","g","suv-g",49900,6.5,34,140,537,660),
 ("Jaecoo","7 1.6 TGDI 4x4","ice","g","suv-m",35900,8.5,0,0,197,500),
@@ -428,6 +428,7 @@ M = [
 ("BMW","M5 Touring","phev","g","familiar",159900,10.2,19,64,727,500),
 ("BMW","X5 M Competition","mhev","g","suv-g",164900,13.0,0,0,625,650),
 ("BMW","iX M70","ev","e","suv-g",139900,22.5,109,600,659,500),
+("BMW","iX4 40 xDrive","ev","e","suv-m",71850,18.0,83,638,374,520),
 ("BMW","XM","phev","g","suv-g",186900,11.5,26,82,653,527),
 ("Mercedes","AMG A 35 4MATIC","mhev","g","compacto",62900,8.2,0,0,306,355),
 ("Mercedes","AMG A 45 S 4MATIC+","ice","g","compacto",79900,9.2,0,0,421,370),
