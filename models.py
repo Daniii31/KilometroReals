@@ -449,6 +449,7 @@ M = [
 ("Cupra","Born VZ","ev","e","compacto",49900,16.5,79,570,326,385),
 ("Skoda","Octavia RS","ice","g","compacto",44900,7.0,0,0,265,600),
 ("Hyundai","Ioniq 5 N","ev","e","suv-m",74900,23.0,84,448,650,480),
+("Genesis","GV70 Electrified","ev","e","suv-m",69400,20.5,84,479,490,503),   # oct 2026, Pure; consumo real estimado a partir del Ioniq 5 AWD (misma base E-GMP)
 ("Toyota","GR Yaris","ice","g","urbano",49900,8.4,0,0,280,141),
 ("Toyota","GR86","ice","g","deportivo",38900,9.0,0,0,234,226),
 ("Toyota","GR Supra","ice","g","deportivo",69900,8.6,0,0,340,296),

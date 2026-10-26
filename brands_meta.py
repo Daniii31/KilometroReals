@@ -1,7 +1,7 @@
 # Kilómetro Real · distintivos propios de cada marca (iniciales + país). No son los logos oficiales.
 ORIGIN = {"Abarth": "Italia", "Alfa Romeo": "Italia", "Alpine": "Francia", "Audi": "Alemania", "BMW": "Alemania", "BYD": "China",
     "Citroën": "Francia", "Cupra": "España", "DS": "Francia", "Dacia": "Rumanía", "Deepal": "China", "Dongfeng": "China", "Ebro": "España",
-    "Fiat": "Italia", "Ford": "Estados Unidos", "Geely": "China", "Honda": "Japón", "Hyundai": "Corea del Sur", "Jaecoo": "China",
+    "Fiat": "Italia", "Ford": "Estados Unidos", "Geely": "China", "Genesis": "Corea del Sur", "Honda": "Japón", "Hyundai": "Corea del Sur", "Jaecoo": "China",
     "Jeep": "Estados Unidos", "KGM": "Corea del Sur", "Kia": "Corea del Sur", "Lancia": "Italia", "Land Rover": "Reino Unido",
     "Leapmotor": "China", "Lexus": "Japón", "Lynk & Co": "China", "MG": "China", "Mazda": "Japón", "Mercedes": "Alemania",
     "Mini": "Reino Unido", "Mitsubishi": "Japón", "Nissan": "Japón", "Omoda": "China", "Opel": "Alemania", "Peugeot": "Francia",

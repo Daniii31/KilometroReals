@@ -33,12 +33,15 @@ jobs:
           test -s estaciones.json
       - name: Generar, construir y publicar
         run: |
+          set -o pipefail
           git config user.name "kilometroreal-bot"
           git config user.email "actions@users.noreply.github.com"
           for i in 1 2 3; do
             git fetch -q origin main && git reset -q --hard origin/main
             python3 tools/provincias.py estaciones.json provincias.json
             python3 build.py | tail -1
+            # Si el build falla, dist/ queda vacía: nunca publicarla así
+            test -s dist/index.html || { echo "Build fallido: no se publica"; exit 1; }
             git add provincias.json dist fuel_history.json
             if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
             git commit -q -m "Precios por provincia: $(date -u +%Y-%m-%d)"

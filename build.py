@@ -347,8 +347,15 @@ def ensure_covers():
     import subprocess, tempfile
     from PIL import Image
     tf = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False); json.dump(todo, tf, ensure_ascii=False); tf.close()
-    subprocess.run(["node", os.path.join(HERE, "covers.mjs"), tf.name], check=True)
+    try:
+        subprocess.run(["node", os.path.join(HERE, "covers.mjs"), tf.name], check=True, timeout=600)
+    except Exception as e:  # sin Node/Playwright (p. ej. en la GitHub Action) se omiten las portadas y el build sigue
+        print("AVISO: no se pudieron generar las portadas:", e)
+        for c in todo:
+            if not has_img(c["name"]): c["skip"] = True
     for c in todo:
+        if c.get("skip"): continue
+        if not os.path.exists(os.path.join(IMG_DIR, c["name"] + ".png")): continue
         png = os.path.join(IMG_DIR, c["name"] + ".png"); im = Image.open(png).convert("RGB")
         im.save(os.path.join(IMG_DIR, c["name"] + ".webp"), "WEBP", quality=80, method=6)
         im.resize((800, 450), Image.LANCZOS).save(os.path.join(IMG_DIR, c["name"] + "-800.webp"), "WEBP", quality=78, method=6)
