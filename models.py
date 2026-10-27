@@ -168,6 +168,7 @@ M = [
 ("Volkswagen","Polo 1.0 TSI","ice","g","urbano",21900,5.8,0,0,95,351),
 ("Volkswagen","T-Cross 1.0 TSI","ice","g","suv-p",25900,6.2,0,0,115,455),
 ("Volkswagen","T-Roc 1.5 TSI","ice","g","suv-p",31900,6.6,0,0,150,445),
+("Volkswagen","T-Roc 1.5 TSI Hybrid","hev","g","suv-p",35523,5.6,0,0,136,445),
 ("Skoda","Fabia 1.0 TSI","ice","g","urbano",18900,5.8,0,0,95,380),
 ("Skoda","Kamiq 1.0 TSI","ice","g","suv-p",25900,6.1,0,0,115,400),
 ("Skoda","Octavia 1.5 TSI","ice","g","compacto",30900,5.8,0,0,115,600),
