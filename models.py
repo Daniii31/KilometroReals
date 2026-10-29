@@ -154,7 +154,7 @@ M = [
 ("BMW","120","mhev","g","compacto",39900,5.8,0,0,170,380),
 ("Mercedes","A 180","mhev","g","compacto",38900,6.0,0,0,136,355),
 ("Audi","A3 Sportback 35 TFSI","mhev","g","compacto",38900,5.8,0,0,150,380),
-("Audi","Q3 35 TFSI","mhev","g","suv-m",44900,7.0,0,0,150,488),
+("Audi","Q3 35 TFSI","mhev","g","suv-m",48216,7.0,0,0,160,488),   # oct 2026: 1.5 TFSI de 160 CV, Business
 ("Kia","Sportage 1.6 CRDi 48V","mhev","d","suv-m",36900,5.7,0,0,136,591),
 # ---------- GASOLINA, DIÉSEL Y GLP ----------
 ("Dacia","Sandero TCe","ice","g","urbano",14490,5.8,0,0,101,328),
@@ -287,7 +287,7 @@ M = [
 ("Volkswagen","Tayron 1.5 eTSI","mhev","g","suv-g",46900,7.0,0,0,150,885),
 ("Volkswagen","ID. Buzz","ev","e","monovolumen",65900,21.0,79,460,286,1121),
 ("Skoda","Superb 1.5 eTSI","mhev","g","familiar",41900,6.1,0,0,150,690),
-("Skoda","Kodiaq 1.5 eTSI","mhev","g","suv-g",42900,6.9,0,0,150,910),
+("Skoda","Kodiaq 1.5 eTSI","mhev","g","suv-g",47300,6.9,0,0,160,910),   # oct 2026: nuevo 1.5 TSI m-HEV Euro 7 de 160 CV, Selection
 ("Toyota","Corolla Sedán Hybrid","hev","g","berlina",30900,4.5,0,0,140,471),
 ("Toyota","Corolla Hybrid 200","hev","g","compacto",34400,4.8,0,0,196,313),
 ("Toyota","C-HR Hybrid 200","hev","g","suv-p",38900,5.2,0,0,197,364),
@@ -464,6 +464,7 @@ M = [
 ("Alpine","A290","ev","e","urbano",38700,15.5,52,380,220,326),
 ("Abarth","600e","ev","e","suv-p",44900,18.0,54,330,280,360),
 # ---------- LANZAMIENTOS (19 oct 2026) ----------
+("Denza","Bao 5","phev","g","suv-g",76290,9.0,31.8,90,544,475),   # oct 2026, DMO Elegance; consumo real en modo híbrido estimado (SUV todoterreno de 544 CV, sin modelo hermano en la lista)
 ("Volkswagen","ID. Cross","ev","e","suv-p",28580,15.5,37,324,116,450),
 ("Volvo","EC40","ev","e","suv-p",50450,18.0,70,486,238,413),
 ]
@@ -480,7 +481,7 @@ FUEL = {"e":"Electricidad","g":"Gasolina","d":"Diésel","glp":"GLP"}
 RES_BRAND = {"Toyota":.56,"Lexus":.56,"Dacia":.50,"Tesla":.52,"Volkswagen":.48,"Seat":.46,"Cupra":.46,"Skoda":.48,"Audi":.50,"BMW":.50,
  "Mercedes":.50,"Mini":.50,"Kia":.47,"Hyundai":.46,"Honda":.50,"Mazda":.48,"Suzuki":.48,"Renault":.42,"Peugeot":.42,"Citroën":.40,
  "Opel":.40,"Fiat":.40,"Jeep":.40,"Ford":.42,"Nissan":.42,"Volvo":.48,"Polestar":.42,"Mitsubishi":.42,"Porsche":.55,"Lancia":.40,"DS":.38,"Alfa Romeo":.40,"Subaru":.48,"KGM":.38,"Land Rover":.46,"Alpine":.45,"Abarth":.40}
-CHINESE = {"BYD","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval"}
+CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval"}
 
 import re, unicodedata
 def slugify(s):
