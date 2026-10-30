@@ -299,6 +299,7 @@ M = [
 ("Kia","EV4","ev","e","berlina",37990,14.5,81,630,204,490),
 ("Kia","EV9","ev","e","suv-g",72900,22.0,100,563,385,333),
 ("Lexus","TZ 450e","ev","e","suv-g",88000,21.5,95.8,550,313,257),
+("Lexus","RZ 350e","ev","e","suv-m",52000,17.5,77,561,224,522),
 ("Renault","Rafale E-Tech","hev","g","suv-m",46900,5.0,0,0,200,535),
 ("Renault","Espace E-Tech","hev","g","suv-g",45900,5.0,0,0,200,477),
 ("Renault","Kangoo TCe","ice","g","monovolumen",26900,7.0,0,0,100,775),
