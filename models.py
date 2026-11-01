@@ -468,6 +468,9 @@ M = [
 ("Denza","Bao 5","phev","g","suv-g",76290,9.0,31.8,90,544,475),   # oct 2026, DMO Elegance; consumo real en modo híbrido estimado (SUV todoterreno de 544 CV, sin modelo hermano en la lista)
 ("Volkswagen","ID. Cross","ev","e","suv-p",28580,15.5,37,324,116,450),
 ("Volvo","EC40","ev","e","suv-p",50450,18.0,70,486,238,413),
+# ---------- LANZAMIENTOS (1 nov 2026) ----------
+("Fiat","Grizzly Hybrid","mhev","g","suv-p",27661,5.7,0,0,145,460),   # nov 2026, 1.2 MHEV 145 CV Pop; consumo real estimado a partir del Frontera/C3 Aircross Hybrid
+("Fiat","Grizzly eléctrico","ev","e","suv-p",33162,16.5,44,320,113,460),   # nov 2026, 44 kWh Pop; consumo real estimado a partir del Frontera Electric
 ]
 
 
