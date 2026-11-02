@@ -455,6 +455,7 @@ M = [
 ("Toyota","GR Yaris","ice","g","urbano",49900,8.4,0,0,280,141),
 ("Toyota","GR86","ice","g","deportivo",38900,9.0,0,0,234,226),
 ("Toyota","GR Supra","ice","g","deportivo",69900,8.6,0,0,340,296),
+("Honda","Prelude e:HEV","hev","g","deportivo",52200,5.0,0,0,184,264),   # nov 2026, Limited Edition (tarifa sin descuentos); consumo real estimado a partir del Civic e:HEV (mismo 2.0 e:HEV de 184 CV)
 ("Honda","Civic Type R","ice","g","compacto",57900,9.2,0,0,329,410),
 ("Mazda","MX-5 2.0","ice","g","deportivo",34900,7.2,0,0,184,130),
 ("Ford","Mustang GT V8","ice","g","deportivo",63900,12.8,0,0,446,408),
