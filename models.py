@@ -121,8 +121,8 @@ M = [
 ("Dacia","Jogger Hybrid","hev","g","monovolumen",25900,5.2,0,0,140,708),
 ("Dacia","Bigster Hybrid","hev","g","suv-m",30900,5.5,0,0,155,612),
 ("Dacia","Striker Hybrid 155","hev","g","suv-m",26820,5.4,0,0,155,600),
-("Kia","Niro HEV","hev","g","suv-p",31900,4.6,0,0,141,451),
-("Kia","Sportage HEV","hev","g","suv-m",36900,6.0,0,0,239,591),
+("Kia","Niro HEV","hev","g","suv-p",34750,4.6,0,0,138,451),   # nov 2026: tarifa Concept sin descuentos (Motor16)
+("Kia","Sportage HEV","hev","g","suv-m",39797,6.0,0,0,239,591),   # nov 2026: tarifa Concept sin descuentos (Motor.es)
 ("Hyundai","Kona Híbrido","hev","g","suv-p",31900,4.9,0,0,141,466),
 ("Hyundai","Tucson Híbrido","hev","g","suv-m",40146,6.0,0,0,239,616),
 ("Honda","Jazz e:HEV","hev","g","urbano",26900,4.7,0,0,122,304),
@@ -133,6 +133,7 @@ M = [
 ("Nissan","Qashqai e-Power","hev","g","suv-m",36900,5.5,0,0,190,455),
 ("Ford","Kuga Híbrido","hev","g","suv-m",37900,5.8,0,0,183,412),
 ("Haval","H7 1.5 HEV","hev","g","suv-m",35000,6.5,0,0,247,483),
+("Hongqi","HS3 1.5T","ice","g","suv-m",31990,8.2,0,0,169,463),   # nov 2026, llegada a España; consumo real estimado a partir del Jaecoo 7 1.6 TGDI (SUV gasolina turbo sin hibridar) y los 7,9 L declarados
 ("Lexus","UX 300h","hev","g","suv-p",39900,5.0,0,0,199,433),
 # ---------- MICROHÍBRIDOS (etiqueta ECO) ----------
 ("Volkswagen","Golf 1.5 eTSI","mhev","g","compacto",32900,5.8,0,0,150,381),
@@ -155,7 +156,7 @@ M = [
 ("Mercedes","A 180","mhev","g","compacto",38900,6.0,0,0,136,355),
 ("Audi","A3 Sportback 35 TFSI","mhev","g","compacto",38900,5.8,0,0,150,380),
 ("Audi","Q3 35 TFSI","mhev","g","suv-m",48216,7.0,0,0,160,488),   # oct 2026: 1.5 TFSI de 160 CV, Business
-("Kia","Sportage 1.6 CRDi 48V","mhev","d","suv-m",36900,5.7,0,0,136,591),
+("Kia","Sportage 1.6 CRDi 48V","mhev","d","suv-m",41297,5.7,0,0,136,591),   # nov 2026: tarifa Drive sin descuentos (Motor.es)
 # ---------- GASOLINA, DIÉSEL Y GLP ----------
 ("Dacia","Sandero TCe","ice","g","urbano",14490,5.8,0,0,101,328),
 ("Dacia","Sandero ECO-G (GLP)","ice","glp","urbano",15440,7.5,0,0,120,328),
@@ -486,7 +487,7 @@ FUEL = {"e":"Electricidad","g":"Gasolina","d":"Diésel","glp":"GLP"}
 RES_BRAND = {"Toyota":.56,"Lexus":.56,"Dacia":.50,"Tesla":.52,"Volkswagen":.48,"Seat":.46,"Cupra":.46,"Skoda":.48,"Audi":.50,"BMW":.50,
  "Mercedes":.50,"Mini":.50,"Kia":.47,"Hyundai":.46,"Honda":.50,"Mazda":.48,"Suzuki":.48,"Renault":.42,"Peugeot":.42,"Citroën":.40,
  "Opel":.40,"Fiat":.40,"Jeep":.40,"Ford":.42,"Nissan":.42,"Volvo":.48,"Polestar":.42,"Mitsubishi":.42,"Porsche":.55,"Lancia":.40,"DS":.38,"Alfa Romeo":.40,"Subaru":.48,"KGM":.38,"Land Rover":.46,"Alpine":.45,"Abarth":.40}
-CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval"}
+CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval","Hongqi"}
 
 import re, unicodedata
 def slugify(s):
