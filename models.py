@@ -474,6 +474,9 @@ M = [
 # ---------- LANZAMIENTOS (1 nov 2026) ----------
 ("Fiat","Grizzly Hybrid","mhev","g","suv-p",27661,5.7,0,0,145,460),   # nov 2026, 1.2 MHEV 145 CV Pop; consumo real estimado a partir del Frontera/C3 Aircross Hybrid
 ("Fiat","Grizzly eléctrico","ev","e","suv-p",33162,16.5,44,320,113,460),   # nov 2026, 44 kWh Pop; consumo real estimado a partir del Frontera Electric
+# ---------- LANZAMIENTOS (7 nov 2026) ----------
+("Audi","Q3 e-hybrid 204 CV","phev","g","suv-m",55910,5.5,19.6,118,204,375),   # nov 2026, 1.5 TFSI e-hybrid 204 CV; consumo real en modo híbrido estimado a partir del Cupra Formentor e-Hybrid 204 CV (mismo motor)
+("Lynk & Co","08 PHEV","phev","g","suv-g",52995,6.5,39.6,200,345,540),   # nov 2026, Core, precio al contado; consumo real en modo híbrido estimado a partir del Geely Monjaro EM-i (mismo grupo y tamaño)
 ]
 
 
