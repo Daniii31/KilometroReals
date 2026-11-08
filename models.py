@@ -477,6 +477,8 @@ M = [
 # ---------- LANZAMIENTOS (7 nov 2026) ----------
 ("Audi","Q3 e-hybrid 204 CV","phev","g","suv-m",55910,5.5,19.6,118,204,375),   # nov 2026, 1.5 TFSI e-hybrid 204 CV; consumo real en modo híbrido estimado a partir del Cupra Formentor e-Hybrid 204 CV (mismo motor)
 ("Lynk & Co","08 PHEV","phev","g","suv-g",52995,6.5,39.6,200,345,540),   # nov 2026, Core, precio al contado; consumo real en modo híbrido estimado a partir del Geely Monjaro EM-i (mismo grupo y tamaño)
+("GAC","AION UT","ev","e","compacto",30995,15.5,60,430,204,345),   # nov 2026, Premium (PVP web oficial); consumo real y maletero estimados a partir del BYD Dolphin (compacto eléctrico de 60 kWh y 204 CV)
+("GAC","AION V","ev","e","suv-m",37995,18.0,75,510,204,427),   # nov 2026, Premium (PVP web oficial); consumo real estimado a partir del Leapmotor C10 (SUV mediano eléctrico de 70 kWh)
 ]
 
 
@@ -491,7 +493,7 @@ FUEL = {"e":"Electricidad","g":"Gasolina","d":"Diésel","glp":"GLP"}
 RES_BRAND = {"Toyota":.56,"Lexus":.56,"Dacia":.50,"Tesla":.52,"Volkswagen":.48,"Seat":.46,"Cupra":.46,"Skoda":.48,"Audi":.50,"BMW":.50,
  "Mercedes":.50,"Mini":.50,"Kia":.47,"Hyundai":.46,"Honda":.50,"Mazda":.48,"Suzuki":.48,"Renault":.42,"Peugeot":.42,"Citroën":.40,
  "Opel":.40,"Fiat":.40,"Jeep":.40,"Ford":.42,"Nissan":.42,"Volvo":.48,"Polestar":.42,"Mitsubishi":.42,"Porsche":.55,"Lancia":.40,"DS":.38,"Alfa Romeo":.40,"Subaru":.48,"KGM":.38,"Land Rover":.46,"Alpine":.45,"Abarth":.40}
-CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval","Hongqi"}
+CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval","Hongqi","GAC"}
 
 import re, unicodedata
 def slugify(s):
