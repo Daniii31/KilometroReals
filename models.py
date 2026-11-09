@@ -105,7 +105,7 @@ M = [
 ("Geely","Monjaro EM-i","phev","g","suv-g",40240,6.5,30,116,334,633),
 ("Lynk & Co","01 PHEV","phev","g","suv-m",39990,6.0,18,69,261,466),
 # ---------- HÍBRIDOS ----------
-("Toyota","Yaris Hybrid","hev","g","urbano",22900,4.2,0,0,116,286),
+("Toyota","Yaris Hybrid","hev","g","urbano",21500,4.2,0,0,116,286),
 ("Toyota","Yaris Cross Hybrid","hev","g","suv-p",27500,4.8,0,0,130,397),
 ("Toyota","Corolla Hybrid","hev","g","compacto",31937,4.6,0,0,140,361),
 ("Toyota","Corolla Touring Sports","hev","g","familiar",31400,4.7,0,0,140,596),
@@ -129,7 +129,7 @@ M = [
 ("Honda","HR-V e:HEV","hev","g","suv-p",33900,5.4,0,0,131,319),
 ("Honda","ZR-V e:HEV","hev","g","suv-m",39900,5.8,0,0,184,380),
 ("MG","3 Hybrid+","hev","g","urbano",19990,4.6,0,0,194,293),
-("MG","ZS Hybrid+","hev","g","suv-p",23990,5.0,0,0,197,443),
+("MG","ZS Hybrid+","hev","g","suv-p",22340,5.0,0,0,197,443),
 ("Nissan","Qashqai e-Power","hev","g","suv-m",36900,5.5,0,0,190,455),
 ("Ford","Kuga Híbrido","hev","g","suv-m",37900,5.8,0,0,183,412),
 ("Haval","H7 1.5 HEV","hev","g","suv-m",35000,6.5,0,0,247,483),
@@ -159,7 +159,7 @@ M = [
 ("Kia","Sportage 1.6 CRDi 48V","mhev","d","suv-m",41297,5.7,0,0,136,591),   # nov 2026: tarifa Drive sin descuentos (Motor.es)
 # ---------- GASOLINA, DIÉSEL Y GLP ----------
 ("Dacia","Sandero TCe","ice","g","urbano",14490,5.8,0,0,101,328),
-("Dacia","Sandero ECO-G (GLP)","ice","glp","urbano",15440,7.5,0,0,120,328),
+("Dacia","Sandero ECO-G (GLP)","ice","glp","urbano",15490,7.5,0,0,120,328),
 ("Dacia","Duster ECO-G (GLP)","ice","glp","suv-p",23500,7.8,0,0,100,472),
 ("Dacia","Jogger ECO-G (GLP)","ice","glp","monovolumen",21500,7.9,0,0,100,708),
 ("Seat","Ibiza 1.0 TSI","ice","g","urbano",19369,5.9,0,0,95,355),
@@ -480,6 +480,8 @@ M = [
 ("Lynk & Co","08 PHEV","phev","g","suv-g",52995,6.5,39.6,200,345,540),   # nov 2026, Core, precio al contado; consumo real en modo híbrido estimado a partir del Geely Monjaro EM-i (mismo grupo y tamaño)
 ("GAC","AION UT","ev","e","compacto",30995,15.5,60,430,204,345),   # nov 2026, Premium (PVP web oficial); consumo real y maletero estimados a partir del BYD Dolphin (compacto eléctrico de 60 kWh y 204 CV)
 ("GAC","AION V","ev","e","suv-m",37995,18.0,75,510,204,427),   # nov 2026, Premium (PVP web oficial); consumo real estimado a partir del Leapmotor C10 (SUV mediano eléctrico de 70 kWh)
+# ---------- LANZAMIENTOS (9 nov 2026) ----------
+("Kia","K4 1.0 T-GDi 48V","mhev","g","compacto",31678,5.8,0,0,115,395),   # nov 2026, Tech manual (tarifa sin la oferta de financiación, motor.es); consumo real y maletero estimados a partir del Kia Ceed 48V (mismo 1.0 T-GDi microhíbrido)
 ]
 
 
