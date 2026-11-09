@@ -26,7 +26,7 @@ M = [
 ("Leapmotor","B10","ev","e","suv-p",27300,16.5,56,361,218,420),
 ("Leapmotor","C10","ev","e","suv-m",36400,18.5,70,420,218,435),
 ("Renault","5 E-Tech","ev","e","urbano",32900,15.0,52,410,150,326),
-("Renault","4 E-Tech","ev","e","suv-p",34900,15.5,52,400,150,420),
+("Renault","4 E-Tech","ev","e","suv-p",33305,15.5,52,415,150,420),
 ("Renault","Mégane E-Tech","ev","e","compacto",39900,16.0,60,450,220,440),
 ("Renault","Scénic E-Tech","ev","e","suv-m",43900,17.0,87,610,220,545),
 ("Dacia","Spring","ev","e","urbano",16900,13.5,27,225,65,308),
@@ -463,6 +463,7 @@ M = [
 ("Ford","Mustang GT V8","ice","g","deportivo",63900,12.8,0,0,446,408),
 ("Tesla","Model 3 Performance","ev","e","berlina",53990,16.0,79,528,460,594),
 ("Porsche","911 Carrera","ice","g","deportivo",147900,10.5,0,0,394,135),
+("Chevrolet","Corvette Stingray","ice","g","deportivo",140000,12.8,0,0,482,357),   # nov 2026, vuelve a España con Tayre (precio de acceso); consumo real estimado a partir del Mustang GT V8 (V8 atmosférico de tamaño parecido)
 ("Porsche","Cayenne E-Hybrid","phev","g","suv-g",112900,8.5,26,90,470,627),
 ("Porsche","Taycan 4S","ev","e","berlina",121900,19.0,105,642,598,407),
 ("Alpine","A290","ev","e","urbano",38700,15.5,52,380,220,326),
