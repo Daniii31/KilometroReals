@@ -482,6 +482,10 @@ M = [
 ("GAC","AION V","ev","e","suv-m",37995,18.0,75,510,204,427),   # nov 2026, Premium (PVP web oficial); consumo real estimado a partir del Leapmotor C10 (SUV mediano eléctrico de 70 kWh)
 # ---------- LANZAMIENTOS (9 nov 2026) ----------
 ("Kia","K4 1.0 T-GDi 48V","mhev","g","compacto",31678,5.8,0,0,115,395),   # nov 2026, Tech manual (tarifa sin la oferta de financiación, motor.es); consumo real y maletero estimados a partir del Kia Ceed 48V (mismo 1.0 T-GDi microhíbrido)
+# ---------- LANZAMIENTOS (11 nov 2026) ----------
+("Suzuki","Across","phev","g","suv-m",54250,6.0,22.7,128,309,520),   # nov 2026, 2.5 PHEV AWD-i GLX (tarifa sin promoción, motor.es); consumo real en modo híbrido y maletero estimados a partir del Toyota RAV4 Plug-in (mismo motor)
+("BMW","i3 40 xDrive","ev","e","berlina",58400,15.5,82.8,710,374,470),   # nov 2026, Neue Klasse; consumo real estimado (WLTP del 50 xDrive 13,2 kWh) y maletero a partir del BMW i4
+("BMW","i3 50 xDrive","ev","e","berlina",63900,16.0,108.7,912,469,470),   # nov 2026, Neue Klasse, 13,2 kWh/100 km WLTP; consumo real y maletero estimados a partir del BMW i4
 ]
 
 
