@@ -488,6 +488,8 @@ M = [
 ("BMW","i3 50 xDrive","ev","e","berlina",63900,16.0,108.7,912,469,470),   # nov 2026, Neue Klasse, 13,2 kWh/100 km WLTP; consumo real y maletero estimados a partir del BMW i4
 # ---------- LANZAMIENTOS (13 nov 2026) ----------
 ("Lepas","L6 Súper Híbrido","phev","g","suv-p",36900,5.5,18,92,279,386),   # nov 2026, Essence (PVP al contado sin descuentos ni Plan Auto+); batería no publicada y consumo real en modo híbrido estimados a partir del Jaecoo 7 SHS (mismo sistema SHS de Chery)
+# ---------- LANZAMIENTOS (15 nov 2026) ----------
+("Santana","Cajal 2.0 TD 4x4","ice","d","suv-g",54900,10.0,0,0,163,553),   # nov 2026, Único 2.0 turbodiésel 163 CV aut. 8v (tarifa sin descuentos, motor.es); consumo WLTP de 10 l/100 km (sin modelo hermano en la lista) y maletero estimado a partir del Toyota Land Cruiser 2.8 D
 ]
 
 
