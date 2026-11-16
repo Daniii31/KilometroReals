@@ -107,7 +107,7 @@ M = [
 # ---------- HÍBRIDOS ----------
 ("Toyota","Yaris Hybrid","hev","g","urbano",21500,4.2,0,0,116,286),
 ("Toyota","Yaris Cross Hybrid","hev","g","suv-p",27500,4.8,0,0,130,397),
-("Toyota","Corolla Hybrid","hev","g","compacto",31937,4.6,0,0,140,361),
+("Toyota","Corolla Hybrid","hev","g","compacto",32300,4.6,0,0,140,361),
 ("Toyota","Corolla Touring Sports","hev","g","familiar",31400,4.7,0,0,140,596),
 ("Toyota","Corolla Cross Hybrid","hev","g","suv-m",34900,5.2,0,0,140,433),
 ("Toyota","C-HR Hybrid","hev","g","suv-p",33900,5.0,0,0,140,388),
@@ -129,7 +129,7 @@ M = [
 ("Honda","HR-V e:HEV","hev","g","suv-p",33900,5.4,0,0,131,319),
 ("Honda","ZR-V e:HEV","hev","g","suv-m",39900,5.8,0,0,184,380),
 ("MG","3 Hybrid+","hev","g","urbano",19990,4.6,0,0,194,293),
-("MG","ZS Hybrid+","hev","g","suv-p",22340,5.0,0,0,197,443),
+("MG","ZS Hybrid+","hev","g","suv-p",23198,5.0,0,0,197,443),
 ("Nissan","Qashqai e-Power","hev","g","suv-m",36900,5.5,0,0,190,455),
 ("Ford","Kuga Híbrido","hev","g","suv-m",37900,5.8,0,0,183,412),
 ("Haval","H7 1.5 HEV","hev","g","suv-m",35000,6.5,0,0,247,483),
@@ -158,7 +158,7 @@ M = [
 ("Audi","Q3 35 TFSI","mhev","g","suv-m",48216,7.0,0,0,160,488),   # oct 2026: 1.5 TFSI de 160 CV, Business
 ("Kia","Sportage 1.6 CRDi 48V","mhev","d","suv-m",41297,5.7,0,0,136,591),   # nov 2026: tarifa Drive sin descuentos (Motor.es)
 # ---------- GASOLINA, DIÉSEL Y GLP ----------
-("Dacia","Sandero TCe","ice","g","urbano",14490,5.8,0,0,101,328),
+("Dacia","Sandero TCe","ice","g","urbano",14112,5.8,0,0,101,328),
 ("Dacia","Sandero ECO-G (GLP)","ice","glp","urbano",15490,7.5,0,0,120,328),
 ("Dacia","Duster ECO-G (GLP)","ice","glp","suv-p",23500,7.8,0,0,100,472),
 ("Dacia","Jogger ECO-G (GLP)","ice","glp","monovolumen",21500,7.9,0,0,100,708),
@@ -183,7 +183,7 @@ M = [
 ("Kia","Picanto","ice","g","urbano",15500,5.3,0,0,63,255),
 ("Renault","Clio TCe","ice","g","urbano",18900,5.6,0,0,115,391),
 ("Renault","Captur TCe","ice","g","suv-p",23900,6.0,0,0,90,422),
-("MG","ZS 1.5","ice","g","suv-p",19990,7.0,0,0,106,443),
+("MG","ZS 1.5","ice","g","suv-p",20173,7.0,0,0,106,443),
 ("Nissan","Juke DIG-T","ice","g","suv-p",23900,6.0,0,0,114,422),
 ("Jeep","Avenger 1.2","ice","g","suv-p",24900,6.0,0,0,100,380),
 ("Mini","Cooper C","ice","g","urbano",28900,6.0,0,0,156,210),
