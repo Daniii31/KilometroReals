@@ -233,6 +233,7 @@ M = [
 ("Jaecoo","7 1.6 TGDI 4x4","ice","g","suv-m",35900,8.5,0,0,197,500),
 ("Ebro","s400 SHS","hev","g","suv-p",27990,5.5,0,0,224,380),
 ("Ebro","s400 Plus HEV","hev","g","suv-p",22990,5.5,0,0,224,380),
+("Jaecoo","5 SHS","hev","g","suv-p",29395,5.4,0,0,224,314),   # nov 2026, Pure (PVP de tarifa sin ofertas; 23.990 € con financiación); consumo real estimado a partir del Omoda 5 SHS-H (mismo sistema SHS 1.5 de 224 CV)
 ("Ebro","s700 1.6 TGDI","ice","g","suv-m",29990,7.8,0,0,147,500),
 ("Ebro","s800 PHEV","phev","g","suv-g",42990,6.5,19,90,279,800),
 ("BYD","Seal 6 DM-i Touring","phev","g","familiar",38990,5.5,19,100,212,500),
