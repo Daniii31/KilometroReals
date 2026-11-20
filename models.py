@@ -291,6 +291,7 @@ M = [
 ("Volkswagen","ID. Buzz","ev","e","monovolumen",65900,21.0,79,460,286,1121),
 ("Skoda","Superb 1.5 eTSI","mhev","g","familiar",41900,6.1,0,0,150,690),
 ("Skoda","Kodiaq 1.5 eTSI","mhev","g","suv-g",47300,6.9,0,0,160,910),   # oct 2026: nuevo 1.5 TSI m-HEV Euro 7 de 160 CV, Selection
+("Skoda","Kodiaq PHEV 272 CV","phev","g","suv-g",59000,6.0,25.7,115,272,745),   # nov 2026: 1.5 TSI PHEV 272 CV DSG Sportline; consumo real del Kodiaq iV
 ("Toyota","Corolla Sedán Hybrid","hev","g","berlina",30900,4.5,0,0,140,471),
 ("Toyota","Corolla Hybrid 200","hev","g","compacto",34400,4.8,0,0,196,313),
 ("Toyota","C-HR Hybrid 200","hev","g","suv-p",38900,5.2,0,0,197,364),
