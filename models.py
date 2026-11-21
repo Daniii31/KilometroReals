@@ -24,7 +24,7 @@ M = [
 ("Geely","E2","ev","e","urbano",20990,13.5,35,252,82,300),
 ("Leapmotor","T03","ev","e","urbano",18900,14.5,37,265,95,210),
 ("Leapmotor","B10","ev","e","suv-p",27300,16.5,56,361,218,420),
-("Leapmotor","C10","ev","e","suv-m",36400,18.5,70,420,218,435),
+("Leapmotor","C10","ev","e","suv-m",37764,18.5,70,430,224,435),   # nov 2026, gama 2027 Look 69,9 kWh 224 CV (tarifa sin descuentos)
 ("Renault","5 E-Tech","ev","e","urbano",32900,15.0,52,410,150,326),
 ("Renault","4 E-Tech","ev","e","suv-p",33305,15.5,52,415,150,420),
 ("Renault","Mégane E-Tech","ev","e","compacto",39900,16.0,60,450,220,440),
