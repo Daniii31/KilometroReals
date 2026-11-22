@@ -492,6 +492,9 @@ M = [
 ("Lepas","L6 Súper Híbrido","phev","g","suv-p",36900,5.5,18,92,279,386),   # nov 2026, Essence (PVP al contado sin descuentos ni Plan Auto+); batería no publicada y consumo real en modo híbrido estimados a partir del Jaecoo 7 SHS (mismo sistema SHS de Chery)
 # ---------- LANZAMIENTOS (15 nov 2026) ----------
 ("Santana","Cajal 2.0 TD 4x4","ice","d","suv-g",54900,10.0,0,0,163,553),   # nov 2026, Único 2.0 turbodiésel 163 CV aut. 8v (tarifa sin descuentos, motor.es); consumo WLTP de 10 l/100 km (sin modelo hermano en la lista) y maletero estimado a partir del Toyota Land Cruiser 2.8 D
+# ---------- LANZAMIENTOS (22 nov 2026) ----------
+("GWM","Tank 300 PHEV","phev","g","suv-g",53911,10.0,37.1,95,408,533),   # nov 2026, Advance 2.0T PHEV 408 CV 4x4 (tarifa sin descuentos, motor.es); consumo real en modo híbrido y maletero estimados a partir del Jeep Wrangler 4xe (todoterreno de chasis de largueros con 2.0 turbo enchufable)
+("Kia","Seltos HEV","hev","g","suv-p",29830,4.9,0,0,154,466),   # nov 2026, Concept 1.6 HEV 154 CV (precio con las promociones de Kia, motor.es); consumo real y maletero estimados a partir del Hyundai Kona Híbrido (mismo 1.6 GDI híbrido)
 ]
 
 
@@ -506,7 +509,7 @@ FUEL = {"e":"Electricidad","g":"Gasolina","d":"Diésel","glp":"GLP"}
 RES_BRAND = {"Toyota":.56,"Lexus":.56,"Dacia":.50,"Tesla":.52,"Volkswagen":.48,"Seat":.46,"Cupra":.46,"Skoda":.48,"Audi":.50,"BMW":.50,
  "Mercedes":.50,"Mini":.50,"Kia":.47,"Hyundai":.46,"Honda":.50,"Mazda":.48,"Suzuki":.48,"Renault":.42,"Peugeot":.42,"Citroën":.40,
  "Opel":.40,"Fiat":.40,"Jeep":.40,"Ford":.42,"Nissan":.42,"Volvo":.48,"Polestar":.42,"Mitsubishi":.42,"Porsche":.55,"Lancia":.40,"DS":.38,"Alfa Romeo":.40,"Subaru":.48,"KGM":.38,"Land Rover":.46,"Alpine":.45,"Abarth":.40}
-CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval","Hongqi","GAC","Lepas"}
+CHINESE = {"BYD","Denza","MG","Geely","Leapmotor","XPENG","Deepal","Omoda","Jaecoo","Lynk & Co","Smart","Dongfeng","Ebro","Zeekr","Haval","Hongqi","GAC","Lepas","GWM"}
 
 import re, unicodedata
 def slugify(s):
