@@ -495,6 +495,8 @@ M = [
 # ---------- LANZAMIENTOS (22 nov 2026) ----------
 ("GWM","Tank 300 PHEV","phev","g","suv-g",53911,10.0,37.1,95,408,533),   # nov 2026, Advance 2.0T PHEV 408 CV 4x4 (tarifa sin descuentos, motor.es); consumo real en modo híbrido y maletero estimados a partir del Jeep Wrangler 4xe (todoterreno de chasis de largueros con 2.0 turbo enchufable)
 ("Kia","Seltos HEV","hev","g","suv-p",29830,4.9,0,0,154,466),   # nov 2026, Concept 1.6 HEV 154 CV (precio con las promociones de Kia, motor.es); consumo real y maletero estimados a partir del Hyundai Kona Híbrido (mismo 1.6 GDI híbrido)
+# ---------- LANZAMIENTOS (23 nov 2026) ----------
+("Hyundai","Staria Eléctrico","ev","e","monovolumen",74480,20.5,84,430,218,435),   # nov 2026, 7 plazas LUX 84 kWh 218 CV (PVP sin la promoción de 8.010 € con financiación, autonocion.com con el configurador de Hyundai); consumo real estimado a partir del Volkswagen ID. Buzz (monovolumen eléctrico de tamaño parecido; WLTC 16,2 kWh)
 ]
 
 
