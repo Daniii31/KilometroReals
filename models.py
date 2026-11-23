@@ -112,7 +112,7 @@ M = [
 ("Toyota","Corolla Cross Hybrid","hev","g","suv-m",34900,5.2,0,0,140,433),
 ("Toyota","C-HR Hybrid","hev","g","suv-p",33900,5.0,0,0,140,388),
 ("Toyota","RAV4 Hybrid","hev","g","suv-m",40900,5.8,0,0,218,580),
-("Renault","Clio E-Tech","hev","g","urbano",23269,4.6,0,0,160,301),
+("Renault","Clio E-Tech","hev","g","urbano",24990,4.6,0,0,160,301),   # precio revisado 23/11/2026: Evolution Full Hybrid E-Tech 160 CV, tarifa sin descuentos (motor.es)
 ("Renault","Captur E-Tech","hev","g","suv-p",28900,4.9,0,0,143,404),
 ("Renault","Symbioz E-Tech","hev","g","suv-p",31900,4.9,0,0,145,492),
 ("Renault","Arkana E-Tech","hev","g","suv-p",32900,5.0,0,0,145,480),
@@ -163,7 +163,7 @@ M = [
 ("Dacia","Duster ECO-G (GLP)","ice","glp","suv-p",23500,7.8,0,0,100,472),
 ("Dacia","Jogger ECO-G (GLP)","ice","glp","monovolumen",21500,7.9,0,0,100,708),
 ("Seat","Ibiza 1.0 TSI","ice","g","urbano",19369,5.9,0,0,95,355),
-("Seat","Arona 1.0 TSI","ice","g","suv-p",22500,6.2,0,0,115,400),
+("Seat","Arona 1.0 TSI","ice","g","suv-p",20530,6.2,0,0,115,400),   # precio revisado 23/11/2026: Style 1.0 TSI 115 CV (km77)
 ("Seat","León 1.5 TSI","ice","g","compacto",26900,6.0,0,0,130,380),
 ("Cupra","Formentor 1.5 TSI","ice","g","suv-p",34900,6.8,0,0,150,450),
 ("Volkswagen","Polo 1.0 TSI","ice","g","urbano",21900,5.8,0,0,95,351),
@@ -332,7 +332,7 @@ M = [
 ("Honda","CR-V e:HEV","hev","g","suv-m",47900,6.4,0,0,184,587),
 ("Suzuki","e Vitara","ev","e","suv-p",33990,16.0,49,344,144,306),
 ("Jeep","Compass e-Hybrid","mhev","g","suv-m",37900,6.5,0,0,130,438),
-("Fiat","Panda Hybrid","mhev","g","urbano",15900,5.0,0,0,70,225),
+("Fiat","Panda Hybrid","mhev","g","urbano",17599,5.0,0,0,65,225),   # precio revisado 23/11/2026: Pandina 1.0 Hybrid 65 CV Pop, tarifa sin la promoción de noviembre (diariomotor)
 ("Fiat","500 Hybrid","mhev","g","urbano",19900,5.0,0,0,65,185),
 ("Fiat","Doblò","ice","g","monovolumen",25900,6.6,0,0,110,775),
 ("Mini","Countryman E","ev","e","suv-p",45900,16.5,64,462,204,460),
