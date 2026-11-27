@@ -63,6 +63,7 @@ M = [
 ("Volvo","EX40","ev","e","suv-p",49900,18.0,79,570,238,404),
 ("Polestar","2","ev","e","berlina",49900,17.0,82,650,299,405),
 ("Kia","EV3","ev","e","suv-p",36990,15.0,58,436,204,460),
+("Kia","EV2","ev","e","suv-p",32688,15.0,61,444,135,362),   # nov 2026: tarifa Air 61 kWh sin descuentos (Motor.es); consumo real estimado a partir del EV3
 ("Kia","Niro EV","ev","e","suv-p",41990,16.0,65,460,204,475),
 ("Kia","EV6","ev","e","suv-m",46990,17.5,84,560,229,490),
 ("Hyundai","Inster","ev","e","urbano",25990,14.0,42,327,97,280),
